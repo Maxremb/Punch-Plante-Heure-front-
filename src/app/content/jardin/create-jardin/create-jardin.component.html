@@ -15,7 +15,6 @@
                 <option value=false>Argilo-limoneux</option>
                 <option value=false>Argileux</option>
             </select>
-            <div *ngIf="sol.errors?.required && (sol.touched || sol.dirty)">La nature du sol est requise</div>
         </div>
         <div>
             <label>Longeur :</label>
@@ -24,25 +23,26 @@
         </div>
         <div>
             <label>Largeur :</label>
-            <input id="largeur" type="number" [(ngModel)]="this.jardin.largeur" formControlName="largeur" name="largeur">
+            <input id="largeur" type="number" [(ngModel)]="this.jardin.largeur" formControlName="largeur"
+                name="largeur">
         </div>
         <div>
             <label>Département :</label>
-            <input id="departement" type="departementUptadeDto" [(ngModel)]="this.jardin.departement" formControlName="departement" name="departement"
-                required>
-
-            <div *ngIf="departement.errors?.required && (departement.touched || departement.dirty)">Le département du jardin est
+            <input id="departement" type="departementUptadeDto" [(ngModel)]="this.jardin.departement"
+                formControlName="departement" name="departement" required>
+            <div *ngIf="departement.errors?.required && (departement.touched || departement.dirty)">Le département
+                du jardin est
                 requis.</div>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!this.addJardinForm.valid">Créer un jardin</button>
-    <!--
+        <button type="submit" class="btn btn-primary" [disabled]="!this.addJardinForm.valid">Créer un
+            jardin</button>
+
         <div class="alert alert-success" *ngIf="messageValidation">
             <strong>Bravo !</strong> {{this.messageValidation}}
         </div>
         <div class="alert alert-danger" *ngIf="messageEchec">
             <strong>Echec !</strong> {{this.messageEchec}}
         </div>
-    -->
     </form>
 
 </div>
