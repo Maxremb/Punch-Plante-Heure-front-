@@ -9,17 +9,18 @@ import { DashboardComponent } from './content/dashboard/dashboard/dashboard.comp
 import { AllPlantComponent } from './content/plant/all-plant/all-plant.component';
 import { CreatePlantComponent } from './content/plant/create-plant/create-plant.component';
 import { DetailedPlantComponent } from './content/plant/detailed-plant/detailed-plant.component';
+import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-connexion/accueil-hors-connexion.component';
 
 
 const routes: Routes = [
-  { path :'' ,component :  DashboardComponent },
+  { path :'' ,component :  AccueilHorsConnexionComponent },
+  { path :'accueilco' ,component :  DashboardComponent },
   { path :'jardin' ,component :  AllJardinComponent},
   { path :'jardin/create' ,component : CreateJardinComponent },
   {path : 'jardin/detail',component : DetailJardinComponent},
   {path : 'plant',component : AllPlantComponent},
   {path : 'plant/create',component : CreatePlantComponent},
   {path : 'plant/detail',component : DetailedPlantComponent},
- // { path :'plante', component : }
 ];
 
 @NgModule({

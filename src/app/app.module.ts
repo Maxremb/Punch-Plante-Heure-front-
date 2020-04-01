@@ -17,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import { DashboardComponent } from './content/dashboard/dashboard/dashboard.component';
 import { ContentComponent } from './content/content/content.component';
+import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-connexion/accueil-hors-connexion.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ContentComponent } from './content/content/content.component';
     FooterComponent,
     DashboardComponent,
     ContentComponent,
+    AccueilHorsConnexionComponent,
   ],
   imports: [
     BrowserModule,
