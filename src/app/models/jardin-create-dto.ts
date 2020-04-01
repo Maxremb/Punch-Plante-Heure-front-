@@ -4,7 +4,7 @@ import { UtilisateurUpdateDto } from './utilisateur-update-dto';
 
 export class JardinCreateDto {
     sol: SolEnum;
-    longeur: number;
+    longueur: number;
     largeur: number;
     nom: string;
     departement: DepartementUpdateDto;

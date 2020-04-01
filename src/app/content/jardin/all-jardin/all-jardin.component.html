@@ -16,8 +16,9 @@
                     <th>ID</th>
                     <th>Nom</th>
                     <th>Sol</th>
-                    <th>longueur</th>
-                    <th>largeur</th>
+                    <th>Longueur</th>
+                    <th>Largeur</th>
+                    <th>Departement</th>
                     <th>Supprimer jardin</th>
                     <th>Modifier jardin</th>
                 </tr>
@@ -29,12 +30,13 @@
                     <td>{{e.sol}}</td>
                     <td>{{e.longueur}}</td>
                     <td>{{e.largeur}}</td>
+                    <td>{{e.departement}}</td>
                     <td>
-                        <button class="btn btn-danger" (click)="this.delete()">Supprimer</button>
+                        <button class="btn btn-danger" (click)="this.delete(e.id)">Supprimer</button>
                     </td>
                     <td>
                         <a routerLink="/jardin/detail">
-                            <button class="btn btn-info" (click)="this.stockageJardin()">Modifier</button>
+                            <button class="btn btn-info" (click)="this.stockageJardin(e)">Modifier</button>
                         </a>
                     </td>
                 </tr>
