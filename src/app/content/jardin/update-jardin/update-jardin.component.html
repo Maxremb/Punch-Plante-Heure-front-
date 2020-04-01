@@ -1,6 +1,6 @@
 <div class="container">
 
-    <form [formGroup]="updateJardinForm">
+    <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()">
         <label>
             <h2> Modification du jardin {{this.jardin.nom}} </h2>
         </label>

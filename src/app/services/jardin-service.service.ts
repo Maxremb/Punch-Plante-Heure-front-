@@ -26,12 +26,12 @@ export class JardinService {
     return this.http.get<ResponseDto>(this.URL + '/all');
   }
 
-  getAllByUtilisateur(idUtilisateur: number): Observable<JardinResponseDto> {
-    return this.http.get<JardinResponseDto>(this.URL + '/' + idUtilisateur);
+  getAllByUtilisateur(idUtilisateur: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/' + idUtilisateur);
   }
 
-  getId(id: number): Observable<JardinResponseDto> {
-    return this.http.get<JardinResponseDto>(this.URL + '/' + id);
+  getId(id: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/' + id);
   }
 
   update(jardin: JardinUpdateDto): Observable<ResponseDto> {

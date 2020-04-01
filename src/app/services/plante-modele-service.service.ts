@@ -4,13 +4,15 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { PlanteModeleUpdateDto } from '../models/plante-modele-update-dto';
 import { ResponseDto } from '../models/response-dto';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlanteModeleService {
 
-  planteModele: PlanteModeleCreateDto
+  planteModele: PlanteModeleCreateDto;
 
   private URL = environment.baseUrl + 'planteModele';
 
