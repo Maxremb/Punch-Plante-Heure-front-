@@ -1,0 +1,38 @@
+<div *ngIf="ajout">
+    <h2>Ajout d'une plante dans votre jardin</h2>
+    <form [formGroup]="planteForm" (ngSubmit)="ajouter()">
+        <div class="form-group">
+            <label for="nomCommun">Nom de la plante</label>
+            <select id="nomCommun" class="form-control" formControlName="nomCommun">
+                <option value="café">Café</option>
+                <option value="thé">Thé</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="datePlantation">Date de plantation : </label>
+            <input type="date" id="datePlantation" class="form-control" formControlName="datePlantation">
+        </div>
+        <div class="form-group">
+            <label for="dateSemi">Date de semis : </label>
+            <input type="date" id="dateSemi" class="form-control" formControlName="dateSemi">
+        </div>
+        <div class="form-group">
+            <label for="etatSante">Etat de santé : </label>
+            <select id="etatSante" class="form-control" formControlName="etatSante">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="etatPlante">Etat de la plante : </label>
+            <select id="etatPlante" class="form-control" formControlName="etatPlante">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="planteForm.invalid">Valider</button>
+        <br><br>
+    </form>
+    <span class="alert alert-success" *ngIf="message">{{message}}</span>
+    <br><br>
+</div>

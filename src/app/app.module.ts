@@ -16,6 +16,7 @@ import { UpdateJardinComponent } from './content/jardin/update-jardin/update-jar
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import { DashboardComponent } from './content/dashboard/dashboard/dashboard.component';
+import { DetailJardinAddPlanteComponent } from './content/jardin/detail-jardin-add-plante/detail-jardin-add-plante.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DashboardComponent } from './content/dashboard/dashboard/dashboard.comp
     NavbarComponent,
     FooterComponent,
     DashboardComponent,
+    DetailJardinAddPlanteComponent,
   ],
   imports: [
     BrowserModule,
