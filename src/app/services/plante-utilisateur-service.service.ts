@@ -7,7 +7,7 @@ import { PlanteUtilisateurResponseDto } from '../models/plante-utilisateur-respo
 @Injectable({
   providedIn: 'root'
 })
-export class PlanteUtilisateurServiceService {
+export class PlanteUtilisateurService {
 
   planteUtilisateur: PlanteUtilisateurCreateDto;
 

@@ -8,7 +8,7 @@ import { PlanteModeleUpdateDto } from '../models/plante-modele-update-dto';
 @Injectable({
   providedIn: 'root'
 })
-export class PlanteModeleServiceService {
+export class PlanteModeleService {
 
   planteModele: PlanteModeleCreateDto
 

@@ -8,7 +8,7 @@ import { JardinUpdateDto } from '../models/jardin-update-dto';
 @Injectable({
   providedIn: 'root'
 })
-export class JardinServiceService {
+export class JardinService {
 
   jardin: JardinCreateDto;
 
