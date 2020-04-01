@@ -6,11 +6,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AllPlantComponent } from './content/plant/all-plant/all-plant.component';
+import { CreatePlantComponent } from './content/plant/create-plant/create-plant.component';
+import { DetailedPlantComponent } from './content/plant/detailed-plant/detailed-plant.component';
 import { DetailJardinComponent } from './content/jardin/detail-jardin/detail-jardin.component';
-
 import { AllJardinComponent } from './content/jardin/all-jardin/all-jardin.component';
 import { CreateJardinComponent } from './content/jardin/create-jardin/create-jardin.component';
 import { UpdateJardinComponent } from './content/jardin/update-jardin/update-jardin.component';
+import { NavbarComponent } from './navbar/navbar/navbar.component';
+import { FooterComponent } from './footer/footer/footer.component';
 import { DashboardComponent } from './content/dashboard/dashboard/dashboard.component';
 import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
 import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.component';
@@ -19,13 +23,23 @@ import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.c
 @NgModule({
   declarations: [
     AppComponent,
+    AllPlantComponent,
+    CreatePlantComponent,
+    DetailedPlantComponent,
     DetailJardinComponent,
     AllJardinComponent,
     CreateJardinComponent,
     UpdateJardinComponent,
+    NavbarComponent,
+    FooterComponent,
     DashboardComponent,
+<<<<<<< HEAD
     CreatePeriodeComponent,
     AllPeriodeComponent,
+=======
+    ContentComponent,
+    AccueilHorsConnexionComponent,
+>>>>>>> f98bfdd415c2b713d1f459c03c19c7d9a5023248
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,39 @@
+<div class="container">
+    <h2><label for="search-box">Recherche par ID</label></h2>
+
+    <input type="number" #searchBox id="search-box" />
+    <button type="button" class="btn btn-info" (click)="this.getId(searchBox.value)">Chercher par ID</button>
+    <hr>
+    <button type="button" class="btn btn-info" (click)="this.getAll()">Voir la liste entière</button>
+    <hr>
+    <a routerLink="/plant/add">
+    <input type="button" value="Ajouter une plante" class="btn btn-info"/>
+    </a>
+    <hr>
+    <h2>Liste des plantes :</h2>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom commun</th>
+                <th>Nom scientifique</th>
+                <th>URL Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plant of this.allPlant">
+                <td>{{plant.id}}</td>
+                <td>{{plant.nomCommun}}</td>
+                <td>{{plant.nomScientifique}}</td>
+                <td>{{plant.photo}}</td>
+                <td>
+                <button class="btn btn-danger" (click)="this.delete(plant.id)">Supprimer</button>
+                <a routerLink="/plant/detail/{{plant.id}}">
+                    <button class="btn btn-info" >Modifier</button>
+                </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
