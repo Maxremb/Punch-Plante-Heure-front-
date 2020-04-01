@@ -33,13 +33,8 @@ import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.c
     NavbarComponent,
     FooterComponent,
     DashboardComponent,
-<<<<<<< HEAD
     CreatePeriodeComponent,
     AllPeriodeComponent,
-=======
-    ContentComponent,
-    AccueilHorsConnexionComponent,
->>>>>>> f98bfdd415c2b713d1f459c03c19c7d9a5023248
   ],
   imports: [
     BrowserModule,
