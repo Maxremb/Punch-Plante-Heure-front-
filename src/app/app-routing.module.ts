@@ -10,6 +10,7 @@ import { AllPlantComponent } from './content/plant/all-plant/all-plant.component
 import { CreatePlantComponent } from './content/plant/create-plant/create-plant.component';
 import { DetailedPlantComponent } from './content/plant/detailed-plant/detailed-plant.component';
 import { DetailJardinAddPlanteComponent } from './content/jardin/detail-jardin-add-plante/detail-jardin-add-plante.component';
+import { DetailJardinUpdatePlanteComponent } from './content/jardin/detail-jardin-update-plante/detail-jardin-update-plante.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path : 'jardin' , component :  AllJardinComponent},
   { path : 'jardin/create' , component : CreateJardinComponent },
   { path : 'jardin/detail', component : DetailJardinComponent },
-  { path : 'jardin/detail/add', component : DetailJardinAddPlanteComponent },
+  { path : 'jardin/detail/addplante', component : DetailJardinAddPlanteComponent },
+  { path : 'jardin/detail/updateplante', component : DetailJardinUpdatePlanteComponent },
   { path : 'plant', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/detail', component : DetailedPlantComponent },

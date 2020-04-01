@@ -31,17 +31,19 @@
                     <td>{{planteUtilisateur.etatSante}}</td>
                     <td>{{planteUtilisateur.etatPlante}}</td>
                     <td><button class="btn btn-danger" (click)="this.supprimer(planteUtilisateur.id)">Retirer cette plante de votre jardin</button>
-                        &nbsp;&nbsp;<button class="btn btn-info" (click)="afficherModification()">Mettre à jour cette plante</button></td>
+                        &nbsp;&nbsp;<a routerLink="/jardin/detail/updateplante">
+                            <button class="btn btn-info" (click)="this.stockagePlanteUtilisateur(planteUtilisateur)">Mettre à jour cette plante</button>
+                        </a>
                 </tr>
             </tbody>
         </table>
     <br>
-    <button class="btn btn-info" (click)="goBack()">Retour</button>
+    <a routerLink="/jardin/detail/addplante"><button class="btn btn-info">Ajouter une plante à votre jardin</button></a>
     &nbsp;&nbsp;
-    <a routerLink="/jardin/detail/add">
-        <input type="button" value="Ajouter une plante dans votre jardin" class="btn btn-info"/>
-    </a>
-    
+    <a routerLink="/jardin/update"><button class="btn btn-info">Modifier les caractéristiques de votre jardin</button></a>
+    &nbsp;&nbsp;
+    <button class="btn btn-info" (click)="retour()">Retour</button>
+</div>   
 
 
 

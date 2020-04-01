@@ -3,13 +3,15 @@ import { PlanteUtilisateurCreateDto } from '../models/plante-utilisateur-create-
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ResponseDto } from '../models/response-dto';
+import { PlanteUtilisateurUpdateDto } from '../models/plante-utilisateur-update-dto';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlanteUtilisateurService {
 
-  planteUtilisateur: PlanteUtilisateurCreateDto;
+  planteUtilisateur: PlanteUtilisateurUpdateDto;
 
   private URL = environment.baseUrl + 'planteUtilisateur';
 
@@ -27,7 +29,7 @@ export class PlanteUtilisateurService {
     return this.http.get<ResponseDto>(this.URL + '/' + id);
   }
 
-  update(planteUtilisateur: PlanteUtilisateurCreateDto): Observable<ResponseDto> {
+  update(planteUtilisateur: PlanteUtilisateurUpdateDto): Observable<ResponseDto> {
     return this.http.put<ResponseDto>(this.URL, + planteUtilisateur);
   }
 

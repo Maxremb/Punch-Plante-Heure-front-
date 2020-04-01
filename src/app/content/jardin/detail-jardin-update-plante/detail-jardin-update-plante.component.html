@@ -1,6 +1,6 @@
-<div *ngIf="plante" class="container">
+<div *ngIf="planteUtilisateur" class="container">
     <h2>Ajout d'une plante dans votre jardin</h2>
-    <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
+    <form [formGroup]="planteForm" (ngSubmit)="this.update()">
         <div class="form-group">
             <label for="nomCommun">Nom de la plante</label>
             <select id="nomCommun" class="form-control" formControlName="nomCommun">
@@ -33,7 +33,9 @@
         <button type="submit" class="btn btn-primary" [disabled]="planteForm.invalid">Valider</button>
         <br><br>
     </form>
+    <br><br>
     <span class="alert alert-success" *ngIf="messageValidation">{{messageValidation}}</span>
     <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
     <br><br>
 </div>
+
