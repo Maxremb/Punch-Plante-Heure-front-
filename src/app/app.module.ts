@@ -10,6 +10,8 @@ import { DetailJardinComponent } from './content/jardin/detail-jardin/detail-jar
 import { AllJardinComponent } from './content/jardin/all-jardin/all-jardin.component';
 import { CreateJardinComponent } from './content/jardin/create-jardin/create-jardin.component';
 import { UpdateJardinComponent } from './content/jardin/update-jardin/update-jardin.component';
+import { NavbarComponent } from './navbar/navbar/navbar.component';
+import { FooterComponent } from './footer/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { UpdateJardinComponent } from './content/jardin/update-jardin/update-jar
     DetailJardinComponent,
     AllJardinComponent,
     CreateJardinComponent,
-    UpdateJardinComponent
+    UpdateJardinComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

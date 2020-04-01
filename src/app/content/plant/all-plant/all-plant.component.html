@@ -24,9 +24,9 @@
         <tbody>
             <tr *ngFor="let plant of this.allPlant">
                 <td>{{plant.id}}</td>
-                <td>{{plant.type}}</td>
-                <td>{{plant.coefficient}}</td>
-                <td>{{plant.date}}</td>
+                <td>{{plant.nomCommun}}</td>
+                <td>{{plant.nomScientifique}}</td>
+                <td>{{plant.photo}}</td>
                 <td>
                 <button class="btn btn-danger" (click)="this.delete(plant.id)">Supprimer</button>
                 <a routerLink="/plant/detail/{{plant.id}}">
