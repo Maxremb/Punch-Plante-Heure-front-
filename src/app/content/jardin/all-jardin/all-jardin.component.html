@@ -1,0 +1,44 @@
+<div class="container">
+
+    <a routerLink="/jardin/add">
+        <input type="button" value="Ajouter un jardin" class="btn btn-info"/>
+    </a>
+
+    <!--LISTE DES JARDINS-->
+    <div class="row">
+        <label>
+            <h2>Liste des jardins :</h2>
+        </label>
+        <hr>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Sol</th>
+                    <th>longueur</th>
+                    <th>largeur</th>
+                    <th>Supprimer jardin</th>
+                    <th>Modifier jardin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of this.allJardins">
+                    <td>{{e.id}}</td>
+                    <td>{{e.nom}}</td>
+                    <td>{{e.sol}}</td>
+                    <td>{{e.longueur}}</td>
+                    <td>{{e.largeur}}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="this.delete()">Supprimer</button>
+                    </td>
+                    <td>
+                        <a routerLink="/jardin/detail">
+                            <button class="btn btn-info" (click)="this.stockageJardin()">Modifier</button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
