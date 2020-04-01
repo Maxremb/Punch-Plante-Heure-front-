@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
 import { JardinUpdateDto } from '../models/jardin-update-dto';
 import { ResponseDto } from '../models/response-dto';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class JardinService {
 
-  jardin: JardinCreateDto;
+  jardin: JardinUpdateDto;
 
   private URL = environment.baseUrl + 'jardin';
 
@@ -25,8 +26,12 @@ export class JardinService {
     return this.http.get<ResponseDto>(this.URL + '/all');
   }
 
-  getId(id: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/' + id);
+  getAllByUtilisateur(idUtilisateur: number): Observable<JardinResponseDto> {
+    return this.http.get<JardinResponseDto>(this.URL + '/' + idUtilisateur);
+  }
+
+  getId(id: number): Observable<JardinResponseDto> {
+    return this.http.get<JardinResponseDto>(this.URL + '/' + id);
   }
 
   update(jardin: JardinUpdateDto): Observable<ResponseDto> {
@@ -36,5 +41,7 @@ export class JardinService {
   delete(id: number): Observable<ResponseDto> {
     return this.http.delete<ResponseDto>(this.URL + '/' + id);
   }
+
+
 
 }

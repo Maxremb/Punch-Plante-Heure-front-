@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
+import { JardinService } from 'src/app/services/jardin-service.service';
+import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
 
 @Component({
   selector: 'app-all-jardin',
@@ -10,31 +12,27 @@ export class AllJardinComponent implements OnInit {
 
   allJardins = new Array<JardinUpdateDto>();
   jardin = new JardinUpdateDto;
+  utilisateurActif = new UtilisateurUpdateDto;
 
-  constructor() { }
+  constructor(private service : JardinService) { }
 
   ngOnInit(): void {
-    this.readAll();
+    this.readAllByIdUtilisateur();
   }
 
-  readAll() {
-    /* 
-    this.service.getAll().subscribe(
+  readAllByIdUtilisateur() {
+    this.service.getAllByUtilisateur(this.utilisateurActif.id).subscribe(
      responseDto => {
         if (!responseDto.error) {
           this.allJardins = responseDto.object;
         }
         else { this.allJardins = [] }
       }
-      
     );
-    */
   }
 
   delete(id: number) {
-     /*
     this.service.delete(id).subscribe(
-     
       responseDto => {
         if (!responseDto.error) {
           this.allJardins = this.allJardins.filter(
@@ -43,14 +41,11 @@ export class AllJardinComponent implements OnInit {
           this.jardin = null;
         }
       }
-      
     )
-    */
   }
 
-  stockageJardin(jardin = JardinUpdateDto) {
-    //this.service.jardin = this.jardin;
-
+  stockageJardin(jardinTransfert : JardinUpdateDto) {
+    this.service.jardin = jardinTransfert ;
   }
 
 

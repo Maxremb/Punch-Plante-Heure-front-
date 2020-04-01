@@ -20,6 +20,7 @@
                     <th>Largeur</th>
                     <th>Departement</th>
                     <th>Supprimer jardin</th>
+                    <th>Détail jardin</th>
                     <th>Modifier jardin</th>
                 </tr>
             </thead>
@@ -36,6 +37,11 @@
                     </td>
                     <td>
                         <a routerLink="/jardin/detail">
+                            <button class="btn btn-info" (click)="this.stockageJardin(e)">Détail</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a routerLink="/jardin/update">
                             <button class="btn btn-info" (click)="this.stockageJardin(e)">Modifier</button>
                         </a>
                     </td>
