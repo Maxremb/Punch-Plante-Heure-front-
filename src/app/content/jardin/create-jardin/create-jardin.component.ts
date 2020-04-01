@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
-import { JardinServiceService } from 'src/app/services/jardin-service.service';
+
 
 @Component({
   selector: 'app-create-jardin',
@@ -15,7 +15,7 @@ export class CreateJardinComponent implements OnInit {
   messageValidation = null;
   messageErreur = null;
 
-  constructor(private service : JardinServiceService) { }
+  constructor( ) { }
 
   ngOnInit(): void {
     this.addJardinForm = new FormGroup({
@@ -34,13 +34,14 @@ export class CreateJardinComponent implements OnInit {
   get departement() {return this.addJardinForm.get('departement')}
 
   create() {
+    /* 
     this.service.create(this.jardin).subscribe(
-     /* responseDto => {
+     responseDto => {
         if (!responseDto.error) {
           this.messageValidation = responseDto.message;
         } else { this.messageErreur = responseDto.message; }
        }
-       */
-    )
+       
+    )*/
   }
 }
