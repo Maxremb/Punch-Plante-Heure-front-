@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DetailJardinComponent } from './content/jardin/detail-jardin/detail-jardin.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailJardinComponent
   ],
   imports: [
     BrowserModule,
