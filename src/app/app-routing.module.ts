@@ -9,17 +9,20 @@ import { DashboardComponent } from './content/dashboard/dashboard/dashboard.comp
 import { AllPlantComponent } from './content/plant/all-plant/all-plant.component';
 import { CreatePlantComponent } from './content/plant/create-plant/create-plant.component';
 import { DetailedPlantComponent } from './content/plant/detailed-plant/detailed-plant.component';
+import { DetailJardinAddPlanteComponent } from './content/jardin/detail-jardin-add-plante/detail-jardin-add-plante.component';
 
 
 const routes: Routes = [
-  { path :'' ,component :  DashboardComponent },
-  { path :'jardin' ,component :  AllJardinComponent},
-  { path :'jardin/create' ,component : CreateJardinComponent },
-  {path : 'jardin/detail',component : DetailJardinComponent},
-  {path : 'plant',component : AllPlantComponent},
-  {path : 'plant/create',component : CreatePlantComponent},
-  {path : 'plant/detail',component : DetailedPlantComponent},
- // { path :'plante', component : }
+  { path : '' , component :  DashboardComponent },
+  { path : 'jardin' , component :  AllJardinComponent},
+  { path : 'jardin/create' , component : CreateJardinComponent },
+  { path : 'jardin/detail', component : DetailJardinComponent },
+  { path : 'jardin/detail/add', component : DetailJardinAddPlanteComponent },
+  { path : 'plant', component : AllPlantComponent },
+  { path : 'plant/create', component : CreatePlantComponent },
+  { path : 'plant/detail', component : DetailedPlantComponent },
+  
+ 
 ];
 
 @NgModule({
