@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { PlanteUtilisateurCreateDto } from '../models/plante-utilisateur-create-dto';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { PlanteUtilisateurResponseDto } from '../models/plante-utilisateur-response-dto';
+import { ResponseDto } from '../models/response-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,24 +15,24 @@ export class PlanteUtilisateurService {
 
   constructor(private http: HttpClient) { }
 
-  create(planteUtilisateur: PlanteUtilisateurCreateDto): Observable<PlanteUtilisateurResponseDto> {
-    return this.http.post<PlanteUtilisateurResponseDto>(this.URL, planteUtilisateur);
+  create(planteUtilisateur: PlanteUtilisateurCreateDto): Observable<ResponseDto> {
+    return this.http.post<ResponseDto>(this.URL, planteUtilisateur);
   }
 
-  getAll(): Observable<PlanteUtilisateurResponseDto> {
-    return this.http.get<PlanteUtilisateurResponseDto>(this.URL + '/all');
+  getAll(): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/all');
   }
 
-  getId(id: number): Observable<PlanteUtilisateurResponseDto> {
-    return this.http.get<PlanteUtilisateurResponseDto>(this.URL + '/' + id);
+  getId(id: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/' + id);
   }
 
-  update(planteUtilisateur: PlanteUtilisateurCreateDto): Observable<PlanteUtilisateurResponseDto> {
-    return this.http.put<PlanteUtilisateurResponseDto>(this.URL, + planteUtilisateur);
+  update(planteUtilisateur: PlanteUtilisateurCreateDto): Observable<ResponseDto> {
+    return this.http.put<ResponseDto>(this.URL, + planteUtilisateur);
   }
 
-  delete(id: number): Observable<PlanteUtilisateurResponseDto> {
-    return this.http.delete<PlanteUtilisateurResponseDto>(this.URL + '/' + id);
+  delete(id: number): Observable<ResponseDto> {
+    return this.http.delete<ResponseDto>(this.URL + '/' + id);
   }
 
 }
