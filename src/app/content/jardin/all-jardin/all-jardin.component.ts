@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 
 @Component({
   selector: 'app-all-jardin',
@@ -7,23 +8,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllJardinComponent implements OnInit {
 
-  allJardins = new Array;
+  allJardins = new Array<JardinUpdateDto>();
+  jardin = new JardinUpdateDto;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.readAll;
+    this.readAll();
   }
 
   readAll() {
-
+    /* 
+    this.service.getAll().subscribe(
+     responseDto => {
+        if (!responseDto.error) {
+          this.allJardins = responseDto.object;
+        }
+        else { this.allJardins = [] }
+      }
+      
+    );
+    */
   }
 
-  delete() {
-
+  delete(id: number) {
+     /*
+    this.service.delete(id).subscribe(
+     
+      responseDto => {
+        if (!responseDto.error) {
+          this.allJardins = this.allJardins.filter(
+            element => element.id !== id
+          );
+          this.jardin = null;
+        }
+      }
+      
+    )
+    */
   }
 
-  stockageJardin( ) {
+  stockageJardin(jardin = JardinUpdateDto) {
+    //this.service.jardin = this.jardin;
 
   }
 
