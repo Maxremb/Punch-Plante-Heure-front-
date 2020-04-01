@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +15,7 @@ import { CreateJardinComponent } from './content/jardin/create-jardin/create-jar
 import { UpdateJardinComponent } from './content/jardin/update-jardin/update-jardin.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { FooterComponent } from './footer/footer/footer.component';
+import { DashboardComponent } from './content/dashboard/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +28,20 @@ import { FooterComponent } from './footer/footer/footer.component';
     CreateJardinComponent,
     UpdateJardinComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
