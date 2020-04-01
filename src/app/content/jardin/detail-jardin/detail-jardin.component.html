@@ -1,0 +1,58 @@
+<div *ngIf="jardin" class="container">
+    <br><br><br>
+    <h2>Votre jardin {{jardin.name}}</h2>
+    <div><span>ID : </span>{{jardin.id}}</div>
+    <div><span>Nom : </span>{{jardin.name}}</div>
+    <div><span>Longueur : </span>{{jardin.longueur}}</div>
+    <div><span>Largeur : </span>{{jardin.largeur}}</div>
+    <div><span>Sol : </span>{{jardin.sol}}</div>
+    <div><span>Département : </span>{{jardin.departement.nom}} ({{jardin.departement.numeroDep}})</div>
+    <div><span>Liste des plantes présentes dans votre jardin : </span></div>
+        <p *ngIf = "emptyliste"><i>Il n'y a pas de plantes dans votre jardin</i></p>
+        <p *ngIf = "!emptyliste"><i>Il y a </i></p>
+        <table class="table table-hover" *ngIf = "!emptyliste">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Date de plantation</th>
+                    <th>Date de semis</th>
+                    <th>Etat de santé</th>
+                    <th>Etat de la plante</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
+                    <td>{{planteUtilisateur.id}}</td>
+                    <td>{{planteUtilisateur.planteModel.nomCommun}}</td>
+                    <td>{{planteUtilisateur.datePlantation}}</td>
+                    <td>{{planteUtilisateur.dateSemi}}</td>
+                    <td>{{planteUtilisateur.etatSante}}</td>
+                    <td>{{planteUtilisateur.etatPlante}}</td>
+                    <td><button class="btn btn-danger" (click)="this.delete(planteUtilisateur.id)">Retirer cette plante de votre jardin</button>
+                        &nbsp;&nbsp;<button class="btn btn-info" (click)="afficherModification()">Mettre à jour cette plante</button></td>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    <button class="btn btn-info" (click)="goBack()">Retour</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-info" (click)="ajouterPlante()">Ajouter une plante dans le jardin</button>
+    <br><br><br>
+    <div *ngIf="modification">
+    <h2>Mettre à jour le nom ?</h2>
+    <label>Nouveau nom :
+        <input id="name" name="name" class="form-control" placeholder="Nom de la classe à ajouter" [(ngModel)]="classe.name" #name="ngModel" required>
+    </label>
+    <br><br>
+    <button class="btn btn-info" (click)="this.update()">Valider</button>
+    &nbsp;&nbsp;
+    <br><br>
+    <br><br>
+    </div>
+    <br><br><br>
+</div>
+
+
+
