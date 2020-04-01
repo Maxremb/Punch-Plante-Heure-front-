@@ -28,8 +28,8 @@
                 <td>{{plant.coefficient}}</td>
                 <td>{{plant.date}}</td>
                 <td>
-                <button class="btn btn-danger" (click)="this.delete(e.id)">Supprimer</button>
-                <a routerLink="/examen/detail/{{e.id}}">
+                <button class="btn btn-danger" (click)="this.delete(plant.id)">Supprimer</button>
+                <a routerLink="/plant/detail/{{plant.id}}">
                     <button class="btn btn-info" >Modifier</button>
                 </a>
                 </td>
