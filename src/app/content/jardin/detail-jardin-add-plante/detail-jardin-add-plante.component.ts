@@ -12,4 +12,15 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  afficherAjout(): void {
+    this.ajout = true;
+    this.planteForm = this.formBuilder.group({
+      nomCommun: ['', Validators.required],  
+      datePlantation: ['', Validators.required],
+      dateSemi: ['', Validators.required],
+      etatPlante: ['', Validators.required],
+      etatSante: ['', Validators.required],
+      });
+  }
 }

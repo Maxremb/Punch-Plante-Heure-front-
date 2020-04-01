@@ -85,16 +85,7 @@ export class DetailJardinComponent implements OnInit {
     this.modification = true;
   }
 
-  afficherAjout(): void {
-    this.ajout = true;
-    this.planteForm = this.formBuilder.group({
-      nomCommun: ['', Validators.required],  
-      datePlantation: ['', Validators.required],
-      dateSemi: ['', Validators.required],
-      etatPlante: ['', Validators.required],
-      etatSante: ['', Validators.required],
-      });
-  }
+  
 
   goBack(): void {
     this.location.back();

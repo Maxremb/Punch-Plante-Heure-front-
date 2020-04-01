@@ -44,8 +44,8 @@ export class AllPlantComponent implements OnInit {
     );
   }
 
-  getOne(id: number) {
-    this.service.getOne(id).subscribe(
+  getId(id: number) {
+    this.service.getId(id).subscribe(
       responseDto => {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
@@ -53,7 +53,6 @@ export class AllPlantComponent implements OnInit {
             element =>  element.id == id
           );
         }
-        console.log('result after delete: ', this.allPlant);
       }
     );
   }

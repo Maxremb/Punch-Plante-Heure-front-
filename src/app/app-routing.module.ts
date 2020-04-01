@@ -6,6 +6,9 @@ import { DetailJardinComponent } from './content/jardin/detail-jardin/detail-jar
 import { CreateJardinComponent } from './content/jardin/create-jardin/create-jardin.component';
 import { AllJardinComponent } from './content/jardin/all-jardin/all-jardin.component';
 import { DashboardComponent } from './content/dashboard/dashboard/dashboard.component';
+import { AllPlantComponent } from './content/plant/all-plant/all-plant.component';
+import { CreatePlantComponent } from './content/plant/create-plant/create-plant.component';
+import { DetailedPlantComponent } from './content/plant/detailed-plant/detailed-plant.component';
 
 
 const routes: Routes = [
@@ -13,6 +16,9 @@ const routes: Routes = [
   { path :'jardin' ,component :  AllJardinComponent},
   { path :'jardin/create' ,component : CreateJardinComponent },
   {path : 'jardin/detail',component : DetailJardinComponent},
+  {path : 'plant',component : AllPlantComponent},
+  {path : 'plant/create',component : CreatePlantComponent},
+  {path : 'plant/detail',component : DetailedPlantComponent},
  // { path :'plante', component : }
 ];
 
