@@ -1,6 +1,8 @@
 <div class="container">
 
     <form [formGroup]="addJardinForm" (ngSubmit)="this.create()">
+        <label><b> AJOUTER UN JARDIN </b></label>
+        <hr>
         <div>
             <label>Name : </label>
             <input id="name" type="text" [(ngModel)]="this.jardin.name" formControlName="name" name="name" required>

@@ -28,7 +28,7 @@ export class CreatePeriodeComponent implements OnInit {
       "dateDebut": new FormControl(this.periode.dateDebut, Validators.required),
       "dateFin": new FormControl(this.periode.dateFin, Validators.required),
       "dept": new FormControl(this.periode.dept, Validators.required),
-    })
+    });
   }
 
   get type() { return this.addPeriodeForm.get('type') }

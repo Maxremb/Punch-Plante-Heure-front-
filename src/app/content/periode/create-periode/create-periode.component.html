@@ -1,6 +1,8 @@
 <div class="container">
 
     <form [formGroup]="addPeriodeForm" (ngSubmit)="this.create()">
+        <label><b>AJOUTER UNE PERIODE </b></label>
+        <hr>
         <div>
             <label>Type : </label>
             <select formControlName="type" id="type" [(ngModel)]="this.periode.type" name="type" required>
@@ -17,7 +19,7 @@
         <div>
             <label>Plante : </label>
             <select class="form-control" id="planteModel" formControlName="planteModel" name="planteModel"
-                [(ngModel)]="this.periode.plante" required>
+                [(ngModel)]="this.periode.planteModel" required>
                 <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
             </select>
         </div>
@@ -43,9 +45,9 @@
         <div>
             <label>Département : </label>
             <select class="form-control" id="departement" formControlName="departement" name="departement"
-                [(ngModel)]="this.jardin.departement" required>
+                [(ngModel)]="this.periode.dept" required>
                 <div *ngFor="let depart of this.allDepartements">
-                    <option >{{depart.nom}}</option>
+                    <option value="{{depart.nom}}">{{depart.nom}}</option>
                 </div>
             </select>
             <span *ngIf="!this.allDepartements">Aucun département n'est enregistré dans la base de donnée</span>

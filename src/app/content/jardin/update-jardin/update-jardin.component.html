@@ -1,5 +1,6 @@
 <div class="container">
-    <label><strong> THIS JARDIN NOM  </strong></label> {{this.jardin.name}}
+    <label><b> MODIFIER MON JARDIN </b></label> {{this.jardin.name}}
+    <hr>
     <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()">
         <table class="table table-hover">
             <thead>
