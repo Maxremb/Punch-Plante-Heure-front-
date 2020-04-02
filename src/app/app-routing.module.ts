@@ -41,7 +41,7 @@ const routes: Routes = [
   { path : 'periode/update', component : UpdatePeriodeComponent},
   { path : 'blog' , component : BlogComponent },
   { path : 'plant/asso/:id', component: AssociationsPlantComponent },
-  { path : 'plant/vuser', component: UserviewAllPlantComponent }
+  { path : 'plant/vuser', component: UserviewAllPlantComponent },
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent }
   
