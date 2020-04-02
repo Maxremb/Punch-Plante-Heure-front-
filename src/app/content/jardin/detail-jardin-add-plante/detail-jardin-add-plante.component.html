@@ -4,7 +4,7 @@
         <div class="form-group">
             <label for="commun">Nom de la plante</label>
             <select id="commun" class="form-control" formControlName="commun">
-                <option *ngFor="let plante of this.allPlantes" [ngValue]="p">{{plante.commun}}</option>
+                <option *ngFor="let plante of this.allPlantes">{{plante.commun}}</option>
             </select>
         </div>
         <div class="form-group">
