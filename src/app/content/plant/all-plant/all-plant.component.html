@@ -18,15 +18,15 @@
                 <th>ID</th>
                 <th>Nom commun</th>
                 <th>Nom scientifique</th>
-                <th>URL Photo</th>
+                <th>URL picture</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let plant of this.allPlant">
                 <td>{{plant.id}}</td>
-                <td>{{plant.nomCommun}}</td>
-                <td>{{plant.nomScientifique}}</td>
-                <td>{{plant.photo}}</td>
+                <td>{{plant.commun}}</td>
+                <td>{{plant.scientifique}}</td>
+                <td>{{plant.picture}}</td>
                 <td>
                 <button class="btn btn-danger" (click)="this.delete(plant.id)">Supprimer</button>
                 <a routerLink="/plant/update/{{plant.id}}">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
-import { PlanteModeleCreateDto } from 'src/app/models/plante-modele-create-dto';
-import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { modelPlantService } from 'src/app/services/plante-modele-service.service';
+import { modelPlantCreateDto } from 'src/app/models/plante-modele-create-dto';
+import { modelPlantUpdateDto } from 'src/app/models/plante-modele-update-dto';
 
 @Component({
   selector: 'app-all-plant',
@@ -10,9 +10,9 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 })
 export class AllPlantComponent implements OnInit {
 
-  allPlant = new Array<PlanteModeleUpdateDto>();
+  allPlant = new Array<modelPlantUpdateDto>();
 
-  constructor(private service:PlanteModeleService) { }
+  constructor(private service:modelPlantService) { }
 
   ngOnInit(): void {
     this.getAll();

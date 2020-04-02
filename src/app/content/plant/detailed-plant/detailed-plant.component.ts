@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PlanteModeleCreateDto } from 'src/app/models/plante-modele-create-dto';
-import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { modelPlantService } from 'src/app/services/plante-modele-service.service';
 import { ActivatedRoute } from '@angular/router';
-import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { PlantModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 
 @Component({
   selector: 'app-detailed-plant',
@@ -12,26 +11,26 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 })
 export class DetailedPlantComponent implements OnInit {
   plantUpdateForm:FormGroup;
-  @Input() plant: PlanteModeleUpdateDto;
+  @Input() plant: PlantModeleUpdateDto;
   messageValidation = '';
   error:boolean;
 
-  constructor(private service: PlanteModeleService,
+  constructor(private service: modelPlantService,
     private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.plantUpdateForm = new FormGroup({
-      nomCommun: new FormControl(this.plant.nomCommun,Validators.required),
-      nomScientifique: new FormControl(this.plant.nomScientifique,Validators.required),
+      commun: new FormControl(this.plant.commun,Validators.required),
+      scientifique: new FormControl(this.plant.scientifique,Validators.required),
       arrosage: new FormControl(this.plant.arrosage,Validators.required),
-      ensoleillementOpti: new FormControl(this.plant.ensoleillementOpti,Validators.required),
-      humiditeOpti: new FormControl(this.plant.humiditeOpti,Validators.required),
-      solOpti: new FormControl(this.plant.solOpti,Validators.required),
+      ensoleillement: new FormControl(this.plant.ensoleillement,Validators.required),
+      humidite: new FormControl(this.plant.humidite,Validators.required),
+      sol: new FormControl(this.plant.sol,Validators.required),
       repiquage: new FormControl(this.plant.repiquage,Validators.required),
-      temperatureMin: new FormControl(this.plant.temperatureMin,Validators.required),
-      temperatureMax: new FormControl(this.plant.temperatureMax,Validators.required),
-      description: new FormControl(this.plant.description,Validators.required),
-      toxicite: new FormControl(this.plant.toxicite,Validators.required),
+      min: new FormControl(this.plant.min,Validators.required),
+      max: new FormControl(this.plant.max,Validators.required),
+      desc: new FormControl(this.plant.desc,Validators.required),
+      toxi: new FormControl(this.plant.toxi,Validators.required),
     });
   }
   getPlant(): void {
