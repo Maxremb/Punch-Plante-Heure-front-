@@ -1,6 +1,6 @@
 <div *ngIf="planteUtilisateur" class="container">
     <h2>Mise à jour de votre plante</h2>
-    <h2>ID : {{planteUtilisateur.id}} | {{planteUtilisateur.modelPlant.commun}}</h2>
+    <h2>ID : {{planteUtilisateur.identifiant}} | {{planteUtilisateur.modelPlant.commun}}</h2>
     <form [formGroup]="updateplanteForm" (ngSubmit)="this.update()">
         <div class="form-group">
             <label for="plantingDate">Date de plantation : </label> ({{planteUtilisateur.plantingDate}})

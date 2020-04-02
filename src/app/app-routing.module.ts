@@ -16,6 +16,7 @@ import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-
 import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.component';
 import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-periode/detail-periode.component';
 import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
+import { BlogComponent } from './content/blog/blog.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,9 @@ const routes: Routes = [
   { path : 'periode/create', component : CreateJardinComponent},
   { path : 'periode/detail', component : DetailPeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
+  { path : 'blog' , component : BlogComponent }
+  
+ 
 ];
 
 @NgModule({

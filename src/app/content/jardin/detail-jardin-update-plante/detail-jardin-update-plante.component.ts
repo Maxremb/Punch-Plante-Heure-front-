@@ -26,7 +26,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
   constructor(
     private location: Location,
     private planteutilisateurservice: PlanteUtilisateurService,
-    private PlanteModeleService: PlanteModeleService,
+    private plantemodeleervice: PlanteModeleService,
     private jardinservice: JardinService) { }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
   }
 
   getAllPlantes(): void {
-    this.PlanteModeleService.getAll().subscribe(
+    this.plantemodeleervice.getAll().subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.body;

@@ -1,12 +1,12 @@
 <div *ngIf="jardin" class="container">
     <br><br><br>
     <h2>Votre jardin {{jardin.nom}}</h2>
-    <div><span>ID : </span>{{jardin.id}}</div>
+    <div><span>ID : </span>{{jardin.identifier}}</div>
     <div><span>Nom : </span>{{jardin.nom}}</div>
-    <div><span>Longueur : </span>{{jardin.longueur}}</div>
-    <div><span>Largeur : </span>{{jardin.largeur}}</div>
-    <div><span>Sol : </span>{{jardin.sol}}</div>
-    <div><span>Département : </span>{{jardin.departement.nom}} ({{jardin.departement.depNum}})</div>
+    <div><span>Longueur : </span>{{jardin.length}}</div>
+    <div><span>Largeur : </span>{{jardin.width}}</div>
+    <div><span>Sol : </span>{{jardin.ground}}</div>
+    <div><span>Département : </span>{{jardin.dept.name}} ({{jardin.departement.depNum}})</div>
     <div><span>Liste des plantes présentes dans votre jardin : </span></div>
         <p *ngIf = "emptyliste"><i>Il n'y a pas de plantes dans votre jardin</i></p>
         <p *ngIf = "!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans votre jardin</i></p>
@@ -24,13 +24,13 @@
             </thead>
             <tbody>
                 <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
-                    <td>{{planteUtilisateur.id}}</td>
+                    <td>{{planteUtilisateur.identifiant}}</td>
                     <td>{{planteUtilisateur.modelPlant.commun}}</td>
                     <td>{{planteUtilisateur.plantingDate}}</td>
                     <td>{{planteUtilisateur.semiDate}}</td>
                     <td>{{planteUtilisateur.healthStage}}</td>
                     <td>{{planteUtilisateur.plantStage}}</td>
-                    <td><button class="btn btn-danger" (click)="this.supprimer(planteUtilisateur.id)">Retirer cette plante de votre jardin</button>
+                    <td><button class="btn btn-danger" (click)="this.supprimer(planteUtilisateur.identifiant)">Retirer cette plante de votre jardin</button>
                         &nbsp;&nbsp;<a routerLink="/jardin/detail/updateplante">
                             <button class="btn btn-info" (click)="this.stockagePlanteUtilisateur(planteUtilisateur)">Mettre à jour cette plante</button>
                         </a>
