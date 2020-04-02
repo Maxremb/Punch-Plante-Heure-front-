@@ -37,8 +37,8 @@ const routes: Routes = [
   { path : 'periode/create', component : CreatePeriodeComponent},
   { path : 'periode/detail', component : DetailPeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
-  { path : 'blog' , component : BlogComponent }
-  { path : 'about' , component : AboutComponent }
+  { path : 'blog' , component : BlogComponent },
+  { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent }
   
  
