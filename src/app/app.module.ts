@@ -25,6 +25,8 @@ import { UserviewAllPlantComponent } from './content/plant/userview-all-plant/us
 import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-periode/detail-periode.component';
 import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
 import { BlogComponent } from './content/blog/blog.component';
+import { ContactComponent } from './content/contact/contact.component';
+import { AboutComponent } from './content/about/about.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { BlogComponent } from './content/blog/blog.component';
     UserviewAllPlantComponent,
     DetailPeriodeComponent,
     UpdatePeriodeComponent,
-    BlogComponent
+    BlogComponent,
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
