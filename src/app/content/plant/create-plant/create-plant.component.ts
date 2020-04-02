@@ -19,17 +19,17 @@ export class CreatePlantComponent implements OnInit {
 
   ngOnInit(): void {
     this.plantCreateForm = new FormGroup({
-      nomCommun: new FormControl(this.plant.nomCommun,Validators.required),
-      nomScientifique: new FormControl(this.plant.nomScientifique,Validators.required),
-      intervalArrossage: new FormControl(this.plant.intervalArrossage,Validators.required),
-      ensoleillementOpti: new FormControl(this.plant.ensoleillementOpti,Validators.required),
-      humiditeOpti: new FormControl(this.plant.humiditeOpti,Validators.required),
-      solOpti: new FormControl(this.plant.solOpti,Validators.required),
+      commun: new FormControl(this.plant.commun,Validators.required),
+      scientifique: new FormControl(this.plant.scientifique,Validators.required),
+      arrosage: new FormControl(this.plant.arrosage,Validators.required),
+      ensoleillement: new FormControl(this.plant.ensoleillement,Validators.required),
+      humidite: new FormControl(this.plant.humidite,Validators.required),
+      sol: new FormControl(this.plant.sol,Validators.required),
       repiquage: new FormControl(this.plant.repiquage,Validators.required),
-      temperatureMin: new FormControl(this.plant.temperatureMin,Validators.required),
-      temperatureMax: new FormControl(this.plant.temperatureMax,Validators.required),
-      description: new FormControl(this.plant.description,Validators.required),
-      toxicite: new FormControl(this.plant.toxicite,Validators.required),
+      min: new FormControl(this.plant.min,Validators.required),
+      max: new FormControl(this.plant.max,Validators.required),
+      desc: new FormControl(this.plant.desc,Validators.required),
+      toxi: new FormControl(this.plant.toxi,Validators.required),
     });
   }
 

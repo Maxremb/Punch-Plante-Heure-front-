@@ -13,6 +13,11 @@ import { DetailJardinAddPlanteComponent } from './content/jardin/detail-jardin-a
 import { DetailJardinUpdatePlanteComponent } from './content/jardin/detail-jardin-update-plante/detail-jardin-update-plante.component';
 import { UpdateJardinComponent } from './content/jardin/update-jardin/update-jardin.component';
 import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-connexion/accueil-hors-connexion.component';
+import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.component';
+import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-periode/detail-periode.component';
+import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
+import { BlogComponent } from './content/blog/blog.component';
+import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
 
 
 const routes: Routes = [
@@ -26,6 +31,11 @@ const routes: Routes = [
   { path : 'plant', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
+  { path : 'periode', component : AllPeriodeComponent},
+  { path : 'periode/create', component : CreatePeriodeComponent},
+  { path : 'periode/detail', component : DetailPeriodeComponent},
+  { path : 'periode/update', component : UpdatePeriodeComponent},
+  { path : 'blog' , component : BlogComponent }
   
  
 ];

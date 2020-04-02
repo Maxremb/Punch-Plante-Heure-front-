@@ -3,65 +3,71 @@
     <hr>
     <form class="col-lg-3 col-sm-6" [formGroup]="plantCreateForm" (ngSubmit)="this.save()">
         <div class="form-group">
-            <label for="nomCommun">Nom Commun :</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.nomCommun" formControlName="nomCommun"  name="nomCommun">
+            <label for="commun">Nom Commun :</label>
+            <input type="text" class="form-control" [(ngModel)]="this.plant.commun" formControlName="commun"  name="commun">
         </div>
         <div class="form-group">
-            <label for="nomScientifique">Nom Scientifique :</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.nomScientifique"  formControlName="nomScientifique" name="nomScientifique">
-        </div>
-
-        <div class="form-group">
-            <label for="intervalArrossage">Cycle d'arrossage en jour:</label>
-            <input type="number" class="form-control" [(ngModel)]="this.plant.intervalArrossage" formControlName="intervalArrossage"  name="intervalArrossage">
+            <label for="scientifique">Nom Scientifique :</label>
+            <input type="text" class="form-control" [(ngModel)]="this.plant.scientifique"  formControlName="scientifique" name="scientifique">
         </div>
 
         <div class="form-group">
-            <label for="ensoleillementOpti">Ensoleillement optimal:</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.ensoleillementOpti" formControlName="ensoleillementOpti"  name="ensoleillementOpti">
+            <label for="arrosage">Cycle d'arrossage en jour:</label>
+            <input type="number" class="form-control" [(ngModel)]="this.plant.arrosage" formControlName="arrosage"  name="arrosage">
         </div>
 
         <div class="form-group">
-            <label for="humiditeOpti">humiditeOpti</label>
-            <input type="number" class="form-control" [(ngModel)]="this.plant.humiditeOpti" formControlName="humiditeOpti"  name="humiditeOpti">
+            <label for="ensoleillement">Ensoleillement optimal:</label>
+            <input type="text" class="form-control" [(ngModel)]="this.plant.ensoleillement" formControlName="ensoleillement"  name="ensoleillement">
         </div>
 
         <div class="form-group">
-            <label for="solOpti">solOpti</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.solOpti" formControlName="solOpti"  name="solOpti">
+            <label for="humidite">Taux d'humidité :</label>
+            <input type="number" class="form-control" [(ngModel)]="this.plant.humidite" formControlName="humidite"  name="humidite">
         </div>
 
         <div class="form-group">
-            <label for="repiquage">repiquage</label>
+            <label for="solOpti">Type de sol préféré :</label>
+            <select class="form-control" [(ngModel)]="this.plant.sol" formControlName="sol"  name="sol">
+                <option value="sableux">sableux</option>    
+                <option value="limonoArgileux">Limono Argileux</option>
+                <option value="argiloSableux">Argilo Sableux</option>
+                <option value="argiloLimoneux">Argilo Limoneux</option>
+                <option value="argileux">Argileux</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="repiquage">Repiquage :</label>
             <input type="number" class="form-control" [(ngModel)]="this.plant.repiquage" formControlName="repiquage"  name="repiquage">
         </div>
 
         <div class="form-group">
-            <label for="temperatureMin">temperatureMin :</label>
-            <input type="number" class="form-control" [(ngModel)]="this.plant.temperatureMin" formControlName="temperatureMin"  name="temperatureMin">
+            <label for="min">Température minimale :</label>
+            <input type="number" class="form-control" [(ngModel)]="this.plant.min" formControlName="min"  name="min">
         </div>
 
         <div class="form-group">
-            <label for="temperatureMax">temperatureMax :</label>
-            <input type="number" class="form-control" [(ngModel)]="this.plant.temperatureMax" formControlName="temperatureMax"  name="temperatureMax">
+            <label for="max">Température maximale :</label>
+            <input type="number" class="form-control" [(ngModel)]="this.plant.max" formControlName="max"  name="max">
         </div>
 
         <div class="form-group">
-            <label for="description">description :</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.description" formControlName="description"  name="description">
+            <label for="desc">Description :</label>
+            <input type="text" class="form-control" [(ngModel)]="this.plant.desc" formControlName="desc"  name="desc">
         </div>
 
         <div class="form-group">
-            <label for="toxicite">toxicite :</label>
-            <select class="form-control" [(ngModel)]="this.plant.toxicite" formControlName="toxicite"  name="toxicite">
+            <label for="toxi">Toxicité :</label>
+            <select class="form-control" [(ngModel)]="this.plant.toxi" formControlName="toxi"  name="toxi">
                 <option value="true">Oui</option>    
                 <option value="false">Non</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="photo">photo:</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.photo" formControlName="photo"  name="photo">
+            <label for="picture">picture:</label>
+            <input type="text" class="form-control" [(ngModel)]="this.plant.picture" formControlName="picture"  name="picture">
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="!plantCreateForm.valid">Enregistrer</button>

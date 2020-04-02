@@ -13,7 +13,7 @@
     <!--LISTE DES JARDINS-->
     <div class="row">
         <label>
-            <h2>Liste des jardins :</h2>
+            <h2>LISTE DES JARDINS </h2>
         </label>
         <hr>
         <table class="table table-hover">
@@ -32,12 +32,12 @@
             </thead>
             <tbody>
                 <tr *ngFor="let e of this.allJardins">
-                    <td>{{e.id}}</td>
-                    <td>{{e.nom}}</td>
-                    <td>{{e.sol}}</td>
-                    <td>{{e.longueur}}</td>
-                    <td>{{e.largeur}}</td>
-                    <td>{{e.departement}}</td>
+                    <td>{{e.identifier}}</td>
+                    <td>{{e.name}}</td>
+                    <td>{{e.ground}}</td>
+                    <td>{{e.length}}</td>
+                    <td>{{e.width}}</td>
+                    <td>{{e.dept}}</td>
                     <td>
                         <button class="btn btn-danger" (click)="this.delete(e.id)">Supprimer</button>
                     </td>

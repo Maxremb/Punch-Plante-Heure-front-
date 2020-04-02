@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
-import { PlanteModeleCreateDto } from 'src/app/models/plante-modele-create-dto';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 
 @Component({
@@ -23,7 +22,7 @@ export class AllPlantComponent implements OnInit {
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
-          this.allPlant = responseDto.object;
+          this.allPlant = responseDto.body;
         }
       }
     );
@@ -35,7 +34,7 @@ export class AllPlantComponent implements OnInit {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.allPlant = this.allPlant.filter(
-            element =>  element.id !== id
+            element =>  element.identifiant !== id
           );
         }
         this.getAll();
@@ -50,7 +49,7 @@ export class AllPlantComponent implements OnInit {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.allPlant = this.allPlant.filter(
-            element =>  element.id == id
+            element =>  element.identifiant == id
           );
         }
       }

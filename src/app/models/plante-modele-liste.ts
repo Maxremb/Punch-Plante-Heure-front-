@@ -1,6 +1,6 @@
 export class PlanteModeleListe {
-    id: number;
-    nomCommun: string;
-    nomScientifique: string;
-    photo: string;
+    identifiant: number;
+    commun: string;
+    scientifique: string;
+    picture: string;
 }

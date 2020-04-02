@@ -33,25 +33,25 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     this.jardin = this.jardinservice.jardin;
     this.getAllPlantes();
     this.planteForm = new FormGroup({
-      "nomCommun": new FormControl(this.plante.planteModele.nomCommun, Validators.required),
-      "datePlantation": new FormControl(this.plante.datePlantation),
-      "dateSemi": new FormControl(this.plante.dateSemi),
-      "etatPlante": new FormControl(this.plante.etatPlante),
-      "etatSante": new FormControl(this.plante.etatSante)
+      "commun": new FormControl(this.plante.modelPlant.commun, Validators.required),
+      "plantingDate": new FormControl(this.plante.plantingDate),
+      "semiDate": new FormControl(this.plante.semiDate),
+      "plantStage": new FormControl(this.plante.plantStage),
+      "healthStage": new FormControl(this.plante.healthStage)
       });
   }
   
-  get nomCommun() { return this.planteForm.get('nomCommun') }
-  get datePlantation() { return this.planteForm.get('datePlantation') }
-  get dateSemi() { return this.planteForm.get('dateSemi') }
-  get etatPlante() { return this.planteForm.get('etatPlante') }
-  get etatSante() {return this.planteForm.get('etatSante')}
+  get commun() { return this.planteForm.get('commun') }
+  get plantingDate() { return this.planteForm.get('plantingDate') }
+  get semiDate() { return this.planteForm.get('semiDate') }
+  get plantStage() { return this.planteForm.get('plantStage') }
+  get healthStage() {return this.planteForm.get('healthStage')}
 
   getAllPlantes(): void {
     this.plantemodeleservice.getAll().subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.allPlantes = responseDto.object;
+          this.allPlantes = responseDto.body;
         }
       }
     )
@@ -63,7 +63,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
 
   ajouter() {
-      this.plante.jardin = this.jardin;
+      this.plante.garden = this.jardin;
       this.planteutilisateurservice.create(this.plante).subscribe(
           (responseDto) => {
             if (!responseDto.error) {

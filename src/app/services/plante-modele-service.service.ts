@@ -12,14 +12,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlanteModeleService {
 
-  planteModele: PlanteModeleCreateDto;
+  modelPlant: PlanteModeleCreateDto;
 
-  private URL = environment.baseUrl + 'planteModele';
+  private URL = environment.baseUrl + 'modelPlant';
 
   constructor(private http: HttpClient) { }
 
-  create(planteModele: PlanteModeleCreateDto): Observable<ResponseDto> {
-    return this.http.post<ResponseDto>(this.URL, planteModele);
+  create(modelPlant: PlanteModeleCreateDto): Observable<ResponseDto> {
+    return this.http.post<ResponseDto>(this.URL, modelPlant);
   }
 
   getAll(): Observable<ResponseDto> {
@@ -30,8 +30,8 @@ export class PlanteModeleService {
     return this.http.get<ResponseDto>(this.URL + '/' + id);
   }
 
-  update(planteModele: PlanteModeleUpdateDto): Observable<ResponseDto> {
-    return this.http.put<ResponseDto>(this.URL, + planteModele);
+  update(modelPlant: PlanteModeleUpdateDto): Observable<ResponseDto> {
+    return this.http.put<ResponseDto>(this.URL, + modelPlant);
   }
 
   delete(id: number): Observable<ResponseDto> {

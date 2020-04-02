@@ -18,7 +18,6 @@ export class DetailJardinComponent implements OnInit {
   plantesParJardin = new Array<PlanteUtilisateurUpdateDto>();
   emptyliste: boolean = false;
   nombre: number;
-  planteForm: FormGroup;
   messageValidation: string;
   messageEchec: string;
   
@@ -38,7 +37,7 @@ export class DetailJardinComponent implements OnInit {
     this.planteutilisateurservice.getAll().subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.plantesParJardin = responseDto.object;
+          this.plantesParJardin = responseDto.body;
           if (this.plantesParJardin.length==0) {
             this.emptyliste = true;
           }
@@ -61,7 +60,7 @@ export class DetailJardinComponent implements OnInit {
     this.planteutilisateurservice.delete(id).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.plantesParJardin = this.plantesParJardin.filter(element =>  element.id !== id);
+          this.plantesParJardin = this.plantesParJardin.filter(element =>  element.identifiant !== id);
           document.location.reload();
         }
       }

@@ -26,21 +26,21 @@ export class UpdateJardinComponent implements OnInit {
     // Affecter l'user actif au jardin
     //this.utilisateurActif = this.service.utilisateurActif
     this.updateJardinForm = new FormGroup({
-      'nom': new FormControl(this.jardin.nom),
-      'sol': new FormControl(this.jardin.sol),
-      'longueur': new FormControl(this.jardin.longueur),
-      'largeur': new FormControl(this.jardin.largeur),
-      'departement': new FormControl(this.jardin.departement),
-      'utilisateur': new FormControl(this.jardin.utilisateur),
+      'name': new FormControl(this.jardin.name),
+      'sol': new FormControl(this.jardin.ground),
+      'length': new FormControl(this.jardin.length),
+      'width': new FormControl(this.jardin.width),
+      'dept': new FormControl(this.jardin.dept),
+      'user': new FormControl(this.jardin.user),
     })
   }
 
-  get nom() { return this.updateJardinForm.get('nom') }
-  get sol() { return this.updateJardinForm.get('sol') }
-  get longueur() { return this.updateJardinForm.get('longueur') }
-  get largeur() { return this.updateJardinForm.get('largeur') }
-  get departement() { return this.updateJardinForm.get('departement') }
-  get utilisateur() { return this.updateJardinForm.get('utilisateur') }
+  get name() { return this.updateJardinForm.get('name') }
+  get ground() { return this.updateJardinForm.get('ground') }
+  get length() { return this.updateJardinForm.get('length') }
+  get width() { return this.updateJardinForm.get('width') }
+  get dept() { return this.updateJardinForm.get('dept') }
+  get user() { return this.updateJardinForm.get('user') }
 
   update() {
     this.service.update(this.jardin).subscribe(

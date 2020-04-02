@@ -27,21 +27,21 @@ export class CreateJardinComponent implements OnInit {
     // Affecter l'user actif au jardin
     //this.utilisateurActif = this.service.utilisateurActif
     this.addJardinForm = new FormGroup({
-      "nom": new FormControl(this.jardin.nom, Validators.required),
-      "sol": new FormControl(this.jardin.sol, Validators.required),
-      "longueur": new FormControl(this.jardin.longueur),
-      "largeur": new FormControl(this.jardin.largeur),
-      "departement": new FormControl(this.jardin.departement, Validators.required),
-      "utilisateur" : new FormControl(this.jardin.utilisateur = this.utilisateurActif, Validators.required),
+      "name": new FormControl(this.jardin.name, Validators.required),
+      "ground": new FormControl(this.jardin.ground, Validators.required),
+      "length": new FormControl(this.jardin.length),
+      "width": new FormControl(this.jardin.width),
+      "dept": new FormControl(this.jardin.dept, Validators.required),
+      "user" : new FormControl(this.jardin.user = this.utilisateurActif, Validators.required),
     })
   }
 
-  get nom() { return this.addJardinForm.get('nom') }
-  get sol() { return this.addJardinForm.get('sol') }
-  get longueur() { return this.addJardinForm.get('longueur') }
-  get largeur() { return this.addJardinForm.get('largeur') }
-  get departement() {return this.addJardinForm.get('departement')}
-  get utilisateur() {return this.addJardinForm.get('utilisateur')}
+  get name() { return this.addJardinForm.get('name') }
+  get ground() { return this.addJardinForm.get('ground') }
+  get length() { return this.addJardinForm.get('length') }
+  get width() { return this.addJardinForm.get('width') }
+  get dept() {return this.addJardinForm.get('dept')}
+  get user() {return this.addJardinForm.get('user')}
 
   create() {
     this.service.create(this.jardin).subscribe(

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-all-jardin',
@@ -31,14 +32,12 @@ export class AllJardinComponent implements OnInit {
     );
   }
 
-  delete(id: number) {
-    this.service.delete(id).subscribe(
+  delete(identifier: number) {
+    this.service.delete(identifier).subscribe(
       responseDto => {
         if (!responseDto.error) {
           this.allJardins = this.allJardins.filter(
-            element => element.id !== id
-          );
-          this.jardin = null;
+            element => element.identifier !== identifier);
         }
       }
     )
