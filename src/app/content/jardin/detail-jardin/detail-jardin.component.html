@@ -1,12 +1,12 @@
-<div *ngIf="jardin" class="container">
+<div class="container">
     <br><br><br>
-    <h2>Votre jardin {{jardin.nom}}</h2>
+    <h2>Votre jardin {{jardin.name}}</h2>
     <div><span>ID : </span>{{jardin.identifier}}</div>
-    <div><span>Nom : </span>{{jardin.nom}}</div>
+    <div><span>Nom : </span>{{jardin.name}}</div>
     <div><span>Longueur : </span>{{jardin.length}}</div>
     <div><span>Largeur : </span>{{jardin.width}}</div>
     <div><span>Sol : </span>{{jardin.ground}}</div>
-    <div><span>Département : </span>{{jardin.dept.name}} ({{jardin.departement.depNum}})</div>
+    <div><span>Département : </span>{{jardin.dept.name}} ({{jardin.dept.depNum}})</div>
     <div><span>Liste des plantes présentes dans votre jardin : </span></div>
         <p *ngIf = "emptyliste"><i>Il n'y a pas de plantes dans votre jardin</i></p>
         <p *ngIf = "!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans votre jardin</i></p>
