@@ -12,7 +12,7 @@ import { DepartementCreateDto } from 'src/app/models/departement-create-dto';
 })
 export class CreatePeriodeComponent implements OnInit {
 
-  constructor(private service: PeriodeService) { }
+
 
   addPeriodeForm: FormGroup;
   periode = new PeriodeCreateDto;
@@ -20,6 +20,8 @@ export class CreatePeriodeComponent implements OnInit {
   allDepartements = new DepartementCreateDto;
   messageValidation = null;
   messageErreur = null;
+  
+  constructor(private service: PeriodeService) { }
 
   ngOnInit(): void {
     this.addPeriodeForm = new FormGroup({
@@ -36,7 +38,6 @@ export class CreatePeriodeComponent implements OnInit {
   get dateDebut() { return this.addPeriodeForm.get('dateDebut') }
   get dateFin() { return this.addPeriodeForm.get('dateFin') }
   get dept() { return this.addPeriodeForm.get('dept') }
-
 
   create() {
     this.service.create(this.periode).subscribe(

@@ -18,6 +18,8 @@ import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-
 import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
 import { BlogComponent } from './content/blog/blog.component';
 import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
+import { AboutComponent } from './content/about/about.component';
+import { ContactComponent } from './content/contact/contact.component';
 
 
 const routes: Routes = [
@@ -35,7 +37,9 @@ const routes: Routes = [
   { path : 'periode/create', component : CreatePeriodeComponent},
   { path : 'periode/detail', component : DetailPeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
-  { path : 'blog' , component : BlogComponent }
+  { path : 'blog' , component : BlogComponent },
+  { path : 'about' , component : AboutComponent },
+  { path : 'contact' , component : ContactComponent }
   
  
 ];

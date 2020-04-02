@@ -1,1 +1,69 @@
-<p>userview-detailed-plant works!</p>
+<div>
+    <h2>Modification de la plante :</h2>
+    <hr>
+        <div>
+            <span>Nom Commun : {{this.plant.commun}}</span>
+        </div>
+        <hr>
+        <div>
+            <span>Nom Scientifique : {{this.plant.scientifique}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Cycle d'arrossage en jour : {{this.plant.arrosage}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Ensoleillement optimal : {{this.plant.ensoleillement}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Humidité optimale : {{this.plant.humidite}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Type de sol préféré : {{this.plant.sol}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Repiquage : {{this.plant.repiquage}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Température minimale : {{this.plant.min}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Température maximale : {{this.plant.max}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Description : {{this.plant.desc}}</span>
+        </div>
+        <hr>
+
+        <div>
+            <span>Toxicité :   {{this.plant.toxi}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Photo : {{this.plant.picture}}</span>
+        </div>
+    <hr>
+    <a routerLink="/plant">
+        <button type="button" class="btn btn-info">Voir la liste entière</button>
+    </a>
+    <hr>
+
+</div>
+
+
