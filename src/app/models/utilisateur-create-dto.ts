@@ -4,10 +4,10 @@ export class UtilisateurCreateDto {
     pseudonyme: string;
     email: string;
     mdp: string;
-    description: string;
+    desc: string;
     telephone: number;
     reputation: string;
     newsletter: boolean;
     active: boolean;
-    photo: string;
+    picture: string;
 }

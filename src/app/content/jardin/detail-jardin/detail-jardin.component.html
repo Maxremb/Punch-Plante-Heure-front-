@@ -6,7 +6,7 @@
     <div><span>Longueur : </span>{{jardin.longueur}}</div>
     <div><span>Largeur : </span>{{jardin.largeur}}</div>
     <div><span>Sol : </span>{{jardin.sol}}</div>
-    <div><span>Département : </span>{{jardin.departement.nom}} ({{jardin.departement.numeroDep}})</div>
+    <div><span>Département : </span>{{jardin.departement.nom}} ({{jardin.departement.depNum}})</div>
     <div><span>Liste des plantes présentes dans votre jardin : </span></div>
         <p *ngIf = "emptyliste"><i>Il n'y a pas de plantes dans votre jardin</i></p>
         <p *ngIf = "!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans votre jardin</i></p>
@@ -25,11 +25,11 @@
             <tbody>
                 <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
                     <td>{{planteUtilisateur.id}}</td>
-                    <td>{{planteUtilisateur.planteModele.nomCommun}}</td>
-                    <td>{{planteUtilisateur.datePlantation}}</td>
-                    <td>{{planteUtilisateur.dateSemi}}</td>
-                    <td>{{planteUtilisateur.etatSante}}</td>
-                    <td>{{planteUtilisateur.etatPlante}}</td>
+                    <td>{{planteUtilisateur.modelPlant.commun}}</td>
+                    <td>{{planteUtilisateur.plantingDate}}</td>
+                    <td>{{planteUtilisateur.semiDate}}</td>
+                    <td>{{planteUtilisateur.healthStage}}</td>
+                    <td>{{planteUtilisateur.plantStage}}</td>
                     <td><button class="btn btn-danger" (click)="this.supprimer(planteUtilisateur.id)">Retirer cette plante de votre jardin</button>
                         &nbsp;&nbsp;<a routerLink="/jardin/detail/updateplante">
                             <button class="btn btn-info" (click)="this.stockagePlanteUtilisateur(planteUtilisateur)">Mettre à jour cette plante</button>

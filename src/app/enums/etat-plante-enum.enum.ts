@@ -1,3 +1,3 @@
-export enum EtatPlanteEnum {
+export enum plantStageEnum {
     'x','y','z',
 }
