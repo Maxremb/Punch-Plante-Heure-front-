@@ -46,7 +46,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     this.modelPlantservice.getAll().subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.allPlantes = responseDto.object;
+          this.allPlantes = responseDto.body;
         }
       }
     )
