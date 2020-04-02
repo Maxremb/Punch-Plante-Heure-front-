@@ -15,4 +15,12 @@ export class PlanteModeleCreateDto {
     picture: string;
 
     periodes: Array<PeriodeUpdateDto>;
+
+    // Attributs provisoirs pour la génération automatique
+    // Il faudra mettre ceux de la plante à son developpement maximal
+    surfaceAuSol: number;   //le rayon en cm
+    hauteur: number;
+    pousseSousTerre: boolean;
+    grimpant: boolean;
+    // Mettre les degrées d'affinité avec les plantes peut-être ?
 }

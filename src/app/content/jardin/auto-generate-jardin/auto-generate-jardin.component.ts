@@ -21,15 +21,15 @@ export class AutoGenerateJardinComponent implements OnInit {
 
   ngOnInit(): void {
     this.dimensionsJardinForm = new FormGroup({
-      "longueur": new FormControl(this.jardin.longueur),
-      "largeur": new FormControl(this.jardin.largeur),
-      "utilisateur" : new FormControl(this.jardin.utilisateur = this.utilisateurActif, Validators.required),
+      "length": new FormControl(this.jardin.length),
+      "width": new FormControl(this.jardin.width),
+      "utilisateur" : new FormControl(this.jardin.user = this.utilisateurActif, Validators.required),
     })
   }
 
-  get longueur() { return this.dimensionsJardinForm.get('longueur') }
-  get largeur() { return this.dimensionsJardinForm.get('largeur') }
-  get utilisateur() {return this.dimensionsJardinForm.get('utilisateur')}
+  get length() { return this.dimensionsJardinForm.get('longueur') }
+  get width() { return this.dimensionsJardinForm.get('width') }
+  get user() {return this.dimensionsJardinForm.get('user')}
 
   validerDimensions() {
     

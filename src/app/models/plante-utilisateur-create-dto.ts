@@ -11,4 +11,6 @@ export class PlanteUtilisateurCreateDto {
     garden: JardinUpdateDto;
     modelPlant: PlanteModeleUpdateDto;
     
+    // Attributs provisoirs pour la génération automatique
+    coordonnees: Array<number>;
 }
