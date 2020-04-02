@@ -18,6 +18,8 @@ import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-
 import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
 import { BlogComponent } from './content/blog/blog.component';
 import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
+import { AssociationsPlantComponent } from './content/plant/associations-plant/associations-plant.component';
+import { UserviewAllPlantComponent } from './content/plant/userview-all-plant/userview-all-plant.component';
 
 
 const routes: Routes = [
@@ -28,14 +30,16 @@ const routes: Routes = [
   { path : 'jardin/update', component : UpdateJardinComponent },
   { path : 'jardin/detail/addplante', component : DetailJardinAddPlanteComponent },
   { path : 'jardin/detail/updateplante', component : DetailJardinUpdatePlanteComponent },
-  { path : 'plant', component : AllPlantComponent },
+  { path : 'plant/vadmin', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
   { path : 'periode', component : AllPeriodeComponent},
   { path : 'periode/create', component : CreatePeriodeComponent},
   { path : 'periode/detail', component : DetailPeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
-  { path : 'blog' , component : BlogComponent }
+  { path : 'blog' , component : BlogComponent },
+  { path : 'plant/asso/:id', component: AssociationsPlantComponent },
+  { path : 'plant/vuser', component: UserviewAllPlantComponent }
   
  
 ];
