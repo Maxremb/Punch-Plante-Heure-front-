@@ -1,1 +1,72 @@
-<p>create-periode works!</p>
+<div class="container">
+
+    <form [formGroup]="addPeriodeForm" (ngSubmit)="this.create()">
+        <div>
+            <label>Type : </label>
+            <select formControlName="type" id="type" [(ngModel)]="this.periode.type" name="type" required>
+                <option value='rempotage'>Rempotage</option>
+                <option class="selected" value='floraison'>Floraison</option>
+                <option value='fructification'>Fructifiation</option>
+                <option value='taille'>Taille</option>
+                <option value='semis'>Semis</option>
+            </select>
+        </div>
+        <div *ngIf="type.errors?.required && (type.touched || type.dirty)" class="alert alert-danger">
+            Le type de la période est requis !
+        </div>
+        <div>
+            <label>Plante : </label>
+            <select class="form-control" id="planteModel" formControlName="planteModel" name="planteModel"
+                [(ngModel)]="this.periode.plante" required>
+                <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
+            </select>
+        </div>
+        <div *ngIf="planteModel.errors?.required && (planteModel.touched || planteModel.dirty)" class="alert alert-danger">
+            La plante de la période est requise !
+        </div>
+        <div>
+            <label>Date de début : </label>
+            <input id="dateDebut" type="date" [(ngModel)]="this.periode.dateDebut" formControlName="dateDebut"
+                name="dateDebut" requried>
+        </div>
+        <div *ngIf="dateDebut.errors?.required && (dateDebut.touched || dateDebut.dirty)"  class="alert alert-danger">
+            La date de début est requise !
+        </div>
+        <div>
+            <label>Date de fin : </label>
+            <input id="dateFin" type="date" [(ngModel)]="this.periode.dateFin" formControlName="dateFin"
+                name="dateFin" requried>
+        </div>
+        <div *ngIf="dateFin.errors?.required && (dateFin.touched || dateFin.dirty)"  class="alert alert-danger">
+            La date de fin est requise !
+        </div>
+        <div>
+            <label>Département : </label>
+            <select class="form-control" id="departement" formControlName="departement" name="departement"
+                [(ngModel)]="this.jardin.departement" required>
+                <div *ngFor="let depart of this.allDepartements">
+                    <option >{{depart.nom}}</option>
+                </div>
+            </select>
+            <span *ngIf="!this.allDepartements">Aucun département n'est enregistré dans la base de donnée</span>
+            <div *ngIf="departement.errors?.required && (departement.touched || departement.dirty)"
+                class="alert alert-danger">
+                Le département de la péridoe est requis !
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!this.addPeriodeForm.valid">Créer une période</button>
+
+        <div class="alert alert-success" *ngIf="this.messageValidation">
+            <strong>Bravo !</strong> {{this.messageValidation}}
+        </div>
+        <div class="alert alert-danger" *ngIf="this.messageErreur">
+            <strong>Echec !</strong> {{this.messageErreur}}
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <a routerLink="/periode">
+        <input type="button" value="Périodes" class="btn btn-info" />
+    </a>
+</div>
