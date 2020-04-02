@@ -41,8 +41,8 @@ export class AllPeriodeComponent implements OnInit {
     )
   }
 
-  stockagePeriode() {
-  this.service.periode = this.periode ;
+  stockagePeriode(period : PeriodeUpdateDto) {
+  this.service.periode = period ;
   }
 
 }

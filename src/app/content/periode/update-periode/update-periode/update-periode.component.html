@@ -26,12 +26,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <label> Plante actuelle : </label> {{this.periode.plante}}
+                        <label> Plante actuelle : </label> {{this.periode.planteModel}}
                     </td>
                     <td>
                         Nouvelle plante ? 
                         <select class="form-control" id="planteModel" formControlName="planteModel" name="planteModel"
-                            [(ngModel)]="this.periode.plante">
+                            [(ngModel)]="this.periode.planteModel">
                             <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
                         </select>
                     </td>
@@ -42,7 +42,7 @@
                     </td>
                     <td>
                         Nouvelle date ?
-                        <input id="dateDebut" type="date"  [(ngModel)]="this.jardin.dateDebut" formControlName="dateDebut"
+                        <input id="dateDebut" type="date"  [(ngModel)]="this.periode.dateDebut" formControlName="dateDebut"
                             name="dateDebut" >
                     </td>
                 </tr>
@@ -62,7 +62,7 @@
                     </td>
                     <td>
                         Nouveau département ?
-                        <select class="form-control" id="dept" formControlName="dept" name="dept"  [(ngModel)]="this.jardin.dept">
+                        <select class="form-control" id="dept" formControlName="dept" name="dept"  [(ngModel)]="this.periode.dept">
                             <option *ngFor="let depart of this.allDepartements">{{depart.name}}</option>
                         </select>
                     </td>
@@ -73,8 +73,8 @@
             <div class="alert alert-success" *ngIf="messageValidation">
                 <strong>Bravo !</strong> {{this.messageValidation}}
             </div>
-            <div class="alert alert-danger" *ngIf="messageErreur">
-                <strong>Echec !</strong> {{this.messageErreur}}
+            <div class="alert alert-danger" *ngIf="messageEchec">
+                <strong>Echec !</strong> {{this.messageEchec}}
             </div>
         </table>
     </form>

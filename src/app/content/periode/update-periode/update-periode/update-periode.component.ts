@@ -17,7 +17,7 @@ export class UpdatePeriodeComponent implements OnInit {
   constructor(private service : PeriodeService) { }
 
   periode = new PeriodeUpdateDto;
-  udpdatePeriodeForm : FormGroup;
+  updatePeriodeForm : FormGroup;
   allPlantes = new PlanteModeleListe;
   allDepartements = new DepartementCreateDto;
   messageValidation = null;
@@ -26,7 +26,7 @@ export class UpdatePeriodeComponent implements OnInit {
 
   ngOnInit(): void {
     this.periode = this.service.periode;
-    this.udpdatePeriodeForm = new FormGroup({
+    this.updatePeriodeForm = new FormGroup({
       "type": new FormControl(this.periode.type),
       "dateDebut" : new FormControl(this.periode.dateDebut),
       "dateFin" : new FormControl(this.periode.dateFin),

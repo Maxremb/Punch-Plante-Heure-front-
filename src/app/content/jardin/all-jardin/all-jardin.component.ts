@@ -37,9 +37,7 @@ export class AllJardinComponent implements OnInit {
       responseDto => {
         if (!responseDto.error) {
           this.allJardins = this.allJardins.filter(
-            element => element.identifier !== identifier
-          );
-          this.jardin = null;
+            element => element.identifier !== identifier);
         }
       }
     )
