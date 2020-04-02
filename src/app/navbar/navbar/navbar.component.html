@@ -1,34 +1,50 @@
-<!-- ##### Header Area Start ##### -->
 <header class="header-area">
-    <!-- ***** Navbar Area ***** -->
-    <div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 90px;"><div class="alazea-main-menu" style="width: 1903px; position: fixed; top: 0px; z-index: inherit;">
-      <div class="classy-nav-container breakpoint-off light left">
-          <div class="container">
-              <!-- Menu -->
-              <nav class="classy-navbar justify-content-between" id="alazeaNav">
 
-                  <!-- Nav Brand -->
-                  <a href="index.html" class="nav-brand"><img src="assets/img/core-img/logo.png" alt=""></a>
+  <!-- ***** Top Header Area ***** -->
+  <div class="top-header-area">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="top-header-content d-flex align-items-center justify-content-between">
+                      <!-- Top Header Content -->
+                      <div class="top-header-meta">
+                          <a href="#" data-toggle="tooltip" data-placement="bottom" title="infodeercreative@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email: punchplanteheure@gmail.com</span></a>
+                          <a href="#" data-toggle="tooltip" data-placement="bottom" title="+1 234 122 122"><i class="fa fa-phone" aria-hidden="true"></i> <span>Tel Fr: +1 234 122 122</span></a>
+                      </div>
 
-                  <!-- Navbar Toggler -->
-                  <div class="classy-navbar-toggler">
-                      <span class="navbarToggler"><span></span><span></span><span></span></span>
+                      <!-- Top Header Content -->
+                      <div class="top-header-meta d-flex">
+                          <!-- Language Dropdown -->
+                          <div class="language-dropdown">
+                              <div class="dropdown">
+                                  <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <a class="dropdown-item" href="#">USA</a>
+                                      <a class="dropdown-item" href="#">UK</a>
+                                      <a class="dropdown-item" href="#">Français</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Connexion -->
+                          <div class="login">
+                              <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Connexion</span></a>
+                          </div>
+                      </div>
                   </div>
-                      <!-- Navbar End -->
-                  <!-- </div> -->
-              </nav>
-
+              </div>
           </div>
       </div>
-  </div></div>
-    <div class="alazea-main-menu" style="width: 1903px; position: fixed; top: 0px; z-index: inherit;">
+  </div>
+
+  <!-- ***** Navbar Area ***** -->
+  <div id="sticky-wrapper" class="sticky-wrapper" style="height:90px">
+  <div class="alazea-main-menu">
       <div class="classy-nav-container breakpoint-off light left">
           <div class="container">
               <!-- Menu -->
               <nav class="classy-navbar justify-content-between" id="alazeaNav">
 
-                  <!-- Nav Brand -->
-                  <a href="index.html" class="nav-brand"><img src="assets/img/core-img/logo.png" alt=""></a>
+
 
                   <!-- Navbar Toggler -->
                   <div class="classy-navbar-toggler">
@@ -44,40 +60,46 @@
                       </div>
 
                       <!-- Navbar Start -->
-                      <div class="classynav">
+                      <div class="classynav" >
                           <ul>
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="about.html">About</a></li>
-                              <li class="cn-dropdown-item has-down"><a href="#">Pages</a>
+                              <li><a class="nav-link" routerLink="/">Accueil</a></li>
+                              <li><a class="nav-link" routerLink="/plant/vuser">Plante</a></li>
+                              <li><a class="nav-link" routerLink="/jardin">Jardin</a></li>
+                              <li><a class="nav-link" routerLink="/plant/vadmin">Plantes Admin</a></li>
+                              <li><a class="nav-link" routerLink="/dashboard">Accueil Admin</a></li>
+                              <li><a class="nav-link" routerLink="/about">A propos</a></li>
+                              <li><a class="nav-link" routerLink="/contact">Contact</a></li>
+<!--
+                              <li><a href="#">Pages</a>
                                   <ul class="dropdown">
                                       <li><a href="index.html">Home</a></li>
                                       <li><a href="about.html">About</a></li>
-                                      <li class="has-down"><a href="shop.html">Shop</a>
+                                      <li><a href="shop.html">Shop</a>
                                           <ul class="dropdown">
                                               <li><a href="shop.html">Shop</a></li>
                                               <li><a href="shop-details.html">Shop Details</a></li>
                                               <li><a href="cart.html">Shopping Cart</a></li>
                                               <li><a href="checkout.html">Checkout</a></li>
                                           </ul>
-                                      <span class="dd-trigger"></span></li>
-                                      <li class="has-down"><a href="portfolio.html">Portfolio</a>
+                                      </li>
+                                      <li><a href="portfolio.html">Portfolio</a>
                                           <ul class="dropdown">
                                               <li><a href="portfolio.html">Portfolio</a></li>
                                               <li><a href="single-portfolio.html">Portfolio Details</a></li>
                                           </ul>
-                                      <span class="dd-trigger"></span></li>
-                                      <li class="has-down"><a href="blog.html">Blog</a>
+                                      </li>
+                                      <li><a href="blog.html">Blog</a>
                                           <ul class="dropdown">
                                               <li><a href="blog.html">Blog</a></li>
                                               <li><a href="single-post.html">Blog Details</a></li>
                                           </ul>
-                                      <span class="dd-trigger"></span></li>
+                                      </li>
                                       <li><a href="contact.html">Contact</a></li>
                                   </ul>
-                              <span class="dd-trigger"></span></li>
+                              </li>
                               <li><a href="shop.html">Shop</a></li>
-                              <li><a href="portfolio.html">Portfolio</a></li>
-                              <li><a href="contact.html">Contact</a></li>
+                              <li><a href="portfolio.html">Portfolio</a></li> -->
+                              <!-- <li><a href="contact.html">Contact</a></li> -->
                           </ul>
 
                           <!-- Search Icon -->
@@ -89,8 +111,28 @@
                       <!-- Navbar End -->
                   </div>
               </nav>
+
+              <!-- Search Form -->
+              <div class="search-form">
+                  <form action="#" method="get">
+                      <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                      <button type="submit" class="d-none"></button>
+                  </form>
+                  <!-- Close Icon -->
+                  <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+              </div>
           </div>
+        </div>
       </div>
   </div>
 </header>
 <!-- ##### Header Area End ##### -->
+
+<!-- ##### Breadcrumb Area Start ##### -->
+<div class="breadcrumb-area">
+  <!-- Top Breadcrumb Area -->
+  <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(assets/img/bg-img/24.jpg);">
+      <h2 style="font-size:2cm">Punch Plante Heure</h2>
+  </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
