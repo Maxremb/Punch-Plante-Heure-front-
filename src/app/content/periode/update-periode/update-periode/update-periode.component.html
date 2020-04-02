@@ -1,6 +1,6 @@
 <div class="container">
-    <label><strong> THIS JARDIN NOM  </strong></label> {{this.jardin.nom}}
-    <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()">
+    <label><strong> THIS PERIODE TYPE  </strong></label> {{this.periode.type}}
+    <form [formGroup]="updatePeriodeForm" (ngSubmit)="this.update()">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -11,52 +11,54 @@
             <tbody>
                 <tr>
                     <td>
-                        <label>Nom actuel : </label> {{this.jardin.name}}
+                        <label>Type actuel : </label> {{this.periode.type}}
                     </td>
                     <td>
-                        Nouveau nom ?
-                        <input id="name" type="text" [(ngModel)]="this.jardin.name" formControlName="name" name="name"
-                            placeholder="Nouveau nom ici ..">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label> Sol actuel : </label> {{this.jardin.ground}}
-                    </td>
-                    <td>
-                        Nouveau sol ? 
-                        <select formControlName="ground" id="ground" [(ngModel)]="this.jardin.ground" name="ground">
-                            <option value=true>Sableux</option>
-                            <option class="selected" value=false>Limono-argileux</option>
-                            <option value=false>Argilo-sableux</option>
-                            <option value=false>Argilo-limoneux</option>
-                            <option value=false>Argileux</option>
+                        Nouveau type ?
+                        <select formControlName="type" id="type" [(ngModel)]="this.periode.type" name="type">
+                            <option value='rempotage'>Rempotage</option>
+                            <option class="selected" value='floraison'>Floraison</option>
+                            <option value='fructification'>Fructifiation</option>
+                            <option value='taille'>Taille</option>
+                            <option value='semis'>Semis</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label> Longueur actuelle : </label> {{this.jardin.length}}
+                        <label> Plante actuelle : </label> {{this.periode.plante}}
                     </td>
                     <td>
-                        Nouvelle longueur ?
-                        <input id="length" type="number" min="0" [(ngModel)]="this.jardin.length" formControlName="length"
-                            name="length" placeholder="Nouvelle longueur ici ..">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label> Largeur actuelle : </label> {{this.jardin.width}}
-                    </td>
-                    <td>
-                        Nouvelle largeur ?
-                        <input id="width" type="number" min="0" [(ngModel)]="this.jardin.width" formControlName="width"
-                            name="width" placeholder="Nouvelle largeur ici ..">
+                        Nouvelle plante ? 
+                        <select class="form-control" id="planteModel" formControlName="planteModel" name="planteModel"
+                            [(ngModel)]="this.periode.plante">
+                            <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label> Département actuel : </label> {{this.jardin.dept}}
+                        <label> Date de début actuelle : </label> {{this.periode.dateDebut}}
+                    </td>
+                    <td>
+                        Nouvelle date ?
+                        <input id="dateDebut" type="date"  [(ngModel)]="this.jardin.dateDebut" formControlName="dateDebut"
+                            name="dateDebut" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> Date de fin actuelle : </label> {{this.periode.dateFin}}
+                    </td>
+                    <td>
+                        Nouvelle date ?
+                        <input id="dateFin" type="date" [(ngModel)]="this.periode.dateFin" formControlName="dateFin"
+                        name="dateFin" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> Département actuel : </label> {{this.periode.dept}}
                     </td>
                     <td>
                         Nouveau département ?

@@ -22,6 +22,9 @@ import { DetailJardinUpdatePlanteComponent } from './content/jardin/detail-jardi
 import { AutoGenerateJardinComponent } from './content/jardin/auto-generate-jardin/auto-generate-jardin.component';
 import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
 import { UserviewAllPlantComponent } from './content/plant/userview-all-plant/userview-all-plant.component';
+import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-periode/detail-periode.component';
+import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
+import { BlogComponent } from './content/blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { UserviewAllPlantComponent } from './content/plant/userview-all-plant/us
     AutoGenerateJardinComponent,
     UserviewDetailedPlantComponent,
     UserviewAllPlantComponent,
+    DetailPeriodeComponent,
+    UpdatePeriodeComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ export class JardinCreateDto {
     ground: SolEnum;
     length: number;
     width: number;
-    nom: string;
+    name: string;
     dept: DepartementUpdateDto;
     user: UtilisateurUpdateDto;
 }
