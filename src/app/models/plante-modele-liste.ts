@@ -1,4 +1,4 @@
-export class modelPlantListe {
+export class PlanteModeleListe {
     identifiant: number;
     commun: string;
     scientifique: string;

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { modelPlantCreateDto } from '../models/plante-modele-create-dto';
+import { PlanteModeleCreateDto } from '../models/plante-modele-create-dto';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { modelPlantUpdateDto } from '../models/plante-modele-update-dto';
+import { PlanteModeleUpdateDto } from '../models/plante-modele-update-dto';
 import { ResponseDto } from '../models/response-dto';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,13 +12,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class modelPlantService {
 
-  modelPlant: modelPlantCreateDto;
+  modelPlant: PlanteModeleCreateDto;
 
   private URL = environment.baseUrl + 'modelPlant';
 
   constructor(private http: HttpClient) { }
 
-  create(modelPlant: modelPlantCreateDto): Observable<ResponseDto> {
+  create(modelPlant: PlanteModeleCreateDto): Observable<ResponseDto> {
     return this.http.post<ResponseDto>(this.URL, modelPlant);
   }
 
@@ -30,7 +30,7 @@ export class modelPlantService {
     return this.http.get<ResponseDto>(this.URL + '/' + id);
   }
 
-  update(modelPlant: modelPlantUpdateDto): Observable<ResponseDto> {
+  update(modelPlant: PlanteModeleUpdateDto): Observable<ResponseDto> {
     return this.http.put<ResponseDto>(this.URL, + modelPlant);
   }
 
