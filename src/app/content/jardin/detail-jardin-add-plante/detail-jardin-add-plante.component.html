@@ -1,40 +1,59 @@
-<div class="container">
-    <h2>Ajout d'une plante dans votre jardin</h2>
-    <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
-        <div class="form-group">
-            <label for="commun">Nom de la plante</label>
-            <select id="commun" class="form-control" formControlName="commun">
-                <option *ngFor="let plante of this.allPlantes">{{plante.commun}}</option>
-            </select>
+<div class="container" style="margin-top: 3%;">
+
+    <div>
+        <h1 class="titre">
+            GESTION DE MON JARDIN
+        </h1>
+    </div>
+
+    <div class="container">
+        <a routerLink="/jardin/detail/updateplante">
+            <button class="btn alazea-btn mt-15">VISUEL UPDATE PLANTE</button>
+        </a>
+        <h2>Ajout d'une plante dans votre jardin</h2>
+        <div class="col-lg-5">
+            <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
+
+                <label class="label" for="commun">Nom de la plante</label>
+                <select id="commun" class="form-control" formControlName="commun">
+                    <option *ngFor="let plante of this.allPlantes">{{plante.commun}}</option>
+                </select>
+                <br>
+                <label class="label" for="plantingDate">Date de plantation : </label>
+                <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate">
+                <br>
+                <label class="label" for="semiDate">Date de semis : </label>
+                <input type="date" id="semiDate" class="form-control" formControlName="semiDate">
+                <br>
+                <label class="label" for="healthStage">Etat de santé : </label>
+                <select id="healthStage" class="form-control" formControlName="healthStage">
+                    <option value="x">X</option>
+                    <option value="y">Y</option>
+                </select>
+                <br>
+                <label class="label" for="plantStage">Etat de la plante : </label>
+                <select id="plantStage" class="form-control" formControlName="plantStage">
+                    <option value="x">X</option>
+                    <option value="y">Y</option>
+                </select>
+                <br>
+                <button type="submit" class="btn alazea-btn mt-15" [disabled]="planteForm.invalid">Valider</button>
+                <br>
+            </form>
+            <span class="alert alert-success" *ngIf="messageValidation">{{messageValidation}}</span>
+            <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
         </div>
-        <div class="form-group">
-            <label for="plantingDate">Date de plantation : </label>
-            <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate">
-        </div>
-        <div class="form-group">
-            <label for="semiDate">Date de semis : </label>
-            <input type="date" id="semiDate" class="form-control" formControlName="semiDate">
-        </div>
-        <div class="form-group">
-            <label for="healthStage">Etat de santé : </label>
-            <select id="healthStage" class="form-control" formControlName="healthStage">
-                <option value="x">X</option>
-                <option value="y">Y</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="plantStage">Etat de la plante : </label>
-            <select id="plantStage" class="form-control" formControlName="plantStage">
-                <option value="x">X</option>
-                <option value="y">Y</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary" [disabled]="planteForm.invalid">Valider</button>
-        <br><br>
-    </form>
-    <span class="alert alert-success" *ngIf="messageValidation">{{messageValidation}}</span>
-    <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
-    <br><br>
-    <button class="btn btn-info" (click)="retour()">Retour à votre jardin</button>
+    </div>
+
 </div>
 
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/jardin">
+            <button class="btn alazea-btn mt-15">Mes jardins</button>
+        </a>
+        <a routerLink="">
+            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        </a>
+    </div>
+</div>

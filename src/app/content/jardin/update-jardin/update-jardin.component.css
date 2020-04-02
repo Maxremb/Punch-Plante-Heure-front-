@@ -12,6 +12,10 @@
     margin-top: 1%;
 }
 
+h5 {
+    font-variant-caps: all-small-caps;
+}
+
 
 /* div boutton pas de page */
 .bottompage {
