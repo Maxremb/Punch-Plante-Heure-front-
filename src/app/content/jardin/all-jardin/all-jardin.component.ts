@@ -33,7 +33,7 @@ export class AllJardinComponent implements OnInit {
   }
 
   delete(identifier: number) {
-    this.service.delete(id).subscribe(
+    this.service.delete(identifier).subscribe(
       responseDto => {
         if (!responseDto.error) {
           this.allJardins = this.allJardins.filter(
