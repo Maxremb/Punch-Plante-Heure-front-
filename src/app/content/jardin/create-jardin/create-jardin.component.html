@@ -4,7 +4,8 @@
         <div>
             <label>Nom : </label>
             <input id="nom" type="text" [(ngModel)]="this.jardin.nom" formControlName="nom" name="nom" required>
-            <div *ngIf="nom.errors?.required && (nom.touched || nom.dirty)" class="alert alert-danger">Le nom est requis.</div>
+            <div *ngIf="nom.errors?.required && (nom.touched || nom.dirty)" class="alert alert-danger">Le nom est
+                requis.</div>
         </div>
         <div>
             <label>Sol : </label>
@@ -30,7 +31,8 @@
             <label>Département : </label>
             <input id="departement" type="departementUptadeDto" [(ngModel)]="this.jardin.departement"
                 formControlName="departement" name="departement" required>
-            <div *ngIf="departement.errors?.required && (departement.touched || departement.dirty)" class="alert alert-danger">Le département
+            <div *ngIf="departement.errors?.required && (departement.touched || departement.dirty)"
+                class="alert alert-danger">Le département
                 du jardin est
                 requis.</div>
         </div>
@@ -44,5 +46,10 @@
             <strong>Echec !</strong> {{this.messageErreur}}
         </div>
     </form>
+</div>
 
+<div class="container">
+    <a routerLink="/jardin">
+        <input type="button" value="Mes jardins" class="btn btn-info" />
+    </a>
 </div>

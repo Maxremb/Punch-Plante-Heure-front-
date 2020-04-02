@@ -2,7 +2,7 @@
 
     <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()">
         <label>
-            <h2> Modification du jardin {{this.jardin.nom}} </h2>
+            <h2><b> Modification du jardin {{this.jardin.nom}} </b></h2>
         </label>
 
         Nom : {{this.jardin.nom}}
@@ -35,6 +35,20 @@
         <input id="departement" type="departementUptadeDto" [(ngModel)]="this.jardin.departement"
             formControlName="departement" name="departement">
         <br>
-        <button type="submit">Modifier</button>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+        <br>
+        <div class="alert alert-success" *ngIf="messageValidation">
+            <strong>Bravo !</strong> {{this.messageValidation}}
+        </div>
+        <div class="alert alert-danger" *ngIf="messageErreur">
+            <strong>Echec !</strong> {{this.messageErreur}}
+        </div>
     </form>
+</div>
+
+
+<div class="container">
+    <a routerLink="/jardin">
+        <input type="button" value="Mes jardins" class="btn btn-info" />
+    </a>
 </div>
