@@ -1,19 +1,6 @@
 import { PeriodeUpdateDto } from "./periode-update-dto";
+import { PlanteModeleCreateDto } from './plante-modele-create-dto';
 
-export class PlanteModeleUpdateDto {
+export class PlanteModeleUpdateDto extends PlanteModeleCreateDto {
     id: number;
-    nomCommun: string;
-    nomScientifique: string;
-    intervalArrossage: number;
-    ensoleillementOpti: number;
-    humiditeOpti: number;
-    solOpti: string;
-    repiquage: number;
-    temperatureMin: number;
-    temperatureMax: number;
-    description: string;
-    toxicite: boolean;
-    photo: string;
-
-    dates: Array<PeriodeUpdateDto>;
 }

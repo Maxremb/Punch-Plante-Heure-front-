@@ -1,10 +1,7 @@
 import { PeriodeEnum } from "../enums/periode-enum.enum";
 import { DepartementUpdateDto } from './departement-update-dto';
+import { PeriodeCreateDto } from './periode-create-dto';
 
-export class PeriodeUpdateDto {
+export class PeriodeUpdateDto extends PeriodeCreateDto {
     id: number;
-    dateDebut: Date;
-    dateFin: Date;
-    type: PeriodeEnum;
-    departement: DepartementUpdateDto;
 }
