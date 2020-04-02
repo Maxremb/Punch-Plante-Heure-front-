@@ -5,14 +5,14 @@
         <hr>
         <div>
             <label>Name : </label>
-            <input id="name" type="text" [(ngModel)]="this.jardin.name" formControlName="name" name="name" required>
+            <input id="name" type="text" formControlName="name" name="name" required>
             <div *ngIf="name.errors?.required && (name.touched || name.dirty)" class="alert alert-danger">
                 Le nom est requis !
             </div>
         </div>
         <div>
             <label>Sol : </label>
-            <select formControlName="ground" id="ground" [(ngModel)]="this.jardin.ground" name="ground">
+            <select formControlName="ground" id="ground" name="ground">
                 <option value='sableux'>Sableux</option>
                 <option value='limonoArgileux'>Limono-argileux</option>
                 <option value='argiloSableux'>Argilo-sableux</option>
@@ -22,18 +22,15 @@
         </div>
         <div>
             <label>Longeur : </label>
-            <input id="length" type="number" min="0" [(ngModel)]="this.jardin.length" formControlName="length"
-                name="length">
+            <input id="length" type="number" min="0" formControlName="length" name="length">
         </div>
         <div>
             <label>Largeur : </label>
-            <input id="width" type="number" min="0" [(ngModel)]="this.jardin.width" formControlName="width"
-                name="width">
+            <input id="width" type="number" min="0" formControlName="width" name="width">
         </div>
         <div>
             <label>Département : </label>
-            <select class="form-control" id="dept" formControlName="dept" name="dept"
-                [(ngModel)]="this.jardin.dept" required>
+            <select class="form-control" id="dept" formControlName="dept" name="dept" required>
                 <div *ngFor="let depart of this.allDepartements">
                     <option>{{depart.name}}</option>
                 </div>
@@ -45,8 +42,9 @@
             </div>
 
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!this.addJardinForm.valid">Créer un
-            jardin</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!this.addJardinForm.valid">
+            Créer un jardin
+        </button>
 
         <div class="alert alert-success" *ngIf="this.messageValidation">
             <strong>Bravo !</strong> {{this.messageValidation}}
