@@ -18,7 +18,6 @@ export class DetailJardinComponent implements OnInit {
   plantesParJardin = new Array<PlanteUtilisateurUpdateDto>();
   emptyliste: boolean = false;
   nombre: number;
-  planteForm: FormGroup;
   messageValidation: string;
   messageEchec: string;
   

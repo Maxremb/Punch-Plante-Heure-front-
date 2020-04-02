@@ -1,4 +1,4 @@
-<div *ngIf="planteUtilisateur" class="container">
+<div class="container">
     <h2>Mise à jour de votre plante</h2>
     <h2>ID : {{planteUtilisateur.identifiant}} | {{planteUtilisateur.modelPlant.commun}}</h2>
     <form [formGroup]="updateplanteForm" (ngSubmit)="this.update()">
