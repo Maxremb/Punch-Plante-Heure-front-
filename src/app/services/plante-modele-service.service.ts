@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class modelPlantService {
+export class PlanteModeleService {
 
   modelPlant: PlanteModeleCreateDto;
 

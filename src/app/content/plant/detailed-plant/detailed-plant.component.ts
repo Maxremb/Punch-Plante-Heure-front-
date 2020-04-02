@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { modelPlantService } from 'src/app/services/plante-modele-service.service';
+import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { ActivatedRoute } from '@angular/router';
-import { PlantModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 
 @Component({
   selector: 'app-detailed-plant',
@@ -11,11 +11,11 @@ import { PlantModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 })
 export class DetailedPlantComponent implements OnInit {
   plantUpdateForm:FormGroup;
-  @Input() plant: PlantModeleUpdateDto;
+  @Input() plant: PlanteModeleUpdateDto;
   messageValidation = '';
   error:boolean;
 
-  constructor(private service: modelPlantService,
+  constructor(private service: PlanteModeleService,
     private route: ActivatedRoute,) { }
 
   ngOnInit(): void {

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
-import { modelPlantUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
-import { modelPlantService } from 'src/app/services/plante-modele-service.service';
+import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { Location } from '@angular/common';
 
@@ -20,13 +20,13 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
-  allPlantes = new Array<modelPlantUpdateDto>();
+  allPlantes = new Array<PlanteModeleUpdateDto>();
   
 
   constructor(
     private location: Location,
     private planteutilisateurservice: PlanteUtilisateurService,
-    private modelPlantservice: modelPlantService,
+    private PlanteModeleService: PlanteModeleService,
     private jardinservice: JardinService) { }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
   }
 
   getAllPlantes(): void {
-    this.modelPlantservice.getAll().subscribe(
+    this.PlanteModeleService.getAll().subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.body;

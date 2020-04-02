@@ -4,8 +4,8 @@ import { PlanteUtilisateurCreateDto } from 'src/app/models/plante-utilisateur-cr
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
-import { modelPlantService } from 'src/app/services/plante-modele-service.service';
-import { modelPlantUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { Location } from '@angular/common';
 
 @Component({
@@ -20,13 +20,13 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
-  allPlantes = new Array<modelPlantUpdateDto>();
+  allPlantes = new Array<PlanteModeleUpdateDto>();
  
 
   constructor(
     private location: Location,
     private planteutilisateurservice: PlanteUtilisateurService,
-    private modelPlantservice: modelPlantService,
+    private PlanteModeleService: PlanteModeleService,
     private jardinservice: JardinService) { }
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   get healthStage() {return this.planteForm.get('healthStage')}
 
   getAllPlantes(): void {
-    this.modelPlantservice.getAll().subscribe(
+    this.PlanteModeleService.getAll().subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.body;
