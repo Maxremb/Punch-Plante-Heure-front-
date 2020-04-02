@@ -22,7 +22,7 @@ export class AllPlantComponent implements OnInit {
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
-          this.allPlant = responseDto.object;
+          this.allPlant = responseDto.body;
         }
       }
     );
@@ -34,7 +34,7 @@ export class AllPlantComponent implements OnInit {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.allPlant = this.allPlant.filter(
-            element =>  element.id !== id
+            element =>  element.identifiant !== id
           );
         }
         this.getAll();
@@ -49,7 +49,7 @@ export class AllPlantComponent implements OnInit {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.allPlant = this.allPlant.filter(
-            element =>  element.id == id
+            element =>  element.identifiant == id
           );
         }
       }

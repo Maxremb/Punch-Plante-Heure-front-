@@ -6,7 +6,7 @@
     <hr>
     <button type="button" class="btn btn-info" (click)="this.getAll()">Voir la liste entière</button>
     <hr>
-    <a routerLink="/plant/add">
+    <a routerLink="/plant/create">
     <input type="button" value="Ajouter une plante" class="btn btn-info"/>
     </a>
     <hr>
@@ -23,13 +23,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let plant of this.allPlant">
-                <td>{{plant.id}}</td>
+                <td>{{plant.identifiant}}</td>
                 <td>{{plant.commun}}</td>
                 <td>{{plant.scientifique}}</td>
                 <td>{{plant.picture}}</td>
                 <td>
-                <button class="btn btn-danger" (click)="this.delete(plant.id)">Supprimer</button>
-                <a routerLink="/plant/update/{{plant.id}}">
+                <button class="btn btn-danger" (click)="this.delete(plant.identifiant)">Supprimer</button>
+                <a routerLink="/plant/update/{{plant.identifiant}}">
                     <button class="btn btn-info" >Modifier</button>
                 </a>
                 </td>
