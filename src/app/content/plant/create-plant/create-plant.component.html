@@ -12,8 +12,8 @@
         </div>
 
         <div class="form-group">
-            <label for="intervalArrossage">Cycle d'arrossage en jour:</label>
-            <input type="number" class="form-control" [(ngModel)]="this.plant.intervalArrossage" formControlName="intervalArrossage"  name="intervalArrossage">
+            <label for="arrosage">Cycle d'arrossage en jour:</label>
+            <input type="number" class="form-control" [(ngModel)]="this.plant.arrosage" formControlName="arrosage"  name="arrosage">
         </div>
 
         <div class="form-group">
@@ -28,6 +28,10 @@
 
         <div class="form-group">
             <label for="solOpti">solOpti</label>
+            <select class="form-control" [(ngModel)]="this.plant.toxicite" formControlName="toxicite"  name="toxicite">
+                <option value="true">Oui</option>    
+                <option value="false">Non</option>
+            </select>
             <input type="text" class="form-control" [(ngModel)]="this.plant.solOpti" formControlName="solOpti"  name="solOpti">
         </div>
 

@@ -23,7 +23,7 @@ export class DetailedPlantComponent implements OnInit {
     this.plantUpdateForm = new FormGroup({
       nomCommun: new FormControl(this.plant.nomCommun,Validators.required),
       nomScientifique: new FormControl(this.plant.nomScientifique,Validators.required),
-      intervalArrossage: new FormControl(this.plant.intervalArrossage,Validators.required),
+      arrosage: new FormControl(this.plant.arrosage,Validators.required),
       ensoleillementOpti: new FormControl(this.plant.ensoleillementOpti,Validators.required),
       humiditeOpti: new FormControl(this.plant.humiditeOpti,Validators.required),
       solOpti: new FormControl(this.plant.solOpti,Validators.required),

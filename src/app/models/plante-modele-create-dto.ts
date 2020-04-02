@@ -3,7 +3,7 @@ import { PeriodeUpdateDto } from "./periode-update-dto";
 export class PlanteModeleCreateDto {
     nomCommun: string;
     nomScientifique: string;
-    intervalArrossage: number;
+    arrosage: number;
     ensoleillementOpti: string;
     humiditeOpti: number;
     solOpti: string;
