@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/PunchPlanteHeure-Front",
+            "outputPath": "dist/punchplanteheure-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "PunchPlanteHeure-Front:build"
+            "browserTarget": "punchplanteheure-front:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "PunchPlanteHeure-Front:build:production"
+              "browserTarget": "punchplanteheure-front:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PunchPlanteHeure-Front:build"
+            "browserTarget": "punchplanteheure-front:build"
           }
         },
         "test": {
@@ -114,14 +114,14 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "PunchPlanteHeure-Front:serve:production"
+              "devServerTarget": "punchplanteheure-front:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "PunchPlanteHeure-Front",
+  "defaultProject": "punchplanteheure-front",
   "cli": {
     "analytics": "d6d95a34-6b6e-4405-97d2-0e3b9a3728ca"
   }
