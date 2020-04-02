@@ -19,30 +19,34 @@
         </div>
         <div>
             <label>Longeur : </label>
-            <input id="longeur" type="number" [(ngModel)]="this.jardin.longueur" formControlName="longeur"
+            <input id="longeur" type="number" min="0" [(ngModel)]="this.jardin.longueur" formControlName="longeur"
                 name="longeur">
         </div>
         <div>
             <label>Largeur : </label>
-            <input id="largeur" type="number" [(ngModel)]="this.jardin.largeur" formControlName="largeur"
+            <input id="largeur" type="number" min="0" [(ngModel)]="this.jardin.largeur" formControlName="largeur"
                 name="largeur">
         </div>
         <div>
             <label>Département : </label>
-            <input id="departement" type="departementUptadeDto" [(ngModel)]="this.jardin.departement"
-                formControlName="departement" name="departement" required>
+            <select class="form-control" id="departement" formControlName="departement" name="departement"
+                [(ngModel)]="this.jardin.departement" required>
+                <option *ngFor="let depart of this.allDepartements">{{this.allDepartements.nom}}</option>
+            </select>
+            <span *ngIf="!this.allDepartements">Aucun département n'est enregistré dans la base de donnée</span>
             <div *ngIf="departement.errors?.required && (departement.touched || departement.dirty)"
-                class="alert alert-danger">Le département
-                du jardin est
-                requis.</div>
+                class="alert alert-danger">
+                Le département du jardin est requis.
+            </div>
+          
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!this.addJardinForm.valid">Créer un
             jardin</button>
 
-        <div class="alert alert-success" *ngIf="messageValidation">
+        <div class="alert alert-success" *ngIf="this.messageValidation">
             <strong>Bravo !</strong> {{this.messageValidation}}
         </div>
-        <div class="alert alert-danger" *ngIf="messageErreur">
+        <div class="alert alert-danger" *ngIf="this.messageErreur">
             <strong>Echec !</strong> {{this.messageErreur}}
         </div>
     </form>

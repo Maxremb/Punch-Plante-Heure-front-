@@ -24,7 +24,7 @@ export class AllJardinComponent implements OnInit {
     this.service.getAllByUtilisateur(this.utilisateurActif.id).subscribe(
      responseDto => {
         if (!responseDto.error) {
-          this.allJardins = responseDto.object;
+          this.allJardins = responseDto.body;
         }
         else { this.allJardins = [] }
       }

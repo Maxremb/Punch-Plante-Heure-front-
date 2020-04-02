@@ -1,48 +1,80 @@
 <div class="container">
-
+    <label><strong> THIS JARDIN NOM  </strong></label> {{this.jardin.nom}}
     <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()">
-        <label>
-            <h2><b> Modification du jardin {{this.jardin.nom}} </b></h2>
-        </label>
-
-        Nom : {{this.jardin.nom}}
-        <br>
-        <input id="nom" type="text" [(ngModel)]="this.jardin.nom" formControlName="nom" name="nom">
-
-        <br>
-        Sol : {{this.jardin.sol}}
-        <div>
-            <label>Sol :</label>
-            <select formControlName="sol" id="sol" [(ngModel)]="this.jardin.sol" name="sol">
-                <option value=true>Sableux</option>
-                <option class="selected" value=false>Limono-argileux</option>
-                <option value=false>Argilo-sableux</option>
-                <option value=false>Argilo-limoneux</option>
-                <option value=false>Argileux</option>
-            </select>
-        </div>
-        <br>
-        Longueur : {{this.jardin.longueur}}
-        <br>
-        <input id="longeur" type="number" [(ngModel)]="this.jardin.longueur" formControlName="longeur" name="longeur">
-        <br>
-        Largeur : {{this.jardin.largeur}}
-        <br>
-        <input id="largeur" type="number" [(ngModel)]="this.jardin.largeur" formControlName="largeur" name="largeur">
-        <br>
-        Département : {{this.jardin.departement}}
-        <br>
-        <input id="departement" type="departementUptadeDto" [(ngModel)]="this.jardin.departement"
-            formControlName="departement" name="departement">
-        <br>
-        <button type="submit" class="btn btn-primary">Modifier</button>
-        <br>
-        <div class="alert alert-success" *ngIf="messageValidation">
-            <strong>Bravo !</strong> {{this.messageValidation}}
-        </div>
-        <div class="alert alert-danger" *ngIf="messageErreur">
-            <strong>Echec !</strong> {{this.messageErreur}}
-        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Propriétés actuelles</th>
+                    <th>Changement ?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label>Nom actuel : </label> {{this.jardin.nom}}
+                    </td>
+                    <td>
+                        Nouveau nom ?
+                        <input id="nom" type="text" [(ngModel)]="this.jardin.nom" formControlName="nom" name="nom"
+                            placeholder="Nouveau nom ici ..">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> Sol actuel : </label> {{this.jardin.sol}}
+                    </td>
+                    <td>
+                        Nouveau sol ? 
+                        <select formControlName="sol" id="sol" [(ngModel)]="this.jardin.sol" name="sol">
+                            <option value=true>Sableux</option>
+                            <option class="selected" value=false>Limono-argileux</option>
+                            <option value=false>Argilo-sableux</option>
+                            <option value=false>Argilo-limoneux</option>
+                            <option value=false>Argileux</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> Longueur actuelle : </label> {{this.jardin.longueur}}
+                    </td>
+                    <td>
+                        Nouvelle longueur ?
+                        <input id="longeur" type="number" min="0" [(ngModel)]="this.jardin.longueur" formControlName="longeur"
+                            name="longeur" placeholder="Nouvelle longueur ici ..">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> Largeur actuelle : </label> {{this.jardin.largeur}}
+                    </td>
+                    <td>
+                        Nouvelle largeur ?
+                        <input id="largeur" type="number" min="0" [(ngModel)]="this.jardin.largeur" formControlName="largeur"
+                            name="largeur" placeholder="Nouvelle largeur ici ..">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> Département actuel : </label> {{this.jardin.departement}}
+                    </td>
+                    <td>
+                        Nouveau département ?
+                        <select class="form-control" id="departement" formControlName="departement" name="departement"  [(ngModel)]="this.jardin.departement">
+                            <option *ngFor="let depart of this.allDepartements">{{depart.nom}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+            <button type="submit" class="btn btn-primary">Modifier</button>
+            <br>
+            <div class="alert alert-success" *ngIf="messageValidation">
+                <strong>Bravo !</strong> {{this.messageValidation}}
+            </div>
+            <div class="alert alert-danger" *ngIf="messageErreur">
+                <strong>Echec !</strong> {{this.messageErreur}}
+            </div>
+        </table>
     </form>
 </div>
 
