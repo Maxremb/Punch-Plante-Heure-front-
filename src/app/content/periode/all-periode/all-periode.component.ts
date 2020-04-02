@@ -35,7 +35,6 @@ export class AllPeriodeComponent implements OnInit {
           this.allPeriodes = this.allPeriodes.filter(
             element => element.id !== id
           );
-          this.periode = null;
         }
       }
     )
