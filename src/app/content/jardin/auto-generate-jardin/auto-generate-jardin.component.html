@@ -1,8 +1,8 @@
 <!-- Choix et menu déroulant -->
 <div class="container">
-    <form [formGroup]="dimensionsJardinForm" (ngSubmit)="this.validerDimensions()">
-        <!-- Ajouter des contraintes ou longueur doit être plus grand que largeur -->
-        <p>Dimensions du jardin :</p>
+    <!-- Formulaire de saisi des dimensions du jardin -->
+    <form [formGroup]="dimensionsJardinForm" (ngSubmit)="this.verificationLongLarge()">
+        <h3>Dimensions du jardin :</h3>
         <label>Longueur : </label>
         <input id="length" type="number" min="0" [(ngModel)]="this.jardin.length" formControlName="length" name="length" required>
         <div *ngIf="length.errors?.required && (length.touched || length.dirty)" class="alert alert-danger">
@@ -15,11 +15,17 @@
             Veuillez entrer une largeur.
         </div>
 
+        <div>
+            <p *ngIf="this.messageErreur != null">{{this.messageErreur}}</p>
+        </div>
+
         <button type="submit" class="btn btn-primary">Valider</button>
     </form>
     <hr>
+    <!-- Formulaire de saisi des légumes à mettre dans le jardin -->
     <form>
-
+        <h3>Choix des légumes :</h3>
+        <!-- Mettre un menu déroulant avec la liste des légumes, ou bien juste une barre de recherche-->
     </form>
 </div>
 

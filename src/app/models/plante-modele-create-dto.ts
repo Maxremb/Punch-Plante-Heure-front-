@@ -19,7 +19,7 @@ export class PlanteModeleCreateDto {
     // Attributs provisoirs pour la génération automatique
     // Il faudra mettre ceux de la plante à son developpement maximal
     surfaceAuSol: number;   //le rayon en cm
-    hauteur: number;
+    higth: number;
     pousseSousTerre: boolean;
     grimpant: boolean;
     // Mettre les degrées d'affinité avec les plantes peut-être ?
