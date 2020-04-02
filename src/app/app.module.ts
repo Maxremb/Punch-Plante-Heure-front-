@@ -20,6 +20,7 @@ import { DetailJardinAddPlanteComponent } from './content/jardin/detail-jardin-a
 import { ContentComponent } from './content/content/content.component';
 import { DetailJardinUpdatePlanteComponent } from './content/jardin/detail-jardin-update-plante/detail-jardin-update-plante.component';
 import { AutoGenerateJardinComponent } from './content/jardin/auto-generate-jardin/auto-generate-jardin.component';
+import { BlogComponent } from './content/blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AutoGenerateJardinComponent } from './content/jardin/auto-generate-jard
     ContentComponent,
     DetailJardinUpdatePlanteComponent,
     AutoGenerateJardinComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
