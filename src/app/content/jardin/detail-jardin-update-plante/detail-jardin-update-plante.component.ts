@@ -35,7 +35,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     this.getAllPlantes();
     this.updateplanteForm = new FormGroup({
       "datePlantation": new FormControl(this.planteUtilisateur.datePlantation),
-      "dateSemi": new FormControl(this.planteUtilisateur.dateSemi),
+      "periodesemi": new FormControl(this.planteUtilisateur.periodesemi),
       "etatPlante": new FormControl(this.planteUtilisateur.etatPlante),
       "etatSante": new FormControl(this.planteUtilisateur.etatSante)
       });
@@ -57,9 +57,9 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
   }
 
 
-  get nomCommun() { return this.updateplanteForm.get('nomCommun') }
+  get commun() { return this.updateplanteForm.get('commun') }
   get datePlantation() { return this.updateplanteForm.get('datePlantation') }
-  get dateSemi() { return this.updateplanteForm.get('dateSemi') }
+  get periodesemi() { return this.updateplanteForm.get('periodesemi') }
   get etatPlante() { return this.updateplanteForm.get('etatPlante') }
   get etatSante() {return this.updateplanteForm.get('etatSante')}
 

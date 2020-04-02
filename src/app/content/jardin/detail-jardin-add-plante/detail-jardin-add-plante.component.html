@@ -2,9 +2,9 @@
     <h2>Ajout d'une plante dans votre jardin</h2>
     <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
         <div class="form-group">
-            <label for="nomCommun">Nom de la plante</label>
-            <select id="nomCommun" class="form-control" formControlName="nomCommun">
-                <option *ngFor="let plante of this.allPlantes" [ngValue]="p">{{plante.nomCommun}}</option>
+            <label for="commun">Nom de la plante</label>
+            <select id="commun" class="form-control" formControlName="commun">
+                <option *ngFor="let plante of this.allPlantes" [ngValue]="p">{{plante.commun}}</option>
             </select>
         </div>
         <div class="form-group">
@@ -12,8 +12,8 @@
             <input type="date" id="datePlantation" class="form-control" formControlName="datePlantation">
         </div>
         <div class="form-group">
-            <label for="dateSemi">Date de semis : </label>
-            <input type="date" id="dateSemi" class="form-control" formControlName="dateSemi">
+            <label for="periodesemi">Date de semis : </label>
+            <input type="date" id="periodesemi" class="form-control" formControlName="periodesemi">
         </div>
         <div class="form-group">
             <label for="etatSante">Etat de santé : </label>

@@ -1,14 +1,14 @@
 <div *ngIf="planteUtilisateur" class="container">
     <h2>Mise à jour de votre plante</h2>
-    <h2>ID : {{planteUtilisateur.id}} | {{planteUtilisateur.planteModele.nomCommun}}</h2>
+    <h2>ID : {{planteUtilisateur.id}} | {{planteUtilisateur.planteModele.commun}}</h2>
     <form [formGroup]="updateplanteForm" (ngSubmit)="this.update()">
         <div class="form-group">
             <label for="datePlantation">Date de plantation : </label> ({{planteUtilisateur.datePlantation}})
             <input type="date" id="datePlantation" class="form-control" formControlName="datePlantation">
         </div>
         <div class="form-group">
-            <label for="dateSemi">Date de semis : </label> ({{planteUtilisateur.dateSemi}})
-            <input type="date" id="dateSemi" class="form-control" formControlName="dateSemi">
+            <label for="periodesemi">Date de semis : </label> ({{planteUtilisateur.periodesemi}})
+            <input type="date" id="periodesemi" class="form-control" formControlName="periodesemi">
         </div>
         <div class="form-group">
             <label for="etatSante">Etat de santé : </label> ({{planteUtilisateur.etatSante}})

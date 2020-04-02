@@ -33,17 +33,17 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     this.jardin = this.jardinservice.jardin;
     this.getAllPlantes();
     this.planteForm = new FormGroup({
-      "nomCommun": new FormControl(this.plante.planteModele.nomCommun, Validators.required),
+      "commun": new FormControl(this.plante.planteModele.commun, Validators.required),
       "datePlantation": new FormControl(this.plante.datePlantation),
-      "dateSemi": new FormControl(this.plante.dateSemi),
+      "periodesemi": new FormControl(this.plante.periodesemi),
       "etatPlante": new FormControl(this.plante.etatPlante),
       "etatSante": new FormControl(this.plante.etatSante)
       });
   }
   
-  get nomCommun() { return this.planteForm.get('nomCommun') }
+  get commun() { return this.planteForm.get('commun') }
   get datePlantation() { return this.planteForm.get('datePlantation') }
-  get dateSemi() { return this.planteForm.get('dateSemi') }
+  get periodesemi() { return this.planteForm.get('periodesemi') }
   get etatPlante() { return this.planteForm.get('etatPlante') }
   get etatSante() {return this.planteForm.get('etatSante')}
 

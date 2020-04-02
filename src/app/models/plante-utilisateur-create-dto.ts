@@ -5,7 +5,7 @@ import { PlanteModeleUpdateDto } from './plante-modele-update-dto';
 
 export class PlanteUtilisateurCreateDto {
     etatSante: EtatSanteEnum;
-    dateSemi: Date;
+    periodesemi: Date;
     etatPlante: EtatPlanteEnum;
     jardin: JardinUpdateDto;
     planteModele: PlanteModeleUpdateDto;

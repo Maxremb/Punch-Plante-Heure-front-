@@ -1,6 +1,26 @@
 <!-- Choix et menu déroulant -->
 <div class="container">
+    <form [formGroup]="dimensionsJardinForm" (ngSubmit)="this.validerDimensions()">
+        <!-- Ajouter des contraintes ou longueur doit être plus grand que largeur -->
+        <p>Dimensions du jardin :</p>
+        <label>Longueur : </label>
+        <input id="longueur" type="number" min="0" [(ngModel)]="this.jardin.longueur" formControlName="longueur" name="longueur" required>
+        <div *ngIf="longueur.errors?.required && (longueur.touched || longueur.dirty)" class="alert alert-danger">
+            Veuillez entrer une longueur.
+        </div>
+        
+        <label>Largeur : </label>
+        <input id="largeur" type="number" min="0" [(ngModel)]="this.jardin.largeur" formControlName="largeur" name="largeur" required>
+        <div *ngIf="largeur.errors?.required && (largeur.touched || largeur.dirty)" class="alert alert-danger">
+            Veuillez entrer une largeur.
+        </div>
 
+        <button type="submit" class="btn btn-primary">Valider</button>
+    </form>
+    <hr>
+    <form>
+
+    </form>
 </div>
 
 <!-- Lieu de visualisation du potager -->

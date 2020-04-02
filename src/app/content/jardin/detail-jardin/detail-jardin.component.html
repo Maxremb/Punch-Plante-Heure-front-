@@ -25,9 +25,9 @@
             <tbody>
                 <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
                     <td>{{planteUtilisateur.id}}</td>
-                    <td>{{planteUtilisateur.planteModele.nomCommun}}</td>
+                    <td>{{planteUtilisateur.planteModele.commun}}</td>
                     <td>{{planteUtilisateur.datePlantation}}</td>
-                    <td>{{planteUtilisateur.dateSemi}}</td>
+                    <td>{{planteUtilisateur.periodesemi}}</td>
                     <td>{{planteUtilisateur.etatSante}}</td>
                     <td>{{planteUtilisateur.etatPlante}}</td>
                     <td><button class="btn btn-danger" (click)="this.supprimer(planteUtilisateur.id)">Retirer cette plante de votre jardin</button>
