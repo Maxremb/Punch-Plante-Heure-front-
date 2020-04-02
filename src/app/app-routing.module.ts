@@ -20,6 +20,8 @@ import { BlogComponent } from './content/blog/blog.component';
 import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
 import { AssociationsPlantComponent } from './content/plant/associations-plant/associations-plant.component';
 import { UserviewAllPlantComponent } from './content/plant/userview-all-plant/userview-all-plant.component';
+import { AboutComponent } from './content/about/about.component';
+import { ContactComponent } from './content/contact/contact.component';
 
 
 const routes: Routes = [
@@ -40,6 +42,8 @@ const routes: Routes = [
   { path : 'blog' , component : BlogComponent },
   { path : 'plant/asso/:id', component: AssociationsPlantComponent },
   { path : 'plant/vuser', component: UserviewAllPlantComponent }
+  { path : 'about' , component : AboutComponent },
+  { path : 'contact' , component : ContactComponent }
   
  
 ];

@@ -26,6 +26,8 @@ import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-
 import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
 import { BlogComponent } from './content/blog/blog.component';
 import { AssociationsPlantComponent } from './content/plant/associations-plant/associations-plant.component';
+import { ContactComponent } from './content/contact/contact.component';
+import { AboutComponent } from './content/about/about.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { AssociationsPlantComponent } from './content/plant/associations-plant/a
     DetailPeriodeComponent,
     UpdatePeriodeComponent,
     BlogComponent,
-    AssociationsPlantComponent
+    AssociationsPlantComponent,
+    ContactComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
