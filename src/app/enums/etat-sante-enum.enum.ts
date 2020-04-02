@@ -1,3 +1,3 @@
-export enum EtatSanteEnum {
+export enum healthStageEnum {
     'w','x','y','z',
 }

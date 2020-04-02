@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
-import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { modelPlantUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
-import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { modelPlantService } from 'src/app/services/plante-modele-service.service';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { Location } from '@angular/common';
 
@@ -20,13 +20,13 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
-  allPlantes = new Array<PlanteModeleUpdateDto>();
+  allPlantes = new Array<modelPlantUpdateDto>();
   
 
   constructor(
     private location: Location,
     private planteutilisateurservice: PlanteUtilisateurService,
-    private plantemodeleservice: PlanteModeleService,
+    private modelPlantservice: modelPlantService,
     private jardinservice: JardinService) { }
 
   ngOnInit(): void {
@@ -34,16 +34,16 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     this.planteUtilisateur = this.planteutilisateurservice.planteUtilisateur;
     this.getAllPlantes();
     this.updateplanteForm = new FormGroup({
-      "datePlantation": new FormControl(this.planteUtilisateur.datePlantation),
-      "periodesemi": new FormControl(this.planteUtilisateur.periodesemi),
-      "etatPlante": new FormControl(this.planteUtilisateur.etatPlante),
-      "etatSante": new FormControl(this.planteUtilisateur.etatSante)
+      "plantingDate": new FormControl(this.planteUtilisateur.plantingDate),
+      "semiDate": new FormControl(this.planteUtilisateur.semiDate),
+      "plantStage": new FormControl(this.planteUtilisateur.plantStage),
+      "healthStage": new FormControl(this.planteUtilisateur.healthStage)
       });
 
   }
 
   getAllPlantes(): void {
-    this.plantemodeleservice.getAll().subscribe(
+    this.modelPlantservice.getAll().subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.object;
@@ -58,10 +58,10 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
 
 
   get commun() { return this.updateplanteForm.get('commun') }
-  get datePlantation() { return this.updateplanteForm.get('datePlantation') }
-  get periodesemi() { return this.updateplanteForm.get('periodesemi') }
-  get etatPlante() { return this.updateplanteForm.get('etatPlante') }
-  get etatSante() {return this.updateplanteForm.get('etatSante')}
+  get plantingDate() { return this.updateplanteForm.get('plantingDate') }
+  get semiDate() { return this.updateplanteForm.get('semiDate') }
+  get plantStage() { return this.updateplanteForm.get('plantStage') }
+  get healthStage() {return this.updateplanteForm.get('healthStage')}
 
   update(): void {
     this.planteutilisateurservice.update(this.planteUtilisateur).subscribe(

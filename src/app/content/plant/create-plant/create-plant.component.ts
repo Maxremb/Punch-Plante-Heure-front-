@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PlanteModeleCreateDto } from 'src/app/models/plante-modele-create-dto';
-import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { modelPlantCreateDto } from 'src/app/models/plante-modele-create-dto';
+import { modelPlantService } from 'src/app/services/plante-modele-service.service';
 
 @Component({
   selector: 'app-create-plant',
@@ -11,11 +11,11 @@ import { PlanteModeleService } from 'src/app/services/plante-modele-service.serv
 export class CreatePlantComponent implements OnInit {
   plantCreateForm: FormGroup;
 
-  plant = new PlanteModeleCreateDto();
+  plant = new modelPlantCreateDto();
   messageValidation = '';
   error:boolean;
 
-  constructor(private service: PlanteModeleService) { }
+  constructor(private service: modelPlantService) { }
 
   ngOnInit(): void {
     this.plantCreateForm = new FormGroup({

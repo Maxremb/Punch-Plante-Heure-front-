@@ -1,6 +1,6 @@
 import { PeriodeUpdateDto } from "./periode-update-dto";
 
-export class PlanteModeleCreateDto {
+export class modelPlantCreateDto {
     commun: string;
     scientifique: string;
     arrosage: number;
