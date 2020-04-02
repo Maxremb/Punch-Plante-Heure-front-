@@ -6,6 +6,7 @@ import { JardinService } from 'src/app/services/jardin-service.service';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail-jardin-add-plante',
@@ -20,8 +21,10 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   messageValidation: string;
   messageErreur: string;
   allPlantes = new Array<PlanteModeleUpdateDto>();
+ 
 
   constructor(
+    private location: Location,
     private planteutilisateurservice: PlanteUtilisateurService,
     private plantemodeleservice: PlanteModeleService,
     private jardinservice: JardinService) { }
@@ -52,6 +55,10 @@ export class DetailJardinAddPlanteComponent implements OnInit {
         }
       }
     )
+  }
+
+  retour(): void {
+    this.location.back();
   }
 
 

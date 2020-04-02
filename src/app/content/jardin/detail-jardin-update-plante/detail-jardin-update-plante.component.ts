@@ -6,6 +6,7 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { JardinService } from 'src/app/services/jardin-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail-jardin-update-plante',
@@ -14,14 +15,16 @@ import { JardinService } from 'src/app/services/jardin-service.service';
 })
 export class DetailJardinUpdatePlanteComponent implements OnInit {
 
-  planteForm: FormGroup;
+  updateplanteForm: FormGroup;
   planteUtilisateur: PlanteUtilisateurUpdateDto;
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
   allPlantes = new Array<PlanteModeleUpdateDto>();
+  
 
   constructor(
+    private location: Location,
     private planteutilisateurservice: PlanteUtilisateurService,
     private plantemodeleservice: PlanteModeleService,
     private jardinservice: JardinService) { }
@@ -30,8 +33,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     this.jardin = this.jardinservice.jardin;
     this.planteUtilisateur = this.planteutilisateurservice.planteUtilisateur;
     this.getAllPlantes();
-    this.planteForm = new FormGroup({
-      "nomCommun": new FormControl(this.planteUtilisateur.planteModele.nomCommun, Validators.required),
+    this.updateplanteForm = new FormGroup({
       "datePlantation": new FormControl(this.planteUtilisateur.datePlantation),
       "dateSemi": new FormControl(this.planteUtilisateur.dateSemi),
       "etatPlante": new FormControl(this.planteUtilisateur.etatPlante),
@@ -50,11 +52,16 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     )
   }
 
-  get nomCommun() { return this.planteForm.get('nomCommun') }
-  get datePlantation() { return this.planteForm.get('datePlantation') }
-  get dateSemi() { return this.planteForm.get('dateSemi') }
-  get etatPlante() { return this.planteForm.get('etatPlante') }
-  get etatSante() {return this.planteForm.get('etatSante')}
+  retour(): void {
+    this.location.back();
+  }
+
+
+  get nomCommun() { return this.updateplanteForm.get('nomCommun') }
+  get datePlantation() { return this.updateplanteForm.get('datePlantation') }
+  get dateSemi() { return this.updateplanteForm.get('dateSemi') }
+  get etatPlante() { return this.updateplanteForm.get('etatPlante') }
+  get etatSante() {return this.updateplanteForm.get('etatSante')}
 
   update(): void {
     this.planteutilisateurservice.update(this.planteUtilisateur).subscribe(

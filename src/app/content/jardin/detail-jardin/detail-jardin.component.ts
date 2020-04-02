@@ -3,10 +3,9 @@ import { Location } from '@angular/common';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 import { FormGroup } from '@angular/forms';
-import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
-import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+
 
 @Component({
   selector: 'app-detail-jardin',
