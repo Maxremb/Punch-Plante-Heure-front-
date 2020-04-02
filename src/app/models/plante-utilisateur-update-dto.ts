@@ -5,5 +5,5 @@ import { modelPlantUpdateDto } from './plante-modele-update-dto';
 import { PlanteUtilisateurCreateDto } from './plante-utilisateur-create-dto';
 
 export class PlanteUtilisateurUpdateDto extends PlanteUtilisateurCreateDto {
-    id: number;
+    identifiant: number;
 }

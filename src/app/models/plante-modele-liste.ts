@@ -1,5 +1,5 @@
 export class modelPlantListe {
-    id: number;
+    identifiant: number;
     commun: string;
     scientifique: string;
     picture: string;
