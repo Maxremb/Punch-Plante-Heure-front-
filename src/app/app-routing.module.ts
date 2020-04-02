@@ -17,6 +17,7 @@ import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.c
 import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-periode/detail-periode.component';
 import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
 import { BlogComponent } from './content/blog/blog.component';
+import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
   { path : 'periode', component : AllPeriodeComponent},
-  { path : 'periode/create', component : CreateJardinComponent},
+  { path : 'periode/create', component : CreatePeriodeComponent},
   { path : 'periode/detail', component : DetailPeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
   { path : 'blog' , component : BlogComponent }

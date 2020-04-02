@@ -12,9 +12,9 @@ import { DepartementCreateDto } from 'src/app/models/departement-create-dto';
 })
 export class CreatePeriodeComponent implements OnInit {
 
-  constructor(private service : PeriodeService) { }
+  constructor(private service: PeriodeService) { }
 
-  addPeriodeForm : FormGroup;
+  addPeriodeForm: FormGroup;
   periode = new PeriodeCreateDto;
   allPlantes = new PlanteModeleListe;
   allDepartements = new DepartementCreateDto;
@@ -23,11 +23,11 @@ export class CreatePeriodeComponent implements OnInit {
 
   ngOnInit(): void {
     this.addPeriodeForm = new FormGroup({
-      "type" : new FormControl(this.periode.type, Validators.required),
-      "planteModel" : new FormControl(this.periode.planteModel, Validators.required),
-      "dateDebut" : new FormControl (this.periode.dateDebut, Validators.required),
-      "dateFin" : new FormControl (this.periode.dateFin, Validators.required),
-      "dept" : new FormControl (this.periode.dept, Validators.required);
+      "type": new FormControl(this.periode.type, Validators.required),
+      "planteModel": new FormControl(this.periode.planteModel, Validators.required),
+      "dateDebut": new FormControl(this.periode.dateDebut, Validators.required),
+      "dateFin": new FormControl(this.periode.dateFin, Validators.required),
+      "dept": new FormControl(this.periode.dept, Validators.required),
     })
   }
 
@@ -35,18 +35,18 @@ export class CreatePeriodeComponent implements OnInit {
   get planteModel() { return this.addPeriodeForm.get('planteModel') }
   get dateDebut() { return this.addPeriodeForm.get('dateDebut') }
   get dateFin() { return this.addPeriodeForm.get('dateFin') }
-  get dept() {return this.addPeriodeForm.get('dept')}
- 
+  get dept() { return this.addPeriodeForm.get('dept') }
+
 
   create() {
     this.service.create(this.periode).subscribe(
       responseDto => {
-         if (!responseDto.error) {
-           this.messageValidation = responseDto.message;
-         } else { this.messageErreur = responseDto.message; }
-        }
-     )
-   }
+        if (!responseDto.error) {
+          this.messageValidation = responseDto.message;
+        } else { this.messageErreur = responseDto.message; }
+      }
+    )
   }
-
 }
+
+
