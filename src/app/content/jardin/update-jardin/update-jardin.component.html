@@ -1,31 +1,36 @@
-<div class="container">
-    <label><b> MODIFIER MON JARDIN </b></label> {{this.jardin.name}}
+<div class="container" style="margin-top: 3%;">
+
+    <div>
+        <h1 class="titre">
+            GESTION DE MON JARDIN
+        </h1>
+    </div>
+
     <hr>
-    <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()">
+    <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()" class="col-lg-6">
+        <h2>Modifier mon jardin </h2> <h2> {{this.jardin.name}} </h2>
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Propriétés actuelles</th>
-                    <th>Changement ?</th>
+                    <th>Actuellement</th>
+                    <th>Et maintenant ?</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <label>Nom actuel : </label> {{this.jardin.name}}
+                        <label class="label" >Nom actuel : </label> {{this.jardin.name}}
                     </td>
                     <td>
-                        Nouveau nom ?
                         <input id="name" type="text" [(ngModel)]="this.jardin.name" formControlName="name" name="name"
                             placeholder="Nouveau nom ici ..">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label> Sol actuel : </label> {{this.jardin.ground}}
+                        <label class="label" > Sol actuel : </label> {{this.jardin.ground}}
                     </td>
                     <td>
-                        Nouveau sol ? 
                         <select formControlName="ground" id="ground" [(ngModel)]="this.jardin.ground" name="ground">
                             <option value=true>Sableux</option>
                             <option class="selected" value=false>Limono-argileux</option>
@@ -37,37 +42,35 @@
                 </tr>
                 <tr>
                     <td>
-                        <label> Longueur actuelle : </label> {{this.jardin.length}}
+                        <label class="label" > Longueur actuelle : </label> {{this.jardin.length}}
                     </td>
-                    <td>
-                        Nouvelle longueur ?
-                        <input id="length" type="number" min="0" [(ngModel)]="this.jardin.length" formControlName="length"
-                            name="length" placeholder="Nouvelle longueur ici ..">
+                    <td> 
+                        <input id="length" type="number" min="0" [(ngModel)]="this.jardin.length"
+                            formControlName="length" name="length" placeholder="Nouvelle longueur ici ..">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label> Largeur actuelle : </label> {{this.jardin.width}}
+                        <label class="label" > Largeur actuelle : </label> {{this.jardin.width}}
                     </td>
                     <td>
-                        Nouvelle largeur ?
                         <input id="width" type="number" min="0" [(ngModel)]="this.jardin.width" formControlName="width"
                             name="width" placeholder="Nouvelle largeur ici ..">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label> Département actuel : </label> {{this.jardin.dept}}
+                        <label class="label" > Département actuel : </label> {{this.jardin.dept}}
                     </td>
                     <td>
-                        Nouveau département ?
-                        <select class="form-control" id="dept" formControlName="dept" name="dept"  [(ngModel)]="this.jardin.dept">
+                        <select class="form-control" id="dept" formControlName="dept" name="dept"
+                            [(ngModel)]="this.jardin.dept">
                             <option *ngFor="let depart of this.allDepartements">{{depart.name}}</option>
                         </select>
                     </td>
                 </tr>
             </tbody>
-            <button type="submit" class="btn btn-primary">Modifier</button>
+            <button type="submit" class="btn alazea-btn mt-15">Modifier</button>
             <br>
             <div class="alert alert-success" *ngIf="messageValidation">
                 <strong>Bravo !</strong> {{this.messageValidation}}
@@ -79,9 +82,13 @@
     </form>
 </div>
 
-
 <div class="container">
-    <a routerLink="/jardin">
-        <input type="button" value="Mes jardins" class="btn btn-info" />
-    </a>
+    <div class="bottompage">
+        <a routerLink="/jardin">
+            <input type="button" value="Mes jardins" class="btn alazea-btn mt-15" />
+        </a>
+        <a routerLink="">
+            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        </a>
+    </div>
 </div>
