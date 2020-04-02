@@ -54,8 +54,7 @@ import { BlogComponent } from './content/blog/blog.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule
+    ReactiveFormsModule
   ],
   providers: [
     HttpClientModule
