@@ -12,10 +12,11 @@ import { DetailedPlantComponent } from './content/plant/detailed-plant/detailed-
 import { DetailJardinAddPlanteComponent } from './content/jardin/detail-jardin-add-plante/detail-jardin-add-plante.component';
 import { DetailJardinUpdatePlanteComponent } from './content/jardin/detail-jardin-update-plante/detail-jardin-update-plante.component';
 import { UpdateJardinComponent } from './content/jardin/update-jardin/update-jardin.component';
+import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-connexion/accueil-hors-connexion.component';
 
 
 const routes: Routes = [
-  { path : '' , component :  DashboardComponent },
+  { path : '' , component :  AccueilHorsConnexionComponent },
   { path : 'jardin' , component :  AllJardinComponent},
   { path : 'jardin/create' , component : CreateJardinComponent },
   { path : 'jardin/detail', component : DetailJardinComponent },
@@ -24,7 +25,7 @@ const routes: Routes = [
   { path : 'jardin/detail/updateplante', component : DetailJardinUpdatePlanteComponent },
   { path : 'plant', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
-  { path : 'plant/detail', component : DetailedPlantComponent },
+  { path : 'plant/update/:id', component : DetailedPlantComponent },
   
  
 ];

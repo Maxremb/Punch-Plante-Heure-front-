@@ -4,7 +4,7 @@ export class PlanteModeleCreateDto {
     nomCommun: string;
     nomScientifique: string;
     intervalArrossage: number;
-    ensoleillementOpti: number;
+    ensoleillementOpti: string;
     humiditeOpti: number;
     solOpti: string;
     repiquage: number;
