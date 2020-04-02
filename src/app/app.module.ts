@@ -47,7 +47,7 @@ import { BlogComponent } from './content/blog/blog.component';
     UserviewAllPlantComponent,
     DetailPeriodeComponent,
     UpdatePeriodeComponent,
-    BlogComponent
+    BlogComponent,
   ],
   imports: [
     BrowserModule,

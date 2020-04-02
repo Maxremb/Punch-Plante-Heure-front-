@@ -1,5 +1,4 @@
 <div class="container">
-
     <form formGroup="addPeriodeForm" (ngSubmit)="this.create()">
         <label><b>AJOUTER UNE PERIODE </b></label>
         <hr>
@@ -64,7 +63,10 @@
     </form>
 </div>
 
-<div class="container">
+<div class="container" style="text-align: right;">
+    <a routerLink="" style="margin-right: 5%;">
+        <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+    </a>
     <a routerLink="/periode">
         <input type="button" value="Périodes" class="btn btn-info" />
     </a>
