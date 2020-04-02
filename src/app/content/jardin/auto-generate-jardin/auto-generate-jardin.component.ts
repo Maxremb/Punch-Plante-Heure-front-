@@ -51,6 +51,8 @@ export class AutoGenerateJardinComponent implements OnInit {
 
   // Délimitations des parcelles
   decouperEnEspaceCultivable(): Array<EspaceCultivableCreateDto> {
+    // Faire des divisons pour savoir quels est le découpage garentissant une surface de culture maximal
+    // Tout en gardant des espaces pour circuler entre les parcelles
     return
   }
 
