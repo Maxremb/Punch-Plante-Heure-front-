@@ -1,8 +1,7 @@
 <div class="container">
-    <hr>
-    <hr>
-    <hr>
-    <h2>Liste des plantes :</h2>
+    <br><br><br><br>
+    <app-entete-plant></app-entete-plant>
+    <br><br><br>
     
     <table class="table table-hover">
         <thead>
@@ -21,7 +20,7 @@
                 <td>{{plant.picture}}</td>
                 <td>
                 <a routerLink="/plant/vuser/{{plant.identifiant}}">
-                    <button class="btn btn-info" >Détails</button>
+                    <button class="btn alazea-btn mt-15" >Détails</button>
                 </a>
                 </td>
             </tr>
