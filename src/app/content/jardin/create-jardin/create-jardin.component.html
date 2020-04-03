@@ -4,6 +4,15 @@
     <div class="row">
 
         <div class="col-12 col-lg-5" style="padding-left: 0%;">
+          
+            <div >  <h1> DEBUG LISTE  DEPT : </h1>
+            <ul>
+                <li *ngFor="let depart of this.allDepartements">
+                    <p style="color: red;"> {{depart.name}} </p>
+                </li>
+            </ul>
+            </div>
+
             <form [formGroup]="addJardinForm" (ngSubmit)="this.create()">
                 <h2> Ajouter un jardin </h2>
                 <hr>
