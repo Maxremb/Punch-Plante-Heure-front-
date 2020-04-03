@@ -21,6 +21,7 @@ export class CreatePlantComponent implements OnInit {
     this.plantCreateForm = new FormGroup({
       commun: new FormControl(this.plant.commun,Validators.required),
       scientifique: new FormControl(this.plant.scientifique,Validators.required),
+      famille: new FormControl(this.plant.famille,Validators.required),
       arrosage: new FormControl(this.plant.arrosage,Validators.required),
       ensoleillement: new FormControl(this.plant.ensoleillement,Validators.required),
       humidite: new FormControl(this.plant.humidite,Validators.required),
@@ -30,6 +31,9 @@ export class CreatePlantComponent implements OnInit {
       max: new FormControl(this.plant.max,Validators.required),
       desc: new FormControl(this.plant.desc,Validators.required),
       toxi: new FormControl(this.plant.toxi,Validators.required),
+      assoplus: new FormControl(this.plant.assoplus,Validators.required),
+      assomoins: new FormControl(this.plant.assomoins,Validators.required),
+      picture: new FormControl(this.plant.picture,Validators.required),
     });
   }
 
