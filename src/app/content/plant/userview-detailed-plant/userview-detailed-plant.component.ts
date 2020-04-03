@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
@@ -9,18 +9,28 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
   styleUrls: ['./userview-detailed-plant.component.css']
 })
 export class UserviewDetailedPlantComponent implements OnInit {
-    @Input() plant: PlanteModeleUpdateDto;
+
+    plant: PlanteModeleUpdateDto;
     messageValidation = '';
-    error:boolean;
+    error: boolean;
   
-    constructor(private service: PlanteModeleService,
-      private route: ActivatedRoute,) { }
+    constructor(
+      private service: PlanteModeleService,
+      private route: ActivatedRoute,
+      private location: Location) { }
   
-    ngOnInit(): void {    }
+    ngOnInit(): void { 
+      this.getPlant();
+    }
 
     getPlant(): void {
       const id = +this.route.snapshot.paramMap.get('id');
-      this.service.getId(id)
-        .subscribe(responsedto => this.plant = responsedto.body);
-    }  
+      this.service.getId(id).subscribe(
+          (responseDto) => {
+             if (!responseDto.error) {
+                this.plant = responseDto.body;
+               } 
+          }
+      );
+    }
   }

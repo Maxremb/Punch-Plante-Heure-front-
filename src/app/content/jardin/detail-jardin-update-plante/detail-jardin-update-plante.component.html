@@ -1,13 +1,16 @@
 <div class="container" style="margin-top: 3%;">
-
+    <!-- Entete de jardin-->
     <app-entete-jardin></app-entete-jardin>
-
+    <br><br>
     <div class="row" >
+        <!-- div pour le formulaire de mise à jour -->
         <div class="col12 col-lg-5" style="padding-left: 0%;">
             <h2>Mise à jour de ma plante</h2>
             <hr>
-            <label class="label">ID : </label> <span> {{planteUtilisateur.identifiant}} |
-                {{planteUtilisateur.modelPlant.commun}}</span>
+            <!-- Affichage des infos non modifiables -->
+            <label class="label">ID : </label> <span> {{planteUtilisateur.identifiant}} </span><br>
+            <label class="label">Nom : </label> <span> {{planteUtilisateur.modelPlant.commun}} </span>
+            <!-- Debut du formulaire de modification --> 
             <form [formGroup]="updateplanteForm" (ngSubmit)="this.update()">
                 <div class="form-group">
                     <label class="label" for="plantingDate">Date de plantation : </label>
@@ -41,10 +44,13 @@
                     [disabled]="updateplanteForm.invalid">Valider</button>
                 <br>
             </form>
+            <!-- Fin du formulaire de modification-->
             <br>
             <span class="alert alert-success" *ngIf="messageValidation">{{messageValidation}}</span>
             <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
         </div>
+        <!-- Fin de la div gauche -->
+        <!-- Ajout d'images à droite du formulaire -->
         <div class="col-12 col-lg-7">
             <div class="image_content">
                 <img src="assets/img/update_plante.jpg" alt="">
@@ -53,7 +59,7 @@
     </div>
 </div>
 
-
+<!-- Ajout de boutons en bas de la page pour retourner à mon jardin / a mes jardins -->
 <div class="container">
     <div class="bottompage">
         <a routerLink="/jardin/detail">
@@ -61,9 +67,6 @@
         </a>
         <a routerLink="/jardin">
             <button class="btn alazea-btn mt-15">Mes jardins</button>
-        </a>
-        <a routerLink="">
-            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
         </a>
     </div>
 </div>

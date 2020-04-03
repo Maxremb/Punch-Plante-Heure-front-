@@ -83,12 +83,14 @@ $(document).ready(function() {
 
         <div class="form-group">
             <label for="assoplus">Association positive : {{this.plant.assoplus}}</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.assoplus" formControlName="assoplus"  name="assoplus">
+            <select multiple data-role="tagsinput" class="form-control"  formControlName="assoplus"  name="assoplus">
+            </select>
         </div>
 
         <div class="form-group">
             <label for="assomoins">Association négative : {{this.plant.assomoins}}</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.assomoins" formControlName="assomoins"  name="assomoins">
+            <select multiple data-role="tagsinput" class="form-control"  formControlName="assomoins"  name="assomoins">
+            </select>
         </div>
 
         <div class="form-group">

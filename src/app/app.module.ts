@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AllPlantComponent } from './content/plant/all-plant/all-plant.component';
@@ -29,6 +28,8 @@ import { AssociationsPlantComponent } from './content/plant/associations-plant/a
 import { ContactComponent } from './content/contact/contact.component';
 import { AboutComponent } from './content/about/about.component';
 import { EnteteJardinComponent } from './content/jardin/entete-jardin/entete-jardin.component';
+import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/graphique-jardin.component';
+import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,8 @@ import { EnteteJardinComponent } from './content/jardin/entete-jardin/entete-jar
     ContactComponent,
     AboutComponent,
     EnteteJardinComponent,
+    GraphiqueJardinComponent,
+    EntetePlantComponent,
   ],
   imports: [
     BrowserModule,

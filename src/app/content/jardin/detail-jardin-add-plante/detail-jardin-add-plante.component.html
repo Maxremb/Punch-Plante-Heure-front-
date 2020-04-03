@@ -1,9 +1,11 @@
 <div class="container" style="margin-top: 3%;">
 
+    <!-- Utilisation de l'entete-->
     <app-entete-jardin></app-entete-jardin>
 
-    
+    <br><br>
     <div class="row">
+        <!-- Formulaire d'ajout d'une plante au jardin -->
         <div class="col 12 col-lg-5" style="padding-left: 0%;">
             <h2>Ajout d'une plante dans mon jardin</h2>
             <hr>
@@ -44,6 +46,8 @@
                 <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
             </div>
         </div>
+        <!-- Fin du formualaire -->
+        <!-- Ajout d'images à droite -->
         <div class="col 12 col-lg-7">
 
             <div class="image_content">
@@ -55,12 +59,12 @@
                     <img src="assets/img/ajout_plante2.jpg" alt="">
                 </div>
             </div>
-
         </div>
     </div>
-
+    <!-- Fin de la ligne row -->
 </div>
 
+<!-- Ajout de boutons en bas de page pour retourner au jardin / a mes jardins -->
 <div class="container">
     <div class="bottompage">
         <a routerLink="/jardin/detail">
@@ -68,9 +72,6 @@
         </a>
         <a routerLink="/jardin">
             <button class="btn alazea-btn mt-15">Mes jardins</button>
-        </a>
-        <a routerLink="">
-            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
         </a>
     </div>
 </div>

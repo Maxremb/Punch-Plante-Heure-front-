@@ -1,4 +1,6 @@
 <div class="container">
+
+    <!--FORM CREATE PERIODE-->
     <form formGroup="addPeriodeForm" (ngSubmit)="this.create()">
         <label><b>AJOUTER UNE PERIODE </b></label>
         <hr>
@@ -12,6 +14,7 @@
                 <option value='semis'>Semis</option>
             </select>
         </div>
+        <!--message validator type -->
         <div *ngIf="type.errors?.required && (type.touched || type.dirty)" class="alert alert-danger">
             Le type de la période est requis !
         </div>
@@ -21,6 +24,7 @@
                 <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
             </select>
         </div>
+        <!--message validator plante-->
         <div *ngIf="planteModel.errors?.required && (planteModel.touched || planteModel.dirty)"
             class="alert alert-danger">
             La plante de la période est requise !
@@ -29,6 +33,7 @@
             <label>Date de début : </label>
             <input id="dateDebut" type="date" formControlName="dateDebut" name="dateDebut" requried>
         </div>
+        <!--message validator date debut-->
         <div *ngIf="dateDebut.errors?.required && (dateDebut.touched || dateDebut.dirty)" class="alert alert-danger">
             La date de début est requise !
         </div>
@@ -36,6 +41,7 @@
             <label>Date de fin : </label>
             <input id="dateFin" type="date" formControlName="dateFin" name="dateFin" requried>
         </div>
+        <!--message validator date fin-->
         <div *ngIf="dateFin.errors?.required && (dateFin.touched || dateFin.dirty)" class="alert alert-danger">
             La date de fin est requise !
         </div>
@@ -46,23 +52,29 @@
                     <option>{{depart.nom}}</option>
                 </div>
             </select>
-            <span *ngIf="!this.allDepartements">Aucun département n'est enregistré dans la base de donnée</span>
+            <!--message validator departement-->
             <div *ngIf="dept.errors?.required && (dept.touched || dept.dirty)" class="alert alert-danger">
                 Le département de la péridoe est requis !
             </div>
         </div>
+
+        <!--boutton submit-->
         <button type="submit" class="btn btn-primary" [disabled]="!this.addPeriodeForm.valid">Créer une
             période</button>
 
+        <!--message validation/echec CREATE-->
         <div class="alert alert-success" *ngIf="this.messageValidation">
             <strong>Bravo !</strong> {{this.messageValidation}}
         </div>
         <div class="alert alert-danger" *ngIf="this.messageErreur">
             <strong>Echec !</strong> {{this.messageErreur}}
+
         </div>
     </form>
 </div>
+<!--END FORM-->
 
+<!--LIE NAVIGATION-->
 <div class="container" style="text-align: right;">
     <a routerLink="" style="margin-right: 5%;">
         <input type="button" value="Home page" class="btn alazea-btn mt-15" />
