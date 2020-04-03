@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
-import { EspaceCultivableCreateDto } from 'src/app/models/espace-cultivable-create-dto';
 import { PlanteUtilisateurCreateDto } from 'src/app/models/plante-utilisateur-create-dto';
 
 @Component({
@@ -50,7 +49,7 @@ export class AutoGenerateJardinComponent implements OnInit {
   }
 
   // Délimitations des parcelles
-  decouperEnEspaceCultivable(): Array<EspaceCultivableCreateDto> {
+  decouperEnEspaceCultivable(): void {
     // Faire des divisons pour savoir quels est le découpage garentissant une surface de culture maximal
     // Tout en gardant des espaces pour circuler entre les parcelles
     return

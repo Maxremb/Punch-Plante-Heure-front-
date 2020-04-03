@@ -1,5 +1,5 @@
 export enum LargeurPlancheEnum {
-    nim = 80,
+    min = 80,
     moy = 90,
     max = 100,
 }

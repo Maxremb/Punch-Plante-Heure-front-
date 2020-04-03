@@ -21,10 +21,10 @@ export class PlanteModeleCreateDto {
     // Attributs provisoirs pour la génération automatique
     // Il faudra mettre ceux de la plante à son developpement maximal
     surfaceAuSol: number;   //le rayon en cm
-    hight: number;
+    hight: number; //en cm
     pousseSousTerre: boolean;
     grimpant: boolean;
-    profondeurRacine: number;
+    profondeurRacine: number; //en cm
     strate: StrateEnum;
     vivacite: VivaciteEnum;
 
