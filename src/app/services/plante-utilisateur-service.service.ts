@@ -21,20 +21,30 @@ export class PlanteUtilisateurService {
     return this.http.post<ResponseDto>(this.URL, planteUtilisateur);
   }
 
-  getAll(): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/all');
+  update(planteUtilisateur: PlanteUtilisateurUpdateDto): Observable<ResponseDto> {
+    return this.http.put<ResponseDto>(this.URL, planteUtilisateur);
   }
 
   getId(id: number): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/' + id);
   }
 
-  update(planteUtilisateur: PlanteUtilisateurUpdateDto): Observable<ResponseDto> {
-    return this.http.put<ResponseDto>(this.URL, + planteUtilisateur);
-  }
-
   delete(id: number): Observable<ResponseDto> {
     return this.http.delete<ResponseDto>(this.URL + '/' + id);
   }
+
+  getAll(): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/all');
+  }
+
+
+  // findByJardin
+  getAllByJardin(idJardin: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/jardin/' + idJardin);
+  }
+
+  
+
+  
 
 }
