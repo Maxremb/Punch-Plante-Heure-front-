@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailPeriodeComponent } from './detail-periode.component';
+import { EntetePeriodeComponent } from './entete-periode.component';
 
-describe('DetailPeriodeComponent', () => {
-  let component: DetailPeriodeComponent;
-  let fixture: ComponentFixture<DetailPeriodeComponent>;
+describe('EntetePeriodeComponent', () => {
+  let component: EntetePeriodeComponent;
+  let fixture: ComponentFixture<EntetePeriodeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailPeriodeComponent ]
+      declarations: [ EntetePeriodeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailPeriodeComponent);
+    fixture = TestBed.createComponent(EntetePeriodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

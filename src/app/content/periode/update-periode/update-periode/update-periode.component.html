@@ -16,7 +16,7 @@
                         <label>Type actuel : </label> {{this.periode.type}}
                     </td>
                     <td>
-                        <select formControlName="type" id="type" [(ngModel)]="this.periode.type" name="type">
+                        <select formControlName="type" id="type" name="type">
                             <option value='rempotage'>Rempotage</option>
                             <option class="selected" value='floraison'>Floraison</option>
                             <option value='fructification'>Fructifiation</option>
@@ -30,8 +30,7 @@
                         <label> Plante actuelle : </label> {{this.periode.planteModel}}
                     </td>
                     <td>
-                        <select class="form-control" id="planteModel" formControlName="planteModel" name="planteModel"
-                            [(ngModel)]="this.periode.planteModel">
+                        <select class="form-control" id="planteModel" formControlName="planteModel" name="planteModel">
                             <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
                         </select>
                     </td>
@@ -41,7 +40,7 @@
                         <label> Date de début actuelle : </label> {{this.periode.dateDebut}}
                     </td>
                     <td>
-                        <input id="dateDebut" type="date"  [(ngModel)]="this.periode.dateDebut" formControlName="dateDebut"
+                        <input id="dateDebut" type="date" formControlName="dateDebut"
                             name="dateDebut" >
                     </td>
                 </tr>
@@ -50,7 +49,7 @@
                         <label> Date de fin actuelle : </label> {{this.periode.dateFin}}
                     </td>
                     <td>
-                        <input id="dateFin" type="date" [(ngModel)]="this.periode.dateFin" formControlName="dateFin"
+                        <input id="dateFin" type="date" formControlName="dateFin"
                         name="dateFin" >
                     </td>
                 </tr>
@@ -59,7 +58,7 @@
                         <label> Département actuel : </label> {{this.periode.dept}}
                     </td>
                     <td>
-                        <select class="form-control" id="dept" formControlName="dept" name="dept"  [(ngModel)]="this.periode.dept">
+                        <select class="form-control" id="dept" formControlName="dept" name="dept">
                             <option *ngFor="let depart of this.allDepartements">{{depart.name}}</option>
                         </select>
                     </td>
