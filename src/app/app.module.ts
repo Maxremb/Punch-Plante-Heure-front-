@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AllPlantComponent } from './content/plant/all-plant/all-plant.component';
@@ -58,11 +57,8 @@ import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.
     ContactComponent,
     AboutComponent,
     EnteteJardinComponent,
-<<<<<<< HEAD
     GraphiqueJardinComponent,
-=======
     EntetePlantComponent,
->>>>>>> 2b0a0f59288dabbcc8282f24193e7023ab111e2c
   ],
   imports: [
     BrowserModule,

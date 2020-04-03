@@ -1,15 +1,15 @@
 <div class="container">
 
-    <a routerLink="/periode/create">
-        <input type="button" value="Ajouter une période" class="btn btn-info"/>
-    </a>
-    <a routerLink="/période/detail">
-        <input type="button" value="VISUEL detail période" class="btn btn-info"/>
-    </a>
-    <a routerLink="/période/update">
-        <input type="button" value="VISUEL update période" class="btn btn-info"/>
-    </a>
-
+    <!--LIEN TEMPORAIRE POUR AFFICHER LES PAGES NON ACCESSIBLES-->
+    <div>
+        <a routerLink="/période/detail">
+            <input type="button" value="VISUEL detail période"  />
+        </a>
+        <a routerLink="/période/update">
+            <input type="button" value="VISUEL update période"  />
+        </a>
+    </div>
+    <br>
 
     <!--LISTE DES PERIODES-->
     <div class="row">
@@ -26,9 +26,8 @@
                     <th>Date de début</th>
                     <th>Date de fin</th>
                     <th>Departement</th>
-                    <th>Supprimer période</th>
-                    <th>Détail période</th>
-                    <th>Modifier période</th>
+                    <th>Actions</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -40,20 +39,28 @@
                     <td>{{e.dateFin}}</td>
                     <td>{{e.departement}}</td>
                     <td>
-                        <button class="btn btn-danger" (click)="this.delete(e.id)">Supprimer</button>
-                    </td>
-                    <td>
-                        <a routerLink="/periode/detail">
-                            <button class="btn btn-info" (click)="this.stockagePeriode(e)">Détail</button>
-                        </a>
-                    </td>
-                    <td>
+                        &nbsp;&nbsp;
                         <a routerLink="/periode/update">
                             <button class="btn btn-info" (click)="this.stockagePeriode(e)">Modifier</button>
                         </a>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-danger" (click)="this.delete(e.id)">Supprimer</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+
+<!--LIEN DE NAVIGATION-->
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/periode/create">
+            <input type="button" value="Ajouter une période" class="btn alazea-btn mt-15" />
+        </a>
+        <a routerLink="">
+            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        </a>
     </div>
 </div>

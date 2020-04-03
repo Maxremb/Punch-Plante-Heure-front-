@@ -1,11 +1,13 @@
 <div class="container">
+
+    <!--detail periode + FORM-->
     <label><b> MODIFIER LA PERIODE </b></label> {{this.periode.type}}
     <form [formGroup]="updatePeriodeForm" (ngSubmit)="this.update()">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th>Propriétés actuelles</th>
-                    <th>Changement ?</th>
+                    <th>Et maintenant ?</th>
                 </tr>
             </thead>
             <tbody>
@@ -14,7 +16,6 @@
                         <label>Type actuel : </label> {{this.periode.type}}
                     </td>
                     <td>
-                        Nouveau type ?
                         <select formControlName="type" id="type" [(ngModel)]="this.periode.type" name="type">
                             <option value='rempotage'>Rempotage</option>
                             <option class="selected" value='floraison'>Floraison</option>
@@ -29,7 +30,6 @@
                         <label> Plante actuelle : </label> {{this.periode.planteModel}}
                     </td>
                     <td>
-                        Nouvelle plante ? 
                         <select class="form-control" id="planteModel" formControlName="planteModel" name="planteModel"
                             [(ngModel)]="this.periode.planteModel">
                             <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
@@ -41,7 +41,6 @@
                         <label> Date de début actuelle : </label> {{this.periode.dateDebut}}
                     </td>
                     <td>
-                        Nouvelle date ?
                         <input id="dateDebut" type="date"  [(ngModel)]="this.periode.dateDebut" formControlName="dateDebut"
                             name="dateDebut" >
                     </td>
@@ -51,7 +50,6 @@
                         <label> Date de fin actuelle : </label> {{this.periode.dateFin}}
                     </td>
                     <td>
-                        Nouvelle date ?
                         <input id="dateFin" type="date" [(ngModel)]="this.periode.dateFin" formControlName="dateFin"
                         name="dateFin" >
                     </td>
@@ -61,7 +59,6 @@
                         <label> Département actuel : </label> {{this.periode.dept}}
                     </td>
                     <td>
-                        Nouveau département ?
                         <select class="form-control" id="dept" formControlName="dept" name="dept"  [(ngModel)]="this.periode.dept">
                             <option *ngFor="let depart of this.allDepartements">{{depart.name}}</option>
                         </select>
@@ -70,6 +67,8 @@
             </tbody>
             <button type="submit" class="btn btn-primary">Modifier</button>
             <br>
+
+            <!--message validation modification-->
             <div class="alert alert-success" *ngIf="messageValidation">
                 <strong>Bravo !</strong> {{this.messageValidation}}
             </div>
@@ -79,8 +78,9 @@
         </table>
     </form>
 </div>
+<!--ENF FORM-->
 
-
+<!--LIEN DE NAVIGATION-->
 <div class="container">
     <a routerLink="/jardin">
         <input type="button" value="Mes jardins" class="btn btn-info" />
