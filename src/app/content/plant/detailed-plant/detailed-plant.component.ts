@@ -4,6 +4,8 @@ import { PlanteModeleService } from 'src/app/services/plante-modele-service.serv
 import { ActivatedRoute } from '@angular/router';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 
+declare function maFonction():any;
+
 @Component({
   selector: 'app-detailed-plant',
   templateUrl: './detailed-plant.component.html',
@@ -19,6 +21,7 @@ export class DetailedPlantComponent implements OnInit {
     private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    maFonction();
     this.plantUpdateForm = new FormGroup({
       commun: new FormControl(this.plant.commun,Validators.required),
       scientifique: new FormControl(this.plant.scientifique,Validators.required),

@@ -72,16 +72,14 @@
 
         <div class="form-group">
             <label for="assoplus">Association positive : {{this.plant.assoplus}}</label>
-            <input type="text" class="form-control" formControlName="assoplus"  name="assoplus">
+            <select multiple data-role="tagsinput" class="form-control"  formControlName="assoplus"  name="assoplus">
+            </select>
         </div>
 
         <div class="form-group">
             <label for="assomoins">Association négative : {{this.plant.assomoins}}</label>
-            <select multiple class="form-control" formControlName="assomoins"  name="assomoins">
-                <option value="true">Oui</option>    
-                <option value="false">Non</option>
+            <select multiple data-role="tagsinput" class="form-control"  formControlName="assomoins"  name="assomoins">
             </select>
-            <input type="text" class="form-control"  data-role="tagsinput"  formControlName="assomoins"  name="assomoins">
         </div>
 
         <div class="form-group">

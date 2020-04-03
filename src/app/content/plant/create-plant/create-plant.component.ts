@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PlanteModeleCreateDto } from 'src/app/models/plante-modele-create-dto';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 
+// On déclare la fonction javascript comprenant du JQuery
+declare function maFonction():any;
+
 @Component({
   selector: 'app-create-plant',
   templateUrl: './create-plant.component.html',
@@ -18,6 +21,7 @@ export class CreatePlantComponent implements OnInit {
   constructor(private service: PlanteModeleService) { }
 
   ngOnInit(): void {
+    maFonction(); // on lance la fonction js pour pouvoir l'appeler et l'utiliser dans le fichier html
     this.plantCreateForm = new FormGroup({
       commun: new FormControl(this.plant.commun,Validators.required),
       scientifique: new FormControl(this.plant.scientifique,Validators.required),
