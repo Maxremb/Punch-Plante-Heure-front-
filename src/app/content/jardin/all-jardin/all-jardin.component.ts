@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
-import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-all-jardin',
