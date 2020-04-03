@@ -46,102 +46,102 @@
 
       <div class="row">
         <div class="col-lg-4">
-      <div class="form-group">
-        <label for="arrosage">Cycle d'arrossage en jour:</label>
-        <input type="number" class="form-control" formControlName="arrosage" name="arrosage">
+          <div class="form-group">
+            <label for="arrosage">Cycle d'arrossage en jour:</label>
+            <input type="number" class="form-control" formControlName="arrosage" name="arrosage">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="ensoleillement">Ensoleillement optimal:</label>
+            <input type="text" class="form-control" formControlName="ensoleillement" name="ensoleillement">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="humidite">Taux d'humidité :</label>
+            <input type="number" class="form-control" formControlName="humidite" name="humidite">
+          </div>
+        </div>
       </div>
-    </div>
-      <div class="col-lg-4">
-      <div class="form-group">
-        <label for="ensoleillement">Ensoleillement optimal:</label>
-        <input type="text" class="form-control" formControlName="ensoleillement" name="ensoleillement">
-      </div>
-    </div>
-      <div class="col-lg-4">
-      <div class="form-group">
-        <label for="humidite">Taux d'humidité :</label>
-        <input type="number" class="form-control" formControlName="humidite" name="humidite">
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="solOpti">Type de sol préféré :</label>
-        <select class="form-control" formControlName="sol" name="sol">
-          <option value="sableux">sableux</option>
-          <option value="limonoArgileux">Limono Argileux</option>
-          <option value="argiloSableux">Argilo Sableux</option>
-          <option value="argiloLimoneux">Argilo Limoneux</option>
-          <option value="argileux">Argileux</option>
-        </select>
-      </div>
-    </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="solOpti">Type de sol préféré :</label>
+            <select class="form-control" formControlName="sol" name="sol">
+              <option value="sableux">sableux</option>
+              <option value="limonoArgileux">Limono Argileux</option>
+              <option value="argiloSableux">Argilo Sableux</option>
+              <option value="argiloLimoneux">Argilo Limoneux</option>
+              <option value="argileux">Argileux</option>
+            </select>
+          </div>
+        </div>
 
-      <div class="col-lg-4">
-      <div class="form-group">
-        <label for="repiquage">Repiquage :</label>
-        <input type="number" class="form-control" formControlName="repiquage" name="repiquage">
-      </div>
-    </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="repiquage">Repiquage :</label>
+            <input type="number" class="form-control" formControlName="repiquage" name="repiquage">
+          </div>
+        </div>
 
-      <div class="col-lg-4">
-      <div class="form-group">
-        <label for="min">Température minimale :</label>
-        <input type="number" class="form-control" formControlName="min" name="min">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="min">Température minimale :</label>
+            <input type="number" class="form-control" formControlName="min" name="min">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
 
- <div class="row">
-  <div class="col-lg-4">
-      <div class="form-group">
-        <label for="max">Température maximale :</label>
-        <input type="number" class="form-control" formControlName="max" name="max">
-      </div>
-    </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="max">Température maximale :</label>
+            <input type="number" class="form-control" formControlName="max" name="max">
+          </div>
+        </div>
 
-      <div class="col-lg-4">
-      <div class="form-group">
-        <label for="desc">Description :</label>
-        <input type="text" class="form-control" formControlName="desc" name="desc">
-      </div>
-    </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="desc">Description :</label>
+            <input type="text" class="form-control" formControlName="desc" name="desc">
+          </div>
+        </div>
 
-<div class="col-lg-4">
-      <div class="form-group">
-        <label for="toxi">Toxicité :</label>
-        <select class="form-control" formControlName="toxi" name="toxi">
-          <option value="true">Oui</option>
-          <option value="false">Non</option>
-        </select>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="toxi">Toxicité :</label>
+            <select class="form-control" formControlName="toxi" name="toxi">
+              <option value="true">Oui</option>
+              <option value="false">Non</option>
+            </select>
+          </div>
+        </div>
       </div>
-    </div>
- </div>
 
- <div class="row">
-  <div class="col-lg-4">
-      <div class="form-group">
-        <label for="assoplus">Association positive : {{this.plant.assoplus}}</label>
-        <select multiple data-role="tagsinput" class="form-control" formControlName="assoplus" name="assoplus">
-        </select>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="assoplus">Association positive : {{this.plant.assoplus}}</label>
+            <select multiple data-role="tagsinput" class="form-control" formControlName="assoplus" name="assoplus">
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="assomoins">Association négative : {{this.plant.assomoins}}</label>
+            <select multiple data-role="tagsinput" class="form-control" formControlName="assomoins" name="assomoins">
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="form-group">
+          <label for="picture">picture:</label>
+          <input type="file" class="form-control-file border" formControlName="picture" name="picture">
+        </div>
       </div>
-    </div>
-      <div class="col-lg-4">
-      <div class="form-group">
-        <label for="assomoins">Association négative : {{this.plant.assomoins}}</label>
-        <select multiple data-role="tagsinput" class="form-control" formControlName="assomoins" name="assomoins">
-        </select>
-      </div>
-    </div>
-      <div class="col-lg-4"></div>
-      <div class="form-group">
-        <label for="picture">picture:</label>
-        <input type="file" class="form-control-file border" formControlName="picture" name="picture">
-      </div>
-    </div>
 
       <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantCreateForm.valid">Enregistrer</button>
       <div *ngIf="this.messageValidation.length">
