@@ -14,6 +14,12 @@
     </div>
   </section>
 
+
+  <a routerLink="/plant">
+    <button type="button" class="btn alazea-btn mt-15">Voir la liste entière</button>
+  </a>
+
+
   <div>
     <hr>
     <form [formGroup]="plantCreateForm" (ngSubmit)="this.save()">
@@ -137,7 +143,7 @@
       </div>
     </div>
 
-      <button type="submit" class="btn btn-primary" [disabled]="!plantCreateForm.valid">Enregistrer</button>
+      <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantCreateForm.valid">Enregistrer</button>
       <div *ngIf="this.messageValidation.length">
         <div class="alert alert-fail" *ngIf="this.error">
           {{this.messageValidation}}
@@ -149,9 +155,4 @@
 
     </form>
     <hr>
-    <a routerLink="/plant">
-      <button type="button" class="btn btn-info">Voir la liste entière</button>
-    </a>
-    <hr>
-
   </div>
