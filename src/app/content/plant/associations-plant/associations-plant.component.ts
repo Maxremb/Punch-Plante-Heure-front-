@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PLANTSMODEL } from '../../../mock-plants';
 
 @Component({
   selector: 'app-associations-plant',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./associations-plant.component.css']
 })
 export class AssociationsPlantComponent implements OnInit {
+
+  allPlant = PLANTSMODEL;
 
   constructor() { }
 

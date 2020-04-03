@@ -1,1 +1,34 @@
-<p>userview-all-plant works!</p>
+<div class="container">
+    <hr>
+    <button type="button" class="btn btn-info" (click)="this.getAll()">Voir la liste entière</button>
+    <hr>
+    <a routerLink="/plant/create">
+    <input type="button" value="Ajouter une plante" class="btn btn-info"/>
+    </a>
+    <hr>
+    <h2>Liste des plantes :</h2>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom commun</th>
+                <th>Nom scientifique</th>
+                <th>URL picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plant of this.allPlant">
+                <td>{{plant.identifiant}}</td>
+                <td>{{plant.commun}}</td>
+                <td>{{plant.scientifique}}</td>
+                <td>{{plant.picture}}</td>
+                <td>
+                <a routerLink="/plant/vuser/{{plant.identifiant}}">
+                    <button class="btn btn-info" >Détails</button>
+                </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -3,7 +3,7 @@
     <app-entete-jardin></app-entete-jardin>
 
     <div class="row" >
-        <div class="col-lg-5" style="padding-left: 0%;">
+        <div class="col12 col-lg-5" style="padding-left: 0%;">
             <h2>Mise à jour de votre plante</h2>
             <hr>
             <label class="label">ID : </label> <span> {{planteUtilisateur.identifiant}} |
@@ -40,6 +40,11 @@
             <br>
             <span class="alert alert-success" *ngIf="messageValidation">{{messageValidation}}</span>
             <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
+        </div>
+        <div class="col-12 col-lg-7">
+            <div class="image_content">
+                <img src="assets/img/update_plante.jpg" alt="">
+            </div>
         </div>
     </div>
 </div>

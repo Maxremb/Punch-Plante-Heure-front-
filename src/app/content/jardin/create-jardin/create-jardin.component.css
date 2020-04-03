@@ -8,6 +8,16 @@ hr {
     margin-top: 1%;
 }
 
+.image_content {
+    margin-top: 15%;
+    margin-left: 5%;
+    margin-bottom: 15%;
+}
+
+.image_content2 {
+    margin-left: 46%;
+}
+
 /* div boutton pas de page */
 .bottompage {
     text-align: right;

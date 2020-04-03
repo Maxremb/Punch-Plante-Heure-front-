@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
-import { DepartementCreateDto } from 'src/app/models/departement-create-dto';
+import { DepartementDto } from 'src/app/models/departement-dto';
 
 @Component({
   selector: 'app-update-jardin',
@@ -17,7 +17,7 @@ export class UpdateJardinComponent implements OnInit {
   utilisateurActif = new UtilisateurUpdateDto;
   messageValidation = null;
   messageErreur = null;
-  allDepartements = new DepartementCreateDto;
+  allDepartements = new DepartementDto;
 
   constructor(private service: JardinService) { }
 

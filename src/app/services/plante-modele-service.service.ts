@@ -14,7 +14,7 @@ export class PlanteModeleService {
 
   modelPlant: PlanteModeleCreateDto;
 
-  private URL = environment.baseUrl + 'modelPlant';
+  private URL = environment.baseUrl + 'plantemodel';
 
   constructor(private http: HttpClient) { }
 
@@ -22,20 +22,21 @@ export class PlanteModeleService {
     return this.http.post<ResponseDto>(this.URL, modelPlant);
   }
 
-  getAll(): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/all');
+  update(modelPlant: PlanteModeleUpdateDto): Observable<ResponseDto> {
+    return this.http.put<ResponseDto>(this.URL, modelPlant);
   }
 
   getId(id: number): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/' + id);
   }
 
-  update(modelPlant: PlanteModeleUpdateDto): Observable<ResponseDto> {
-    return this.http.put<ResponseDto>(this.URL, + modelPlant);
-  }
-
   delete(id: number): Observable<ResponseDto> {
     return this.http.delete<ResponseDto>(this.URL + '/' + id);
   }
+
+  getAll(): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/all');
+  }
+  
 
 }
