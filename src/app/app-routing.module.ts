@@ -26,6 +26,7 @@ import { UserviewDetailedPlantComponent } from './content/plant/userview-detaile
 
 const routes: Routes = [
   { path : '' , component :  AccueilHorsConnexionComponent },
+  { path : 'dashboard' , component :  DashboardComponent },
   { path : 'jardin' , component :  AllJardinComponent},
   { path : 'jardin/create' , component : CreateJardinComponent },
   { path : 'jardin/detail', component : DetailJardinComponent },

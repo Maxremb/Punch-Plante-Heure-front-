@@ -2,7 +2,7 @@
  * bootstrap-tagsinput v0.8.0
  * 
  */
-
+function maFonction(){
 (function ($) {
   "use strict";
 
@@ -689,3 +689,4 @@
     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
   });
 })(window.jQuery);
+}
