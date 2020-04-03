@@ -15,7 +15,7 @@
     <!--LISTE DES JARDINS-->
     <div class="row">
         <label>
-            <h2>Liste de mes jardins </h2>
+            <h2>Mes jardins</h2>
         </label>
         <hr>
         <table class="table table-hover">
@@ -27,9 +27,7 @@
                     <th>Longueur</th>
                     <th>Largeur</th>
                     <th>Département</th>
-                    <th>Détail jardin</th>
-                    <th>Modifier jardin</th>
-                    <th>Supprimer jardin</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,16 +41,10 @@
 
                     <td>
                         <a routerLink="/jardin/detail">
-                            <button class="btn btn-info" (click)="this.stockageJardin(e)">Détail</button>
+                            <button class="btn btn-info" (click)="this.stockageJardin(e)">Voir les détails de mon jardin</button>
                         </a>
-                    </td>
-                    <td>
-                        <a routerLink="/jardin/update">
-                            <button class="btn btn-info" (click)="this.stockageJardin(e)">Modifier</button>
-                        </a>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger" (click)="this.delete(e.identifier)">Supprimer</button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-danger" (click)="this.delete(e.identifier)">Supprimer mon jardin</button>
                     </td>
                 </tr>
             </tbody>

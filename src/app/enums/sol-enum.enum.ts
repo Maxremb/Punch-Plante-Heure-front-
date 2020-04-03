@@ -1,3 +1,3 @@
 export enum SolEnum {
-    'sableux','limonoArgileux','argiloSableux','argiloLimoneux','argileux',
+    'Sableux','LimonoArgileux','ArgiloSableux','ArgiloLimoneux','Argileux',
 }

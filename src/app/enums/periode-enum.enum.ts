@@ -1,3 +1,3 @@
 export enum PeriodeEnum {
-    'rempotage','floraison','fructification','taille','semis',
+    'REMPOTAGE','FLORAISON','FRUCTIFICATION','TAILLE','SEMIS',
 }

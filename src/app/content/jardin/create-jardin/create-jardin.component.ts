@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 import {JardinService} from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
+
+import { DepartementService } from 'src/app/services/departement.service';
 import { DepartementDto } from 'src/app/models/departement-dto';
 
 
@@ -19,11 +21,15 @@ export class CreateJardinComponent implements OnInit {
   messageValidation = null;
   messageErreur = null;
   utilisateurActif = new UtilisateurUpdateDto;
-  allDepartements = new DepartementDto;
+  allDepartements = new Array<DepartementDto>();
 
-  constructor(private service : JardinService) { }
+  constructor(
+    private service : JardinService,
+    private deptService : DepartementService,
+    ) { }
 
   ngOnInit(): void {
+    this.getAllDept();
     // Affecter l'user actif au jardin
     //this.utilisateurActif = this.service.utilisateurActif
     this.addJardinForm = new FormGroup({
@@ -32,7 +38,7 @@ export class CreateJardinComponent implements OnInit {
       "length": new FormControl(this.jardin.length),
       "width": new FormControl(this.jardin.width),
       "dept": new FormControl(this.jardin.dept, Validators.required),
-      "user" : new FormControl(this.jardin.user = this.utilisateurActif, Validators.required),
+      "user" : new FormControl(this.jardin.user = this.utilisateurActif),
     })
   }
 
@@ -50,6 +56,14 @@ export class CreateJardinComponent implements OnInit {
           this.messageValidation = responseDto.message;
         } else { this.messageErreur = responseDto.message; }
        }
+    )
+  }
+
+  getAllDept() {
+    this.deptService.getAll().subscribe(
+      responseDto => {
+        if (!responseDto.error) {this.allDepartements = responseDto.body;}
+      }
     )
   }
 }

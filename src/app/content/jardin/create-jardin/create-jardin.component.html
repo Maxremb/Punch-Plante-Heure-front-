@@ -4,6 +4,15 @@
     <div class="row">
 
         <div class="col-12 col-lg-5" style="padding-left: 0%;">
+          
+            <div >  <h1> DEBUG LISTE  DEPT : </h1>
+            <ul>
+                <li *ngFor="let depart of this.allDepartements">
+                    <p style="color: red;"> {{depart.name}} </p>
+                </li>
+            </ul>
+            </div>
+
             <form [formGroup]="addJardinForm" (ngSubmit)="this.create()">
                 <h2> Ajouter un jardin </h2>
                 <hr>
@@ -17,11 +26,11 @@
                 <div>
                     <label class="label">Sol : </label>
                     <select class="form-control" formControlName="ground" id="ground" name="ground">
-                        <option value='sableux'>Sableux</option>
-                        <option value='limonoArgileux'>Limono-argileux</option>
-                        <option value='argiloSableux'>Argilo-sableux</option>
-                        <option value='argiLimoneux'>Argilo-limoneux</option>
-                        <option value='argileux'>Argileux</option>
+                        <option value='Sableux'>Sableux</option>
+                        <option value='LimonoArgileux'>Limono-argileux</option>
+                        <option value='ArgiloSableux'>Argilo-sableux</option>
+                        <option value='ArgiloLimoneux'>Argilo-limoneux</option>
+                        <option value='Argileux'>Argileux</option>
                     </select>
                 </div>
                 <div>

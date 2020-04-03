@@ -2,14 +2,10 @@
 
     <app-entete-jardin></app-entete-jardin>
 
-    <div>
-        <a routerLink="/jardin/detail/updateplante">
-            <button>VISUEL UPDATE PLANTE</button>
-        </a>
-    </div>
+    
     <div class="row">
         <div class="col 12 col-lg-5" style="padding-left: 0%;">
-            <h2>Ajout d'une plante dans votre jardin</h2>
+            <h2>Ajout d'une plante dans mon jardin</h2>
             <hr>
             <div>
                 <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
@@ -27,14 +23,18 @@
                     <br>
                     <label class="label" for="healthStage">Etat de santé : </label>
                     <select id="healthStage" class="form-control" formControlName="healthStage">
-                        <option value="x">X</option>
-                        <option value="y">Y</option>
+                        <option value="bonneSante">En bonne santé</option>
+                        <option value="moyenne">Moyenne</option>
+                        <option value="morte">Morte</option>
                     </select>
                     <br>
                     <label class="label" for="plantStage">Etat de la plante : </label>
                     <select id="plantStage" class="form-control" formControlName="plantStage">
-                        <option value="x">X</option>
-                        <option value="y">Y</option>
+                        <option value="semis">Semis</option>
+                        <option value="jeunePousse">Jeune pousse</option>
+                        <option value="plant">Plante</option>
+                        <option value="fleuri">Plante fleurie</option>
+                        <option value="recolte">Plante à récolter</option>
                     </select>
                     <br>
                     <button type="submit" class="btn alazea-btn mt-15" [disabled]="planteForm.invalid">Valider</button>
@@ -63,6 +63,9 @@
 
 <div class="container">
     <div class="bottompage">
+        <a routerLink="/jardin/detail">
+            <button class="btn alazea-btn mt-15">Retour à mon jardin</button>
+        </a>
         <a routerLink="/jardin">
             <button class="btn alazea-btn mt-15">Mes jardins</button>
         </a>
