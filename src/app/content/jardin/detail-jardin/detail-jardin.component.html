@@ -1,7 +1,8 @@
 <div class="container" style="margin-top: 3%;">
-
+    <!-- Entete de jardin-->
     <app-entete-jardin></app-entete-jardin>
 
+    <!-- Affichage du jardin selectionné et de ses caracteristiques -->
     <div class="row">
         <div class="col-12 col-lg-7" style="padding-left: 0%;">
             <h2>Détails de mon jardin </h2>
@@ -21,8 +22,9 @@
             <br>
             <label class="label">Liste des plantes présentes dans mon jardin : </label>
             <p *ngIf="emptyliste"><i>Il n'y a pas de plantes dans mon jardin</i></p>
-            <p *ngIf="!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans mon jardin</i>
-            </p>
+            <p *ngIf="!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans mon jardin</i></p>
+
+            <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
             <table class="table table-hover" *ngIf="!emptyliste">
                 <thead>
                     <tr>
@@ -57,10 +59,12 @@
                         <td>{{planteUtilisateur.semiDate}}</td>
                         <td>{{planteUtilisateur.healthStage}}</td>
                         <td>{{planteUtilisateur.plantStage}}</td>
+                        <!-- Possibilité de retirer une plante utilisateur du jardin -->
                         <td><button class="btn alazea-btn mt-15"
                                 (click)="this.supprimer(planteUtilisateur.identifiant)">Retirer
                                 cette
                                 plante de mon jardin</button>
+                        <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
                             &nbsp;&nbsp;<a routerLink="/jardin/detail/updateplante">
                                 <button class="btn alazea-btn mt-15"
                                     (click)="this.stockagePlanteUtilisateur(planteUtilisateur)">Mettre
@@ -70,6 +74,8 @@
                 </tbody>
             </table>
         </div>
+        <!-- Fin du tableau avec les plantes -->
+        <!-- Affichage d'une image à droite du tableau -->
         <div class="col-12 col-lg-5">
             <div class="image_content">
                 <img src="assets/img/detail_jardin.jpg" alt="">
@@ -78,6 +84,8 @@
     </div>
 </div>
 
+<!-- Affichage de boutons en fin de page pour ajouter une plante / modifier les infos du jardin -->
+<!-- Affichage de boutons en fin de page pour retourner a la liste des jardins de l'utilisateur -->
 <div class="container">
     <div class="bottompage">
         <a routerLink="/jardin/detail/addplante">
@@ -88,9 +96,6 @@
         </a>
         <a routerLink="/jardin">
             <button class="btn alazea-btn mt-15">Mes jardins</button>
-        </a>
-        <a routerLink="">
-            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
         </a>
     </div>
 </div>

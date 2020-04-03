@@ -24,12 +24,16 @@ export class DetailJardinComponent implements OnInit {
     private planteutilisateurservice: PlanteUtilisateurService,
   ) { }
 
+  // Valeurs a initialiser
   ngOnInit(): void {
+    // recuperation de la variable jardin "stockée"
     this.jardin = this.jardinservice.jardin;
+    // recuperation des plantes utilisateurs dans ce jardin
     this.getPlantesParJardin(this.jardin.identifier);
       
   }
 
+  // recuperation des plantes utilisateurs dans ce jardin
   getPlantesParJardin(id: number): void {
     this.planteutilisateurservice.getAllByJardin(id).subscribe(
       (responseDto) => {
@@ -47,7 +51,7 @@ export class DetailJardinComponent implements OnInit {
     );
   }
 
- 
+  // suppression de la plante utilisateur numero ... + rechargement de la page
   supprimer(id: number): void {
     this.planteutilisateurservice.delete(id).subscribe(
       (responseDto) => {
@@ -59,6 +63,7 @@ export class DetailJardinComponent implements OnInit {
     );
   }
 
+  // enregistrement de la planteutilisateur a modifier dans la variable planteUtilisateur
   stockagePlanteUtilisateur(planteUtilisateur : PlanteUtilisateurUpdateDto) {
     this.planteutilisateurservice.planteUtilisateur = planteUtilisateur ;
   }

@@ -29,6 +29,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     private plantemodeleservice: PlanteModeleService,
     private jardinservice: JardinService) { }
 
+  // Valeurs initiales
   ngOnInit(): void {
     this.jardin = this.jardinservice.jardin;
     this.getAllPlantes();
