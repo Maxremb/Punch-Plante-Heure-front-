@@ -6,9 +6,15 @@
             <label for="commun">Nom Commun : {{this.plant.commun}}</label>
             <input type="text" class="form-control" [(ngModel)]="this.plant.commun" formControlName="commun"  name="commun">
         </div>
+
         <div class="form-group">
             <label for="scientifique">Nom Scientifique : {{this.plant.scientifique}}</label>
             <input type="text" class="form-control" [(ngModel)]="this.plant.scientifique"  formControlName="scientifique" name="scientifique">
+        </div>
+
+        <div class="form-group">
+            <label for="famille">Famille: {{this.plant.famille}}</label>
+            <input type="text" class="form-control" [(ngModel)]="this.plant.famille"  formControlName="famille" name="famille">
         </div>
 
         <div class="form-group">
@@ -63,6 +69,16 @@
                 <option value="true">Oui</option>    
                 <option value="false">Non</option>
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="assoplus">Association positive : {{this.plant.assoplus}}</label>
+            <input type="text" class="form-control" [(ngModel)]="this.plant.assoplus" formControlName="assoplus"  name="assoplus">
+        </div>
+
+        <div class="form-group">
+            <label for="assomoins">Association négative : {{this.plant.assomoins}}</label>
+            <input type="text" class="form-control" [(ngModel)]="this.plant.assomoins" formControlName="assomoins"  name="assomoins">
         </div>
 
         <div class="form-group">
