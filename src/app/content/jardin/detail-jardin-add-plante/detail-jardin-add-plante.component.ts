@@ -6,7 +6,6 @@ import { JardinService } from 'src/app/services/jardin-service.service';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail-jardin-add-plante',
@@ -24,15 +23,17 @@ export class DetailJardinAddPlanteComponent implements OnInit {
  
 
   constructor(
-    private location: Location,
     private planteutilisateurservice: PlanteUtilisateurService,
     private plantemodeleservice: PlanteModeleService,
     private jardinservice: JardinService) { }
 
-  // Valeurs initiales
+  // Valeurs initiales a recuperer
   ngOnInit(): void {
+    // variable jardin stockee dans le service
     this.jardin = this.jardinservice.jardin;
     this.getAllPlantes(1);
+    // recuperation de la liste de toutes les plantes modeles
+    // definition du formulaire
     this.planteForm = new FormGroup({
       "commun": new FormControl(this.plante.modelPlant.commun, Validators.required),
       "plantingDate": new FormControl(this.plante.plantingDate),
@@ -57,11 +58,6 @@ export class DetailJardinAddPlanteComponent implements OnInit {
       }
     )
   }
-
-  retour(): void {
-    this.location.back();
-  }
-
 
   ajouter() {
       this.plante.garden = this.jardin;

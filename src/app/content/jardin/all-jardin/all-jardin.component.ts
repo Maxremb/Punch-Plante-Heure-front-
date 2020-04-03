@@ -20,6 +20,9 @@ export class AllJardinComponent implements OnInit {
   constructor(private service : JardinService) { }
 
   ngOnInit(): void {
+    // Affecter l'user actif
+    //this.utilisateurActif = this.service.utilisateurActif
+
     //appel methode
     this.readAllByIdUtilisateur();
   }
@@ -48,6 +51,7 @@ export class AllJardinComponent implements OnInit {
     )
   }
 
+  //transfert l'entite jardin vers service pour detail
   stockageJardin(jardinTransfert : JardinUpdateDto) {
     this.service.jardin = jardinTransfert ;
   }

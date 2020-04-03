@@ -40,6 +40,7 @@ export class AllPeriodeComponent implements OnInit {
     )
   }
 
+  // permet d'envoyer la periode vers la page update à travers le service
   stockagePeriode(period : PeriodeUpdateDto) {
   this.service.periode = period ;
   }

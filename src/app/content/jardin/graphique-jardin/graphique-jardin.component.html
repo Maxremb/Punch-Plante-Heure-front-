@@ -1,1 +1,41 @@
-<p>graphique-jardin works!</p>
+<div>
+    <form>
+
+        <table>
+            <tbody>
+                <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
+                    <td *ngFor="let plante of this.matrice[ligne]; let index2 = index2; trackBy:trackByIndex;"
+                        (click)="modifOnClick(plante)">
+                        <div *ngIf="matrice[index][index2]=='chemin'">
+                            chemin
+                        </div>
+                        <div *ngIf="plante=='obstacle'">
+                            obstacle
+                        </div>
+                        <div *ngIf="plante==''">
+                            vide
+
+                        </div>
+                        <div *ngIf="plante!='chemin'&&plante!='obstacle'&& plante.length">
+                            {{plante}}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Affiche la liste des plantes et autre pour sélectionner et placer dans notre plan -->
+
+        <select [value]="selection">
+            <option class="selected" value="">Vide</option>
+            <option value="chemin">Chemin</option>
+            <option value="chemin">Obstacle</option>
+            <option *ngFor="let plant of this.plantes" value="{{plant.modelPlant.commun}}">
+                {{plant.modelPlant.commun}}
+            </option>
+        </select>
+
+
+    </form>
+</div>

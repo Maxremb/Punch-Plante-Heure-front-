@@ -1,88 +1,103 @@
 <div class="container">
-    <label><b> MODIFIER LA PERIODE </b></label> {{this.periode.type}}
-    <form [formGroup]="updatePeriodeForm" (ngSubmit)="this.update()">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Propriétés actuelles</th>
-                    <th>Changement ?</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <label>Type actuel : </label> {{this.periode.type}}
-                    </td>
-                    <td>
-                        Nouveau type ?
-                        <select formControlName="type" id="type" [(ngModel)]="this.periode.type" name="type">
-                            <option value='rempotage'>Rempotage</option>
-                            <option class="selected" value='floraison'>Floraison</option>
-                            <option value='fructification'>Fructifiation</option>
-                            <option value='taille'>Taille</option>
-                            <option value='semis'>Semis</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label> Plante actuelle : </label> {{this.periode.planteModel}}
-                    </td>
-                    <td>
-                        Nouvelle plante ? 
-                        <select class="form-control" id="planteModel" formControlName="planteModel" name="planteModel"
-                            [(ngModel)]="this.periode.planteModel">
-                            <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label> Date de début actuelle : </label> {{this.periode.dateDebut}}
-                    </td>
-                    <td>
-                        Nouvelle date ?
-                        <input id="dateDebut" type="date"  [(ngModel)]="this.periode.dateDebut" formControlName="dateDebut"
-                            name="dateDebut" >
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label> Date de fin actuelle : </label> {{this.periode.dateFin}}
-                    </td>
-                    <td>
-                        Nouvelle date ?
-                        <input id="dateFin" type="date" [(ngModel)]="this.periode.dateFin" formControlName="dateFin"
-                        name="dateFin" >
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label> Département actuel : </label> {{this.periode.dept}}
-                    </td>
-                    <td>
-                        Nouveau département ?
-                        <select class="form-control" id="dept" formControlName="dept" name="dept"  [(ngModel)]="this.periode.dept">
-                            <option *ngFor="let depart of this.allDepartements">{{depart.name}}</option>
-                        </select>
-                    </td>
-                </tr>
-            </tbody>
-            <button type="submit" class="btn btn-primary">Modifier</button>
-            <br>
-            <div class="alert alert-success" *ngIf="messageValidation">
-                <strong>Bravo !</strong> {{this.messageValidation}}
-            </div>
-            <div class="alert alert-danger" *ngIf="messageEchec">
-                <strong>Echec !</strong> {{this.messageEchec}}
-            </div>
-        </table>
-    </form>
+
+
+
+
+    <!--detail periode + FORM-->
+    <div class="row">
+        <div class="col-12 col-lg-6" style="padding-left: 0%;">
+            <h2> MODIFIER LA PERIODE </h2> {{this.periode.type}}
+            <form [formGroup]="updatePeriodeForm" (ngSubmit)="this.update()">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h5>Propriétés actuelles </h5>
+                            </th>
+                            <th>
+                                <h5>Et maintenant ?</h5>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label>Type actuel : </label> {{this.periode.type}}
+                            </td>
+                            <td>
+                                <select formControlName="type" id="type" name="type">
+                                    <option value='rempotage'>Rempotage</option>
+                                    <option class="selected" value='floraison'>Floraison</option>
+                                    <option value='fructification'>Fructifiation</option>
+                                    <option value='taille'>Taille</option>
+                                    <option value='semis'>Semis</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label> Plante actuelle : </label> {{this.periode.planteModel}}
+                            </td>
+                            <td>
+                                <select class="form-control" id="planteModel" formControlName="planteModel"
+                                    name="planteModel">
+                                    <option *ngFor="let plante of this.allPlantes">{{plante.nomCommun}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label> Date de début actuelle : </label> {{this.periode.dateDebut}}
+                            </td>
+                            <td>
+                                <input id="dateDebut" type="date" formControlName="dateDebut" name="dateDebut">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label> Date de fin actuelle : </label> {{this.periode.dateFin}}
+                            </td>
+                            <td>
+                                <input id="dateFin" type="date" formControlName="dateFin" name="dateFin">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label> Département actuel : </label> {{this.periode.dept}}
+                            </td>
+                            <td>
+                                <select class="form-control" id="dept" formControlName="dept" name="dept">
+                                    <option *ngFor="let depart of this.allDepartements">{{depart.name}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <button type="submit" class="btn alazea-btn mt-15">Modifier</button>
+                    <br>
+
+                    <!--message validation modification-->
+                    <div class="alert alert-success" *ngIf="messageValidation">
+                        <strong>Bravo !</strong> {{this.messageValidation}}
+                    </div>
+                    <div class="alert alert-danger" *ngIf="messageEchec">
+                        <strong>Echec !</strong> {{this.messageEchec}}
+                    </div>
+                </table>
+            </form>
+        </div>
+    </div>
 </div>
+<!--ENF FORM-->
 
 
+<!--LIEN DE NAVIGATION-->
 <div class="container">
-    <a routerLink="/jardin">
-        <input type="button" value="Mes jardins" class="btn btn-info" />
-    </a>
+    <div class="bottompage">
+        <a routerLink="/periode">
+            <input type="button" value="Mes périodes" class="btn alazea-btn mt-15" />
+        </a>
+        <a routerLink="">
+            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        </a>
+    </div>
 </div>

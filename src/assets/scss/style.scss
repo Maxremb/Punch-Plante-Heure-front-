@@ -19,13 +19,20 @@ Version: - v1.0
 
 /* :: 2.0 Import All CSS */
 
-@import 'assets/css/bootstrap.min.css';
-@import 'assets/css/classy-nav.css';
-@import 'assets/css/owl.carousel.min.css';
-@import 'assets/css/animate.css';
-@import 'assets/css/magnific-popup.css';
-@import 'assets/css/font-awesome.min.css';
-@import 'assets/css/elegant-icon.css';
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+// @import url('/src/assets/css/classy-nav.css');
+// @import url('/src/assets/css/owl.carousel.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css');
+// @import url('/src/assets/css/magnific-popup.css.css');
+// @import url('/src/assets/css/font-awesome.min.css');
+// @import url('/src/assets/css/elegant-icon.css');
+// @import '/src/assets/css/bootstrap.min.css';
+// @import 'assets/css/classy-nav.css';
+// @import 'assets/css/owl.carousel.min.css';
+// @import 'assets/css/animate.css';
+// @import 'assets/css/magnific-popup.css';
+// @import 'assets/css/font-awesome.min.css';
+// @import 'assets/css/elegant-icon.css';
 
 /* :: 3.0 Base CSS */
 

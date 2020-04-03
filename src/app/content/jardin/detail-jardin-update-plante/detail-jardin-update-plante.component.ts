@@ -22,17 +22,21 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
   messageErreur: string;
   allPlantes = new Array<PlanteModeleUpdateDto>();
   
-
+  // Injection des dependances service necessaires
   constructor(
-    private location: Location,
     private planteutilisateurservice: PlanteUtilisateurService,
     private plantemodeleervice: PlanteModeleService,
     private jardinservice: JardinService) { }
 
+  // Creation des valeurs initiales
   ngOnInit(): void {
+    // Recuperation de la variable jardin stockee dans le service
     this.jardin = this.jardinservice.jardin;
+    // Recuperation de la variable planteUtilisateur stockee dans le service
     this.planteUtilisateur = this.planteutilisateurservice.planteUtilisateur;
     this.getAllPlantes(1);
+    // Recuperation de la liste de toutes les plantes presentes dans model
+    // Definition du formulaire de modification des plantes utilisateurs
     this.updateplanteForm = new FormGroup({
       "plantingDate": new FormControl(this.planteUtilisateur.plantingDate),
       "semiDate": new FormControl(this.planteUtilisateur.semiDate),
@@ -44,6 +48,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
 
   getAllPlantes(npage:number): void {
     this.plantemodeleervice.getAll(npage).subscribe(
+  // Recuperation de la liste de toutes les plantes presentes dans model
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.body;
@@ -52,17 +57,13 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     )
   }
 
-  retour(): void {
-    this.location.back();
-  }
-
-
   get commun() { return this.updateplanteForm.get('commun') }
   get plantingDate() { return this.updateplanteForm.get('plantingDate') }
   get semiDate() { return this.updateplanteForm.get('semiDate') }
   get plantStage() { return this.updateplanteForm.get('plantStage') }
   get healthStage() {return this.updateplanteForm.get('healthStage')}
 
+  // methode update permettant la mise à jour d'une plante utilisateur dans la base de données
   update(): void {
     this.planteutilisateurservice.update(this.planteUtilisateur).subscribe(
       (responseDto) => {

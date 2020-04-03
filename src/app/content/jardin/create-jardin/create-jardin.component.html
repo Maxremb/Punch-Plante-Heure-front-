@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 3%;">
+<div class="container">
 
     <!--ENTETE DE LA PAGE : GESTION E MON JARDIN-->
     <app-entete-jardin></app-entete-jardin>
@@ -9,8 +9,8 @@
             <!--BALISE POUR AFFICHAGE DEBUG-->
             <div>
                 <h1> DEBUG LISTE DEPT : </h1>
-                <ul>
-                    <li *ngFor="let depart of this.allDepartements">
+                <ul *ngFor="let depart of this.allDepartements">
+                    <li >
                         <p style="color: red;"> {{depart.name}} </p>
                     </li>
                 </ul>
