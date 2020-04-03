@@ -27,4 +27,10 @@
             </tr>
         </tbody>
     </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" *ngFor="let page of pageTotal">
+            <li class="page-item" (click)="this.getAll(page)">{{page}}</li>
+            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+        </ul>
+    </nav>
 </div>

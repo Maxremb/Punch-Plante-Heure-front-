@@ -32,7 +32,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
   ngOnInit(): void {
     this.jardin = this.jardinservice.jardin;
     this.planteUtilisateur = this.planteutilisateurservice.planteUtilisateur;
-    this.getAllPlantes();
+    this.getAllPlantes(1);
     this.updateplanteForm = new FormGroup({
       "plantingDate": new FormControl(this.planteUtilisateur.plantingDate),
       "semiDate": new FormControl(this.planteUtilisateur.semiDate),
@@ -42,8 +42,8 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
 
   }
 
-  getAllPlantes(): void {
-    this.plantemodeleervice.getAll().subscribe(
+  getAllPlantes(npage:number): void {
+    this.plantemodeleervice.getAll(npage).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.body;
