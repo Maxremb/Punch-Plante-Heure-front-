@@ -3,8 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 import {JardinService} from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
-import { DepartementCreateDto } from 'src/app/models/departement-create-dto';
+
 import { DepartementService } from 'src/app/services/departement.service';
+import { DepartementDto } from 'src/app/models/departement-dto';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class CreateJardinComponent implements OnInit {
   messageValidation = null;
   messageErreur = null;
   utilisateurActif = new UtilisateurUpdateDto;
-  allDepartements = new Array<DepartementCreateDto>();
+  allDepartements = new Array<DepartementDto>();
 
   constructor(
     private service : JardinService,

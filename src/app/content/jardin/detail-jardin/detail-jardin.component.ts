@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
-import { FormGroup } from '@angular/forms';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 
@@ -22,19 +20,18 @@ export class DetailJardinComponent implements OnInit {
   messageEchec: string;
   
   constructor(
-    private location: Location,
     private jardinservice: JardinService,
     private planteutilisateurservice: PlanteUtilisateurService,
   ) { }
 
   ngOnInit(): void {
     this.jardin = this.jardinservice.jardin;
-    this.getPlantesParJardin();
+    this.getPlantesParJardin(this.jardin.identifier);
       
   }
 
-  getPlantesParJardin(): void {
-    this.planteutilisateurservice.getAll().subscribe(
+  getPlantesParJardin(id: number): void {
+    this.planteutilisateurservice.getAllByJardin(id).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesParJardin = responseDto.body;
@@ -51,11 +48,6 @@ export class DetailJardinComponent implements OnInit {
   }
 
  
-
-  retour(): void {
-    this.location.back();
-  }
-
   supprimer(id: number): void {
     this.planteutilisateurservice.delete(id).subscribe(
       (responseDto) => {

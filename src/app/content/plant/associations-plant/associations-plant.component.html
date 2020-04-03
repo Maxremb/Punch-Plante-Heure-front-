@@ -1,133 +1,26 @@
 <div class="container">
-    <div class="panel panel-default">
-       <div class="panel-heading">
-          <h3 class="panel-title">PickList Demo</h3>
-       </div>
-       <div class="panel-body">
-
-          <div id="pickList"></div>
-
-          <br><br>
-          <button class="btn btn-primary" id="getSelected">Get Selected</button>
-       </div>
-    </div>
- </div>
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
- <script>
- (function ($) {
-
-    $.fn.pickList = function (options) {
- 
-       var opts = $.extend({}, $.fn.pickList.defaults, options);
- 
-       this.fill = function () {
-          var option = '';
- 
-          $.each(opts.data, function (key, val) {
-             option += '<option data-id=' + val.id + '>' + val.text + '</option>';
-          });
-          this.find('.pickData').append(option);
-       };
-       this.controll = function () {
-          var pickThis = this;
- 
-          pickThis.find(".pAdd").on('click', function () {
-             var p = pickThis.find(".pickData option:selected");
-             p.clone().appendTo(pickThis.find(".pickListResult"));
-             p.remove();
-          });
- 
-          pickThis.find(".pAddAll").on('click', function () {
-             var p = pickThis.find(".pickData option");
-             p.clone().appendTo(pickThis.find(".pickListResult"));
-             p.remove();
-          });
- 
-          pickThis.find(".pRemove").on('click', function () {
-             var p = pickThis.find(".pickListResult option:selected");
-             p.clone().appendTo(pickThis.find(".pickData"));
-             p.remove();
-          });
- 
-          pickThis.find(".pRemoveAll").on('click', function () {
-             var p = pickThis.find(".pickListResult option");
-             p.clone().appendTo(pickThis.find(".pickData"));
-             p.remove();
-          });
-       };
- 
-       this.getValues = function () {
-          var objResult = [];
-          this.find(".pickListResult option").each(function () {
-             objResult.push({
-                id: $(this).data('id'),
-                text: this.text
-             });
-          });
-          return objResult;
-       };
- 
-       this.init = function () {
-          var pickListHtml =
-                  "<div class='row'>" +
-                  "  <div class='col-sm-5'>" +
-                  "	 <select class='form-control pickListSelect pickData' multiple></select>" +
-                  " </div>" +
-                  " <div class='col-sm-2 pickListButtons'>" +
-                  "	<button  class='pAdd btn btn-primary btn-sm'>" + opts.add + "</button>" +
-                  "      <button  class='pAddAll btn btn-primary btn-sm'>" + opts.addAll + "</button>" +
-                  "	<button  class='pRemove btn btn-primary btn-sm'>" + opts.remove + "</button>" +
-                  "	<button  class='pRemoveAll btn btn-primary btn-sm'>" + opts.removeAll + "</button>" +
-                  " </div>" +
-                  " <div class='col-sm-5'>" +
-                  "    <select class='form-control pickListSelect pickListResult' multiple></select>" +
-                  " </div>" +
-                  "</div>";
- 
-          this.append(pickListHtml);
- 
-          this.fill();
-          this.controll();
-       };
- 
-       this.init();
-       return this;
-    };
- 
-    $.fn.pickList.defaults = {
-       add: 'Add',
-       addAll: 'Add All',
-       remove: 'Remove',
-       removeAll: 'Remove All'
-    };
- 
- 
- }(jQuery));
-
-    var val = {
-       01: {id: 01, text: 'Isis'},
-       02: {id: 02, text: 'Sophia'},
-       03: {id: 03, text: 'Alice'},
-       04: {id: 04, text: 'Isabella'},
-       05: {id: 05, text: 'Manuela'},
-       06: {id: 06, text: 'Laura'},
-       07: {id: 07, text: 'Luiza'},
-       08: {id: 08, text: 'Valentina'},
-       09: {id: 09, text: 'Giovanna'},
-       10: {id: 10, text: 'Maria Eduarda'},
-       11: {id: 11, text: 'Helena'},
-       12: {id: 12, text: 'Beatriz'},
-       13: {id: 13, text: 'Maria Luiza'},
-       14: {id: 14, text: 'Lara'},
-       15: {id: 15, text: 'Julia'}
-    };
-
-    var pick = $("#pickList").pickList({data: val});
-
-    $("#getSelected").click(function () {
-       console.log(pick.getValues());
-    });
-
- </script>
+    <input class="form-control mb-4" id="tableSearch" type="text"
+      placeholder="Type something to search list items">
+      
+    <h2>Liste des plantes :</h2>
+    
+    <!-- <table class="table table-hover"> -->
+      <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom commun</th>
+                <th>Nom scientifique</th>
+                <th>URL picture</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            <tr *ngFor="let plant of this.allPlant">
+                <td>{{plant.identifiant}}</td>
+                <td>{{plant.commun}}</td>
+                <td>{{plant.scientifique}}</td>
+                <td>{{plant.picture}}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>

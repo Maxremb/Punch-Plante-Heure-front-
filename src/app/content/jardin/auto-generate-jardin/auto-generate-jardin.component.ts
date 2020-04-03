@@ -29,7 +29,7 @@ export class AutoGenerateJardinComponent implements OnInit {
     })
   }
 
-  get length() { return this.dimensionsJardinForm.get('longueur') }
+  get length() { return this.dimensionsJardinForm.get('length') }
   get width() { return this.dimensionsJardinForm.get('width') }
   get user() {return this.dimensionsJardinForm.get('user')}
 
@@ -49,7 +49,7 @@ export class AutoGenerateJardinComponent implements OnInit {
   }
 
   // Délimitations des parcelles
-  decouperEnEspaceCultivable(): void {
+  placerLesChemins(): void {
     // Faire des divisons pour savoir quels est le découpage garentissant une surface de culture maximal
     // Tout en gardant des espaces pour circuler entre les parcelles
     return

@@ -4,7 +4,7 @@ import { PeriodeService } from 'src/app/services/periode.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ResponseDto } from 'src/app/models/response-dto';
 import { PlanteModeleListe } from 'src/app/models/plante-modele-liste';
-import { DepartementCreateDto } from 'src/app/models/departement-create-dto';
+import { DepartementDto } from 'src/app/models/departement-dto';
 
 @Component({
   selector: 'app-update-periode',
@@ -19,7 +19,7 @@ export class UpdatePeriodeComponent implements OnInit {
   periode = new PeriodeUpdateDto;
   updatePeriodeForm : FormGroup;
   allPlantes = new PlanteModeleListe;
-  allDepartements = new DepartementCreateDto;
+  allDepartements = new DepartementDto;
   messageValidation = null;
   messageEchec = null;
 
