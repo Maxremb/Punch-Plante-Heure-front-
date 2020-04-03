@@ -1,12 +1,10 @@
 <div class="container" style="margin-top: 3%;">
+
+    <app-entete-jardin></app-entete-jardin>
+    
+    <div class="row"> 
     <div>
-        <h1 class="titre">
-            GESTION DE MON JARDIN
-        </h1>
-    </div>
-    <div>
-        <h2>Détail du jardin </h2>
-        <h2> {{jardin.name}} </h2>
+        <h2>Détail du jardin </h2>   <h2> <i>{{jardin.name}} </i> </h2>
         <hr>
         <label class="label">ID : </label><span> {{jardin.identifier}}</span>
         <br>
@@ -56,6 +54,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 
 <div class="container">

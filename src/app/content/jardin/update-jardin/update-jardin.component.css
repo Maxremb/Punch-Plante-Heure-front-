@@ -1,11 +1,3 @@
-/* titre haut de page */
-.titre {
-    text-align: center;
-    border: solid ;
-    border-color: #70c745;
-    padding-left: 5%;
-    padding-right: 5%;
-}
 
 .label {
     font-weight: bold;
