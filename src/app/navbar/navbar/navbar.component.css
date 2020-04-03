@@ -1,0 +1,10 @@
+.sitcky {
+    position: sticky;
+    top: 0;;
+}
+
+
+.navbar-fixed-top.scrolled {
+    background-color: black !important;
+    transition: background-color 200ms linear;
+  }
