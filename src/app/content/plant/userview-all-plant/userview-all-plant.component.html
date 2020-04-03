@@ -1,12 +1,7 @@
 <div class="container">
-    <hr>
-    <button type="button" class="btn btn-info" (click)="this.getAll()">Voir la liste entière</button>
-    <hr>
-    <a routerLink="/plant/create">
-    <input type="button" value="Ajouter une plante" class="btn btn-info"/>
-    </a>
-    <hr>
-    <h2>Liste des plantes :</h2>
+    <br><br><br><br>
+    <app-entete-plant></app-entete-plant>
+    <br><br><br>
     
     <table class="table table-hover">
         <thead>
@@ -15,6 +10,7 @@
                 <th>Nom commun</th>
                 <th>Nom scientifique</th>
                 <th>URL picture</th>
+                <th>Détails</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +21,7 @@
                 <td>{{plant.picture}}</td>
                 <td>
                 <a routerLink="/plant/vuser/{{plant.identifiant}}">
-                    <button class="btn btn-info" >Détails</button>
+                    <button class="btn alazea-btn mt-15" >Détails</button>
                 </a>
                 </td>
             </tr>

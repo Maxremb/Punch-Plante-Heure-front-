@@ -1,24 +1,29 @@
 <div class="container" style="margin-top: 3%;">
 
+    <!--ENTETE DE LA PAGE : GESTION E MON JARDIN-->
     <app-entete-jardin></app-entete-jardin>
-    <div class="row">
 
+    <div class="row">
         <div class="col-12 col-lg-5" style="padding-left: 0%;">
-          
-            <div >  <h1> DEBUG LISTE  DEPT : </h1>
-            <ul>
-                <li *ngFor="let depart of this.allDepartements">
-                    <p style="color: red;"> {{depart.name}} </p>
-                </li>
-            </ul>
+
+            <!--BALISE POUR AFFICHAGE DEBUG-->
+            <div>
+                <h1> DEBUG LISTE DEPT : </h1>
+                <ul>
+                    <li *ngFor="let depart of this.allDepartements">
+                        <p style="color: red;"> {{depart.name}} </p>
+                    </li>
+                </ul>
             </div>
 
+            <!--FORM d'ajout de jardin-->
             <form [formGroup]="addJardinForm" (ngSubmit)="this.create()">
                 <h2> Ajouter un jardin </h2>
                 <hr>
                 <div>
                     <label class="label">Nom : </label>
                     <input id="name" type="text" class="form-control" formControlName="name" name="name" required>
+                    <!--message validator nom jardin-->
                     <div *ngIf="name.errors?.required && (name.touched || name.dirty)" class="alert alert-danger">
                         Le nom est requis !
                     </div>
@@ -50,28 +55,35 @@
                             <option>{{depart.name}}</option>
                         </div>
                     </select>
-                    <span *ngIf="this.allDepartements == null">Aucun département n'est enregistré dans la base de
-                        donnée</span>
+                    <!--message validator pour departement-->
                     <div *ngIf="dept.errors?.required && (dept.touched || dept.dirty)" class="alert alert-danger">
                         Le département est requis !
                     </div>
 
                 </div>
+
+                <!--boutton de validation-->
                 <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.addJardinForm.valid">
                     Créer mon jardin
                 </button>
 
+                <!--Message de success ou fail our la création de jardin-->
                 <div class="alert alert-success" *ngIf="this.messageValidation">
                     <strong>Bravo !</strong> {{this.messageValidation}}
                 </div>
                 <div class="alert alert-danger" *ngIf="this.messageErreur">
                     <strong>Echec !</strong> {{this.messageErreur}}
                 </div>
+
             </form>
         </div>
+<!--End bloc formulaire-->
+
+
+        <!--Image decoration-->
         <div class="col-12 col-lg-7">
             <div class="image_content">
-                <div >
+                <div>
                     <img src="assets/img/creation_jardin.jpg" alt="">
                 </div>
                 <div class="image_content2">
@@ -79,9 +91,12 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
+<!--Lien de navigation-->
 <div class="container">
     <div class="bottompage">
         <a routerLink="/jardin">
