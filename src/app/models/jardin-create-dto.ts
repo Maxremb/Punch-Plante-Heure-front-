@@ -1,7 +1,8 @@
 import { SolEnum } from "src/app/enums/sol-enum.enum";
 import { DepartementUpdateDto } from "./departement-update-dto";
 import { UtilisateurUpdateDto } from './utilisateur-update-dto';
-import { EspaceCultivableUpdateDto } from './espace-cultivable-update-dto';
+import { LargeurCheminEnum } from '../enums/largeur-chemin-enum.enum';
+import { LargeurPlancheEnum } from '../enums/largeur-planche-enum.enum';
 
 export class JardinCreateDto {
     ground: SolEnum;
@@ -12,5 +13,5 @@ export class JardinCreateDto {
     user: UtilisateurUpdateDto;
 
     // Attributs provisoirs pour la génération automatique
-    espaceCultivable: Array<EspaceCultivableUpdateDto>;
+    chemin: Array<Array<number>>;
 }

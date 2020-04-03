@@ -1,12 +1,3 @@
-/* titre haut de page */
-.titre {
-    text-align: center;
-    border: solid ;
-    border-color: #70c745;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
 
 hr {
     color: #70c745;
@@ -15,6 +6,16 @@ hr {
 .label {
     font-weight: bold;
     margin-top: 1%;
+}
+
+.image_content {
+    margin-top: 15%;
+    margin-left: 5%;
+    margin-bottom: 15%;
+}
+
+.image_content2 {
+    margin-left: 46%;
 }
 
 /* div boutton pas de page */

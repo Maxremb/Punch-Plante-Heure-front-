@@ -28,6 +28,7 @@ import { BlogComponent } from './content/blog/blog.component';
 import { AssociationsPlantComponent } from './content/plant/associations-plant/associations-plant.component';
 import { ContactComponent } from './content/contact/contact.component';
 import { AboutComponent } from './content/about/about.component';
+import { EnteteJardinComponent } from './content/jardin/entete-jardin/entete-jardin.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AboutComponent } from './content/about/about.component';
     AssociationsPlantComponent,
     ContactComponent,
     AboutComponent,
+    EnteteJardinComponent,
   ],
   imports: [
     BrowserModule,

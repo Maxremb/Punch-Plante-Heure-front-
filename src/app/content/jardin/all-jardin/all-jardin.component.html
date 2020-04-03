@@ -1,21 +1,17 @@
 <div class="container" style="margin-top: 3%;">
-    <div >
-        <h1 class="titre">
-            GESTION DE MON JARDIN
-        </h1>
-    </div>
+
+    <app-entete-jardin></app-entete-jardin>
+    
     <div>
-        <a routerLink="/jardin/create" style="margin-right: 10%;">
-            <input type="button" value="Ajouter un jardin" class="btn alazea-btn mt-15" />
-        </a>
+
         <a routerLink="/jardin/detail" style="margin-right: 10%;">
-            <input type="button" value="VISUEL detail jardin" class="btn alazea-btn mt-15" />
+            <input type="button" value="VISUEL detail jardin" />
         </a>
         <a routerLink="/jardin/update" style="margin-right: 10%;">
-            <input type="button" value="VISUEL update jardin" class="btn alazea-btn mt-15" />
+            <input type="button" value="VISUEL update jardin" />
         </a>
     </div>
-        <br>
+    <br>
     <!--LISTE DES JARDINS-->
     <div class="row">
         <label>
@@ -66,8 +62,11 @@
 
 <div class="container">
     <div class="bottompage">
-    <a routerLink="">
-        <input type="button" value="Home page" class="btn alazea-btn mt-15" />
-    </a>
+        <a routerLink="/jardin/create">
+            <input type="button" value="Ajouter un jardin" class="btn alazea-btn mt-15" />
+        </a>
+        <a routerLink="">
+            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        </a>
     </div>
 </div>

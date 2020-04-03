@@ -1,4 +1,6 @@
 import { PeriodeUpdateDto } from "./periode-update-dto";
+import { StrateEnum } from '../enums/strate-enum.enum';
+import { VivaciteEnum } from '../enums/vivacite-enum.enum';
 
 export class PlanteModeleCreateDto {
     commun: string;
@@ -22,8 +24,13 @@ export class PlanteModeleCreateDto {
     // Attributs provisoirs pour la génération automatique
     // Il faudra mettre ceux de la plante à son developpement maximal
     surfaceAuSol: number;   //le rayon en cm
-    higth: number;
+    hight: number; //en cm
     pousseSousTerre: boolean;
     grimpant: boolean;
+    profondeurRacine: number; //en cm
+    strate: StrateEnum;
+    vivacite: VivaciteEnum;
+
+    famille: string;
     // Mettre les degrées d'affinité avec les plantes peut-être ?
 }

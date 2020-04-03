@@ -22,25 +22,39 @@ export class JardinService {
     return this.http.post<ResponseDto>(this.URL, jardin);
   }
 
-  getAll(): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/all');
-  }
-
-  getAllByUtilisateur(idUtilisateur: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/' + idUtilisateur);
+  update(jardin: JardinUpdateDto): Observable<ResponseDto> {
+    return this.http.put<ResponseDto>(this.URL, jardin);
   }
 
   getId(id: number): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/' + id);
   }
 
-  update(jardin: JardinUpdateDto): Observable<ResponseDto> {
-    return this.http.put<ResponseDto>(this.URL, + jardin);
-  }
-
   delete(id: number): Observable<ResponseDto> {
     return this.http.delete<ResponseDto>(this.URL + '/' + id);
   }
+
+  getAll(): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/all');
+  }
+
+  // readByDep
+  getAllByDepartement(numDepartement: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/departement/' + numDepartement);
+  }
+
+  // readByName
+  getAllByName(name: string): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/name/' + name);
+  }
+
+  // readByUser
+  getAllByUtilisateur(idUtilisateur: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/user/' + idUtilisateur);
+  }
+
+ 
+
 
 
 

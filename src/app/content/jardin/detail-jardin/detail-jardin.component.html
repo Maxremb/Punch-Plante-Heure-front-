@@ -1,50 +1,96 @@
+<div class="container" style="margin-top: 3%;">
+
+    <app-entete-jardin></app-entete-jardin>
+
+    <div class="row">
+        <div class="col-12 col-lg-7" style="padding-left: 0%;">
+            <h2>Détail du jardin </h2>
+            <h2> <i>{{jardin.name}} </i> </h2>
+            <hr>
+            <label class="label">ID : </label><span> {{jardin.identifier}}</span>
+            <br>
+            <label class="label">Nom : </label>{{jardin.name}}
+            <br>
+            <label class="label">Longueur : </label>{{jardin.length}}
+            <br>
+            <label class="label">Largeur : </label>{{jardin.width}}
+            <br>
+            <label class="label">Sol : </label>{{jardin.ground}}
+            <br>
+            <label class="label">Département : </label>{{jardin.dept.name}} - ({{jardin.dept.depNum}})
+            <br>
+            <label class="label">Liste des plantes présentes dans votre jardin : </label>
+            <p *ngIf="emptyliste"><i>Il n'y a pas de plantes dans votre jardin</i></p>
+            <p *ngIf="!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans votre jardin</i>
+            </p>
+            <table class="table table-hover" *ngIf="!emptyliste">
+                <thead>
+                    <tr>
+                        <th>
+                            <h5>ID</h5>
+                        </th>
+                        <th>
+                            <h5>Nom</h5>
+                        </th>
+                        <th>
+                            <h5>Date de plantation</h5>
+                        </th>
+                        <th>
+                            <h5>Date de semis</h5>
+                        </th>
+                        <th>
+                            <h5>Etat de santé</h5>
+                        </th>
+                        <th>
+                            <h5>Etat de la plante</h5>
+                        </th>
+                        <th>
+                            <h5>Actions</h5>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
+                        <td>{{planteUtilisateur.identifiant}}</td>
+                        <td>{{planteUtilisateur.modelPlant.commun}}</td>
+                        <td>{{planteUtilisateur.plantingDate}}</td>
+                        <td>{{planteUtilisateur.semiDate}}</td>
+                        <td>{{planteUtilisateur.healthStage}}</td>
+                        <td>{{planteUtilisateur.plantStage}}</td>
+                        <td><button class="btn btn-danger"
+                                (click)="this.supprimer(planteUtilisateur.identifiant)">Retirer
+                                cette
+                                plante de votre jardin</button>
+                            &nbsp;&nbsp;<a routerLink="/jardin/detail/updateplante">
+                                <button class="btn btn-info"
+                                    (click)="this.stockagePlanteUtilisateur(planteUtilisateur)">Mettre
+                                    à jour cette plante</button>
+                            </a>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-lg-5">
+            <div class="image_content">
+                <img src="assets/img/detail_jardin.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
-    <br><br><br>
-    <h2>Votre jardin {{jardin.name}}</h2>
-    <div><span>ID : </span>{{jardin.identifier}}</div>
-    <div><span>Nom : </span>{{jardin.name}}</div>
-    <div><span>Longueur : </span>{{jardin.length}}</div>
-    <div><span>Largeur : </span>{{jardin.width}}</div>
-    <div><span>Sol : </span>{{jardin.ground}}</div>
-    <div><span>Département : </span>{{jardin.dept.name}} ({{jardin.dept.depNum}})</div>
-    <div><span>Liste des plantes présentes dans votre jardin : </span></div>
-        <p *ngIf = "emptyliste"><i>Il n'y a pas de plantes dans votre jardin</i></p>
-        <p *ngIf = "!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans votre jardin</i></p>
-        <table class="table table-hover" *ngIf = "!emptyliste">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Date de plantation</th>
-                    <th>Date de semis</th>
-                    <th>Etat de santé</th>
-                    <th>Etat de la plante</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
-                    <td>{{planteUtilisateur.identifiant}}</td>
-                    <td>{{planteUtilisateur.modelPlant.commun}}</td>
-                    <td>{{planteUtilisateur.plantingDate}}</td>
-                    <td>{{planteUtilisateur.semiDate}}</td>
-                    <td>{{planteUtilisateur.healthStage}}</td>
-                    <td>{{planteUtilisateur.plantStage}}</td>
-                    <td><button class="btn btn-danger" (click)="this.supprimer(planteUtilisateur.identifiant)">Retirer cette plante de votre jardin</button>
-                        &nbsp;&nbsp;<a routerLink="/jardin/detail/updateplante">
-                            <button class="btn btn-info" (click)="this.stockagePlanteUtilisateur(planteUtilisateur)">Mettre à jour cette plante</button>
-                        </a>
-                </tr>
-            </tbody>
-        </table>
-    <br><br>
-    <a routerLink="/jardin/detail/addplante"><button class="btn alazea-btn mt-15">Ajouter une plante à votre jardin</button></a>
-    &nbsp;&nbsp;
-    <a routerLink="/jardin/update"><button class="btn alazea-btn mt-15">Modifier les caractéristiques de votre jardin</button></a>
-    &nbsp;&nbsp;
-    <button class="btn alazea-btn mt-15"(click)="retour()">Retour à la liste de vos jardins</button>
-    <br><br>
-</div>   
-
-
-
+    <div class="bottompage">
+        <a routerLink="/jardin/detail/addplante">
+            <button class="btn alazea-btn mt-15">Ajouter une plante </button>
+        </a>
+        <a routerLink="/jardin/update">
+            <button class="btn alazea-btn mt-15">Modifiez votre jardin</button>
+        </a>
+        <a routerLink="/jardin">
+            <button class="btn alazea-btn mt-15">Mes jardins</button>
+        </a>
+        <a routerLink="">
+            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        </a>
+    </div>
+</div>
