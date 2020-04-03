@@ -18,10 +18,10 @@ import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-
 import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
 import { BlogComponent } from './content/blog/blog.component';
 import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
-import { AssociationsPlantComponent } from './content/plant/associations-plant/associations-plant.component';
 import { UserviewAllPlantComponent } from './content/plant/userview-all-plant/userview-all-plant.component';
 import { AboutComponent } from './content/about/about.component';
 import { ContactComponent } from './content/contact/contact.component';
+import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
 
 
 const routes: Routes = [
@@ -40,8 +40,8 @@ const routes: Routes = [
   { path : 'periode/detail', component : DetailPeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
   { path : 'blog' , component : BlogComponent },
-  { path : 'plant/asso/:id', component: AssociationsPlantComponent },
   { path : 'plant/vuser', component: UserviewAllPlantComponent },
+  { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent }
   

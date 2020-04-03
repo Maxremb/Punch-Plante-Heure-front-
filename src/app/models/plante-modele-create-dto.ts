@@ -13,6 +13,9 @@ export class PlanteModeleCreateDto {
     desc: string;
     toxi: boolean;
     picture: string;
+    famille: string;
+    assoplus: string[]; //association positive en tant que string et non plantmodel
+    assomoins: string[]; //idem pour associations negatives
 
     periodes: Array<PeriodeUpdateDto>;
 

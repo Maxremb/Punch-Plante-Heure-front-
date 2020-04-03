@@ -1,21 +1,11 @@
-<script>
-$(document).ready(function(){
-    $("#tableSearch").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#myTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-  </script>
-
 <div class="container">
     <input class="form-control mb-4" id="tableSearch" type="text"
       placeholder="Type something to search list items">
       
     <h2>Liste des plantes :</h2>
     
-    <table class="table table-hover">
+    <!-- <table class="table table-hover"> -->
+      <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -24,7 +14,7 @@ $(document).ready(function(){
                 <th>URL picture</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable">
             <tr *ngFor="let plant of this.allPlant">
                 <td>{{plant.identifiant}}</td>
                 <td>{{plant.commun}}</td>
