@@ -13,5 +13,5 @@ export class JardinCreateDto {
     user: UtilisateurUpdateDto;
 
     // Attributs provisoirs pour la génération automatique
-    chemin: Array<Array<number>>;
+    chemin: Array<number>;
 }
