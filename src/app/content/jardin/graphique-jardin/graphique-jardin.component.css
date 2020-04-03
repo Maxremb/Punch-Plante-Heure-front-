@@ -1,0 +1,19 @@
+.grab {
+    cursor: grab;
+}
+
+.grabbing {
+    cursor: grabbing;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.custom-tomato {
+    cursor: url('src/assets/img/cursor-img/tomato.png'), grabbing;
+}
+
+.custom-cabbage {
+    cursor: url('src/assets/img/cursor-img/cabbage.png'), grabbing;
+}
