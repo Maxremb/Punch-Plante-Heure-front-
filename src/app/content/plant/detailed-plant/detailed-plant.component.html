@@ -1,3 +1,4 @@
+<!-- Partie script : est ce que vraiment c'est possible de mettre une balise script dans du body ?? -->
 <script>
 $(document).ready(function() {
 
@@ -8,42 +9,87 @@ $(document).ready(function() {
   })
 </script>
 
-<div>
-    <h2>Modification de la plante :</h2>
+<div class="container">
+    <!-- Entete de la liste des plantes -->
+    <app-entete-plant></app-entete-plant>
+  
+    <!-- Titre-->
+    <h2>Modifier une plante de notre dictionnaire</h2>
     <hr>
-    <form class="col-lg-3 col-sm-6" [formGroup]="plantUpdateForm" (ngSubmit)="this.save()">
+
+    <!-- Debut du formulaire Update Plante Modele -->
+    <div class="row">
+
+        <!-- Premiere colonne descriptive-->
+        <div class="col-lg-6 col-sm-6">
+            <br><br>
+            <h5>Nom Commun : </h5> {{this.plant.commun}}
+            <br><br>
+            <h5>Nom Scientifique : </h5> {{this.plant.scientifique}}
+            <br><br>   
+            <h5>Famille : </h5>  {{this.plant.mifa}}
+            <br><br>
+            <h5>Cycle d'arrossage en jour : </h5> {{this.plant.arrosage}}
+            <br><br>
+            <h5>Ensoleillement optimal : </h5> {{this.plant.ensoleillement}}
+            <br><br>    
+            <h5>Humidité optimale : </h5> {{this.plant.humidite}}
+            <br><br>
+            <h5>Type de sol préféré : </h5>  {{this.plant.sol}}         
+            <br><br>
+            <h5>Repiquage : </h5> {{this.plant.repiquage}}
+            <br><br>
+            <h5>Température minimale : </h5> {{this.plant.min}}
+            <br><br>
+            <h5>Température maximale : </h5> {{this.plant.max}}
+            <br><br>
+            <h5>Description : </h5> {{this.plant.desc}}
+            <br><br>
+            <h5>Toxicité : </h5> {{this.plant.toxi}}
+            <br><br>
+            <h5>Association positive : </h5> {{this.plant.positive}}
+            <br><br>
+            <h5>Association négative :</h5> {{this.plant.negative}}
+            <br><br>
+            <h5>Image : </h5>  {{this.plant.picture}}
+            <br><br>
+        </div>
+
+        <!-- Deuxieme colonne pour les modifications-->
+        <div class="col-lg-6 col-sm-6">
+        <form  [formGroup]="plantUpdateForm" (ngSubmit)="this.update()">
         <div class="form-group">
-            <label for="commun">Nom Commun : {{this.plant.commun}}</label>
+            <label for="commun">Nouveau nom Commun : </label> {{this.plant.commun}}
             <input type="text" class="form-control" [(ngModel)]="this.plant.commun" formControlName="commun"  name="commun">
         </div>
 
         <div class="form-group">
-            <label for="scientifique">Nom Scientifique : {{this.plant.scientifique}}</label>
+            <label for="scientifique">Nouveau nom Scientifique : </label> {{this.plant.scientifique}}
             <input type="text" class="form-control" [(ngModel)]="this.plant.scientifique"  formControlName="scientifique" name="scientifique">
         </div>
 
         <div class="form-group">
-            <label for="famille">Famille: {{this.plant.famille}}</label>
-            <input type="text" class="form-control" [(ngModel)]="this.plant.famille"  formControlName="famille" name="famille">
+            <label for="famille">Nouvelle famille: </label> {{this.plant.mifa}}
+            <input type="text" class="form-control" [(ngModel)]="this.plant.mifa"  formControlName="famille" name="famille">
         </div>
 
         <div class="form-group">
-            <label for="arrosage">Cycle d'arrossage en jour : {{this.plant.arrosage}}</label>
+            <label for="arrosage">Nouveau cycle d'arrossage en jour : </label> {{this.plant.arrosage}}
             <input type="number" class="form-control" [(ngModel)]="this.plant.arrosage" formControlName="arrosage"  name="arrosage">
         </div>
 
         <div class="form-group">
-            <label for="ensoleillementOpti">Ensoleillement optimal : {{this.plant.ensoleillement}}</label>
+            <label for="ensoleillementOpti">Nouvel ensoleillement optimal : </label>  {{this.plant.ensoleillement}}
             <input type="text" class="form-control" [(ngModel)]="this.plant.ensoleillement" formControlName="ensoleillementOpti"  name="ensoleillementOpti">
         </div>
 
         <div class="form-group">
-            <label for="humiditeOpti">Humidité optimale : {{this.plant.humidite}}</label>
+            <label for="humiditeOpti">Nouvelle humidité optimale : </label> {{this.plant.humidite}}
             <input type="number" class="form-control" [(ngModel)]="this.plant.humidite" formControlName="humiditeOpti"  name="humiditeOpti">
         </div>
 
         <div class="form-group">
-            <label for="solOpti">Type de sol préféré : {{this.plant.sol}}</label>
+            <label for="solOpti">Nouveau type de sol préféré : </label> {{this.plant.sol}}
             <select class="form-control" [(ngModel)]="this.plant.sol" formControlName="sol"  name="sol">
                 <option value="sableux">sableux</option>    
                 <option value="limonoArgileux">Limono Argileux</option>
@@ -54,27 +100,27 @@ $(document).ready(function() {
         </div>
 
         <div class="form-group">
-            <label for="repiquage">Repiquage : {{this.plant.repiquage}}</label>
+            <label for="repiquage">Nouveau repiquage : </label> {{this.plant.repiquage}}
             <input type="number" class="form-control" [(ngModel)]="this.plant.repiquage" formControlName="repiquage"  name="repiquage">
         </div>
 
         <div class="form-group">
-            <label for="min">Température minimale : {{this.plant.min}}</label>
+            <label for="min">Nouvelle température minimale : </label> {{this.plant.min}}
             <input type="number" class="form-control" [(ngModel)]="this.plant.min" formControlName="min"  name="min">
         </div>
 
         <div class="form-group">
-            <label for="max">Température maximale : {{this.plant.max}}</label>
+            <label for="max">Nouvelle température maximale : </label> {{this.plant.max}}
             <input type="number" class="form-control" [(ngModel)]="this.plant.max" formControlName="max"  name="max">
         </div>
 
         <div class="form-group">
-            <label for="desc">Description : {{this.plant.desc}}</label>
+            <label for="desc">Nouvelle description : </label> {{this.plant.desc}}
             <input type="text" class="form-control" [(ngModel)]="this.plant.desc" formControlName="desc"  name="desc">
         </div>
 
         <div class="form-group">
-            <label for="toxi">Toxicité :   {{this.plant.toxi}}</label>
+            <label for="toxi">Nouvelle toxicité :   </label> {{this.plant.toxi}}
             <select class="form-control" [(ngModel)]="this.plant.toxi" formControlName="toxi"  name="toxi">
                 <option value="true">Oui</option>    
                 <option value="false">Non</option>
@@ -82,23 +128,23 @@ $(document).ready(function() {
         </div>
 
         <div class="form-group">
-            <label for="assoplus">Association positive : {{this.plant.assoplus}}</label>
+            <label for="assoplus">Nouvelle association positive : </label> {{this.plant.positive}}
             <select multiple data-role="tagsinput" class="form-control"  formControlName="assoplus"  name="assoplus">
             </select>
         </div>
 
         <div class="form-group">
-            <label for="assomoins">Association négative : {{this.plant.assomoins}}</label>
+            <label for="assomoins">Nouvelle association négative : </label> {{this.plant.negative}}
             <select multiple data-role="tagsinput" class="form-control"  formControlName="assomoins"  name="assomoins">
             </select>
         </div>
 
         <div class="form-group">
-            <label for="picture">picture: {{this.plant.picture}}</label>
+            <label for="picture">Nouvelle image : </label> {{this.plant.picture}}
             <input type="text" class="form-control" [(ngModel)]="this.plant.picture" formControlName="picture"  name="picture">
         </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="!plantUpdateForm.valid">Enregistrer</button>
+        <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantUpdateForm.valid">Enregistrer</button>
         <div *ngIf="this.messageValidation.length">
             <div class="alert alert-fail" *ngIf="this.error">
                 {{this.messageValidation}}
@@ -107,13 +153,19 @@ $(document).ready(function() {
                 {{this.messageValidation}}
             </div>
         </div>
+        </form>
+        </div>
+        <!-- Fin de la colonne pour les modifications-->
+    
+    </div>
+    <!-- Fin du formulaire -->
 
-    </form>
-    <hr>
-    <a routerLink="/plant">
-    <button type="button" class="btn btn-info">Voir la liste entière</button>
+    
+    <!-- Retour lien page administrateur -->
+    <a routerLink="/plant/vadmin">
+        <button class="btn alazea-btn mt-15" >Retour</button>
     </a>
-    <hr>
+    
 
 </div>
 

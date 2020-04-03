@@ -25,7 +25,7 @@ export class CreatePlantComponent implements OnInit {
     this.plantCreateForm = new FormGroup({
       commun: new FormControl(this.plant.commun,Validators.required),
       scientifique: new FormControl(this.plant.scientifique,Validators.required),
-      famille: new FormControl(this.plant.famille,Validators.required),
+      famille: new FormControl(this.plant.mifa,Validators.required),
       arrosage: new FormControl(this.plant.arrosage,Validators.required),
       ensoleillement: new FormControl(this.plant.ensoleillement,Validators.required),
       humidite: new FormControl(this.plant.humidite,Validators.required),
@@ -35,8 +35,8 @@ export class CreatePlantComponent implements OnInit {
       max: new FormControl(this.plant.max,Validators.required),
       desc: new FormControl(this.plant.desc,Validators.required),
       toxi: new FormControl(this.plant.toxi,Validators.required),
-      assoplus: new FormControl(this.plant.assoplus,Validators.required),
-      assomoins: new FormControl(this.plant.assomoins,Validators.required),
+      assoplus: new FormControl(this.plant.positive,Validators.required),
+      assomoins: new FormControl(this.plant.negative,Validators.required),
       picture: new FormControl(this.plant.picture,Validators.required),
     });
   }
@@ -46,13 +46,13 @@ export class CreatePlantComponent implements OnInit {
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
-          this.messageValidation = 'BRAVO ! La plante a bien été ajouté à la DB';
+          this.messageValidation = 'BRAVO ! La plante a bien été ajoutée à la base de données';
           this.error = false;
         }
       },
       (error) => {
         console.log('debug responseDto : ', error);
-        this.messageValidation = 'ERREUR ! La plante n\'a pas été ajouté à la DB';
+        this.messageValidation = 'ERREUR ! La plante n\'a pas été ajoutée à la base de données';
         this.error = true;
         }
 
