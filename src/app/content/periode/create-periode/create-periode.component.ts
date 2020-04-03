@@ -3,7 +3,7 @@ import { PeriodeService } from 'src/app/services/periode.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PeriodeCreateDto } from 'src/app/models/periode-create-dto';
 import { PlanteModeleListe } from 'src/app/models/plante-modele-liste';
-import { DepartementCreateDto } from 'src/app/models/departement-create-dto';
+import { DepartementDto } from 'src/app/models/departement-dto';
 
 @Component({
   selector: 'app-create-periode',
@@ -17,7 +17,7 @@ export class CreatePeriodeComponent implements OnInit {
   addPeriodeForm: FormGroup;
   periode = new PeriodeCreateDto;
   allPlantes = new PlanteModeleListe;
-  allDepartements = new DepartementCreateDto;
+  allDepartements = new DepartementDto;
   messageValidation = null;
   messageErreur = null;
   
