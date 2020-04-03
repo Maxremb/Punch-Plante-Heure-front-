@@ -71,7 +71,7 @@ export class CreateJardinComponent implements OnInit {
   getAllDept() {
     this.deptService.getAll().subscribe(
       responseDto => {
-        if (!responseDto.error) {this.allDepartements = responseDto.body;}
+       this.allDepartements = responseDto.body;
       }
     )
   }

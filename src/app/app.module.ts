@@ -21,7 +21,6 @@ import { DetailJardinUpdatePlanteComponent } from './content/jardin/detail-jardi
 import { AutoGenerateJardinComponent } from './content/jardin/auto-generate-jardin/auto-generate-jardin.component';
 import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
 import { UserviewAllPlantComponent } from './content/plant/userview-all-plant/userview-all-plant.component';
-import { DetailPeriodeComponent } from './content/periode/detail-periode/detail-periode/detail-periode.component';
 import { UpdatePeriodeComponent } from './content/periode/update-periode/update-periode/update-periode.component';
 import { BlogComponent } from './content/blog/blog.component';
 import { AssociationsPlantComponent } from './content/plant/associations-plant/associations-plant.component';
@@ -30,6 +29,7 @@ import { AboutComponent } from './content/about/about.component';
 import { EnteteJardinComponent } from './content/jardin/entete-jardin/entete-jardin.component';
 import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/graphique-jardin.component';
 import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.component';
+import { EntetePeriodeComponent } from './content/periode/entete-periode/entete-periode.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,6 @@ import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.
     AutoGenerateJardinComponent,
     UserviewDetailedPlantComponent,
     UserviewAllPlantComponent,
-    DetailPeriodeComponent,
     UpdatePeriodeComponent,
     BlogComponent,
     AssociationsPlantComponent,
@@ -59,6 +58,7 @@ import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.
     EnteteJardinComponent,
     GraphiqueJardinComponent,
     EntetePlantComponent,
+    EntetePeriodeComponent,
   ],
   imports: [
     BrowserModule,

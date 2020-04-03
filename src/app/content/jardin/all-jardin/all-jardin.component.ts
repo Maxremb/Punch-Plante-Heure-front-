@@ -51,6 +51,7 @@ export class AllJardinComponent implements OnInit {
     )
   }
 
+  //transfert l'entite jardin vers service pour detail
   stockageJardin(jardinTransfert : JardinUpdateDto) {
     this.service.jardin = jardinTransfert ;
   }

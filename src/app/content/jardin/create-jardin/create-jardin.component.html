@@ -9,8 +9,8 @@
             <!--BALISE POUR AFFICHAGE DEBUG-->
             <div>
                 <h1> DEBUG LISTE DEPT : </h1>
-                <ul>
-                    <li *ngFor="let depart of this.allDepartements">
+                <ul *ngFor="let depart of this.allDepartements">
+                    <li >
                         <p style="color: red;"> {{depart.name}} </p>
                     </li>
                 </ul>
