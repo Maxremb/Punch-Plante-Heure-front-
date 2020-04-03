@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { DepartementUpdateDto } from '../models/departement-update-dto';
 import { HttpClient } from '@angular/common/http';
-import { DepartementCreateDto } from '../models/departement-create-dto';
+import { DepartementDto } from '../models/departement-dto';
 import { Observable } from 'rxjs';
 import { ResponseDto } from '../models/response-dto';
 
@@ -11,17 +10,17 @@ import { ResponseDto } from '../models/response-dto';
 })
 export class DepartementService {
 
-  departement: DepartementUpdateDto;
+  departement: DepartementDto;
 
   private URL = environment.baseUrl + 'departement';
 
   constructor(private http: HttpClient) { }
 
-  create(departement: DepartementCreateDto): Observable<ResponseDto> {
+  create(departement: DepartementDto): Observable<ResponseDto> {
     return this.http.post<ResponseDto>(this.URL, departement);
   }
 
-  update(departement: DepartementUpdateDto): Observable<ResponseDto> {
+  update(departement: DepartementDto): Observable<ResponseDto> {
     return this.http.put<ResponseDto>(this.URL, departement);
   }
 
