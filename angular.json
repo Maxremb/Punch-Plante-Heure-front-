@@ -25,8 +25,16 @@
             ],
             "styles": [
               "src/styles.css"
+
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/bootstrap/popper.min.js",
+              "src/assets/js/jquery/jquery-2.2.4.min.js",
+              "src/assets/js/bootstrap/bootstrap.min.js",
+              "src/assets/js/plugins/plugins.js",
+              "src/assets/js/active.js",
+              "src/assets/js/tagsinput.js"
+            ]
           },
           "configurations": {
             "production": {
