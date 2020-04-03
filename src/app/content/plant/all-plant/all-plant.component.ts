@@ -10,19 +10,26 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 export class AllPlantComponent implements OnInit {
 
   allPlant = new Array<PlanteModeleUpdateDto>();
+  pageActive:number =1;
+  pageTotal:number[];
 
   constructor(private service:PlanteModeleService) { }
 
   ngOnInit(): void {
-    this.getAll();
+    this.getAll(1);
+  }
+  range(end) {
+    return (new Array(end)).fill(undefined).map((_, i) => i);
   }
 
-  getAll() {
-    this.service.getAll().subscribe(
+  getAll(nbpage: number) {
+    this.service.getAll(nbpage).subscribe(
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
-          this.allPlant = responseDto.body;
+          this.allPlant = responseDto.body.content;
+          this.pageActive = responseDto.body.number;
+          this.pageTotal = this.range(responseDto.body.totalPages);
         }
       }
     );
@@ -37,8 +44,7 @@ export class AllPlantComponent implements OnInit {
             element =>  element.identifiant !== id
           );
         }
-        this.getAll();
-        console.log('result after delete: ', this.allPlant);
+        this.getAll(this.pageActive);
       }
     );
   }

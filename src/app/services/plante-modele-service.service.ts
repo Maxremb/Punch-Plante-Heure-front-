@@ -34,8 +34,8 @@ export class PlanteModeleService {
     return this.http.delete<ResponseDto>(this.URL + '/' + id);
   }
 
-  getAll(): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/all');
+  getAll(nbpage: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/all/'+ nbpage);
   }
   
 
