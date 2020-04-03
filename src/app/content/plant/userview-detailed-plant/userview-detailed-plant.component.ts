@@ -13,16 +13,19 @@ export class UserviewDetailedPlantComponent implements OnInit {
     plant: PlanteModeleUpdateDto;
     messageValidation = '';
     error: boolean;
-  
+
+    // injection des services necessaires
     constructor(
       private service: PlanteModeleService,
       private route: ActivatedRoute,
-      private location: Location) { }
-  
+      ) { }
+      
+    // appel a la methode getPlant au demarrage
     ngOnInit(): void { 
       this.getPlant();
     }
 
+    // affectation de la valeur plant grace a la methode getId ( id est present dans l'url )
     getPlant(): void {
       const id = +this.route.snapshot.paramMap.get('id');
       this.service.getId(id).subscribe(

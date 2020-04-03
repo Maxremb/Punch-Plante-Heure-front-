@@ -1,5 +1,6 @@
 <div class="container">
 
+
     <!--FORM CREATE PERIODE-->
     <form formGroup="addPeriodeForm" (ngSubmit)="this.create()">
         <label><b>AJOUTER UNE PERIODE </b></label>
@@ -7,11 +8,11 @@
         <div>
             <label>Type : </label>
             <select formControlName="type" id="type" name="type" required>
-                <option value='rempotage'>Rempotage</option>
-                <option value='floraison'>Floraison</option>
-                <option value='fructification'>Fructifiation</option>
-                <option value='taille'>Taille</option>
-                <option value='semis'>Semis</option>
+                <option value='REMPOTAGE'>Rempotage</option>
+                <option value='FLORAISON'>Floraison</option>
+                <option value='FRUCTIFICATION'>Fructifiation</option>
+                <option value='TAILE'>Taille</option>
+                <option value='SEMIS'>Semis</option>
             </select>
         </div>
         <!--message validator type -->
@@ -59,7 +60,7 @@
         </div>
 
         <!--boutton submit-->
-        <button type="submit" class="btn btn-primary" [disabled]="!this.addPeriodeForm.valid">Créer une
+        <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.addPeriodeForm.valid">Créer une
             période</button>
 
         <!--message validation/echec CREATE-->
@@ -68,18 +69,19 @@
         </div>
         <div class="alert alert-danger" *ngIf="this.messageErreur">
             <strong>Echec !</strong> {{this.messageErreur}}
-
         </div>
     </form>
 </div>
 <!--END FORM-->
 
 <!--LIE NAVIGATION-->
-<div class="container" style="text-align: right;">
-    <a routerLink="" style="margin-right: 5%;">
-        <input type="button" value="Home page" class="btn alazea-btn mt-15" />
-    </a>
-    <a routerLink="/periode">
-        <input type="button" value="Périodes" class="btn btn-info" />
-    </a>
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/periode">
+            <input type="button" value="Périodes" class="btn alazea-btn mt-15" />
+        </a>
+        <a routerLink="">
+            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        </a>
+    </div>
 </div>
