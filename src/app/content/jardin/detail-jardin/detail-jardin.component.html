@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-12 col-lg-7" style="padding-left: 0%;">
-            <h2>Détail du jardin </h2>
+            <h2>Détails de mon jardin </h2>
             <h2> <i>{{jardin.name}} </i> </h2>
             <hr>
             <label class="label">ID : </label><span> {{jardin.identifier}}</span>
@@ -19,9 +19,9 @@
             <br>
             <label class="label">Département : </label>{{jardin.dept.name}} - ({{jardin.dept.depNum}})
             <br>
-            <label class="label">Liste des plantes présentes dans votre jardin : </label>
-            <p *ngIf="emptyliste"><i>Il n'y a pas de plantes dans votre jardin</i></p>
-            <p *ngIf="!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans votre jardin</i>
+            <label class="label">Liste des plantes présentes dans mon jardin : </label>
+            <p *ngIf="emptyliste"><i>Il n'y a pas de plantes dans mon jardin</i></p>
+            <p *ngIf="!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans mon jardin</i>
             </p>
             <table class="table table-hover" *ngIf="!emptyliste">
                 <thead>
@@ -60,7 +60,7 @@
                         <td><button class="btn btn-danger"
                                 (click)="this.supprimer(planteUtilisateur.identifiant)">Retirer
                                 cette
-                                plante de votre jardin</button>
+                                plante de mon jardin</button>
                             &nbsp;&nbsp;<a routerLink="/jardin/detail/updateplante">
                                 <button class="btn btn-info"
                                     (click)="this.stockagePlanteUtilisateur(planteUtilisateur)">Mettre
@@ -81,10 +81,10 @@
 <div class="container">
     <div class="bottompage">
         <a routerLink="/jardin/detail/addplante">
-            <button class="btn alazea-btn mt-15">Ajouter une plante </button>
+            <button class="btn alazea-btn mt-15">Ajouter une plante à mon jardin</button>
         </a>
         <a routerLink="/jardin/update">
-            <button class="btn alazea-btn mt-15">Modifiez votre jardin</button>
+            <button class="btn alazea-btn mt-15">Modifier les caractéristiques de mon jardin</button>
         </a>
         <a routerLink="/jardin">
             <button class="btn alazea-btn mt-15">Mes jardins</button>

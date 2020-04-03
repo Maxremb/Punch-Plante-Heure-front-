@@ -1,3 +1,3 @@
 export enum plantStageEnum {
-    'x','y','z',
+    'semis','jeunePousse','plant','fleuri','recolte'
 }

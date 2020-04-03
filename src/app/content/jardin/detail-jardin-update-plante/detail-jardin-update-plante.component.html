@@ -4,7 +4,7 @@
 
     <div class="row" >
         <div class="col12 col-lg-5" style="padding-left: 0%;">
-            <h2>Mise à jour de votre plante</h2>
+            <h2>Mise à jour de ma plante</h2>
             <hr>
             <label class="label">ID : </label> <span> {{planteUtilisateur.identifiant}} |
                 {{planteUtilisateur.modelPlant.commun}}</span>
@@ -21,16 +21,20 @@
                 <div class="form-group">
                     <label class="label" for="healthStage">Etat de santé : </label> ({{planteUtilisateur.healthStage}})
                     <select id="healthStage" class="form-control" formControlName="healthStage">
-                        <option value="x">X</option>
-                        <option value="y">Y</option>
+                        <option value="bonneSante">En bonne santé</option>
+                        <option value="moyenne">Moyenne</option>
+                        <option value="morte">Morte</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="label" for="plantStage">Etat de la plante : </label>
                     ({{planteUtilisateur.plantStage}})
                     <select id="plantStage" class="form-control" formControlName="plantStage">
-                        <option value="x">X</option>
-                        <option value="y">Y</option>
+                        <option value="semis">Semis</option>
+                        <option value="jeunePousse">Jeune pousse</option>
+                        <option value="plant">Plante</option>
+                        <option value="fleuri">Plante fleurie</option>
+                        <option value="recolte">Plante à récolter</option>
                     </select>
                 </div>
                 <button type="submit" class="btn alazea-btn mt-15"
@@ -52,6 +56,9 @@
 
 <div class="container">
     <div class="bottompage">
+        <a routerLink="/jardin/detail">
+            <button class="btn alazea-btn mt-15">Retour à mon jardin</button>
+        </a>
         <a routerLink="/jardin">
             <button class="btn alazea-btn mt-15">Mes jardins</button>
         </a>
