@@ -11,12 +11,17 @@ export class UserviewAllPlantComponent implements OnInit {
 
   allPlant = new Array<PlanteModeleUpdateDto>();
 
+
+  // injection des services necessaires
   constructor(private service:PlanteModeleService) { }
 
+  // lancement de la methode getAll au demarrage de la page
   ngOnInit(): void {
     this.getAll();
   }
 
+
+  // recuperation de la liste de toutes les plantes modeles
   getAll() {
     this.service.getAll().subscribe(
       (responseDto) => {

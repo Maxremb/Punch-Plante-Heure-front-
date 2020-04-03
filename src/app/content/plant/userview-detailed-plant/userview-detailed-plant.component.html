@@ -1,8 +1,9 @@
 <div class="container">
-    <br><br><br><br>
+    
+    <!-- Entete plante -->
     <app-entete-plant></app-entete-plant>
-    <br><br><br>
-
+    
+    <!-- Details de la plante selectionnee -->
     <h2>{{this.plant.commun}}</h2>
     <br><br>
 
@@ -16,7 +17,7 @@
         <hr>
 
         <div >
-            <span>Cycle d'arrossage en jour : {{this.plant.arrosage}}</span>
+            <span>Cycle d'arrosage en jour : {{this.plant.arrosage}}</span>
         </div>
         <hr>
 
@@ -64,13 +65,12 @@
             <span>Photo : {{this.plant.picture}}</span>
         </div>
 </div>
+<!-- Fin de la description -->
+<!-- Ajout de boutons en bas de page pour retourner au dictionnaire -->
 <div class="container">
     <div class="bottompage">
         <a routerLink="/plant/vuser">
             <button class="btn alazea-btn mt-15">Retour au dictionnaire</button>
-        </a>
-        <a routerLink="">
-            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
         </a>
     </div>
 </div>
