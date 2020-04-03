@@ -10,16 +10,21 @@ import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
 })
 export class AllJardinComponent implements OnInit {
 
+  //liste de tout lesjardins de l'user
   allJardins = new Array<JardinUpdateDto>();
+  //jardin selectionné
   jardin = new JardinUpdateDto;
+  //user connecté
   utilisateurActif = new UtilisateurUpdateDto;
 
   constructor(private service : JardinService) { }
 
   ngOnInit(): void {
+    //appel methode
     this.readAllByIdUtilisateur();
   }
 
+  // retourne la liste de tout les jardins de l'user conencté
   readAllByIdUtilisateur() {
     this.service.getAllByUtilisateur(this.utilisateurActif.id).subscribe(
      responseDto => {
@@ -31,6 +36,7 @@ export class AllJardinComponent implements OnInit {
     );
   }
 
+  //supprime un jardin de l'user et refresh liste
   delete(identifier: number) {
     this.service.delete(identifier).subscribe(
       responseDto => {
