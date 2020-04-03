@@ -1,6 +1,11 @@
-<div>
-    <h2>Modification de la plante :</h2>
-    <hr>
+<div class="container">
+    <br><br><br><br>
+    <app-entete-plant></app-entete-plant>
+    <br><br><br>
+
+    <h2>{{this.plant.commun}}</h2>
+    <br><br>
+
         <div>
             <span>Nom Commun : {{this.plant.commun}}</span>
         </div>
@@ -58,12 +63,16 @@
         <div >
             <span>Photo : {{this.plant.picture}}</span>
         </div>
-    <hr>
-    <a routerLink="/plant">
-        <button type="button" class="btn btn-info">Voir la liste entière</button>
-    </a>
-    <hr>
-
+</div>
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/plant/vuser">
+            <button class="btn alazea-btn mt-15">Retour au dictionnaire</button>
+        </a>
+        <a routerLink="">
+            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        </a>
+    </div>
 </div>
 
 

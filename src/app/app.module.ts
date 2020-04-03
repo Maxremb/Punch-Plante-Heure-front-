@@ -29,6 +29,7 @@ import { AssociationsPlantComponent } from './content/plant/associations-plant/a
 import { ContactComponent } from './content/contact/contact.component';
 import { AboutComponent } from './content/about/about.component';
 import { EnteteJardinComponent } from './content/jardin/entete-jardin/entete-jardin.component';
+import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { EnteteJardinComponent } from './content/jardin/entete-jardin/entete-jar
     ContactComponent,
     AboutComponent,
     EnteteJardinComponent,
+    EntetePlantComponent,
   ],
   imports: [
     BrowserModule,
