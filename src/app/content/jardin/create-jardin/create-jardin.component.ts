@@ -18,11 +18,15 @@ import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 export class CreateJardinComponent implements OnInit {
 
   addJardinForm: FormGroup;
+
   jardin = new JardinCreateDto;
   newJardin = new JardinUpdateDto;
+  //message fct
   messageValidation = null;
   messageErreur = null;
+  //user actif
   utilisateurActif = new UtilisateurUpdateDto;
+  //liste de tout les depts
   allDepartements = new Array<DepartementDto>();
  
   
@@ -50,8 +54,8 @@ export class CreateJardinComponent implements OnInit {
   get length() { return this.addJardinForm.get('length') }
   get width() { return this.addJardinForm.get('width') }
   get dept() {return this.addJardinForm.get('dept')}
-  get user() {return this.addJardinForm.get('user')}
 
+  //creation jardin + erecuperation objet créé
   create() {
     this.service.create(this.jardin).subscribe(
      responseDto => {
@@ -63,6 +67,7 @@ export class CreateJardinComponent implements OnInit {
     )
   }
 
+  //retourne la lsite de tout les depts
   getAllDept() {
     this.deptService.getAll().subscribe(
       responseDto => {
