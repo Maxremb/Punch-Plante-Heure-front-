@@ -59,37 +59,37 @@ $(document).ready(function() {
         <div class="col-lg-6 col-sm-6">
         <form  [formGroup]="plantUpdateForm" (ngSubmit)="this.update()">
         <div class="form-group">
-            <label for="commun">Nouveau nom Commun : </label> {{this.plant.commun}}
+            <label for="commun">Nouveau nom Commun : </label> 
             <input type="text" class="form-control" [(ngModel)]="this.plant.commun" formControlName="commun"  name="commun">
         </div>
 
         <div class="form-group">
-            <label for="scientifique">Nouveau nom Scientifique : </label> {{this.plant.scientifique}}
+            <label for="scientifique">Nouveau nom Scientifique : </label> 
             <input type="text" class="form-control" [(ngModel)]="this.plant.scientifique"  formControlName="scientifique" name="scientifique">
         </div>
 
         <div class="form-group">
-            <label for="famille">Nouvelle famille: </label> {{this.plant.mifa}}
+            <label for="famille">Nouvelle famille: </label> 
             <input type="text" class="form-control" [(ngModel)]="this.plant.mifa"  formControlName="famille" name="famille">
         </div>
 
         <div class="form-group">
-            <label for="arrosage">Nouveau cycle d'arrossage en jour : </label> {{this.plant.arrosage}}
+            <label for="arrosage">Nouveau cycle d'arrossage en jour : </label> 
             <input type="number" class="form-control" [(ngModel)]="this.plant.arrosage" formControlName="arrosage"  name="arrosage">
         </div>
 
         <div class="form-group">
-            <label for="ensoleillementOpti">Nouvel ensoleillement optimal : </label>  {{this.plant.ensoleillement}}
+            <label for="ensoleillementOpti">Nouvel ensoleillement optimal : </label>  
             <input type="text" class="form-control" [(ngModel)]="this.plant.ensoleillement" formControlName="ensoleillementOpti"  name="ensoleillementOpti">
         </div>
 
         <div class="form-group">
-            <label for="humiditeOpti">Nouvelle humidité optimale : </label> {{this.plant.humidite}}
+            <label for="humiditeOpti">Nouvelle humidité optimale : </label> 
             <input type="number" class="form-control" [(ngModel)]="this.plant.humidite" formControlName="humiditeOpti"  name="humiditeOpti">
         </div>
 
         <div class="form-group">
-            <label for="solOpti">Nouveau type de sol préféré : </label> {{this.plant.sol}}
+            <label for="solOpti">Nouveau type de sol préféré : </label> 
             <select class="form-control" [(ngModel)]="this.plant.sol" formControlName="sol"  name="sol">
                 <option value="sableux">sableux</option>    
                 <option value="limonoArgileux">Limono Argileux</option>
@@ -100,27 +100,27 @@ $(document).ready(function() {
         </div>
 
         <div class="form-group">
-            <label for="repiquage">Nouveau repiquage : </label> {{this.plant.repiquage}}
+            <label for="repiquage">Nouveau repiquage : </label> 
             <input type="number" class="form-control" [(ngModel)]="this.plant.repiquage" formControlName="repiquage"  name="repiquage">
         </div>
 
         <div class="form-group">
-            <label for="min">Nouvelle température minimale : </label> {{this.plant.min}}
+            <label for="min">Nouvelle température minimale : </label> 
             <input type="number" class="form-control" [(ngModel)]="this.plant.min" formControlName="min"  name="min">
         </div>
 
         <div class="form-group">
-            <label for="max">Nouvelle température maximale : </label> {{this.plant.max}}
+            <label for="max">Nouvelle température maximale : </label> 
             <input type="number" class="form-control" [(ngModel)]="this.plant.max" formControlName="max"  name="max">
         </div>
 
         <div class="form-group">
-            <label for="desc">Nouvelle description : </label> {{this.plant.desc}}
+            <label for="desc">Nouvelle description : </label> 
             <input type="text" class="form-control" [(ngModel)]="this.plant.desc" formControlName="desc"  name="desc">
         </div>
 
         <div class="form-group">
-            <label for="toxi">Nouvelle toxicité :   </label> {{this.plant.toxi}}
+            <label for="toxi">Nouvelle toxicité :   </label> 
             <select class="form-control" [(ngModel)]="this.plant.toxi" formControlName="toxi"  name="toxi">
                 <option value="true">Oui</option>    
                 <option value="false">Non</option>
@@ -128,19 +128,19 @@ $(document).ready(function() {
         </div>
 
         <div class="form-group">
-            <label for="assoplus">Nouvelle association positive : </label> {{this.plant.positive}}
+            <label for="assoplus">Nouvelle association positive : </label> 
             <select multiple data-role="tagsinput" class="form-control"  formControlName="assoplus"  name="assoplus">
             </select>
         </div>
 
         <div class="form-group">
-            <label for="assomoins">Nouvelle association négative : </label> {{this.plant.negative}}
+            <label for="assomoins">Nouvelle association négative : </label> 
             <select multiple data-role="tagsinput" class="form-control"  formControlName="assomoins"  name="assomoins">
             </select>
         </div>
 
         <div class="form-group">
-            <label for="picture">Nouvelle image : </label> {{this.plant.picture}}
+            <label for="picture">Nouvelle image : </label> 
             <input type="text" class="form-control" [(ngModel)]="this.plant.picture" formControlName="picture"  name="picture">
         </div>
 
