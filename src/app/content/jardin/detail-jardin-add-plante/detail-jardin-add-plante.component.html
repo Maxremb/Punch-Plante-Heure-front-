@@ -13,24 +13,24 @@
                 <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
 
                     <label class="label" for="commun">Nom de la plante</label>
-                    <select id="commun" class="form-control" formControlName="commun">
-                        <option *ngFor="let plante of this.allPlantes">{{plante.commun}}</option>
+                    <select id="commun" class="form-control" formControlName="commun" required>
+                        <option *ngFor="let planteModel of this.allPlantes">{{planteModel.commun}}</option>
                     </select>
                     <br>
-                    <label class="label" for="plantingDate">Date de plantation : </label>
+                    <label class="label" for="plantingDate" >Date de plantation : </label>
                     <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate">
                     <br>
-                    <label class="label" for="semiDate">Date de semis : </label>
+                    <label class="label" for="semiDate" >Date de semis : </label>
                     <input type="date" id="semiDate" class="form-control" formControlName="semiDate">
                     <br>
-                    <label class="label" for="healthStage">Etat de santé : </label>
+                    <label class="label" for="healthStage" >Etat de santé : </label>
                     <select id="healthStage" class="form-control" formControlName="healthStage">
                         <option value="bonneSante">En bonne santé</option>
                         <option value="moyenne">Moyenne</option>
                         <option value="morte">Morte</option>
                     </select>
                     <br>
-                    <label class="label" for="plantStage">Etat de la plante : </label>
+                    <label class="label" for="plantStage" >Etat de la plante : </label>
                     <select id="plantStage" class="form-control" formControlName="plantStage">
                         <option value="semis">Semis</option>
                         <option value="jeunePousse">Jeune pousse</option>
@@ -39,14 +39,25 @@
                         <option value="recolte">Plante à récolter</option>
                     </select>
                     <br>
-                    <button type="submit" class="btn alazea-btn mt-15" [disabled]="planteForm.invalid">Valider</button>
+                    <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.planteForm.valid">Valider</button>
                     <br>
                 </form>
-                <span class="alert alert-success" *ngIf="messageValidation">{{messageValidation}}</span>
-                <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
+                <span class="alert alert-success" *ngIf="messageValidation">{{this.messageValidation}}</span>
+                <span class="alert alert-danger" *ngIf="messageErreur">{{this.messageErreur}}</span>
             </div>
         </div>
         <!-- Fin du formualaire -->
+
+        <div *ngIf="this.planteutilisateurservice.listePlante.length">
+            <ul>
+                <li *ngFor="let plante of this.planteutilisateurservice.listePlante">{{this.plante.modelPlant.commun}}></li>
+            </ul>
+            
+            <button class="btn alazea-btn mt-15"  (click)="this.sauvegarder" >Sauvegarder</button>
+        </div>
+
+<app-graphique-jardin [jardin]="this.jardin" [plantes]="this.planteutilisateurservice.listePlante"></app-graphique-jardin>
+
         <!-- Ajout d'images à droite -->
         <div class="col 12 col-lg-7">
 

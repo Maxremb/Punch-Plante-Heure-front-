@@ -36,6 +36,8 @@ import { AllDepartementsComponent } from './content/departement/all-departements
 import { CreateDepartementComponent } from './content/departement/create-departement/create-departement.component';
 import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
 import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
+import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 
 
 @NgModule({
@@ -68,10 +70,15 @@ import { EnteteDepartementComponent } from './content/departement/entete-departe
     EntetePeriodeComponent,
     DashboardAdminComponent,
     EnteteDashboardComponent,
+
     AllDepartementsComponent,
     CreateDepartementComponent,
     DetailedDepartementComponent,
     EnteteDepartementComponent,
+
+    PlanningJardinComponent,
+    MeteoDepComponent,
+
   ],
   imports: [
     BrowserModule,
