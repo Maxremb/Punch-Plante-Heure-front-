@@ -22,6 +22,12 @@ import { AboutComponent } from './content/about/about.component';
 import { ContactComponent } from './content/contact/contact.component';
 import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
+import { AllDepartementsComponent } from './content/departement/all-departements/all-departements.component';
+import { CreateDepartementComponent } from './content/departement/create-departement/create-departement.component';
+import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
+
+
+
 
 
 const routes: Routes = [
@@ -44,9 +50,11 @@ const routes: Routes = [
   { path : 'plant/vuser', component: UserviewAllPlantComponent },
   { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
   { path : 'about' , component : AboutComponent },
-  { path : 'contact' , component : ContactComponent }
-  
- 
+  { path : 'contact' , component : ContactComponent },
+  { path : 'departement/vadmin' , component : AllDepartementsComponent },
+  { path : 'departement/create' , component : CreateDepartementComponent },
+  { path : 'departement/update/:name', component : DetailedDepartementComponent },
+
 ];
 
 @NgModule({

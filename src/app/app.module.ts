@@ -32,6 +32,11 @@ import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.
 import { EntetePeriodeComponent } from './content/periode/entete-periode/entete-periode.component';
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
 import { EnteteDashboardComponent } from './content/dashboard/entete-dashboard/entete-dashboard.component';
+import { AllDepartementsComponent } from './content/departement/all-departements/all-departements.component';
+import { CreateDepartementComponent } from './content/departement/create-departement/create-departement.component';
+import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
+import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +68,10 @@ import { EnteteDashboardComponent } from './content/dashboard/entete-dashboard/e
     EntetePeriodeComponent,
     DashboardAdminComponent,
     EnteteDashboardComponent,
+    AllDepartementsComponent,
+    CreateDepartementComponent,
+    DetailedDepartementComponent,
+    EnteteDepartementComponent,
   ],
   imports: [
     BrowserModule,

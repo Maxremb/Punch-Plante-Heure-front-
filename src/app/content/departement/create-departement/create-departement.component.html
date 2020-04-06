@@ -1,0 +1,51 @@
+<div class="container">
+    <!-- Entete de la liste des plantes -->
+    <app-entete-departement></app-entete-departement>
+  
+    <!-- Titre-->
+    <h2>Ajouter un Departement</h2>
+    <hr>
+  
+    <!-- Debut du formulaire Creation d'une plante model dans le dictionnaire -->
+    <form [formGroup]="depCreateForm" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="depNum">Numero Departement :
+            <input type="number" class="form-control" [(ngModel)]="this.dept.depNum" formControlName="depNum" name="depNum"> </label>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="name">Nom Departement :
+            <input type="text" class="form-control" [(ngModel)]="this.dept.name" formControlName="name" name="name"></label>
+          </div>
+        </div>
+        <!--<div class="col-lg-4">
+          <div class="form-group">
+            <label for="meteo">Météo associée :</label>
+            <input type="text" class="form-control" formControlName="meteo" name="meteo">
+          </div>
+        </div>-->
+      </div>
+  
+  
+      <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.depCreateForm.valid">Enregistrer</button>
+      <div *ngIf="this.messageValidation.length">
+        <div class="alert alert-fail" *ngIf="this.error">
+          {{this.messageValidation}}
+        </div>
+        <div class="alert alert-success" *ngIf="!this.error">
+          {{this.messageValidation}}
+        </div>
+      </div>
+    </form>
+    <!-- Fin du formulaire-->
+  
+  
+    <!-- Retour lien page administrateur -->
+    <a routerLink="/departement/vadmin">
+      <button class="btn alazea-btn mt-15" >Retour</button>
+    </a>
+  
+  </div>

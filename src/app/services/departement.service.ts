@@ -32,6 +32,10 @@ export class DepartementService {
     return this.http.get<ResponseDto>(this.URL + '/' + name);
   }
 
+  getAllAdmin(nbpage: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/all/'+ nbpage);
+  }
+
   getAll(): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/all');
   }
