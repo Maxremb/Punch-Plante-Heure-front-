@@ -1,45 +1,81 @@
 <div>
     <form>
 
-        <table>
+        <table border="3px solid black">
             <tbody>
                 <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
-                    <td *ngFor="let plante of this.matrice[ligne]; let index2 = index2; trackBy:trackByIndex;"
-                        (click)="modifOnClick(plante)">
-                        <div *ngIf="matrice[index][index2]=='chemin'">
-                            chemin
+                    <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;" width=20px
+                        height=20px (click)="modifOnClick(index, index2)">
+                        <div *ngIf="matrice[index][index2]=='chemin'" class="chemin">
+                            &nbsp;
                         </div>
-                        <div *ngIf="plante=='obstacle'">
-                            obstacle
+                        <div *ngIf="matrice[index][index2]=='obstacle'" class="obstacle">
+                            &nbsp;
                         </div>
-                        <div *ngIf="plante==''">
-                            vide
-
+                        <div *ngIf="matrice[index][index2]==''" class="vide">
+                            &nbsp;
                         </div>
-                        <div *ngIf="plante!='chemin'&&plante!='obstacle'&& plante.length">
-                            {{plante}}
+                        <div *ngIf="matrice[index][index2]!='chemin'&&matrice[index][index2]!='obstacle'&& matrice[index][index2].length"
+                            class="plante">
+                            &nbsp;
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        
+
         <!-- On modélise le jardin à 1pixel = 1cm -->
-        {{this.jardin}}
-        {{this.matrice}}
-        <canvas id="carteJardin" height=({{this.jardin.width}}*100) width=({{this.jardin.length}})*100>Représentation graphique de votre jardin</canvas> 
-        
+        <canvas id="carteJardin" height=({{this.jardin.width}}*100) width=({{this.jardin.length}})*100>Représentation
+            graphique de votre jardin</canvas>
+
+
+        <!-- Légende du code couleur de la carte  -->
+        <legend>Légende</legend>
+        <table>
+
+            <thead>
+                <tr>
+                    <td>Couleur</td>
+                    <td> Objet</td>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr (click)="modifSelection('')">
+                    <td class="vide"></td>
+                    <td>Vide</td>
+                </tr>
+                <tr (click)="modifSelection('obstacle')">
+                    <td class="obstacle"></td>
+                    <td>Obstacle</td>
+                </tr>
+                <tr (click)="modifSelection('chemin')">
+                    <td class="chemin"></td>
+                    <td>Chemin</td>
+                </tr>
+                <tr (click)="modifSelection('plante')">
+                    <td class="plante"></td>
+                    <td>Plante</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Affichage de la sélection active :  -->
+        Selection active = <div *ngIf="this.selection== ''">Vide</div>
+        {{this.selection}}
+
 
         <!-- Affiche la liste des plantes et autre pour sélectionner et placer dans notre plan -->
 
-        <select [value]="selection">
-            <option class="selected" value="">Vide</option>
-            <option value="chemin">Chemin</option>
-            <option value="chemin">Obstacle</option>
-            <option *ngFor="let plant of this.plantes" value="{{plant.modelPlant.commun}}">
+        <!-- <select value="this.selection">
+            <option class="selected" [value]="">Vide</option>
+            <option [value]="this.selection">Chemin</option>
+            <option [value]="this.selection">Obstacle</option>
+            <option *ngFor="let plant of this.plantes" [value]="{{plant.modelPlant.commun}}">
                 {{plant.modelPlant.commun}}
             </option>
-        </select>
+        </select> -->
 
 
     </form>
