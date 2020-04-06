@@ -15,12 +15,11 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 export class DetailJardinAddPlanteComponent implements OnInit {
 
   planteForm: FormGroup;
-  plante: PlanteUtilisateurCreateDto;
+  plante = new PlanteUtilisateurCreateDto();
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
-  allPlantes = new Array<PlanteModeleUpdateDto>();
- 
+  allPlantes = new Array<PlanteModeleUpdateDto>(); 
 
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
@@ -30,12 +29,23 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   // Valeurs initiales a recuperer
   ngOnInit(): void {
     // variable jardin stockee dans le service
-    this.jardin = this.jardinservice.jardin;
+    
+    // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
+    this.jardin = new JardinUpdateDto();
+    this.jardin.identifier =1;
+    this.jardin.length = 1;
+    this.jardin.width = 1;
+    this.jardin.name = 'JardinTest';
+
+    console.log('debug init Detail : ', this.jardin);
+
+
+
     this.getAllPlantes(1);
     // recuperation de la liste de toutes les plantes modeles
     // definition du formulaire
     this.planteForm = new FormGroup({
-      "commun": new FormControl(this.plante.modelPlant.commun, Validators.required),
+      "commun": new FormControl(this.plante.modelPlant, Validators.required),
       "plantingDate": new FormControl(this.plante.plantingDate),
       "semiDate": new FormControl(this.plante.semiDate),
       "plantStage": new FormControl(this.plante.plantStage),

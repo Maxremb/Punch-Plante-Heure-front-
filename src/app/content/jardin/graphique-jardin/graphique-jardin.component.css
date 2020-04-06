@@ -17,3 +17,21 @@
 .custom-cabbage {
     cursor: url('src/assets/img/cursor-img/cabbage.png'), grabbing;
 }
+
+.chemin {
+    background-color: #993300 ;
+}
+
+.obstacle{
+    background-color: black;
+}
+
+.plante{
+    background-color: green;
+}
+
+.vide {
+    background-color: #ccccb3
+    ;
+    
+}

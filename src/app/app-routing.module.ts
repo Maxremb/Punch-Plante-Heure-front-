@@ -23,6 +23,7 @@ import { AboutComponent } from './content/about/about.component';
 import { ContactComponent } from './content/contact/contact.component';
 import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
+import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/graphique-jardin.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent },
+  { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
   { path : 'planning' , component : PlanningJardinComponent }
   
  
