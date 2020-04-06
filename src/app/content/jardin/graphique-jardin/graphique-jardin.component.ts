@@ -14,7 +14,7 @@ import { PlanteUtilisateurCreateDto } from 'src/app/models/plante-utilisateur-cr
 export class GraphiqueJardinComponent implements OnInit {
 
   @Input() jardin: JardinUpdateDto;
-  matrice: Array<Array<String>>; //matrice bidimensionnelle représentant l'emplacement des plantes
+  matrice = new Array<Array<String>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
   selection = "";
   plantes: Array<PlanteUtilisateurCreateDto>
 
@@ -32,11 +32,6 @@ export class GraphiqueJardinComponent implements OnInit {
   
 
   ngOnInit(): void {
-    console.log("DEBUG INIT GRAPHIQUE");
-
-    console.log('debug init Graphique : ', this.jardin);
-    
-    // this.jardin = this.service.jardin;
     this.genererMatrice();
     console.log(this.matrice);
     this.plantes; //TO DO : recuperer la listes des plantes à placer

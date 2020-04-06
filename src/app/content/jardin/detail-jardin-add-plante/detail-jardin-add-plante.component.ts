@@ -15,7 +15,7 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 export class DetailJardinAddPlanteComponent implements OnInit {
 
   planteForm: FormGroup;
-  plante: PlanteUtilisateurCreateDto = new PlanteUtilisateurCreateDto();
+  plante = new PlanteUtilisateurCreateDto();
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
@@ -47,7 +47,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     // recuperation de la liste de toutes les plantes modeles
     // definition du formulaire
     this.planteForm = new FormGroup({
-      "commun": new FormControl(this.plante.modelPlant.commun, Validators.required),
+      "commun": new FormControl(this.plante.modelPlant, Validators.required),
       "plantingDate": new FormControl(this.plante.plantingDate),
       "semiDate": new FormControl(this.plante.semiDate),
       "plantStage": new FormControl(this.plante.plantStage),
