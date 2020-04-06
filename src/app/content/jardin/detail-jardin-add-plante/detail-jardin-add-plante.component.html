@@ -39,16 +39,24 @@
                         <option value="recolte">Plante à récolter</option>
                     </select>
                     <br>
-                    <button type="submit" class="btn alazea-btn mt-15" [disabled]="planteForm.invalid">Valider</button>
+                    <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.planteForm.valid">Valider</button>
                     <br>
                 </form>
-                <span class="alert alert-success" *ngIf="messageValidation">{{messageValidation}}</span>
-                <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
+                <span class="alert alert-success" *ngIf="messageValidation">{{this.messageValidation}}</span>
+                <span class="alert alert-danger" *ngIf="messageErreur">{{this.messageErreur}}</span>
             </div>
         </div>
         <!-- Fin du formualaire -->
 
-<app-graphique-jardin [jardin]="this.jardin"></app-graphique-jardin>
+        <div *ngIf="this.planteutilisateurservice.listePlante.length">
+            <ul>
+                <li *ngFor="let plante of this.planteutilisateurservice.listePlante">{{this.plante.modelPlant.commun}}></li>
+            </ul>
+            
+            <button class="btn alazea-btn mt-15"  (click)="this.sauvegarder" >Sauvegarder</button>
+        </div>
+
+<app-graphique-jardin [jardin]="this.jardin" [plantes]="this.planteutilisateurservice.listePlante"></app-graphique-jardin>
 
         <!-- Ajout d'images à droite -->
         <div class="col 12 col-lg-7">
