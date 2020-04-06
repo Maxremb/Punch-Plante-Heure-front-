@@ -10,24 +10,28 @@ import { PlanteModeleService } from 'src/app/services/plante-modele-service.serv
 export class UserviewAllPlantComponent implements OnInit {
 
   allPlant = new Array<PlanteModeleUpdateDto>();
+  pageActive:number =1;
+  pageTotal:number[];
 
-
-  // injection des services necessaires
   constructor(private service:PlanteModeleService) { }
 
-  // lancement de la methode getAll au demarrage de la page
   ngOnInit(): void {
-    this.getAll();
+    this.getAll(1);
   }
 
+  range(end) {
+    return (new Array(end)).fill(undefined).map((_, i) => i);
+  }
 
-  // recuperation de la liste de toutes les plantes modeles
-  getAll() {
-    this.service.getAll().subscribe(
+  getAll(npage: number) {
+    this.service.getAll(npage).subscribe(
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
-          this.allPlant = responseDto.body;
+          this.allPlant = responseDto.body.content;
+          this.pageActive = responseDto.body.number;
+          this.pageTotal = this.range(responseDto.body.totalPages);
+
         }
       }
     );

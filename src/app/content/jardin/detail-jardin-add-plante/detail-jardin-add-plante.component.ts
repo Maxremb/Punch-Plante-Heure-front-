@@ -31,8 +31,8 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   ngOnInit(): void {
     // variable jardin stockee dans le service
     this.jardin = this.jardinservice.jardin;
+    this.getAllPlantes(1);
     // recuperation de la liste de toutes les plantes modeles
-    this.getAllPlantes();
     // definition du formulaire
     this.planteForm = new FormGroup({
       "commun": new FormControl(this.plante.modelPlant.commun, Validators.required),
@@ -49,8 +49,8 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   get plantStage() { return this.planteForm.get('plantStage') }
   get healthStage() {return this.planteForm.get('healthStage')}
 
-  getAllPlantes(): void {
-    this.plantemodeleservice.getAll().subscribe(
+  getAllPlantes(npage:number): void {
+    this.plantemodeleservice.getAll(npage).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.body;

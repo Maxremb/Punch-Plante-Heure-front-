@@ -22,7 +22,6 @@ export class AllJardinComponent implements OnInit {
   ngOnInit(): void {
     // Affecter l'user actif
     //this.utilisateurActif = this.service.utilisateurActif
-
     //appel methode
     this.readAllByIdUtilisateur();
   }

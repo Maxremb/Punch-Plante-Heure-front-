@@ -34,8 +34,8 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     this.jardin = this.jardinservice.jardin;
     // Recuperation de la variable planteUtilisateur stockee dans le service
     this.planteUtilisateur = this.planteutilisateurservice.planteUtilisateur;
+    this.getAllPlantes(1);
     // Recuperation de la liste de toutes les plantes presentes dans model
-    this.getAllPlantes();
     // Definition du formulaire de modification des plantes utilisateurs
     this.updateplanteForm = new FormGroup({
       "plantingDate": new FormControl(this.planteUtilisateur.plantingDate),
@@ -46,9 +46,9 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
 
   }
 
+  getAllPlantes(npage:number): void {
+    this.plantemodeleervice.getAll(npage).subscribe(
   // Recuperation de la liste de toutes les plantes presentes dans model
-  getAllPlantes(): void {
-    this.plantemodeleervice.getAll().subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.body;
@@ -57,7 +57,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     )
   }
 
-  get commun() { return this.updateplanteForm.get('commun') }
+ 
   get plantingDate() { return this.updateplanteForm.get('plantingDate') }
   get semiDate() { return this.updateplanteForm.get('semiDate') }
   get plantStage() { return this.updateplanteForm.get('plantStage') }
