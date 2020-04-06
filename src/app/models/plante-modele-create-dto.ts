@@ -15,8 +15,8 @@ export class PlanteModeleCreateDto {
     desc: string;
     toxi: boolean;
     picture: string;
-    assoplus: string[]; //association positive en tant que string et non plantmodel
-    assomoins: string[]; //idem pour associations negatives
+    positive: string[]; //association positive en tant que string et non plantmodel
+    negative: string[]; //idem pour associations negatives
 
     periodes: Array<PeriodeUpdateDto>;
 
@@ -30,6 +30,6 @@ export class PlanteModeleCreateDto {
     strate: StrateEnum;
     vivacite: VivaciteEnum;
 
-    famille: string;
+    mifa: string;
     // Mettre les degrées d'affinité avec les plantes peut-être ?
 }

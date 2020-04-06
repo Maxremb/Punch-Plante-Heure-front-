@@ -1,158 +1,153 @@
-<div class="container" style="margin-top: 3%;">
-  <section class="subscribe-newsletter-area" style="background-image: url(assets/img/bg-img/subscribe.png);">
-    <div class="container">
-      <div class="row align-items-center justify-content-between">
-        <div class="col-12 col-lg-12">
-          <div class="section-heading mb-0">
-            <h2 class="text-center">AJOUT D'UNE PLANTE (ADMIN)</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms">
-      <img class="first-img" src="assets/img/core-img/leaf.png" alt="">
-    </div>
-  </section>
+<div class="container">
+  <!-- Entete de la liste des plantes -->
+  <app-entete-plant></app-entete-plant>
 
+  <!-- Titre-->
+  <h2>Ajouter une plante dans notre dictionnaire</h2>
+  <hr>
 
-  <a routerLink="/plant">
-    <button type="button" class="btn alazea-btn mt-15">Voir la liste entière</button>
-  </a>
-
-
-  <div>
-    <hr>
-    <form [formGroup]="plantCreateForm" (ngSubmit)="this.save()">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="commun">Nom Commun :</label>
-            <input type="text" class="form-control" formControlName="commun" name="commun">
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="scientifique">Nom Scientifique :</label>
-            <input type="text" class="form-control" formControlName="scientifique" name="scientifique">
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="famille">Famille: {{this.plant.famille}}</label>
-            <input type="text" class="form-control" formControlName="famille" name="famille">
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="arrosage">Cycle d'arrossage en jour:</label>
-            <input type="number" class="form-control" formControlName="arrosage" name="arrosage">
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="ensoleillement">Ensoleillement optimal:</label>
-            <input type="text" class="form-control" formControlName="ensoleillement" name="ensoleillement">
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="humidite">Taux d'humidité :</label>
-            <input type="number" class="form-control" formControlName="humidite" name="humidite">
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="solOpti">Type de sol préféré :</label>
-            <select class="form-control" formControlName="sol" name="sol">
-              <option value="sableux">sableux</option>
-              <option value="limonoArgileux">Limono Argileux</option>
-              <option value="argiloSableux">Argilo Sableux</option>
-              <option value="argiloLimoneux">Argilo Limoneux</option>
-              <option value="argileux">Argileux</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="repiquage">Repiquage :</label>
-            <input type="number" class="form-control" formControlName="repiquage" name="repiquage">
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="min">Température minimale :</label>
-            <input type="number" class="form-control" formControlName="min" name="min">
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="max">Température maximale :</label>
-            <input type="number" class="form-control" formControlName="max" name="max">
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="desc">Description :</label>
-            <input type="text" class="form-control" formControlName="desc" name="desc">
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="toxi">Toxicité :</label>
-            <select class="form-control" formControlName="toxi" name="toxi">
-              <option value="true">Oui</option>
-              <option value="false">Non</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="assoplus">Association positive : {{this.plant.assoplus}}</label>
-            <select multiple data-role="tagsinput" class="form-control" formControlName="assoplus" name="assoplus">
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label for="assomoins">Association négative : {{this.plant.assomoins}}</label>
-            <select multiple data-role="tagsinput" class="form-control" formControlName="assomoins" name="assomoins">
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-4"></div>
+  <!-- Debut du formulaire Creation d'une plante model dans le dictionnaire -->
+  <form [formGroup]="plantCreateForm" (ngSubmit)="this.save()">
+    <div class="row">
+      <div class="col-lg-4">
         <div class="form-group">
-          <label for="picture">picture:</label>
+          <label for="commun">Nom Commun :</label>
+          <input type="text" class="form-control" formControlName="commun" name="commun">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="scientifique">Nom Scientifique :</label>
+          <input type="text" class="form-control" formControlName="scientifique" name="scientifique">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="famille">Famille: {{this.plant.mifa}}</label>
+          <input type="text" class="form-control" formControlName="famille" name="famille">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="arrosage">Cycle d'arrossage en jour:</label>
+          <input type="number" class="form-control" formControlName="arrosage" name="arrosage">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="ensoleillement">Ensoleillement optimal:</label>
+          <input type="text" class="form-control" formControlName="ensoleillement" name="ensoleillement">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="humidite">Taux d'humidité :</label>
+          <input type="number" class="form-control" formControlName="humidite" name="humidite">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="solOpti">Type de sol préféré :</label>
+          <select class="form-control" formControlName="sol" name="sol">
+            <option value="sableux">sableux</option>
+            <option value="limonoArgileux">Limono Argileux</option>
+            <option value="argiloSableux">Argilo Sableux</option>
+            <option value="argiloLimoneux">Argilo Limoneux</option>
+            <option value="argileux">Argileux</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="repiquage">Repiquage :</label>
+          <input type="number" class="form-control" formControlName="repiquage" name="repiquage">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="min">Température minimale :</label>
+          <input type="number" class="form-control" formControlName="min" name="min">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="max">Température maximale :</label>
+          <input type="number" class="form-control" formControlName="max" name="max">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="desc">Description :</label>
+          <input type="text" class="form-control" formControlName="desc" name="desc">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="toxi">Toxicité :</label>
+          <select class="form-control" formControlName="toxi" name="toxi">
+            <option value="true">Oui</option>
+            <option value="false">Non</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="assoplus">Association positive : {{this.plant.positive}}</label>
+          <select multiple data-role="tagsinput" class="form-control" formControlName="assoplus" name="assoplus">
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="assomoins">Association négative : {{this.plant.negative}}</label>
+          <select multiple data-role="tagsinput" class="form-control" formControlName="assomoins" name="assomoins">
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="picture">Image :</label>
           <input type="file" class="form-control-file border" formControlName="picture" name="picture">
         </div>
       </div>
+    </div>
 
-      <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantCreateForm.valid">Enregistrer</button>
-      <div *ngIf="this.messageValidation.length">
-        <div class="alert alert-fail" *ngIf="this.error">
-          {{this.messageValidation}}
-        </div>
-        <div class="alert alert-success" *ngIf="!this.error">
-          {{this.messageValidation}}
-        </div>
+    <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantCreateForm.valid">Enregistrer</button>
+    <div *ngIf="this.messageValidation.length">
+      <div class="alert alert-fail" *ngIf="this.error">
+        {{this.messageValidation}}
       </div>
+      <div class="alert alert-success" *ngIf="!this.error">
+        {{this.messageValidation}}
+      </div>
+    </div>
+  </form>
+  <!-- Fin du formulaire-->
 
-    </form>
-    <hr>
-  </div>
+
+  <!-- Retour lien page administrateur -->
+  <a routerLink="/plant/vadmin">
+    <button class="btn alazea-btn mt-15" >Retour</button>
+  </a>
+
+</div>

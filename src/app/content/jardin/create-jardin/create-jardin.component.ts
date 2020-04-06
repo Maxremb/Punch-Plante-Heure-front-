@@ -37,6 +37,7 @@ export class CreateJardinComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllDept();
+    this.getDept(); 
     // Affecter l'user actif au jardin
     //this.utilisateurActif = this.service.utilisateurActif
     this.addJardinForm = new FormGroup({
@@ -44,7 +45,7 @@ export class CreateJardinComponent implements OnInit {
       "ground": new FormControl(this.jardin.ground, Validators.required),
       "length": new FormControl(this.jardin.length),
       "width": new FormControl(this.jardin.width),
-      "dept": new FormControl(this.jardin.dept, Validators.required),
+      "dept": new FormControl(this.jardin.dept.depNum, Validators.required),
       "user" : new FormControl(this.jardin.user = this.utilisateurActif),
     })
   }
@@ -65,6 +66,14 @@ export class CreateJardinComponent implements OnInit {
         } else { this.messageErreur = responseDto.message; }
        }
     )
+  }
+
+  getDept() {
+    this.deptService.getById(this.jardin.dept.depNum).subscribe(
+      respDto => {
+        this.jardin.dept = respDto.body;
+      }
+    );
   }
 
   //retourne la lsite de tout les depts

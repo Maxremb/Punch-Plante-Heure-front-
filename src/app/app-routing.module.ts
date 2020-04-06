@@ -21,11 +21,13 @@ import { UserviewAllPlantComponent } from './content/plant/userview-all-plant/us
 import { AboutComponent } from './content/about/about.component';
 import { ContactComponent } from './content/contact/contact.component';
 import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
+import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
 
 
 const routes: Routes = [
   { path : '' , component :  AccueilHorsConnexionComponent },
   { path : 'dashboard' , component :  DashboardComponent },
+  { path : 'admin' , component :  DashboardAdminComponent },
   { path : 'jardin' , component :  AllJardinComponent},
   { path : 'jardin/create' , component : CreateJardinComponent },
   { path : 'jardin/detail', component : DetailJardinComponent },

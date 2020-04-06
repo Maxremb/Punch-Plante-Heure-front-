@@ -15,6 +15,7 @@ export class AllPeriodeComponent implements OnInit {
   constructor(private service : PeriodeService) { }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
   getAll() {

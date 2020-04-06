@@ -1,45 +1,76 @@
 <div class="container">
-    <h2><label for="search-box">Recherche par ID</label></h2>
+    <!-- Entete de la liste des plantes -->
+    <app-entete-plant></app-entete-plant>
 
-    <input type="number" #searchBox id="search-box" />
-    <button type="button" class="btn btn-info" (click)="this.getId(searchBox.value)">Chercher par ID</button>
-    <hr>
-    <button type="button" class="btn btn-info" (click)="this.getAll(1)">Voir la liste entière</button>
-    <hr>
-    <a routerLink="/plant/create">
-    <input type="button" value="Ajouter une plante" class="btn btn-info"/>
-    </a>
-    <hr>
-    <h2>Liste des plantes :</h2>
+    <!-- Partie correspondant aux differents choix de l'administrateur, s'affiche uniquement si choix = true -->
+    <div *ngIf="choix">
+        <h2>Cher administrateur, que voulez-vous faire ?</h2>
+
+        <div class="container">
+            <button class="btn alazea-btn mt-15" (click)="this.afficherListe()">Afficher la liste des plantes de notre dictionnaire</button>
+        </div>
+
+        <div class="container">
+            <button class="btn alazea-btn mt-15" (click)="this.afficherRecherche()">Rechercher une plante par numéro d'identifiant</button>
+        </div>
+
+        <div class="container">
+            <a routerLink="/plant/create">
+                <button class="btn alazea-btn mt-15">Ajouter une plante dans notre dictionnaire</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Partie Recherche Par Id, s'affiche uniquement si recherche = true -->
+    <div *ngIf="recherche">
+        <h2><label for="search-box">Recherche par numéro d'identifiant</label></h2>
+        <input type="number" [(ngModel)]="this.numero"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a routerLink="/plant/update/{{this.numero}}">
+            <button class="btn alazea-btn mt-15" >Rechercher</button>
+        </a>
+    </div>
     
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom commun</th>
-                <th>Nom scientifique</th>
-                <th>URL picture</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let plant of this.allPlant">
-                <td>{{plant.identifiant}}</td>
-                <td>{{plant.commun}}</td>
-                <td>{{plant.scientifique}}</td>
-                <td>{{plant.picture}}</td>
-                <td>
-                <button class="btn btn-danger" (click)="this.delete(plant.identifiant)">Supprimer</button>
-                <a routerLink="/plant/update/{{plant.identifiant}}">
-                    <button class="btn btn-info" >Modifier</button>
-                </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <nav aria-label="Page navigation">
-        <ul class="pagination" *ngFor="let page of pageTotal">
-            <li class="page-item" (click)="this.getAll(page)">{{page}}</li>
-            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-        </ul>
-    </nav>
+    <!-- Partie Liste des plantes, s'affiche uniquement si liste = true -->
+    <div *ngIf="liste">
+        <h2>Liste des plantes de notre dictionnaire</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom commun</th>
+                    <th>Nom scientifique</th>
+                    <th>URL picture</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plant of this.allPlant">
+                    <td>{{plant.identifiant}}</td>
+                    <td>{{plant.commun}}</td>
+                    <td>{{plant.scientifique}}</td>
+                    <td>{{plant.picture}}</td>
+                    <td>
+                    <button class="btn alazea-btn mt-15" (click)="this.delete(plant.identifiant)">Supprimer cette plante</button>
+                    &nbsp;&nbsp;
+                    <a routerLink="/plant/update/{{plant.identifiant}}">
+                        <button class="btn alazea-btn mt-15" >Modifier cette plante</button>
+                    </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination" *ngFor="let page of pageTotal">
+                <li class="page-item" (click)="this.getAll(page)">{{page}}</li>
+                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Partie retour aux differents choix, s'affiche uniquement si choix = false -->
+    <div class="container" *ngIf="!choix">
+        <button class="btn alazea-btn mt-15" (click)="this.afficherChoix()">Retour</button>
+    </div>
+
 </div>

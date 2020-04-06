@@ -10,14 +10,42 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 export class AllPlantComponent implements OnInit {
 
   allPlant = new Array<PlanteModeleUpdateDto>();
-  pageActive:number =1;
-  pageTotal:number[];
+  pageActive: number = 1;
+  pageTotal: number [];
+  liste: boolean;
+  choix: boolean;
+  recherche: boolean;
+  numero: number;
 
   constructor(private service:PlanteModeleService) { }
 
+  // Initialisation des constantes choix, liste et recherche
   ngOnInit(): void {
+    this.choix = true;
+    this.liste = false;
+    this.recherche = false;
+  }
+
+  // Methode pour afficher les choix de l'administrateur
+  afficherChoix() {
+    this.choix = true;
+    this.liste = false;
+    this.recherche = false;
+  }
+  
+  // Methode pour afficher la liste des plantes, appel a la methode getAll(1)
+  afficherListe() {
+    this.liste = true;
+    this.choix = false;
     this.getAll(1);
   }
+
+  // Methode pour afficher le champ de recherche par ID
+  afficherRecherche() {
+    this.recherche = true;
+    this.choix = false;
+  }
+
   range(end) {
     return (new Array(end)).fill(undefined).map((_, i) => i+1);
   }
@@ -44,23 +72,12 @@ export class AllPlantComponent implements OnInit {
             element =>  element.identifiant !== id
           );
         }
-        this.getAll(this.pageActive);
       }
     );
   }
 
-  getId(id: number) {
-    this.service.getId(id).subscribe(
-      responseDto => {
-        console.log('debug responseDto : ', responseDto);
-        if (!responseDto.error) {
-          this.allPlant = this.allPlant.filter(
-            element =>  element.identifiant == id
-          );
-        }
-      }
-    );
-  }
+  
 
+  
 
 }

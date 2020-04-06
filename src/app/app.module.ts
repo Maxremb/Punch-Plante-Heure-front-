@@ -30,6 +30,8 @@ import { EnteteJardinComponent } from './content/jardin/entete-jardin/entete-jar
 import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/graphique-jardin.component';
 import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.component';
 import { EntetePeriodeComponent } from './content/periode/entete-periode/entete-periode.component';
+import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
+import { EnteteDashboardComponent } from './content/dashboard/entete-dashboard/entete-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { EntetePeriodeComponent } from './content/periode/entete-periode/entete-
     GraphiqueJardinComponent,
     EntetePlantComponent,
     EntetePeriodeComponent,
+    DashboardAdminComponent,
+    EnteteDashboardComponent,
   ],
   imports: [
     BrowserModule,

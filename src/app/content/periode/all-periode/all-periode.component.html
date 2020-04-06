@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 3%;">
+<div class="container">
 
 
 
@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let e of this.allPeridoes">
+                <tr *ngFor="let e of this.allPeriodes">
                     <td>{{e.id}}</td>
                     <td>{{e.type}}</td>
                     <td>{{e.plante}}</td>
@@ -58,8 +58,8 @@
         <a routerLink="/periode/create">
             <input type="button" value="Ajouter une période" class="btn alazea-btn mt-15" />
         </a>
-        <a routerLink="">
-            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+        <a routerLink="/admin">
+            <input type="button" value="Retour" class="btn alazea-btn mt-15" />
         </a>
     </div>
 </div>

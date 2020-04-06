@@ -12,16 +12,21 @@ declare function maFonction():any;
   styleUrls: ['./detailed-plant.component.css']
 })
 export class DetailedPlantComponent implements OnInit {
-  plantUpdateForm:FormGroup;
-  @Input() plant: PlanteModeleUpdateDto;
+  
+  plantUpdateForm: FormGroup;
+  plant: PlanteModeleUpdateDto;
   messageValidation = '';
-  error:boolean;
+  error: boolean;
 
-  constructor(private service: PlanteModeleService,
-    private route: ActivatedRoute,) { }
+  constructor(
+    private service: PlanteModeleService,
+    private route: ActivatedRoute
+    ) { }
 
+  // Initialisation du formulaire et de l'appel à getPlant
   ngOnInit(): void {
     maFonction();
+    this.getPlant();
     this.plantUpdateForm = new FormGroup({
       commun: new FormControl(this.plant.commun,Validators.required),
       scientifique: new FormControl(this.plant.scientifique,Validators.required),
@@ -36,13 +41,20 @@ export class DetailedPlantComponent implements OnInit {
       toxi: new FormControl(this.plant.toxi,Validators.required),
     });
   }
+
+  // Appel à la methode getPlant des le chargement de la page, en prenant compte la valeur de l'id dans l'url
   getPlant(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.service.getId(id)
-      .subscribe(responsedto => this.plant = responsedto.body);
+    this.service.getId(id).subscribe(
+      (responsedto) => {
+        if (!responsedto.error) {
+          this.plant = responsedto.body;
+        }
+      }
+    );
   }
 
-  save() {
+  update() {
     this.service.update(this.plant).subscribe(
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);

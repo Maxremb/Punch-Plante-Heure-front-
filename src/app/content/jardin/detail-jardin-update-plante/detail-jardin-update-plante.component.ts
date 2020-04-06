@@ -57,7 +57,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     )
   }
 
-  get commun() { return this.updateplanteForm.get('commun') }
+ 
   get plantingDate() { return this.updateplanteForm.get('plantingDate') }
   get semiDate() { return this.updateplanteForm.get('semiDate') }
   get plantStage() { return this.updateplanteForm.get('plantStage') }

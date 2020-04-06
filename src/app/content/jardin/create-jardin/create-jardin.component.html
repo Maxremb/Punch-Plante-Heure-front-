@@ -6,16 +6,6 @@
     <div class="row">
         <div class="col-12 col-lg-5" style="padding-left: 0%;">
 
-            <!--BALISE POUR AFFICHAGE DEBUG-->
-            <div>
-                <h1> DEBUG LISTE DEPT : </h1>
-                <ul *ngFor="let depart of this.allDepartements">
-                    <li >
-                        <p style="color: red;"> {{depart.name}} </p>
-                    </li>
-                </ul>
-            </div>
-
             <!--FORM d'ajout de jardin-->
             <form [formGroup]="addJardinForm" (ngSubmit)="this.create()">
                 <h2> Ajouter un jardin </h2>
@@ -47,23 +37,32 @@
                     <label class="label">Largeur : </label>
                     <input class="form-control" id="width" type="number" min="0" formControlName="width" name="width">
                 </div>
+
+
                 <div>
                     <label class="label">Département : </label>
-                    <select class="form-control" class="form-control" id="dept" formControlName="dept" name="dept"
-                        required>
+                                            <p> Entrer 0 pour un jardin d'intérieur</p>
+                    <input type="number" class="form-control" min="0" id="dept" formControlName="dept" name="dept"
+                        required>    
+
+<!--   
+                    <select class="form-control" id="dept" formControlName="dept" name="dept" required>
                         <div *ngFor="let depart of this.allDepartements">
                             <option>{{depart.name}}</option>
                         </div>
                     </select>
-                    <!--message validator pour departement-->
+-->
+
+                  <!--  message validator pour departement-->
                     <div *ngIf="dept.errors?.required && (dept.touched || dept.dirty)" class="alert alert-danger">
                         Le département est requis !
                     </div>
 
                 </div>
 
+            
                 <!--boutton de validation-->
-                <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.addJardinForm.valid">
+                <button type="submit" class="btn alazea-btn mt-15" >
                     Créer mon jardin
                 </button>
 
@@ -77,7 +76,7 @@
 
             </form>
         </div>
-<!--End bloc formulaire-->
+        <!--End bloc formulaire-->
 
 
         <!--Image decoration-->
