@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetailJardinComponent } from './content/jardin/detail-jardin/detail-jardin.component';
 import { CreateJardinComponent } from './content/jardin/create-jardin/create-jardin.component';
 import { AllJardinComponent } from './content/jardin/all-jardin/all-jardin.component';
+import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
 import { DashboardComponent } from './content/dashboard/dashboard/dashboard.component';
 import { AllPlantComponent } from './content/plant/all-plant/all-plant.component';
 import { CreatePlantComponent } from './content/plant/create-plant/create-plant.component';
@@ -47,6 +48,8 @@ const routes: Routes = [
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent },
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
+  { path : 'planning' , component : PlanningJardinComponent }
+  
  
 ];
 
