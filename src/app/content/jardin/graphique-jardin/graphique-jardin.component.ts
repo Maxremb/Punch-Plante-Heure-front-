@@ -49,7 +49,6 @@ export class GraphiqueJardinComponent implements OnInit {
         this.matrice[indexLigne][indexCol] = "";
       }
     }
-
   }
 
   modifOnClick(plante) {

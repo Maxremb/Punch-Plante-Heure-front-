@@ -19,8 +19,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
-  allPlantes = new Array<PlanteModeleUpdateDto>();
- 
+  allPlantes = new Array<PlanteModeleUpdateDto>(); 
 
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
@@ -30,8 +29,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   // Valeurs initiales a recuperer
   ngOnInit(): void {
     // variable jardin stockee dans le service
-
-
+    
     // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
     this.jardin = new JardinUpdateDto();
     this.jardin.identifier =1;
