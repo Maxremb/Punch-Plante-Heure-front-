@@ -33,6 +33,7 @@ import { EntetePeriodeComponent } from './content/periode/entete-periode/entete-
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
 import { EnteteDashboardComponent } from './content/dashboard/entete-dashboard/entete-dashboard.component';
 import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { PlanningJardinComponent } from './content/jardin/planning-jardin/planni
     DashboardAdminComponent,
     EnteteDashboardComponent,
     PlanningJardinComponent,
+    MeteoDepComponent,
   ],
   imports: [
     BrowserModule,
