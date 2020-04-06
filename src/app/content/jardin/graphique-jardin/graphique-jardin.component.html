@@ -23,7 +23,12 @@
                 </tr>
             </tbody>
         </table>
-
+        
+        <!-- On modélise le jardin à 1pixel = 1cm -->
+        {{this.jardin}}
+        {{this.matrice}}
+        <canvas id="carteJardin" height=({{this.jardin.width}}*396) width=({{this.jardin.length}})>Représentation graphique de votre jardin</canvas> 
+        
 
         <!-- Affiche la liste des plantes et autre pour sélectionner et placer dans notre plan -->
 
