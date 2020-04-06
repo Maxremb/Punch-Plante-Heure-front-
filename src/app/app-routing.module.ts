@@ -46,8 +46,7 @@ const routes: Routes = [
   { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent },
-  { path : 'jardin/graphique', component : GraphiqueJardinComponent},
-  
+  { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
  
 ];
 

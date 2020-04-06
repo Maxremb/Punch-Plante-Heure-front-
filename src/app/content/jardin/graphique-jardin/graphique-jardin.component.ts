@@ -37,25 +37,24 @@ export class GraphiqueJardinComponent implements OnInit {
     console.log('debug init Graphique : ', this.jardin);
     
     // this.jardin = this.service.jardin;
-    this.genererMatrice();
+    // this.genererMatrice();
     console.log(this.matrice);
     this.plantes; //TO DO : recuperer la listes des plantes à placer
     this.genererCarte();
   }
 
   // Faire un espace aux bonnes proportions
-  genererMatrice() {
-    var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
-    var nbCol = this.jardin.length * 100 / 5;
+  // genererMatrice() {
+  //   var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
+  //   var nbCol = this.jardin.length * 100 / 5;
 
-    for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
-      this.matrice[indexLigne] = [];
-      for (let indexCol = 0; indexCol < nbCol; indexCol++) {
-        this.matrice[indexLigne][indexCol] = "";
-      }
-    }
-
-  }
+  //   for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
+  //     this.matrice[indexLigne] = [];
+  //     for (let indexCol = 0; indexCol < nbCol; indexCol++) {
+  //       this.matrice[indexLigne][indexCol] = "";
+  //     }
+  //   }
+  // }
 
   modifOnClick(plante) {
     plante = this.selection;
