@@ -33,6 +33,28 @@
         </div>
     </div>
 
+    <!-- Partie Recherche Par Id, s'affiche uniquement si recherche = true -->
+    <div *ngIf="recherche1" class="form-group">
+        <h2><label>Recherche par Nom</label></h2>
+        <input type="text" class="form-group" [(ngModel)]="this.name" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a routerLink="/departement/update/{{this.name}}">
+            <button class="btn alazea-btn mt-15">Rechercher</button>
+        </a>
+    </div>
+
+
+
+    <!-- Partie Recherche Par Id, s'affiche uniquement si recherche = true -->
+    <div *ngIf="recherche">
+        <h2><label for="search-box">Recherche par Numéro</label></h2>
+        <input type="number" [(ngModel)]="this.depNum" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a routerLink="/departement/update/{{this.depNum}}">
+            <button class="btn alazea-btn mt-15">Rechercher</button>
+        </a>
+    </div>
+
 
     <!-- Partie Liste des plantes, s'affiche uniquement si liste = true -->
     <div *ngIf="liste">
@@ -42,6 +64,7 @@
                 <tr>
                     <th>Numéro departement</th>
                     <th>Nom departement</th>
+                    <th>Météo Associée</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -49,11 +72,15 @@
                 <tr *ngFor="let d of this.allDepartements">
                     <td>{{d.depNum}}</td>
                     <td>{{d.name}}</td>
+                    <td><a routerLink="/meteo/:id">
+                        <button class="btn alazea-btn mt-15" >Voir la Météo associée</button></a></td>
+                    
                     <td>
-                        <button class="btn alazea-btn mt-15" (click)="this.delete(d.depNum)">Supprimer ce departement</button>
+                        <button class="btn alazea-btn mt-15" (click)="this.delete(d.depNum)">Supprimer ce
+                            departement</button>
                         &nbsp;&nbsp;
                         <a routerLink="/departement/update/{{d.depNum}}">
-                        <button class="btn alazea-btn mt-15">Modifier ce departement</button>
+                            <button class="btn alazea-btn mt-15">Modifier ce departement</button>
                         </a>
                     </td>
                 </tr>

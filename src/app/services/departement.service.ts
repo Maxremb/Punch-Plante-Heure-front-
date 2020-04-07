@@ -41,8 +41,8 @@ export class DepartementService {
   }
 
   // readMeteoByNumDep
-  getMeteoByDepartement(numDepartement: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/meteo/' + numDepartement);
+  getMeteoByDepartement(numDepartement: number, numelem: number, page: number, sortname: string): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/meteo?elemsPerPage=' + numelem +'&id=' + numDepartement + '&page=' + page + '&sortName=' + sortname);
   }
 
   // readById

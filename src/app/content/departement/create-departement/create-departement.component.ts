@@ -42,6 +42,7 @@ export class CreateDepartementComponent implements OnInit {
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! Le Departement a bien été ajoutée à la base de données';
           this.error = false;
+          document.location.reload();
         }
       },
       (error) => {

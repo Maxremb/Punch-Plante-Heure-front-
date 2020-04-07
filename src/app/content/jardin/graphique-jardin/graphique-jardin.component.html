@@ -1,71 +1,68 @@
-<div>
-    <form>
+<div class="row">
+    <div class="col-sm-8">
+        <form>
+            <table border="3px solid black">
+                <tbody>
+                    <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
+                        <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;" width=20px
+                            height=20px (click)="modifOnClick(index, index2)">
+                            <div *ngIf="matrice[index][index2]=='chemin'" class="chemin">
+                                &nbsp;
+                            </div>
+                            <div *ngIf="matrice[index][index2]=='obstacle'" class="obstacle">
+                                &nbsp;
+                            </div>
+                            <div *ngIf="matrice[index][index2]==''" class="vide">
+                                &nbsp;
+                            </div>
+                            <div *ngIf="matrice[index][index2]!='chemin'&&matrice[index][index2]!='obstacle'&& matrice[index][index2].length"
+                                class="plante">
+                                &nbsp;
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>(Un carreau de cette grille représente un carré de votre jardin de 5x5cm)</p>
 
-        <table border="3px solid black">
-            <tbody>
-                <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
-                    <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;" width=20px
-                        height=20px (click)="modifOnClick(index, index2)">
-                        <div *ngIf="matrice[index][index2]=='chemin'" class="chemin">
-                            &nbsp;
-                        </div>
-                        <div *ngIf="matrice[index][index2]=='obstacle'" class="obstacle">
-                            &nbsp;
-                        </div>
-                        <div *ngIf="matrice[index][index2]==''" class="vide">
-                            &nbsp;
-                        </div>
-                        <div *ngIf="matrice[index][index2]!='chemin'&&matrice[index][index2]!='obstacle'&& matrice[index][index2].length"
-                            class="plante">
-                            &nbsp;
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- On modélise le jardin à 1pixel = 1cm -->
-        <canvas id="carteJardin" height=({{this.jardin.width}}*100) width=({{this.jardin.length}})*100>Représentation
-            graphique de votre jardin</canvas>
-
-
-        <!-- Légende du code couleur de la carte  -->
-        <legend>Légende</legend>
-        <table>
-
-            <thead>
-                <tr>
-                    <td>Couleur</td>
-                    <td> Objet</td>
-                </tr>
-
-            </thead>
-            <tbody>
-                <tr (click)="modifSelection('')">
-                    <td class="vide"></td>
-                    <td>Vide</td>
-                </tr>
-                <tr (click)="modifSelection('obstacle')">
-                    <td class="obstacle"></td>
-                    <td>Obstacle</td>
-                </tr>
-                <tr (click)="modifSelection('chemin')">
-                    <td class="chemin"></td>
-                    <td>Chemin</td>
-                </tr>
-                <tr (click)="modifSelection('plante')">
-                    <td class="plante"></td>
-                    <td>Plante</td>
-                </tr>
-            </tbody>
-        </table>
+            <!-- On modélise le jardin à 1pixel = 1cm -->
+            <!-- <canvas id="carteJardin" height=({{this.jardin.width}}*100) width=({{this.jardin.length}})*100>Représentation
+                graphique de votre jardin</canvas> -->
 
 
-        <!-- Affichage de la sélection active :  -->
-        Selection active = <div *ngIf="this.selection== ''">Vide</div>
-        {{this.selection}}
+            <!-- Légende du code couleur de la carte  -->
+            <legend><strong>Légende</strong></legend>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Couleur</td>
+                        <td> Objet</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (click)="modifSelection('')">
+                        <td class="vide"></td>
+                        <td>Vide</td>
+                    </tr>
+                    <tr (click)="modifSelection('obstacle')">
+                        <td class="obstacle"></td>
+                        <td>Obstacle</td>
+                    </tr>
+                    <tr (click)="modifSelection('chemin')">
+                        <td class="chemin"></td>
+                        <td>Chemin</td>
+                    </tr>
+                    <tr (click)="modifSelection('plante')">
+                        <td class="plante"></td>
+                        <td>Plante</td>
+                    </tr>
+                </tbody>
+            </table>
 
-
+            <!-- Affichage de la sélection active :  -->
+            Selection active = <div *ngIf="this.selection== ''">Vide</div>
+            {{this.selection}}
+            
         <!-- Affiche la liste des plantes et autre pour sélectionner et placer dans notre plan -->
 
         <!-- <select (change)="modifSelection($value)">
@@ -77,9 +74,54 @@
             </option>
         </select> -->
 
-        <br><button class="btn btn-success"><img src="../../../../assets/img/icon-img/save-24px.svg"/> Sauvgarder</button>
+        <br><button class="btn btn-success" (click)=sauvgardeJardin()><i class="fa fa-floppy-o" aria-hidden="true"></i> Sauvgarder</button>
 
-        <button class="btn btn-danger" (click)=remiseAZero()><img src="../../../../assets/img/icon-img/warning-24px.svg"/> Remettre à zéro</button>
+        <button class="btn btn-danger" (click)=remiseAZero()><i class="fa fa-times" aria-hidden="true"></i> Remettre à zéro</button>
 
-    </form>
+        </form>
+    </div>
+
+    <div class="col-sm-4">
+        <div>
+            <h2>Ajouter une plante à mon jardin</h2>
+            <form>
+                <select>
+                    <option *ngFor="let p of this.listePlantesModels"> <!-- parcours la liste des plantes models -->
+                        {{p.commun}} <!-- Affiche le nom des plantes -->
+                    </option>
+                </select>
+            </form>
+
+            <p *ngIf="planteSelectionner">Plante selectionné : {{this.planteSelectionner}}</p>
+        </div>
+        <hr style="width: 200px;">
+
+        <div>
+            <!-- Liste des plantes dans le Jardin -->
+            
+            <h2>Liste des plantes de mon jardin</h2>
+            <table border="1px solid">
+                <thead>
+                    <tr>
+                        <td> Nom Commun </td>
+                        <td> Emplacement </td>
+                        <td> Taille </td>
+                        <td> Action </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of this.plantes">
+                        <td>{{p.modelPlant.commun}}</td>
+                        <td>{{p.coordonnees}}</td>
+                        <td>La taille quand on l'aura</td>
+                        <td>
+                            <button *ngIf="!p.coordonnees" class="btn btn-success" ng-mouseover="Mettre la plante dans le jardin"><i class="fa fa-leaf" aria-hidden="true"></i></button>
+                            <button *ngIf="p.coordonnees" class="btn btn-success" ng-mouseover="Changer la plante de place"><i class="fa fa-arrows" aria-hidden="true"></i></button>
+                            <button class="btn btn-danger" ng-mouseover="Supprimer la plante du jardin"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

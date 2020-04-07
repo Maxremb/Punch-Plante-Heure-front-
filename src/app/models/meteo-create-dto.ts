@@ -1,5 +1,11 @@
+import { DepartementDto } from './departement-dto';
+
 export class MeteoCreateDto {
-    temperature: number;
-    pluie: number;
-    date: Date;
+    temp: number;
+    rain: number;
+    radiation: number;
+    etp: number;
+    humidity: number;
+    departement: DepartementDto;
+    dateMeteo: Date;
 }

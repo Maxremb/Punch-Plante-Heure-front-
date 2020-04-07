@@ -16,13 +16,13 @@ export class MeteoDepComponent implements OnInit {
   constructor(private service : DepartementService) { }
 
   ngOnInit(): void {
-    this.getMeteo();
+    this.getMeteo(30, 0, 'date');
     this.departement=this.service.departement;
     
   }
 
-  getMeteo(): void {
-    this.service.getMeteoByDepartement(this.departement.depNum).subscribe(
+  getMeteo( numelem: number, page: number, sortname: string): void {
+    this.service.getMeteoByDepartement(this.departement.depNum, numelem, page, sortname).subscribe(
       responseDto => {
          if (!responseDto.error) {
            this.allmeteo = responseDto.body;
