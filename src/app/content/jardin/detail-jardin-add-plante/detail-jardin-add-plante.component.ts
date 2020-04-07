@@ -17,14 +17,15 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
   planteForm: FormGroup;
   plante = new PlanteUtilisateurCreateDto();
+  listePlanteUtil = new Array<PlanteUtilisateurUpdateDto>();
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
   allPlantes = new Array<PlanteModeleUpdateDto>();
-  pageActive:number =1;
-  pageTotal:number[];
+  pageActive: number = 1;
+  pageTotal: number[];
 
-  
+
 
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
@@ -48,7 +49,8 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     this.getAllPlantes(1);
     console.log('DEBUG GET ALL' + this.allPlantes);
 
-    //TO DO : Recupération de la liste des plantes utilisateurs de ce jardin
+    //Récupération de la liste des plantes utilisateurs associées à ce jardin
+    this.getListePlanteUtilisateur(1);
 
 
     // definition du formulaire
@@ -79,6 +81,19 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     )
   }
 
+  getListePlanteUtilisateur(npage: number): void {
+    this.planteutilisateurservice.getAllByJardin(this.jardin.identifier, npage).subscribe(
+      (responseDto) => {
+        if (!responseDto.error) {
+          console.log('DEBUG LISTE PLANTE UTIL' );
+          console.log(responseDto.body.content);
+          this.listePlanteUtil = responseDto.body.content;
+          // this.pageActive = responseDto.body.number;
+          // this.pageTotal = this.range(responseDto.body.totalPages);
+        }
+      }
+    )
+  }
 
   range(end) {
     return (new Array(end)).fill(undefined).map((_, i) => i);
@@ -86,7 +101,22 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
   ajouter() {
     this.plante.garden = this.jardin;
-    this.planteutilisateurservice.listePlante.push(this.plante);
+    console.log("DEBUG AJOUT " + this.plante.modelPlant.commun);
+
+    this.planteutilisateurservice.create(this.plante).subscribe(
+      (responseDto) => {
+        if (!responseDto.error) {
+          this.messageValidation = "Plante ajoutée à votre jardin";
+        }
+      },
+      (responseDtoErreur) => {
+        if (responseDtoErreur.error) {
+          this.messageErreur = "Erreur d'ajout";
+        }
+      }
+    );
+    
+    // this.planteutilisateurservice.listePlante.push(this.plante);
     console.log("DEBUG PLANTES UTIL LISTE" + this.planteutilisateurservice.listePlante);
 
   }

@@ -39,6 +39,7 @@ import { DetailedDepartementComponent } from './content/departement/detailed-dep
 import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
 import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
+import { NotificationsComponent } from './content/notifications/notifications.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component
     EnteteDepartementComponent,
     PlanningJardinComponent,
     MeteoDepComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
