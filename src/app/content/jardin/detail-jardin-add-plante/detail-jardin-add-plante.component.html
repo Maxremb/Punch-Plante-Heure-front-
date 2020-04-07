@@ -3,7 +3,7 @@
     <!-- Utilisation de l'entete-->
     <app-entete-jardin></app-entete-jardin>
 
-    
+
     <div class="row">
         <!-- Formulaire d'ajout d'une plante au jardin -->
         <div class="col 12 col-lg-5" style="padding-left: 0%;">
@@ -17,20 +17,20 @@
                         <option *ngFor="let planteModel of this.allPlantes">{{planteModel.commun}}</option>
                     </select>
                     <br>
-                    <label class="label" for="plantingDate" >Date de plantation : </label>
+                    <label class="label" for="plantingDate">Date de plantation : </label>
                     <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate">
                     <br>
-                    <label class="label" for="semiDate" >Date de semis : </label>
+                    <label class="label" for="semiDate">Date de semis : </label>
                     <input type="date" id="semiDate" class="form-control" formControlName="semiDate">
                     <br>
-                    <label class="label" for="healthStage" >Etat de santé : </label>
+                    <label class="label" for="healthStage">Etat de santé : </label>
                     <select id="healthStage" class="form-control" formControlName="healthStage">
                         <option value="bonneSante">En bonne santé</option>
                         <option value="moyenne">Moyenne</option>
                         <option value="morte">Morte</option>
                     </select>
                     <br>
-                    <label class="label" for="plantStage" >Etat de la plante : </label>
+                    <label class="label" for="plantStage">Etat de la plante : </label>
                     <select id="plantStage" class="form-control" formControlName="plantStage">
                         <option value="semis">Semis</option>
                         <option value="jeunePousse">Jeune pousse</option>
@@ -39,7 +39,8 @@
                         <option value="recolte">Plante à récolter</option>
                     </select>
                     <br>
-                    <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.planteForm.valid">Valider</button>
+                    <button type="submit" class="btn alazea-btn mt-15"
+                        [disabled]="!this.planteForm.valid">Valider</button>
                     <br>
                 </form>
                 <span class="alert alert-success" *ngIf="messageValidation">{{this.messageValidation}}</span>
@@ -47,17 +48,6 @@
             </div>
         </div>
         <!-- Fin du formualaire -->
-
-        <div *ngIf="this.ajout">
-            <!-- <ul>
-                <li *ngFor="let plante of this.planteutilisateurservice.listePlante">{{this.plante.modelPlant.commun}}></li>
-            </ul> -->
-            
-            <button class="btn alazea-btn mt-15"  (click)="this.sauvegarder()" >Sauvegarder sans placer les plantes</button>
-        
-        </div>
-
-<app-graphique-jardin [jardin]="this.jardin"></app-graphique-jardin>
 
         <!-- Ajout d'images à droite -->
         <div class="col 12 col-lg-7">
@@ -74,6 +64,16 @@
         </div>
     </div>
     <!-- Fin de la ligne row -->
+    <br>
+
+<!-- Partie grapique du jardin avec liste plantes utilisateur -->
+    <div class="row">
+            <app-graphique-jardin [jardin]="this.jardin"></app-graphique-jardin>
+
+    </div>
+
+
+
 </div>
 
 <!-- Ajout de boutons en bas de page pour retourner au jardin / a mes jardins -->

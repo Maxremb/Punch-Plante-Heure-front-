@@ -16,8 +16,8 @@ import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-se
 export class GraphiqueJardinComponent implements OnInit {
 
   @Input() jardin: JardinUpdateDto;
-  matrice = new Array<Array<String>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
-  selection: String = "";
+  matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
+  selection: string = "";
   plantes: Array<PlanteUtilisateurCreateDto>;
   plantesPresentes: Array<PlanteUtilisateurUpdateDto>;
 
@@ -37,7 +37,7 @@ export class GraphiqueJardinComponent implements OnInit {
   ngOnInit(): void {
     this.getPlantesPresentes();
     this.genererMatrice();
-    this.plantes; //TO DO : recuperer la listes des plantes à placer
+    // this.plantes = this.planteUtilisateurService.listePlante;
     this.genererCarte();
 
   }
@@ -67,7 +67,7 @@ export class GraphiqueJardinComponent implements OnInit {
     console.log('DEBUG MATRICE ' + this.matrice);
   }
 
-  modifSelection(objet: String) {
+  modifSelection(objet: string) {
     this.selection = objet;
   }
 

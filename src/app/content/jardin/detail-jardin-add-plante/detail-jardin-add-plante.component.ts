@@ -6,6 +6,7 @@ import { JardinService } from 'src/app/services/jardin-service.service';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 
 @Component({
   selector: 'app-detail-jardin-add-plante',
@@ -23,7 +24,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   pageActive:number =1;
   pageTotal:number[];
 
-  ajout = false; //boolean permettant de savoir si on a ajouté des plantes utilisateur
+  
 
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
@@ -33,8 +34,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   // Valeurs initiales a recuperer
   ngOnInit(): void {
     // variable jardin stockee dans le service
-
-    // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
+    // this.jardin = this.jardinservice.jardin
     this.jardin = new JardinUpdateDto();
     this.jardin.identifier = 1;
     this.jardin.length = 1;
@@ -47,6 +47,8 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     // recuperation de la liste de toutes les plantes modeles
     this.getAllPlantes(1);
     console.log('DEBUG GET ALL' + this.allPlantes);
+
+    //TO DO : Recupération de la liste des plantes utilisateurs de ce jardin
 
 
     // definition du formulaire
@@ -77,6 +79,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     )
   }
 
+
   range(end) {
     return (new Array(end)).fill(undefined).map((_, i) => i);
   }
@@ -84,7 +87,8 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   ajouter() {
     this.plante.garden = this.jardin;
     this.planteutilisateurservice.listePlante.push(this.plante);
-    this.ajout = true;
+    console.log("DEBUG PLANTES UTIL LISTE" + this.planteutilisateurservice.listePlante);
+
   }
 
   sauvegarder() {

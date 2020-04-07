@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartementDto } from 'src/app/models/departement-dto';
 import { DepartementService } from 'src/app/services/departement.service';
+import { MeteoUpdateDto } from 'src/app/models/meteo-update-dto';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class AllDepartementsComponent implements OnInit {
   choix: boolean;
   recherche: boolean;
   recherche1: boolean;
+  depNum: number;
+  name: string;
   
   constructor(private service: DepartementService) { }
 
@@ -53,7 +56,11 @@ export class AllDepartementsComponent implements OnInit {
     this.liste = true;
     this.choix = false;
     this.getAll(0);
+    
   }
+
+
+
 
   range(end) {
     return (new Array(end)).fill(undefined).map((_, i) => i);
