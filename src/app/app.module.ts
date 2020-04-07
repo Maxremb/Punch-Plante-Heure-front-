@@ -33,6 +33,13 @@ import { EntetePeriodeComponent } from './content/periode/entete-periode/entete-
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
 import { EnteteDashboardComponent } from './content/dashboard/entete-dashboard/entete-dashboard.component';
 import { UserviewKeysearchPlantComponent } from './content/plant/userview-keysearch-plant/userview-keysearch-plant.component';
+import { AllDepartementsComponent } from './content/departement/all-departements/all-departements.component';
+import { CreateDepartementComponent } from './content/departement/create-departement/create-departement.component';
+import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
+import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
+import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
+
 
 @NgModule({
   declarations: [
@@ -65,6 +72,12 @@ import { UserviewKeysearchPlantComponent } from './content/plant/userview-keysea
     DashboardAdminComponent,
     EnteteDashboardComponent,
     UserviewKeysearchPlantComponent,
+    AllDepartementsComponent,
+    CreateDepartementComponent,
+    DetailedDepartementComponent,
+    EnteteDepartementComponent,
+    PlanningJardinComponent,
+    MeteoDepComponent,
   ],
   imports: [
     BrowserModule,

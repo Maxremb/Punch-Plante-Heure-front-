@@ -15,12 +15,15 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 export class DetailJardinAddPlanteComponent implements OnInit {
 
   planteForm: FormGroup;
-  plante: PlanteUtilisateurCreateDto;
+  plante = new PlanteUtilisateurCreateDto();
   jardin: JardinUpdateDto;
   messageValidation: string;
   messageErreur: string;
   allPlantes = new Array<PlanteModeleUpdateDto>();
- 
+  pageActive:number =1;
+  pageTotal:number[];
+
+  ajout = false; //boolean permettant de savoir si on a ajouté des plantes utilisateur
 
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
@@ -30,48 +33,76 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   // Valeurs initiales a recuperer
   ngOnInit(): void {
     // variable jardin stockee dans le service
-    this.jardin = this.jardinservice.jardin;
-    this.getAllPlantes(1);
+
+    // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
+    this.jardin = new JardinUpdateDto();
+    this.jardin.identifier = 1;
+    this.jardin.length = 1;
+    this.jardin.width = 1;
+    this.jardin.name = 'JardinTest';
+
+    console.log('debug init Detail : ', this.jardin);
+
+
     // recuperation de la liste de toutes les plantes modeles
+    this.getAllPlantes(1);
+    console.log('DEBUG GET ALL' + this.allPlantes);
+
+
     // definition du formulaire
     this.planteForm = new FormGroup({
-      "commun": new FormControl(this.plante.modelPlant.commun, Validators.required),
+      "commun": new FormControl(this.plante.modelPlant, Validators.required),
       "plantingDate": new FormControl(this.plante.plantingDate),
       "semiDate": new FormControl(this.plante.semiDate),
       "plantStage": new FormControl(this.plante.plantStage),
       "healthStage": new FormControl(this.plante.healthStage)
-      });
+    });
   }
-  
+
   get commun() { return this.planteForm.get('commun') }
   get plantingDate() { return this.planteForm.get('plantingDate') }
   get semiDate() { return this.planteForm.get('semiDate') }
   get plantStage() { return this.planteForm.get('plantStage') }
-  get healthStage() {return this.planteForm.get('healthStage')}
+  get healthStage() { return this.planteForm.get('healthStage') }
 
-  getAllPlantes(npage:number): void {
+  getAllPlantes(npage: number): void {
     this.plantemodeleservice.getAll(npage).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.allPlantes = responseDto.body;
+          this.allPlantes = responseDto.body.content;
+          this.pageActive = responseDto.body.number;
+          this.pageTotal = this.range(responseDto.body.totalPages);
         }
       }
     )
   }
 
+  range(end) {
+    return (new Array(end)).fill(undefined).map((_, i) => i);
+  }
+
   ajouter() {
-      this.plante.garden = this.jardin;
-      this.planteutilisateurservice.create(this.plante).subscribe(
-          (responseDto) => {
-            if (!responseDto.error) {
-                this.messageValidation = "Plante ajoutée à votre jardin";
-              }
-            },
-          (responseDtoErreur) => {
-            if (responseDtoErreur.error) {
-                this.messageErreur = "Erreur d'ajout";
-               }
-            }
+    this.plante.garden = this.jardin;
+    this.planteutilisateurservice.listePlante.push(this.plante);
+    this.ajout = true;
+  }
+
+  sauvegarder() {
+    this.planteutilisateurservice.listePlante.forEach(planteUtil => {
+      this.planteutilisateurservice.create(planteUtil).subscribe(
+        (responseDto) => {
+          if (!responseDto.error) {
+            this.messageValidation = "Plante ajoutée à votre jardin";
+          }
+        },
+        (responseDtoErreur) => {
+          if (responseDtoErreur.error) {
+            this.messageErreur = "Erreur d'ajout";
+          }
+        }
       );
+    });
+
+    this.planteutilisateurservice.listePlante = new Array<PlanteUtilisateurCreateDto>(); //On reset la liste des plantes à enregistrer
   }
 }
