@@ -30,9 +30,10 @@
 
 
         <!-- Légende du code couleur de la carte  -->
-        <legend>Légende</legend>
+        <legend><strong>Légende</strong></legend>
+        <p>(sur ce tableau un carreau fait 5cm x 5cm)</p>
         <table>
-
+            
             <thead>
                 <tr>
                     <td>Couleur</td>
@@ -82,4 +83,32 @@
         <button class="btn btn-danger" (click)=remiseAZero()><img src="../../../../assets/img/icon-img/warning-24px.svg"/> Remettre à zéro</button>
 
     </form>
+
+    <div class="row">
+        <!-- Liste des plantes dans le Jardin -->
+        <div class="col 12 col-lg-5" style="padding-left: 0%;">
+            <h2>Liste des plantes de mon jardin</h2>
+            <hr>
+            <table border="1px solid grey">
+                <thead>
+                    <tr>
+                        <td> Nom Commun </td>
+                        <td> Emplacement </td>
+                        <td> Taille </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of this.plantes">
+                        <td>{{p.modelPlant.commun}}</td>
+                        <td>{{p.coordonnees}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col 12 col-lg-7">
+            <app-graphique-jardin [jardin]="this.jardin"></app-graphique-jardin>
+
+        </div>
+    </div>
+
 </div>
