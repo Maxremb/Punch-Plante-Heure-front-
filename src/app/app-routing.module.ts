@@ -24,6 +24,7 @@ import { ContactComponent } from './content/contact/contact.component';
 import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
 import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/graphique-jardin.component';
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent },
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
-  { path : 'planning' , component : PlanningJardinComponent }
+  { path : 'planning' , component : PlanningJardinComponent },
+  { path : 'meteo/:id' , component : MeteoDepComponent }
   
  
 ];
