@@ -48,13 +48,14 @@
         </div>
         <!-- Fin du formualaire -->
 
-        <!-- <div *ngIf="this.planteutilisateurservice.listePlante.length">
-            <ul>
+        <div *ngIf="this.ajout">
+            <!-- <ul>
                 <li *ngFor="let plante of this.planteutilisateurservice.listePlante">{{this.plante.modelPlant.commun}}></li>
-            </ul>
+            </ul> -->
             
-            <button class="btn alazea-btn mt-15"  (click)="this.sauvegarder()" >Sauvegarder</button>
-        </div> -->
+            <button class="btn alazea-btn mt-15"  (click)="this.sauvegarder()" >Sauvegarder sans placer les plantes</button>
+        
+        </div>
 
 <app-graphique-jardin [jardin]="this.jardin"></app-graphique-jardin>
 
