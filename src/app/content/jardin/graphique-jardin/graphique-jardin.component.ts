@@ -92,5 +92,17 @@ export class GraphiqueJardinComponent implements OnInit {
     )
   }
 
+  remiseAZero() {
+    var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
+    var nbCol = this.jardin.length * 100 / 5;
+
+    for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
+      this.matrice[indexLigne] = [];
+      for (let indexCol = 0; indexCol < nbCol; indexCol++) {
+        this.matrice[indexLigne][indexCol] = "";
+      }
+    }
+  }
+
 
 }
