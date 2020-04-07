@@ -37,7 +37,7 @@ export class GraphiqueJardinComponent implements OnInit {
   ngOnInit(): void {
     this.getPlantesPresentes();
     this.genererMatrice();
-    // this.plantes = this.planteUtilisateurService.listePlante;
+    this.plantes = this.planteUtilisateurService.listePlante;
     this.genererCarte();
 
   }
@@ -104,5 +104,50 @@ export class GraphiqueJardinComponent implements OnInit {
     }
   }
 
+  //La matrice récupérée a déjà les plantes avec les coordonnées déjà placées 
+  autogenerate(listePlantesCreate: Array<PlanteUtilisateurCreateDto>, matrice, listePlantesUpdate: Array<PlanteUtilisateurUpdateDto>) {
+    let created = listePlantesCreate.filter(p => p.coordonnees != null);
+    let updated = listePlantesUpdate.filter(p => p.coordonnees != null);
+    let fini = false;
+
+    // Tantque la matrice a de la place, on essaie de placer des plantes
+    for (let index = 0; index < matrice.length; index++) {
+      if (this.arrayRempli(matrice[index])) {
+        for (let index2 = 0; index2 < matrice[index].length; index2++) {
+          if (matrice[index][index2] == "") {
+            if (updated.length > 0) {
+              let p = updated.shift() //on retire le premier élement de la liste et on mappe la plante et la matrice
+              matrice[index][index2] = p.modelPlant.commun;
+              p.coordonnees[0] = index2;
+              p.coordonnees[1] = index;
+            } else if (created.length > 0) {
+              let p = created.shift() //on retire le premier élement de la liste et on mappe la plante et la matrice
+              matrice[index][index2] = p.modelPlant.commun;
+              p.coordonnees[0] = index2;
+              p.coordonnees[1] = index;
+            } else {
+              fini = true;
+              break;
+            }
+          }
+        }
+        if(fini){
+          break;
+        }
+      }
+    }
+  }
+
+  //Permet de tester si il y a au moins un emplacement vide dans la matrice
+  arrayRempli(matrice): boolean {
+    var result = true;
+    for (let index = 0; index < matrice.length; index++) {
+      if (matrice[index] == "") {
+        result = false;
+        break;
+      }
+    }
+    return result;
+  }
 
 }

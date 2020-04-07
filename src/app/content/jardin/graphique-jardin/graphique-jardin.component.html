@@ -78,9 +78,9 @@
             </option>
         </select> -->
 
-        <br><button class="btn btn-success"><img src="../../../../assets/img/icon-img/save-24px.svg"/> Sauvgarder</button>
+        <br><button class="btn btn-success"><i class="fas fa-save"></i> Sauvgarder</button>
 
-        <button class="btn btn-danger" (click)=remiseAZero()><img src="../../../../assets/img/icon-img/warning-24px.svg"/> Remettre à zéro</button>
+        <button class="btn btn-danger" (click)=remiseAZero()><i class="fas fa-times"></i> Remettre à zéro</button>
 
     </form>
 
@@ -95,17 +95,22 @@
                         <td> Nom Commun </td>
                         <td> Emplacement </td>
                         <td> Taille </td>
+                        <td> Action </td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of this.plantes">
                         <td>{{p.modelPlant.commun}}</td>
                         <td>{{p.coordonnees}}</td>
+                        <td>La taille quand on l'aura</td>
+                        <td>
+                            <button *ngIf="!p.coordonnees" class="btn btn-success" ng-mouseover="Mettre la plante dans le jardin"><i class="fas fa-angle-down"></i></button>
+                            <button *ngIf="p.coordonnees" class="btn btn-success" ng-mouseover="Changer la plante de place"><i class="fas fa-arrows-alt"></i></button>
+                            <button class="btn btn-danger" ng-mouseover="Supprimer la plante du jardin"><i class="fas fa-times"></i></button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
-
 </div>
