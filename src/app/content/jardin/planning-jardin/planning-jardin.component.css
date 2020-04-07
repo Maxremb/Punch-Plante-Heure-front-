@@ -1,0 +1,27 @@
+.mois {
+    background: #6e4019;
+    color: #fff;
+    height: 30px;
+    border-bottom: 3px solid #fff;
+    border-right: 2px solid #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+  }
+
+.plante {
+    background-color: bisque;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.neutre {
+    border: 1px solid black;
+    padding: 5px;
+    background: -webkit-linear-gradient(red 50%, green 50%);
+}
+
