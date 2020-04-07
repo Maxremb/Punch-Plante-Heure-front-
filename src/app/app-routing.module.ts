@@ -56,6 +56,7 @@ const routes: Routes = [
   { path : 'departement/vadmin' , component : AllDepartementsComponent },
   { path : 'departement/create' , component : CreateDepartementComponent },
   { path : 'departement/update/:name', component : DetailedDepartementComponent },
+  { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
   { path : 'planning' , component : PlanningJardinComponent }
