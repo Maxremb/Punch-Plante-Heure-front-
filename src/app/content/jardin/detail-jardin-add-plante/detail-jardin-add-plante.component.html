@@ -48,15 +48,15 @@
         </div>
         <!-- Fin du formualaire -->
 
-        <div *ngIf="this.planteutilisateurservice.listePlante.length">
+        <!-- <div *ngIf="this.planteutilisateurservice.listePlante.length">
             <ul>
                 <li *ngFor="let plante of this.planteutilisateurservice.listePlante">{{this.plante.modelPlant.commun}}></li>
             </ul>
             
-            <button class="btn alazea-btn mt-15"  (click)="this.sauvegarder" >Sauvegarder</button>
-        </div>
+            <button class="btn alazea-btn mt-15"  (click)="this.sauvegarder()" >Sauvegarder</button>
+        </div> -->
 
-<app-graphique-jardin [jardin]="this.jardin" [plantes]="this.planteutilisateurservice.listePlante"></app-graphique-jardin>
+<app-graphique-jardin [jardin]="this.jardin"></app-graphique-jardin>
 
         <!-- Ajout d'images à droite -->
         <div class="col 12 col-lg-7">
