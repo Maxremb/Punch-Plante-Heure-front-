@@ -23,13 +23,12 @@ import { AboutComponent } from './content/about/about.component';
 import { ContactComponent } from './content/contact/contact.component';
 import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
+import { UserviewKeysearchPlantComponent } from './content/plant/userview-keysearch-plant/userview-keysearch-plant.component';
 import { AllDepartementsComponent } from './content/departement/all-departements/all-departements.component';
 import { CreateDepartementComponent } from './content/departement/create-departement/create-departement.component';
 import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
-
-
-
 import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/graphique-jardin.component';
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 
 
 const routes: Routes = [
@@ -53,13 +52,15 @@ const routes: Routes = [
   { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent },
+  { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent },
   { path : 'departement/vadmin' , component : AllDepartementsComponent },
   { path : 'departement/create' , component : CreateDepartementComponent },
   { path : 'departement/update/:name', component : DetailedDepartementComponent },
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
-  { path : 'planning' , component : PlanningJardinComponent }
+  { path : 'planning' , component : PlanningJardinComponent },
+  { path : 'meteo/:id' , component : MeteoDepComponent }
   
  
 ];

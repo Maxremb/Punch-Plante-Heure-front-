@@ -47,7 +47,7 @@ export class AllPlantComponent implements OnInit {
   }
 
   range(end) {
-    return (new Array(end)).fill(undefined).map((_, i) => i);
+    return (new Array(end)).fill(undefined).map((_, i) => i+1);
   }
 
   getAll(nbpage: number) {

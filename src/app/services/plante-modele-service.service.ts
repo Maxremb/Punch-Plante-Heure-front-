@@ -37,6 +37,10 @@ export class PlanteModeleService {
   getAll(nbpage: number): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/all/'+ nbpage);
   }
+
+  getKeyWord(key: string, page: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/nom?nom='+ key + '&page=' + page);
+  }
   
 
 }
