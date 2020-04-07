@@ -37,7 +37,7 @@ export class GraphiqueJardinComponent implements OnInit {
   ngOnInit(): void {
     this.getPlantesPresentes();
     this.genererMatrice();
-    this.plantes = this.planteUtilisateurService.listePlante;
+    // this.plantes = this.planteUtilisateurService.listePlante;
     this.genererCarte();
 
   }

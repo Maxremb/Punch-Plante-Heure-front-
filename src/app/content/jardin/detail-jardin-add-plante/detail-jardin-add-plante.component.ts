@@ -24,7 +24,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   pageActive:number =1;
   pageTotal:number[];
 
-  plantesUtil = new Array<PlanteUtilisateurCreateDto>(); // La liste des plantes Utilisateur ajoutées dans ce jardin 
+  
 
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
@@ -34,7 +34,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   // Valeurs initiales a recuperer
   ngOnInit(): void {
     // variable jardin stockee dans le service
-    // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
+    // this.jardin = this.jardinservice.jardin
     this.jardin = new JardinUpdateDto();
     this.jardin.identifier = 1;
     this.jardin.length = 1;
@@ -79,15 +79,6 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     )
   }
 
-  // getPlantesUtil(npage: number): void {
-  //   this.planteutilisateurservice.getAllByJardin(this.jardinservice.jardin.identifier).subscribe(
-  //     (responseDto) => {
-  //       if (!responseDto.error) {
-  //         this.plantesUtil = responseDto.body.content;
-  //       }
-  //     }
-  //   )
-  // }
 
   range(end) {
     return (new Array(end)).fill(undefined).map((_, i) => i);
@@ -96,6 +87,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   ajouter() {
     this.plante.garden = this.jardin;
     this.planteutilisateurservice.listePlante.push(this.plante);
+    console.log("DEBUG PLANTES UTIL LISTE" + this.planteutilisateurservice.listePlante);
 
   }
 
