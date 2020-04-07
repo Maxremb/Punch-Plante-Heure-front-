@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartementDto } from 'src/app/models/departement-dto';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { DepartementService } from 'src/app/services/departement.service';
 import { ActivatedRoute } from '@angular/router';
 import { MeteoUpdateDto } from 'src/app/models/meteo-update-dto';
+import { Router } from '@angular/router';
 
-declare function maFonction():any;
+declare function maFonction(): any;
 
 @Component({
   selector: 'app-detailed-departement',
@@ -15,24 +16,31 @@ declare function maFonction():any;
 export class DetailedDepartementComponent implements OnInit {
 
   depUpdateForm: FormGroup;
-  departement: DepartementDto;
+  departement: DepartementDto = new DepartementDto();
   messageValidation = '';
   error: boolean;
- 
+  choix: boolean;
+  name: string;
+  depNum: number;
+
   constructor(private service: DepartementService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    //Réupérer les UrlParam
+    //serach name if not exist search id
+    this.getDepById();
     maFonction();
-    this.getDep();
     this.depUpdateForm = new FormGroup({
-      commun: new FormControl(this.departement.depNum,Validators.required),
-      scientifique: new FormControl(this.departement.name,Validators.required),
+      //depNum: new FormControl(this.departement.depNum, Validators.required),
+      name: new FormControl(this.departement.name, Validators.required),
     });
   }
 
-  getDep() : void {
-    const id = +this.route.snapshot.paramMap.get('id');
+
+  getDepById(): void {
+
+    const id = +this.route.snapshot.paramMap.get('depNum');
     this.service.getById(id).subscribe(
       (responsedto) => {
         if (!responsedto.error) {
@@ -41,6 +49,7 @@ export class DetailedDepartementComponent implements OnInit {
       }
     );
   }
+
 
   update() {
     this.service.update(this.departement).subscribe(
@@ -55,7 +64,7 @@ export class DetailedDepartementComponent implements OnInit {
         console.log('debug responseDto : ', error);
         this.messageValidation = 'ERREUR ! Le departement n\'a pas été modifié.';
         this.error = true;
-        }
+      }
 
     );
   }

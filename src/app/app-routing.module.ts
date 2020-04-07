@@ -55,7 +55,6 @@ const routes: Routes = [
   { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent },
   { path : 'departement/vadmin' , component : AllDepartementsComponent },
   { path : 'departement/create' , component : CreateDepartementComponent },
-  { path : 'departement/update/:name', component : DetailedDepartementComponent },
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
