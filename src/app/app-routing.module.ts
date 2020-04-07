@@ -26,9 +26,6 @@ import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/das
 import { AllDepartementsComponent } from './content/departement/all-departements/all-departements.component';
 import { CreateDepartementComponent } from './content/departement/create-departement/create-departement.component';
 import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
-
-
-
 import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/graphique-jardin.component';
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 
@@ -57,7 +54,6 @@ const routes: Routes = [
   { path : 'departement/vadmin' , component : AllDepartementsComponent },
   { path : 'departement/create' , component : CreateDepartementComponent },
   { path : 'departement/update/:name', component : DetailedDepartementComponent },
-
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
   { path : 'planning' , component : PlanningJardinComponent },
   { path : 'meteo/:id' , component : MeteoDepComponent }
