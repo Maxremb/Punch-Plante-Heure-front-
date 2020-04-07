@@ -14,7 +14,7 @@ declare function maFonction():any;
 export class DetailedPlantComponent implements OnInit {
   
   plantUpdateForm: FormGroup;
-  plant: PlanteModeleUpdateDto;
+  plant: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
   messageValidation = '';
   error: boolean;
 
@@ -39,6 +39,17 @@ export class DetailedPlantComponent implements OnInit {
       max: new FormControl(this.plant.max,Validators.required),
       desc: new FormControl(this.plant.desc,Validators.required),
       toxi: new FormControl(this.plant.toxi,Validators.required),
+      assoPlus: new FormControl(this.plant.assoPlus,Validators.required),
+      assoMoins: new FormControl(this.plant.assoMoins,Validators.required),
+      surfaceAuSol: new FormControl(this.plant.surfaceAuSol,Validators.required),
+      famille: new FormControl(this.plant.famille,Validators.required),
+      hight: new FormControl(this.plant.hight,Validators.required),
+      pousseSousTerre: new FormControl(this.plant.pousseSousTerre,Validators.required),
+      grimpant: new FormControl(this.plant.grimpant,Validators.required),
+      profondeurRacine: new FormControl(this.plant.profondeurRacine,Validators.required),
+      strate: new FormControl(this.plant.strate,Validators.required),
+      vivacite: new FormControl(this.plant.vivacite,Validators.required),
+      picture: new FormControl(this.plant.picture,Validators.required),
     });
   }
 
@@ -48,6 +59,7 @@ export class DetailedPlantComponent implements OnInit {
     this.service.getId(id).subscribe(
       (responsedto) => {
         if (!responsedto.error) {
+          console.log('get data')
           this.plant = responsedto.body;
         }
       }
