@@ -68,11 +68,11 @@
 
         <!-- Affiche la liste des plantes et autre pour sélectionner et placer dans notre plan -->
 
-        <!-- <select value="this.selection">
-            <option class="selected" [value]="">Vide</option>
-            <option [value]="this.selection">Chemin</option>
-            <option [value]="this.selection">Obstacle</option>
-            <option *ngFor="let plant of this.plantes" [value]="{{plant.modelPlant.commun}}">
+        <!-- <select (change)="modifSelection($value)">
+            <option class="selected" value="" >Vide</option>
+            <option value="chemin">Chemin</option>
+            <option value="obstacle">Obstacle</option>
+            <option *ngFor="let plant of this.plantes" value="plante">
                 {{plant.modelPlant.commun}}
             </option>
         </select> -->
