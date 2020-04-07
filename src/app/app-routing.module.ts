@@ -22,6 +22,7 @@ import { AboutComponent } from './content/about/about.component';
 import { ContactComponent } from './content/contact/contact.component';
 import { UserviewDetailedPlantComponent } from './content/plant/userview-detailed-plant/userview-detailed-plant.component';
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
+import { UserviewKeysearchPlantComponent } from './content/plant/userview-keysearch-plant/userview-keysearch-plant.component';
 
 
 const routes: Routes = [
@@ -44,10 +45,9 @@ const routes: Routes = [
   { path : 'plant/vuser', component: UserviewAllPlantComponent },
   { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
   { path : 'about' , component : AboutComponent },
-  { path : 'contact' , component : ContactComponent }
-  
- 
-];
+  { path : 'contact' , component : ContactComponent },
+  { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent }
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

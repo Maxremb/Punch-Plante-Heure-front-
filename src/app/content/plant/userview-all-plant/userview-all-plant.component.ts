@@ -10,17 +10,25 @@ import { PlanteModeleService } from 'src/app/services/plante-modele-service.serv
 export class UserviewAllPlantComponent implements OnInit {
 
   allPlant = new Array<PlanteModeleUpdateDto>();
-  pageActive:number =1;
-  pageTotal:number[];
+  pageActive:number =0;
+  maxPage:number=0;
+  pageTotal:number[]=[];
+  keyWord: string;
 
   constructor(private service:PlanteModeleService) { }
 
   ngOnInit(): void {
-    this.getAll(1);
+    this.getAll(0);
   }
 
-  range(end) {
-    return (new Array(end)).fill(undefined).map((_, i) => i);
+  range(pactif,ptotal) {
+    if(ptotal>5){
+      if(pactif<3) return (new Array(5)).fill(undefined).map((_, i) => i);
+      else if(pactif>2 && pactif<ptotal-2) return (new Array(5)).fill(undefined).map((_, i) => i+pactif-2);
+      else return (new Array(5)).fill(undefined).map((_, i) => i+ptotal-5);
+    }else{
+      return (new Array(ptotal)).fill(undefined).map((_, i) => i);
+    }
   }
 
   getAll(npage: number) {
@@ -30,25 +38,11 @@ export class UserviewAllPlantComponent implements OnInit {
         if (!responseDto.error) {
           this.allPlant = responseDto.body.content;
           this.pageActive = responseDto.body.number;
-          this.pageTotal = this.range(responseDto.body.totalPages);
-
+          this.maxPage = responseDto.body.totalPages;
+          this.pageTotal = this.range(this.pageActive,this.maxPage);
         }
       }
     );
   }
-
-  getId(id: number) {
-    this.service.getId(id).subscribe(
-      responseDto => {
-        console.log('debug responseDto : ', responseDto);
-        if (!responseDto.error) {
-          this.allPlant = this.allPlant.filter(
-            element =>  element.identifiant == id
-          );
-        }
-      }
-    );
-  }
-
 
 }

@@ -32,6 +32,7 @@ import { EntetePlantComponent } from './content/plant/entete-plant/entete-plant.
 import { EntetePeriodeComponent } from './content/periode/entete-periode/entete-periode.component';
 import { DashboardAdminComponent } from './content/dashboard/dashboard-admin/dashboard-admin.component';
 import { EnteteDashboardComponent } from './content/dashboard/entete-dashboard/entete-dashboard.component';
+import { UserviewKeysearchPlantComponent } from './content/plant/userview-keysearch-plant/userview-keysearch-plant.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { EnteteDashboardComponent } from './content/dashboard/entete-dashboard/e
     EntetePeriodeComponent,
     DashboardAdminComponent,
     EnteteDashboardComponent,
+    UserviewKeysearchPlantComponent,
   ],
   imports: [
     BrowserModule,
