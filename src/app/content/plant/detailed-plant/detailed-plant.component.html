@@ -1,170 +1,187 @@
 <!-- Partie script : est ce que vraiment c'est possible de mettre une balise script dans du body ?? -->
-<script>
-$(document).ready(function() {
-
-    $('.chips-placeholder').materialChip({
-      placeholder: 'Enter a tag',
-      secondaryPlaceholder: '+Tag',
-    });
-  })
-</script>
-
 <div class="container">
     <!-- Entete de la liste des plantes -->
     <app-entete-plant></app-entete-plant>
   
     <!-- Titre-->
-    <h2>Modifier une plante de notre dictionnaire</h2>
-    <hr>
+    <h2>Modifier le modèle de plante numéro <b>{{this.plant.identifiant}}</b></h2>
+    <p></p>
+        
+    <form  [formGroup]="this.plantUpdateForm" (ngSubmit)="this.update()">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Valeur actuelle</th>
+            <th>Nouvelle valeur</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><label for="commun">Nom Commun : </label></td>
+            <td>{{this.plant.commun}}</td>
+            <td>
+                <input type="text" class="form-group form-control"  formControlName="commun"  name="commun" value="{{this.plant.commun}}" > 
+            </td>
+          </tr>
+          <tr>
+            <td>Nom Scientifique</td>
+            <td>{{this.plant.scientifique}}</td>
+            <td><input type="text" class="form-group form-control"  formControlName="scientifique"  name="scientifique" value="{{this.plant.scientifique}}" ></td>
+          </tr>
+          <tr>
+            <td>Famille</td>
+            <td>{{this.plant.famille}}</td>
+            <td><input type="text" class="form-group form-control"  formControlName="famille"  name="famille" value="{{this.plant.famille}}" ></td>
+          </tr>
+          <tr>
+            <td>Humidité optimale</td>
+            <td>{{this.plant.humidite}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="humidite"  name="humidite" value="{{this.plant.humidite}}"></td>
+          </tr>
+          <tr>
+            <td>Cycle d'arrossage en jour</td>
+            <td>{{this.plant.arrosage}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="arrosage"  name="arrosage" value="{{this.plant.arrosage}}"></td>
+          </tr>
+          <tr>
+            <td>Ensoleillement optimal</td>
+            <td>{{this.plant.ensoleillement}}</td>
+            <td><input type="text" class="form-group form-control" formControlName="ensoleillement"  name="ensoleillement" value="{{this.plant.ensoleillement}}"></td>
+          </tr>
+          <tr>
+            <td>Type de sol préféré</td>
+            <td>{{this.plant.sol}}</td>
+            <td>
+                <select class="form-group form-control"  formControlName="sol"  name="sol" value="{{this.plant.sol}}">
+                    <option value="sableux">Sableux</option>    
+                    <option value="limonoArgileux">Limono Argileux</option>
+                    <option value="argiloSableux">Argilo Sableux</option>
+                    <option value="argiloLimoneux">Argilo Limoneux</option>
+                    <option value="argileux">Argileux</option>
+                </select></td>
+          </tr>
+          <tr>
+            <td>Repiquage</td>
+            <td>{{this.plant.repiquage}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="repiquage"  name="repiquage" value="{{this.plant.repiquage}}"></td>
+          </tr>
+          <tr>
+            <td>Température minimale</td>
+            <td>{{this.plant.min}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="min"  name="min" value="{{this.plant.min}}"></td>
+          </tr>
+          <tr>
+            <td>Température maximale</td>
+            <td>{{this.plant.max}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="max"  name="max" value="{{this.plant.max}}"></td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>{{this.plant.desc}}</td>
+            <td><input type="text" class="form-group form-control" formControlName="desc"  name="desc" value="{{this.plant.desc}}"></td>
+          </tr>
+          <tr>
+            <td>Toxicité</td>
+            <td>{{this.plant.toxi}}</td>
+            <td>
+                <select class="form-group form-control"  formControlName="toxi"  name="toxi" value="{{this.plant.toxi}}">
+                    <option value="true">Oui</option>    
+                    <option value="false">Non</option>
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Association positive</td>
+            <td>{{this.plant.assoPlus}}</td>
+            <td>
+                <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="assoPlus"  name="assoPlus" value="{{this.plant.assoPlus}}"></select>
+            </td>
+          </tr>
+          <tr>
+            <td>Association négative</td>
+            <td>{{this.plant.assoMoins}}</td>
+            <td>
+                <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="assoMoins"  name="assoMoins" value="{{this.plant.assoMoins}}"></select>
+            </td>
+          </tr>
+          <tr>
+            <td>Image</td>
+            <td>{{this.plant.picture}}</td>
+            <td><input type="file" class="form-group form-control" formControlName="picture"  name="picture" value="{{this.plant.picture}}"></td>
+          </tr>
+          <tr>
+            <td>Surface au sol (rayon en cm)</td>
+            <td>{{this.plant.surfaceAuSol}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="surfaceAuSol"  name="surfaceAuSol" value="{{this.plant.surfaceAuSol}}"></td>
+          </tr>
+          <tr>
+            <td>Taille à âge adulte (cm)</td>
+            <td>{{this.plant.hight}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="hight"  name="hight" value="{{this.plant.hight}}"></td>
+          </tr>
+          <tr>
+            <td>Tubercule comestible</td>
+            <td>{{this.plant.pousseSousTerre}}</td>
+            <td>
+                <select class="form-group form-control"  formControlName="pousseSousTerre"  name="pousseSousTerre" value="{{this.plant.pousseSousTerre}}">
+                    <option value="true">Oui</option>    
+                    <option value="false">Non</option>
+                </select></td>
+          </tr>
+          <tr>
+            <td>Grimpante</td>
+            <td>{{this.plant.grimpant}}</td>
+            <td>
+                <select class="form-group form-control"  formControlName="grimpant"  name="grimpant" value="{{this.plant.grimpant}}">
+                    <option value="true">Oui</option>    
+                    <option value="false">Non</option>
+                </select></td>
+          </tr>
+          <tr>
+            <td>Profondeur des racines</td>
+            <td>{{this.plant.profondeurRacine}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="profondeurRacine"  name="profondeurRacine" value="{{this.plant.profondeurRacine}}"></td>
+          </tr>
+          <tr>
+            <td>Type de hauteur</td>
+            <td>{{this.plant.strate}}</td>
+            <td>
+                <select class="form-group form-control"  formControlName="strate"  name="strate" value="{{this.plant.strate}}">
+                    <option value="haute">Haute</option>    
+                    <option value="moyenne">Moyenne</option> 
+                    <option value="basse">Basse</option>
+                </select></td>
+          </tr>
+          <tr>
+            <td>Cycle de vie</td>
+            <td>{{this.plant.vivacite}}</td>
+            <td>
+                <select class="form-group form-control"  formControlName="vivacite"  name="vivacite" value="{{this.plant.vivacite}}">
+                    <option value="vivace">Vivace</option>    
+                    <option value="annuel">Annuel</option>
+                </select></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
 
-    <!-- Debut du formulaire Update Plante Modele -->
-    <div class="row">
-
-        <!-- Premiere colonne descriptive-->
-        <div class="col-lg-6 col-sm-6">
-            <br><br>
-            <h5>Nom Commun : </h5> {{this.plant.commun}}
-            <br><br>
-            <h5>Nom Scientifique : </h5> {{this.plant.scientifique}}
-            <br><br>   
-            <h5>Famille : </h5>  {{this.plant.mifa}}
-            <br><br>
-            <h5>Cycle d'arrossage en jour : </h5> {{this.plant.arrosage}}
-            <br><br>
-            <h5>Ensoleillement optimal : </h5> {{this.plant.ensoleillement}}
-            <br><br>    
-            <h5>Humidité optimale : </h5> {{this.plant.humidite}}
-            <br><br>
-            <h5>Type de sol préféré : </h5>  {{this.plant.sol}}         
-            <br><br>
-            <h5>Repiquage : </h5> {{this.plant.repiquage}}
-            <br><br>
-            <h5>Température minimale : </h5> {{this.plant.min}}
-            <br><br>
-            <h5>Température maximale : </h5> {{this.plant.max}}
-            <br><br>
-            <h5>Description : </h5> {{this.plant.desc}}
-            <br><br>
-            <h5>Toxicité : </h5> {{this.plant.toxi}}
-            <br><br>
-            <h5>Association positive : </h5> {{this.plant.positive}}
-            <br><br>
-            <h5>Association négative :</h5> {{this.plant.negative}}
-            <br><br>
-            <h5>Image : </h5>  {{this.plant.picture}}
-            <br><br>
-        </div>
-
-        <!-- Deuxieme colonne pour les modifications-->
-        <div class="col-lg-6 col-sm-6">
-        <form  [formGroup]="plantUpdateForm" (ngSubmit)="this.update()">
-        <div class="form-group">
-            <label for="commun">Nouveau nom Commun : </label> 
-            <input type="text" class="form-control" [(ngModel)]="this.plant.commun" formControlName="commun"  name="commun">
-        </div>
-
-        <div class="form-group">
-            <label for="scientifique">Nouveau nom Scientifique : </label> 
-            <input type="text" class="form-control" [(ngModel)]="this.plant.scientifique"  formControlName="scientifique" name="scientifique">
-        </div>
-
-        <div class="form-group">
-            <label for="famille">Nouvelle famille: </label> 
-            <input type="text" class="form-control" [(ngModel)]="this.plant.mifa"  formControlName="famille" name="famille">
-        </div>
-
-        <div class="form-group">
-            <label for="arrosage">Nouveau cycle d'arrossage en jour : </label> 
-            <input type="number" class="form-control" [(ngModel)]="this.plant.arrosage" formControlName="arrosage"  name="arrosage">
-        </div>
-
-        <div class="form-group">
-            <label for="ensoleillementOpti">Nouvel ensoleillement optimal : </label>  
-            <input type="text" class="form-control" [(ngModel)]="this.plant.ensoleillement" formControlName="ensoleillementOpti"  name="ensoleillementOpti">
-        </div>
-
-        <div class="form-group">
-            <label for="humiditeOpti">Nouvelle humidité optimale : </label> 
-            <input type="number" class="form-control" [(ngModel)]="this.plant.humidite" formControlName="humiditeOpti"  name="humiditeOpti">
-        </div>
-
-        <div class="form-group">
-            <label for="solOpti">Nouveau type de sol préféré : </label> 
-            <select class="form-control" [(ngModel)]="this.plant.sol" formControlName="sol"  name="sol">
-                <option value="sableux">sableux</option>    
-                <option value="limonoArgileux">Limono Argileux</option>
-                <option value="argiloSableux">Argilo Sableux</option>
-                <option value="argiloLimoneux">Argilo Limoneux</option>
-                <option value="argileux">Argileux</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="repiquage">Nouveau repiquage : </label> 
-            <input type="number" class="form-control" [(ngModel)]="this.plant.repiquage" formControlName="repiquage"  name="repiquage">
-        </div>
-
-        <div class="form-group">
-            <label for="min">Nouvelle température minimale : </label> 
-            <input type="number" class="form-control" [(ngModel)]="this.plant.min" formControlName="min"  name="min">
-        </div>
-
-        <div class="form-group">
-            <label for="max">Nouvelle température maximale : </label> 
-            <input type="number" class="form-control" [(ngModel)]="this.plant.max" formControlName="max"  name="max">
-        </div>
-
-        <div class="form-group">
-            <label for="desc">Nouvelle description : </label> 
-            <input type="text" class="form-control" [(ngModel)]="this.plant.desc" formControlName="desc"  name="desc">
-        </div>
-
-        <div class="form-group">
-            <label for="toxi">Nouvelle toxicité :   </label> 
-            <select class="form-control" [(ngModel)]="this.plant.toxi" formControlName="toxi"  name="toxi">
-                <option value="true">Oui</option>    
-                <option value="false">Non</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="assoplus">Nouvelle association positive : </label> 
-            <select multiple data-role="tagsinput" class="form-control"  formControlName="assoplus"  name="assoplus">
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="assomoins">Nouvelle association négative : </label> 
-            <select multiple data-role="tagsinput" class="form-control"  formControlName="assomoins"  name="assomoins">
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="picture">Nouvelle image : </label> 
-            <input type="text" class="form-control" [(ngModel)]="this.plant.picture" formControlName="picture"  name="picture">
-        </div>
-
-        <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantUpdateForm.valid">Enregistrer</button>
-        <div *ngIf="this.messageValidation.length">
-            <div class="alert alert-fail" *ngIf="this.error">
-                {{this.messageValidation}}
-            </div>
-            <div class="alert alert-success" *ngIf="!this.error">
-                {{this.messageValidation}}
-            </div>
-        </div>
-        </form>
-        </div>
-        <!-- Fin de la colonne pour les modifications-->
     
-    </div>
-    <!-- Fin du formulaire -->
-
-    
+    <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantUpdateForm.valid">Enregistrer</button>
+    <div *ngIf="this.messageValidation.length">
+        <div class="alert alert-fail" *ngIf="this.error">
+            {{this.messageValidation}}
+        </div>
+        <div class="alert alert-success" *ngIf="!this.error">
+            {{this.messageValidation}}
+        </div>
+        </div>
     <!-- Retour lien page administrateur -->
+<div>
     <a routerLink="/plant/vadmin">
-        <button class="btn alazea-btn mt-15" >Retour</button>
+        <button class="btn alazea-btn mt-15" >Annuler</button>
     </a>
+</div>
     
 
 </div>
