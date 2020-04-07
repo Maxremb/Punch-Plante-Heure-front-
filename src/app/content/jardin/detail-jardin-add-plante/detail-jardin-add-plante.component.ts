@@ -23,6 +23,8 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   pageActive:number =1;
   pageTotal:number[];
 
+  ajout = false; //boolean permettant de savoir si on a ajouté des plantes utilisateur
+
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
     private plantemodeleservice: PlanteModeleService,
@@ -44,7 +46,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
     // recuperation de la liste de toutes les plantes modeles
     this.getAllPlantes(1);
-    console.log('DEBUG GET ALL' + this.allPlantes)
+    console.log('DEBUG GET ALL' + this.allPlantes);
 
 
     // definition du formulaire
@@ -82,6 +84,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   ajouter() {
     this.plante.garden = this.jardin;
     this.planteutilisateurservice.listePlante.push(this.plante);
+    this.ajout = true;
   }
 
   sauvegarder() {
