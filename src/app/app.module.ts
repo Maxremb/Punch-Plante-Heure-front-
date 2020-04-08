@@ -38,8 +38,8 @@ import { CreateDepartementComponent } from './content/departement/create-departe
 import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
 import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
 import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
-import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
-
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component'; 
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [
@@ -84,7 +84,8 @@ import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleChartsModule
   ],
   providers: [
     HttpClientModule

@@ -1,27 +1,54 @@
+<div class="container">
+    <form [formGroup]="choixDonnee" (ngSubmit)="getMeteo()">
+        <div class="row">
+            <p> </p>
+            <div class="form-group" style="display:inline">
+                Consulter les
+                <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours
 
-<div class="row">
+            </div>
+        </div>
+        <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.choixDonnee.valid">Afficher</button>
+    </form>
+
+
+
+
     <label>
         <h2>Meteo</h2>
     </label>
     <hr>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Température</th>
-                <th>Ensoleillement</th>
-                <th>Humidité</th>
-                <th>Précipitation</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let m of this.allmeteo">
-                <td>{{m.datemeteo}}</td>
-                <td>{{m.temp}}</td>
-                <td>{{m.radiation}}</td>
-                <td>{{m.humidity}}</td>
-                <td>{{m.rain}}</td>   
-            </tr>
-        </tbody>
-    </table>
+    <div >
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Température min</th>
+                    <th>Température max</th>
+                    <th>Ensoleillement</th>
+                    <th>Précipitation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let m of this.allmeteo">
+                    <td>{{m.datemeteo}}</td>
+                    <td>{{m.temp}}</td>
+                    <td>{{m.tempmax}}</td>
+                    <td>{{m.radiation}}</td>
+                    <td>{{m.rain}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf='!tableau'>
+        <google-chart #chart 
+        [title]="title" 
+        [type]="type" 
+        [data]="data" 
+        [columnNames]="columnNames" 
+        [options]="options"
+        [width]="width" 
+        [height]="height">
+        </google-chart>
+    </div>
 </div>
