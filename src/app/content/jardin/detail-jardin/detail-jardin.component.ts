@@ -35,7 +35,7 @@ export class DetailJardinComponent implements OnInit {
 
   // recuperation des plantes utilisateurs dans ce jardin
   getPlantesParJardin(id: number): void {
-    this.planteutilisateurservice.getAllByJardin(id).subscribe(
+    this.planteutilisateurservice.getAllByJardin(id,0).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesParJardin = responseDto.body;
