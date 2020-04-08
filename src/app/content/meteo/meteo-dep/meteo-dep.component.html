@@ -5,10 +5,11 @@
             <div class="form-group" style="display:inline">
                 Consulter les
                 <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours
+                <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.choixDonnee.valid">Afficher</button>
 
             </div>
         </div>
-        <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.choixDonnee.valid">Afficher</button>
+       
     </form>
 
 
@@ -18,7 +19,7 @@
         <h2>Meteo</h2>
     </label>
     <hr>
-    <div >
+    <div *ngIf="tableau">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -31,7 +32,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let m of this.allmeteo">
-                    <td>{{m.datemeteo}}</td>
+                    <td>{{m.dateMeteo}}</td>
                     <td>{{m.tempMin}}</td>
                     <td>{{m.tempMax}}</td>
                     <td>{{m.radiation}}</td>
@@ -40,7 +41,7 @@
             </tbody>
         </table>
     </div>
-    <div *ngIf='!tableau'>
+    <div *ngIf='graph'>
         <google-chart #chart 
         [title]="title" 
         [type]="type" 
