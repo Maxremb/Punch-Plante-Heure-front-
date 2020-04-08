@@ -1,25 +1,119 @@
 <br><br>
-
+<div class="taille">
 <table>
     <tr>
-        <th class="mois" colspan="6">Plante</th>
-        <th class="mois" colspan="6">Jan</th>
-        <th class="mois" colspan="6">Fev</th>
-        <th class="mois" colspan="6">Mar</th>
-        <th class="mois" colspan="6">Avr</th>
-        <th class="mois" colspan="6">Mai</th>
-        <th class="mois" colspan="6">Jui</th>
-        <th class="mois" colspan="6">Jui</th>
-        <th class="mois" colspan="6">Aou</th>
-        <th class="mois" colspan="6">Sep</th>
-        <th class="mois" colspan="6">Oct</th>
-        <th class="mois" colspan="6">Nov</th>
-        <th class="mois" colspan="6">Dec</th>
+        <th class="mois">Plante</th>
+        <th class="mois">Jan</th>
+        <th class="mois">Fev</th>
+        <th class="mois">Mar</th>
+        <th class="mois">Avr</th>
+        <th class="mois">Mai</th>
+        <th class="mois">Jui</th>
+        <th class="mois">Jui</th>
+        <th class="mois">Aou</th>
+        <th class="mois">Sep</th>
+        <th class="mois">Oct</th>
+        <th class="mois">Nov</th>
+        <th class="mois">Dec</th>
+    </tr>
+
+    <tr *ngFor="let planteActive of allPlantes">
+        <td class="plante"> {{this.planteActive.modelPlant.commun}} </td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="rempotage"></td>
+        <td class="rempotage"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
     </tr>
 
     <tr>
-        <td class="plante" colspan="6">Tomate</td>
-        <td class="neutre" colspan="3"></td>
-        
+        <td class="plante"> &nbsp; </td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="rempotage"></td>
+        <td class="rempotage"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+    </tr>
+
+    <tr>
+        <td class="plante"> &nbsp; </td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="floraison"></td>
+        <td class="floraison"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="floraison"></td>
+        <td class="floraison"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="floraison"></td>
+    </tr>
+
+    <tr>
+        <td class="plante"><b>Tomate</b></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="semis"></td>
+        <td class="semis"></td>
+        <td class="semis"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+    </tr>
+
+    <tr>
+        <td class="plante"> &nbsp; </td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="fructification"></td>
+        <td class="fructification"></td>
+        <td class="fructification"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+    </tr>
+
+    <tr>
+        <td class="plante"> &nbsp; </td>
+        <td class="taille"></td>
+        <td class="taille"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
+        <td class="neutre"></td>
     </tr>
 </table>
+</div>
+
+
+

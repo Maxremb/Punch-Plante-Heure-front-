@@ -40,8 +40,8 @@ export class PlanteUtilisateurService {
 
 
   // findByJardin
-  getAllByJardin(idJardin: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/jardin/' + idJardin);
+  getAllByJardin(idJardin: number, nbpage: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/jardin/' + idJardin + "?page=" + nbpage);
   }
 
   

@@ -59,9 +59,8 @@ const routes: Routes = [
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
-  { path : 'planning' , component : PlanningJardinComponent },
-  { path : 'meteo/:id' , component : MeteoDepComponent },
-  { path : 'notif' , component : NotificationsComponent },
+  { path : 'planning/:id' , component : PlanningJardinComponent },
+  { path : 'meteo/:id' , component : MeteoDepComponent }
   
  
 ];

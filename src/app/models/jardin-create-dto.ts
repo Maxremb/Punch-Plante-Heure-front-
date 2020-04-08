@@ -6,12 +6,18 @@ import { LargeurPlancheEnum } from '../enums/largeur-planche-enum.enum';
 
 export class JardinCreateDto {
     ground: SolEnum;
+    name: string;
     length: number;
     width: number;
-    name: string;
+
+    depthGround: number;
+    usefullReserve: number;
+    isArrosed: boolean;
+    maxReserve: number;
+
     dept: DepartementDto;
     user: UtilisateurUpdateDto;
 
-    // Attributs provisoirs pour la génération automatique
+    // Attributs provisoires pour la génération automatique
     chemin: Array<number>;
 }
