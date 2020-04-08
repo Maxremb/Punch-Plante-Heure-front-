@@ -12,7 +12,7 @@
                 <hr>
                 <div>
                     <label class="label">Nom : </label>
-                    <input id="name" type="text" class="form-control" formControlName="name" name="name" required>
+                    <input id="name" type="text" class="form-control" [(ngModel)]="this.jardin.name" formControlName="name" name="name" required>
                     <!--message validator nom jardin-->
                     <div *ngIf="name.errors?.required && (name.touched || name.dirty)" class="alert alert-danger">
                         Le nom est requis !
@@ -20,7 +20,7 @@
                 </div>
                 <div>
                     <label class="label">Sol : </label>
-                    <select class="form-control" formControlName="ground" id="ground" name="ground">
+                    <select class="form-control" [(ngModel)]="this.jardin.ground" formControlName="ground" id="ground" name="ground">
                         <option value='Sableux'>Sableux</option>
                         <option value='LimonoArgileux'>Limono-argileux</option>
                         <option value='ArgiloSableux'>Argilo-sableux</option>
@@ -30,19 +30,19 @@
                 </div>
                 <div>
                     <label class="label">Longeur : </label>
-                    <input class="form-control" id="length" type="number" min="0" formControlName="length"
+                    <input class="form-control" [(ngModel)]="this.jardin.length" id="length" type="number" min="0" formControlName="length"
                         name="length">
                 </div>
                 <div>
                     <label class="label">Largeur : </label>
-                    <input class="form-control" id="width" type="number" min="0" formControlName="width" name="width">
+                    <input class="form-control" [(ngModel)]="this.jardin.width" id="width" type="number" min="0" formControlName="width" name="width">
                 </div>
 
 
                 <div>
                     <label class="label">Département : </label>
                                             <p> Entrer 0 pour un jardin d'intérieur</p>
-                    <input type="number" class="form-control" min="0" id="dept" formControlName="dept" name="dept"
+                    <input type="number" class="form-control" [(ngModel)]="this.jardin.dept" min="0" id="dept" formControlName="dept" name="dept"
                         required>    
 
 <!--   
@@ -102,7 +102,7 @@
             <input type="button" value="Mes jardins" class="btn alazea-btn mt-15" />
         </a>
         <a routerLink="">
-            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+            <input type="button" value="Accueil" class="btn alazea-btn mt-15" />
         </a>
     </div>
 </div>
