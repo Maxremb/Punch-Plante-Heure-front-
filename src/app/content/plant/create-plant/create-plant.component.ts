@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PlanteModeleCreateDto } from 'src/app/models/plante-modele-create-dto';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { PeriodeUpdateDto } from 'src/app/models/periode-update-dto';
+import { PeriodeService } from 'src/app/services/periode.service';
 
 // On déclare la fonction javascript comprenant du JQuery
 declare function maFonction():any;
@@ -19,9 +20,14 @@ export class CreatePlantComponent implements OnInit {
   messageValidation = '';
   error:boolean;
   allPeriodes = new Array<PeriodeUpdateDto>();
-  period = new PeriodeUpdateDto;
+  periodRempotage = new PeriodeUpdateDto;
+  periodFloraison = new PeriodeUpdateDto;
+  periodFructification = new PeriodeUpdateDto;
+  periodTaille = new PeriodeUpdateDto;
+  periodSemis = new PeriodeUpdateDto;
 
-  constructor(private service: PlanteModeleService) { }
+  constructor(private service: PlanteModeleService,
+    private servicePeriode: PeriodeService,) { }
 
   ngOnInit(): void {
     maFonction(); // on lance la fonction js pour pouvoir l'appeler et l'utiliser dans le fichier html
@@ -48,6 +54,16 @@ export class CreatePlantComponent implements OnInit {
       strate: new FormControl(this.plant.strate,Validators.required),
       vivacite: new FormControl(this.plant.vivacite,Validators.required),
       picture: new FormControl(this.plant.picture,Validators.required),
+      rempotageDebut: new FormControl(this.periodRempotage.startDate),
+      rempotageFin: new FormControl(this.periodRempotage.endDate),
+      floraisonDebut: new FormControl(this.periodFloraison.startDate),
+      floraisonFin: new FormControl(this.periodFloraison.endDate),
+      fructificationDebut: new FormControl(this.periodFructification.startDate),
+      fructificationFin: new FormControl(this.periodFructification.endDate),
+      tailleDebut: new FormControl(this.periodTaille.startDate),
+      tailleFin: new FormControl(this.periodTaille.endDate),
+      semisDebut: new FormControl(this.periodSemis.startDate),
+      semisFin: new FormControl(this.periodSemis.endDate),
     });
   }
 
@@ -68,5 +84,16 @@ export class CreatePlantComponent implements OnInit {
 
     );
   }
+
+  // createPeriode(){
+  //   for (let i = 0;i<100;i++){
+  //     this.periodRempotage.county = i;
+  //     this.periodFloraison.county = i; 
+  //     this.periodFructification.county = i; 
+  //     this.periodTaille.county = i; 
+  //     this.periodSemis.county = i; 
+  //   this.servicePeriode.create(this.allPeriodes[i]).subscribe();
+  //   }
+  // }
 
 }

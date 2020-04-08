@@ -11,6 +11,6 @@ export class PeriodeCreateDto {
     startDate: Date;
     endDate: Date;
     periodType: PeriodeEnum;
-    county: DepartementDto;
+    county: number;
     plantSpecies : PlanteModeleUpdateDto;
 }

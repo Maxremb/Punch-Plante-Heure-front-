@@ -164,7 +164,7 @@
           </tr>
         </tbody>
       </table>
-      <label>
+      <!-- <label>
           <h2><b>LISTE DES PERIODES </b></h2>
       </label>
       <hr>
@@ -175,25 +175,41 @@
                   <th>Departement</th>
                   <th>Date de début</th>
                   <th>Date de fin</th>
-                  <th>Actions</th>
-
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let e of this.allPeriodes">
-                  <td>{{e.type}}</td>
-                  <td>{{e.dept}}</td>
-                  <td>{{e.dateDebut}}</td>
-                  <td>{{e.dateFin}}</td>
-                  <td>
-                      &nbsp;&nbsp;
-                      <button class="btn btn-info">Modifier</button>
-                      &nbsp;&nbsp;
-                      <button class="btn btn-danger" >Supprimer</button>
-                  </td>
+              <tr>
+                  <td>REMPOTAGE</td>
+                  <td>Tous</td>
+                  <td><input type="date" class="form-group form-control"  formControlName="rempotageDebut"  name="rempotageDebut" ></td>
+                  <td><input type="date" class="form-group form-control"  formControlName="rempotageDebut"  name="rempotageDebut" ></td>
+              </tr>
+              <tr>
+                  <td>FLORAISON</td>
+                  <td>Tous</td>
+                  <td><input type="date" class="form-group form-control"  formControlName="floraisonDebut"  name="floraisonDebut" ></td>
+                  <td><input type="date" class="form-group form-control"  formControlName="floraisonFin"  name="floraisonFin" ></td>
+              </tr>
+              <tr>
+                  <td>FRUCTIFICATION</td>
+                  <td>Tous</td>
+                  <td><input type="date" class="form-group form-control"  formControlName="fructificationDebut"  name="fructificationDebut" ></td>
+                  <td><input type="date" class="form-group form-control"  formControlName="fructificationFin"  name="fructificationFin" ></td>
+              </tr>
+              <tr>
+                  <td>TAILLE</td>
+                  <td>Tous</td>
+                  <td><input type="date" class="form-group form-control"  formControlName="tailleDebut"  name="tailleDebut" ></td>
+                  <td><input type="date" class="form-group form-control"  formControlName="tailleFin"  name="tailleFin" ></td>
+              </tr>
+              <tr>
+                  <td>SEMIS</td>
+                  <td>Tous</td>
+                  <td><input type="date" class="form-group form-control"  formControlName="semisDebut"  name="semisDebut" ></td>
+                  <td><input type="date" class="form-group form-control"  formControlName="semisFin"  name="semisFin" ></td>
               </tr>
           </tbody>
-      </table>
+      </table> -->
     </form>
 
     
