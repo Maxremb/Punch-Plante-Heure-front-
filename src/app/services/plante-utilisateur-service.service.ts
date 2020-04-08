@@ -12,7 +12,6 @@ import { HttpClient } from '@angular/common/http';
 export class PlanteUtilisateurService {
 
   planteUtilisateur: PlanteUtilisateurUpdateDto;
-  listePlante = new Array<PlanteUtilisateurCreateDto>();
 
   private URL = environment.baseUrl + 'planteUtilisateur';
 
