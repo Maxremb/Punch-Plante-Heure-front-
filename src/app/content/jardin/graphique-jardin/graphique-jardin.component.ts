@@ -21,10 +21,11 @@ export class GraphiqueJardinComponent implements OnInit {
   selection: string = "";
   plantes: Array<PlanteUtilisateurCreateDto>;
   plantesPresentes: Array<PlanteUtilisateurUpdateDto>;
-  listePlantesModels: Array<PlanteModeleUpdateDto>; // Il va falloir importer la liste des plantes
-  planteSelectionner: string;
+  planteRechercher: string;
+  resultatRecherche: Array<string>;
+  planteSelectionner: any;
 
-  constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService) {
+  constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService, private servicePlante: PlanteModeleService) {
 
     // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
     this.jardin = new JardinUpdateDto();
@@ -42,7 +43,7 @@ export class GraphiqueJardinComponent implements OnInit {
     this.genererMatrice();
     this.plantes = this.planteUtilisateurService.listePlante;
     this.genererCarte();
-    this.planteSelectionner = null;
+    setInterval( () => {this.planteSelectionner++, this.resultatRecherche}, 250);
   }
 
   // Faire un espace aux bonnes proportions
@@ -85,8 +86,9 @@ export class GraphiqueJardinComponent implements OnInit {
   }
 
   //Récupère les plantes déjà associées à ce jardin 
+  // Faire qqc pour les nombres de pages
   getPlantesPresentes() {
-    this.planteUtilisateurService.getAllByJardin(this.jardin.identifier).subscribe(
+    this.planteUtilisateurService.getAllByJardin(this.jardin.identifier, 0).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesPresentes = responseDto.body.content;
@@ -159,8 +161,13 @@ export class GraphiqueJardinComponent implements OnInit {
     return result;
   }
 
-  ajoutPlanteSelectionner(){
+  // Par sur que 0 prenne bien la première page de la recherche
+  rechercherPlante(recherche: string) {
+    var result = this.servicePlante.getKeyWord(recherche, 0);
+  }
 
+  selectionnerPlante(planteChoisis: string){
+    this.planteSelectionner = planteChoisis;
   }
 
 }
