@@ -54,7 +54,7 @@ export class PeriodeService {
   }
 
   // readByPlanteId
-  getAllByPlante(plantId: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/plant/' + plantId);
+  getAllByPlante(plantId: number,page: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/plant/' + plantId + '?page=' + page);
   }
 }
