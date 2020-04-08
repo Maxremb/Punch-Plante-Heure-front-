@@ -28,28 +28,35 @@ table {
     font-size: 18px;
     font: bold;
     border-right: 2px solid white;
+    /* width: 18%; */
 }
 
 .neutre {
     background-color: #e6ffe6;
+    /* width: 6%; */
 }
 
 .rempotage {
     background-color: #D1DCB0;
+    /* width: 6%; */
 }
 
 .floraison {
     background-color: #CADB8D;
+    /* width: 6%; */
 }
 
 .fructification {
     background-color: #A1C083;
+    /* width: 6%; */
 }
 
 .taille {
     background-color: #9AAF8C;
+    /* width: 6%; */
 }
 
 .semis {
     background-color: #B7CE81;
+    /* width: 6%; */
 }
