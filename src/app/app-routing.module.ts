@@ -30,6 +30,7 @@ import { DetailedDepartementComponent } from './content/departement/detailed-dep
 import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/graphique-jardin.component';
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { NotificationsComponent } from './content/notifications/notifications.component';
+import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
 
 
 const routes: Routes = [
@@ -60,8 +61,8 @@ const routes: Routes = [
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
   { path : 'planning/:id' , component : PlanningJardinComponent },
-  { path : 'meteo/:id' , component : MeteoDepComponent }
-  
+  { path : 'meteo/:id' , component : MeteoDepComponent },
+  { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent}
  
 ];
 

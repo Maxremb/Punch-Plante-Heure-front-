@@ -123,10 +123,10 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   }
 
   suppprimer(id : number){
-    console.log('DEBUG ID PLANTE A SUPPR =' + id)
     this.planteutilisateurservice.delete(id).subscribe(
       (responseDto) => {
         console.log("Plante supprimée de votre jardin");
+        this.listePlanteUtil = this.listePlanteUtil.filter(p => p.identifiant != id);
         
       },
 

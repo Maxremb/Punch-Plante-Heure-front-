@@ -1,0 +1,17 @@
+.chemin {
+    background-color: #993300 ;
+}
+
+.obstacle{
+    background-color: black;
+}
+
+.plante{
+    background-color: green;
+}
+
+.vide {
+    background-color: #ccccb3
+    ;
+    
+}
