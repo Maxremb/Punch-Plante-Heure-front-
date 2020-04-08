@@ -1,7 +1,7 @@
 <!-- Choix et menu déroulant -->
 <div class="container">
     <!-- Formulaire de saisi des dimensions du jardin -->
-    <form [formGroup]="dimensionsJardinForm" (ngSubmit)="this.verificationLongLarge()">
+    <form [formGroup]="dimensionsJardinForm">
         <h3>Dimensions du jardin :</h3>
         <label>Longueur : </label>
         <input id="length" type="number" min="0" [(ngModel)]="this.jardin.length" formControlName="length" name="length" required>
