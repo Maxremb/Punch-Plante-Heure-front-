@@ -140,6 +140,54 @@
         </tr>
       </tbody>
     </table>
+    <label>
+        <h2><b>LISTE DES PERIODES </b></h2>
+    </label>
+    <hr>
+    <table datatable class="table table-hover">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Departement</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>REMPOTAGE</td>
+                <td>Tous</td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+            </tr>
+            <tr>
+                <td>FLORAISON</td>
+                <td>Tous</td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+            </tr>
+            <tr>
+                <td>FRUCTIFICATION</td>
+                <td>Tous</td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+            </tr>
+            <tr>
+                <td>TAILLE</td>
+                <td>Tous</td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+            </tr>
+            <tr>
+                <td>SEMIS</td>
+                <td>Tous</td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+                <td><input type="date" id="semiDate" class="form-control" formControlName="semiDate"></td>
+            </tr>
+        </tbody>
+    </table>
     <button type="submit" class="btn alazea-btn mt-15" >Enregistrer</button>
   <div *ngIf="this.messageValidation.length">
       <div class="alert alert-fail" *ngIf="this.error">

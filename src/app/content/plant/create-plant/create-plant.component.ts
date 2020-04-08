@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PlanteModeleCreateDto } from 'src/app/models/plante-modele-create-dto';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { PeriodeUpdateDto } from 'src/app/models/periode-update-dto';
 
 // On déclare la fonction javascript comprenant du JQuery
 declare function maFonction():any;
@@ -17,6 +18,8 @@ export class CreatePlantComponent implements OnInit {
   plant = new PlanteModeleCreateDto();
   messageValidation = '';
   error:boolean;
+  allPeriodes = new Array<PeriodeUpdateDto>();
+  period = new PeriodeUpdateDto;
 
   constructor(private service: PlanteModeleService) { }
 

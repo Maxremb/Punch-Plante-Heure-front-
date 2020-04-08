@@ -21,10 +21,10 @@
             <label class="label">Département : </label>{{jardin.dept.name}} - ({{jardin.dept.depNum}})
             <br>
             <label class="label">Liste des plantes présentes dans mon jardin : </label>
-            <p *ngIf="!this.plantesParJardin.length"><i>Il n'y a pas de plantes dans mon jardin</i></p>
-            <p *ngIf="this.plantesParJardin.length"><i>Il y a </i>{{this.plantesParJardin.length}}<i> plantes dans mon jardin</i></p>
+            <p *ngIf="this.plantesParJardin.length"><i>Il n'y a pas de plantes dans mon jardin</i></p>
+            <p *ngIf="!this.plantesParJardin.length"><i>Il y a </i>{{this.plantesParJardin.length}}<i> plantes dans mon jardin</i></p>
             <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
-    <table class="table table-hover" *ngIf="this.plantesParJardin.length">
+    <table class="table table-hover" *ngIf="!this.plantesParJardin.length">
         <thead>
             <tr>
                 <th>
