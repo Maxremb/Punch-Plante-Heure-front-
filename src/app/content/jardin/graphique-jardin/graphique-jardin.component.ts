@@ -7,6 +7,7 @@ import { PlanteUtilisateurCreateDto } from 'src/app/models/plante-utilisateur-cr
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { ResponseDto } from 'src/app/models/response-dto';
 
 
 @Component({
@@ -22,8 +23,9 @@ export class GraphiqueJardinComponent implements OnInit {
   plantes: Array<PlanteUtilisateurCreateDto>;
   plantesPresentes: Array<PlanteUtilisateurUpdateDto>;
   planteRechercher: string;
-  resultatRecherche: Array<string>;
+  resultatRecherche: Array<PlanteModeleUpdateDto>;
   planteSelectionner: any;
+  message: string;
 
   constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService, private servicePlante: PlanteModeleService) {
 
@@ -61,7 +63,6 @@ export class GraphiqueJardinComponent implements OnInit {
     // TO DO : A NE FAIRE QUE POUR LES PLANTES QUI ONT DES COORDONNEES
     this.plantesPresentes.forEach(plante => 
       this.matrice[plante.coordonnees[3]][plante.coordonnees[2]] = plante.modelPlant.commun);
-
   }
 
   modifOnClick(y: number, x: number) {
@@ -85,7 +86,7 @@ export class GraphiqueJardinComponent implements OnInit {
     //  var ctx = canvas.getContext('2d');
   }
 
-  //Récupère les plantes déjà associées à ce jardin 
+  // Récupère les plantes déjà associées à ce jardin 
   // Faire qqc pour les nombres de pages
   getPlantesPresentes() {
     this.planteUtilisateurService.getAllByJardin(this.jardin.identifier, 0).subscribe(
@@ -94,7 +95,7 @@ export class GraphiqueJardinComponent implements OnInit {
           this.plantesPresentes = responseDto.body.content;
         }
       }
-    )
+    );
   }
 
   sauvgardeJardin() {
@@ -161,9 +162,19 @@ export class GraphiqueJardinComponent implements OnInit {
     return result;
   }
 
-  // Par sur que 0 prenne bien la première page de la recherche
   rechercherPlante(recherche: string) {
-    var result = this.servicePlante.getKeyWord(recherche, 0);
+    this.message = '';
+    console.log('Recherche lancé')
+    this.servicePlante.getKeyWord(recherche, 0).subscribe(
+      ResponseDto => {
+        if (!ResponseDto.error) {
+          this.resultatRecherche = ResponseDto.body.content;
+        }
+        if (ResponseDto.body.totalPages>0) {
+          this.message = 'Aucunes plantes trouvées pour ce mot clé...';
+        }
+      }
+    );
   }
 
   selectionnerPlante(planteChoisis: string){

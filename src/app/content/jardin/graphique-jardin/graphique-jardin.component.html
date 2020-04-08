@@ -60,8 +60,8 @@
             </table>
 
             <!-- Affichage de la sélection active :  -->
-            Selection active = <div *ngIf="this.selection== ''">Vide</div>
-            {{this.selection}}
+            Selection active = {{this.selection}}
+            <span *ngIf="this.selection== ''">vide</span>
             
         <!-- Affiche la liste des plantes et autre pour sélectionner et placer dans notre plan -->
 
@@ -85,15 +85,27 @@
         <div>
             <h2>Ajouter une plante à mon jardin</h2>
             <form>
-                <input [(ngModel)]="planteRechercher" type="text" placeholder="Nom de la plante">
+                <input [(ngModel)]="planteRechercher" type="text" placeholder="Nom de la plante"[ngModelOptions]="{standalone: true}">
                 <br><button class="btn btn-success" (click)="rechercherPlante(planteRechercher)"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</button>
             </form>
 
             <div *ngIf="resultatRecherche">
                 <h3>Resultat de la recherche</h3>
-                <ul>
-                    <li *ngFor="let r of this.resultatRecherche"><span (click)="selectionnerPlante(r)">{{r}}</span></li>
-                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Nom Commun</td>
+                            <td>Nom Scientifique</td>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let r of this.resultatRecherche">
+                        <tr>
+                            <td><span (click)="selectionnerPlante(r)">{{r.commun}}</span></td>
+                            <td><span (click)="selectionnerPlante(r)">{{r.scientifique}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="message">{{message}}</div>
             </div>
 
             <p *ngIf="planteSelectionner">Plante selectionné : {{this.planteSelectionner}}</p>
