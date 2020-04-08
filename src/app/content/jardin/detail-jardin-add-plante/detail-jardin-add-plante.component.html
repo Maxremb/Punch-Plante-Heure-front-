@@ -13,8 +13,8 @@
                 <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
 
                     <label class="label" for="commun">Nom de la plante</label>
-                    <select id="commun" class="form-control" formControlName="commun" required>
-                        <option *ngFor="let planteModel of this.allPlantes">{{planteModel.commun}}</option>
+                    <select id="commun" class="form-control" formControlName="commun" required [(ngModel)]="this.plante.modelPlant">
+                        <option *ngFor="let planteModel of this.allPlantes" [ngValue]="planteModel">{{planteModel.commun}}</option>
                     </select>
                     <br>
                     <label class="label" for="plantingDate">Date de plantation : </label>
@@ -51,26 +51,16 @@
 
         <!-- Ajout d'images à droite -->
         <div class="col 12 col-lg-7">
-
-            <div class="image_content">
-                <div>
-                    <img src="assets/img/ajout_plante.jpg" alt="">
-                </div>
-                <br>
-                <div class="image_content2">
-                    <img src="assets/img/ajout_plante2.jpg" alt="">
-                </div>
+            <h2>Liste des plantes de mon jardin</h2>
+            <hr>
+            <div *ngFor="let p of this.listePlanteUtil">
+                {{p.modelPlant.commun}}
             </div>
+
         </div>
     </div>
     <!-- Fin de la ligne row -->
     <br>
-
-<!-- Partie grapique du jardin avec liste plantes utilisateur -->
-    <div class="row">
-            <app-graphique-jardin [jardin]="this.jardin"></app-graphique-jardin>
-
-    </div>
 
 
 

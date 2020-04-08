@@ -1,27 +1,55 @@
 .mois {
-    background: #6e4019;
-    color: #fff;
-    height: 30px;
+    background: #2A3027;
+    color: white;
+    height: 40px;
     border-bottom: 3px solid #fff;
     border-right: 2px solid #fff;
     padding: 5px;
     text-align: center;
+    font-size: large;
+}
+
+.taille {
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 table {
     width: 100%;
-  }
+    background-color: white;
+    border-right: 3px solid white;
+}
 
 .plante {
-    background-color: bisque;
-    border: 1px solid black;
+    background-color: #C9C1B7;
     padding: 5px;
     text-align: center;
+    color: white;
+    font-size: 18px;
+    font: bold;
+    border-right: 2px solid white;
 }
 
 .neutre {
-    border: 1px solid black;
-    padding: 5px;
-    background: -webkit-linear-gradient(red 50%, green 50%);
+    background-color: #e6ffe6;
 }
 
+.rempotage {
+    background-color: #D1DCB0;
+}
+
+.floraison {
+    background-color: #CADB8D;
+}
+
+.fructification {
+    background-color: #A1C083;
+}
+
+.taille {
+    background-color: #9AAF8C;
+}
+
+.semis {
+    background-color: #B7CE81;
+}
