@@ -21,92 +21,88 @@
             <label class="label">Département : </label>{{jardin.dept.name}} - ({{jardin.dept.depNum}})
             <br>
             <label class="label">Liste des plantes présentes dans mon jardin : </label>
-            <p *ngIf="this.plantesParJardin.length"><i>Il n'y a pas de plantes dans mon jardin</i></p>
-            <p *ngIf="!this.plantesParJardin.length"><i>Il y a </i>{{this.plantesParJardin.length}}<i> plantes dans mon jardin</i></p>
+
+            <p *ngIf="!this.plantesParJardin.length"><i>Il n'y a pas de plantes dans mon jardin</i></p>
+            <p *ngIf="this.plantesParJardin.length"><i>Il y a </i>{{this.plantesParJardin.length}}<i> plantes sur cette page et {{this.pageMax}} pages</i></p>
             <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
-    <table class="table table-hover" *ngIf="!this.plantesParJardin.length">
-        <thead>
-            <tr>
-                <th>
-                    <h5>ID</h5>
-                </th>
-                <th>
-                    <h5>Nom</h5>
-                </th>
-                <th>
-                    <h5>Date de plantation</h5>
-                </th>
-                <th>
-                    <h5>Date de semis</h5>
-                </th>
-                <th>
-                    <h5>Etat de santé</h5>
-                </th>
-                <th>
-                    <h5>Etat de la plante</h5>
-                </th>
-                <th>
-                    <h5>Actions</h5>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
-                <td>{{planteUtilisateur.identifiant}}</td>
-                <td>{{planteUtilisateur.modelPlant.commun}}</td>
-                <td>{{planteUtilisateur.plantingDate}}</td>
-                <td>{{planteUtilisateur.semiDate}}</td>
-                <td>{{planteUtilisateur.healthStage}}</td>
-                <td>{{planteUtilisateur.plantStage}}</td>
-                <!-- Possibilité de retirer une plante utilisateur du jardin -->
-                <td><button class="btn alazea-btn mt-15"
-                        (click)="this.supprimer(planteUtilisateur.identifiant)">Retirer
-                        cette
-                        plante de mon jardin</button>
-                <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
-                    &nbsp;&nbsp;<a routerLink="/jardin/detail/updateplante">
-                        <button class="btn alazea-btn mt-15"
-                            (click)="this.stockagePlanteUtilisateur(planteUtilisateur)">Mettre
-                            à jour cette plante</button>
-                    </a>
-            </tr>
-        </tbody>
-    </table>
-    <nav aria-label="Page navigation">
-        <ul class="pagination" >
-            <li class="page-item" *ngIf="this.pageActive>0">
-                <a class="page-link" (click)="this.getPlantesParJardin(0)">
-                    <i class="fa fa-angle-double-left"></i>
-                </a>
-            </li>
-            <li class="page-item" *ngIf="this.pageActive>0">
-                <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive-1)">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-            </li>
-            <li class="page-item" *ngFor="let page of pageTotal">
-                <a class="page-link" id="{{page}}" (click)="this.getPlantesParJardin(page)">{{page+1}}</a>
-            </li>
-            <li class="page-item" *ngIf="this.pageActive<this.pageMax-1">
-                <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive+1)">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-            <li class="page-item" *ngIf="this.pageActive<this.pageMax-1">
-                <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive-1)">
-                    <i class="fa fa-angle-double-right"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
+            <table class="table table-hover" *ngIf="this.plantesParJardin.length">
+                <thead>
+                    <tr>
+                        <th>
+                            <h5>ID</h5>
+                        </th>
+                        <th>
+                            <h5>Nom</h5>
+                        </th>
+                        <th>
+                            <h5>Date de plantation</h5>
+                        </th>
+                        <th>
+                            <h5>Date de semis</h5>
+                        </th>
+                        <th>
+                            <h5>Etat de santé</h5>
+                        </th>
+                        <th>
+                            <h5>Etat de la plante</h5>
+                        </th>
+                        <th>
+                            <h5>Actions</h5>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
+                        <td>{{planteUtilisateur.identifiant}}</td>
+                        <td>{{planteUtilisateur.modelPlant.commun}}</td>
+                        <td>{{planteUtilisateur.plantingDate}}</td>
+                        <td>{{planteUtilisateur.semiDate}}</td>
+                        <td>{{planteUtilisateur.healthStage}}</td>
+                        <td>{{planteUtilisateur.plantStage}}</td>
+                        <!-- Possibilité de retirer une plante utilisateur du jardin -->
+                        <td><button class="btn btn-danger"
+                                (click)="this.supprimer(planteUtilisateur.identifiant)">Supprimer</button>
+                            <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
+                            <!-- &nbsp;&nbsp; -->
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item" *ngIf="this.pageActive>0">
+                        <a class="page-link" (click)="this.getPlantesParJardin(0)">
+                            <i class="fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngIf="this.pageActive>0">
+                        <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive-1)">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngFor="let page of pageTotal">
+                        <a class="page-link" id="{{page}}" (click)="this.getPlantesParJardin(page)">{{page+1}}</a>
+                    </li>
+                    <li class="page-item" *ngIf="this.pageActive<this.pageMax-1">
+                        <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive+1)">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngIf="this.pageActive<this.pageMax-1">
+                        <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive-1)">
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <!-- Fin du tableau avec les plantes -->
         <!-- Affichage d'une image à droite du tableau -->
         <div class="col-12 col-lg-6" style="position: center;">
-            <app-graphique-jardin-affichage [jardin]="this.jardin" style="position: center;"></app-graphique-jardin-affichage>
+            <app-graphique-jardin-affichage [jardin]="this.jardin" style="position: center;">
+            </app-graphique-jardin-affichage>
         </div>
     </div>
-    
+
 </div>
 
 

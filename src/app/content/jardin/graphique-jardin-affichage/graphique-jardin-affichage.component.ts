@@ -4,6 +4,7 @@ import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-up
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 
 @Component({
   selector: 'app-graphique-jardin-affichage',
@@ -16,15 +17,12 @@ export class GraphiqueJardinAffichageComponent implements OnInit {
   matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
   plantesPresentes = new Array<PlanteUtilisateurUpdateDto>();
 
+  plante = new PlanteUtilisateurUpdateDto();
+  model = new PlanteModeleUpdateDto();
 
   constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService, private servicePlante: PlanteModeleService) { }
 
   ngOnInit(): void {
-    // this.jardin = new JardinUpdateDto();
-    // this.jardin.identifier = 1;
-    // this.jardin.length = 1;
-    // this.jardin.width = 1;
-    // this.jardin.name = 'JardinTest';
     this.getPlantesPresentes();
     this.genererMatrice();
 
@@ -45,7 +43,7 @@ export class GraphiqueJardinAffichageComponent implements OnInit {
     // Pour chaque plante déjà présente dans le jardin on associe le nom commun à la bonne position dans la matrice 
     // TO DO : A NE FAIRE QUE POUR LES PLANTES QUI ONT DES COORDONNEES
     this.plantesPresentes.forEach(plante =>
-      this.matrice[plante.coordonnees[3]][plante.coordonnees[2]] = plante.modelPlant.commun);
+      this.matrice[plante.coordonnees[1]][plante.coordonnees[0]] = plante.modelPlant.commun);
 
   }
 

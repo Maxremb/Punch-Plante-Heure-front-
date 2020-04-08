@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
-import { JardinService } from 'src/app/services/jardin-service.service';
 import { PeriodeService } from 'src/app/services/periode.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { PeriodeEnum } from 'src/app/enums/periode-enum.enum';
 
 @Component({
   selector: 'app-planning-jardin',
@@ -14,11 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 export class PlanningJardinComponent implements OnInit {
 
   allPlantes = new Array<PlanteUtilisateurUpdateDto>();
-  planteActive = new PlanteUtilisateurUpdateDto();
+
 
   constructor(
     // private jardinservice: JardinService,
-    // private periodeService: PeriodeService,
+    private periodeService: PeriodeService,
     private planteUtilisateurService: PlanteUtilisateurService,
     private route: ActivatedRoute,
   ) { }
@@ -26,30 +25,49 @@ export class PlanningJardinComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlantes();
+
+
   }
 
   getPlantes(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+
     this.planteUtilisateurService.getAllByJardin(id, 0).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.allPlantes = responseDto.body;
-          // if (this.plantesParJardin.length==0) {
-          //   this.emptyliste = true;
-          // }  else {
-          //     this.emptyliste = false;
-          //     this.nombre = this.plantesParJardin.length;
-          //   }
+          this.allPlantes = responseDto.body.content;
+          this.getPeriodes();
         }
       }
     );
   }
 
-  // getPeriodes(plante: PlanteUtilisateurUpdateDto) : void {
-  //   this.periodeService.getAllTypes(this.planteActive.garden.dept.depNum, this.planteActive.modelPlant.identifiant).subscribe(
+  getPeriodes(): void {
+    this.allPlantes[0].rempotage = [];
+    this.allPlantes.forEach(plante =>
+      this.periodeService.getByDepAndPlanteModelIdAndType(
+        plante.garden.dept.depNum,
+        plante.modelPlant.identifiant,
+        'REMPOTAGE')
+        .subscribe(
+          (responseDto) => {
 
-  //   )
-  // }
+            if (!responseDto.error) {
+
+              for (let i = 1; i < 13; i++) {
+                if (Number.parseInt(responseDto.body.startDate.toString().split("-")[1]) > i || Number.parseInt(responseDto.body.endDate.toString().split("-")[1]) < i) {
+                  plante.rempotage.push("neutre");
+                } else {
+                  plante.rempotage.push("rempotage");
+                }
+              }
+              console.log(plante.rempotage);
+
+            }
+          }
+        )
+    )
+  }
 
 
 }

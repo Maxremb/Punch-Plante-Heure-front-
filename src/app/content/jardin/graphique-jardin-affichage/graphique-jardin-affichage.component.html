@@ -5,7 +5,7 @@
                 <tbody>
                     <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
                         <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;"
-                            width=20px height=20px >
+                            width=20px height=20px title="{{matrice[index][index2]}}" >
                             <div *ngIf="this.matrice[index][index2]=='chemin'" class="chemin">
                                 &nbsp;
                             </div>

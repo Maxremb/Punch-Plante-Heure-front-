@@ -13,4 +13,6 @@ export class PlanteUtilisateurCreateDto {
     
     
     coordonnees: Array<number>;
+
+    rempotage = new Array<string>();
 }

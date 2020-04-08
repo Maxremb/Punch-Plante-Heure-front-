@@ -53,7 +53,8 @@ export class DetailJardinComponent implements OnInit {
     this.planteutilisateurservice.getAllByJardin(this.jardin.identifier, nPage).subscribe(
       (responseDto) => {
 
-        this.plantesParJardin = responseDto.body;
+        console.log('debug responseDto from server : ', responseDto)
+        this.plantesParJardin = responseDto.body.content;
         this.pageActive = responseDto.body.number;
         this.pageTotal = this.range(responseDto.body.totalPages);
         this.pageMax = responseDto.body.totalPages;
@@ -71,7 +72,7 @@ export class DetailJardinComponent implements OnInit {
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesParJardin = this.plantesParJardin.filter(element => element.identifiant !== id);
-          document.location.reload();
+          
         }
       }
     );

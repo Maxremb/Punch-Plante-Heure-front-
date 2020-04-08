@@ -19,7 +19,7 @@ export class PlanteModeleCreateDto {
     assoPlus: string[]; //association positive en tant que string et non plantmodel
     assoMoins: string[]; //idem pour associations negatives
 
-    periodes: Array<PeriodeUpdateDto>;
+    periodes: Array<PeriodeUpdateDto> = new Array<PeriodeUpdateDto>();
 
     // Attributs provisoirs pour la génération automatique
     // Il faudra mettre ceux de la plante à son developpement maximal
