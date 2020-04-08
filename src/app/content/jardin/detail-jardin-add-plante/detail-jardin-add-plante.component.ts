@@ -105,12 +105,13 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
   ajouter() {
     this.plante.garden = this.jardin;
-    console.log("DEBUG AJOUT " + this.plante.modelPlant.commun);
+    console.log("DEBUG AJOUT ", this.plante);
 
     this.planteutilisateurservice.create(this.plante).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.messageValidation = "Plante ajoutée à votre jardin";
+          
         }
       },
       (responseDtoErreur) => {
