@@ -105,7 +105,7 @@
                 <tr *ngFor="let d of this.allDepartements">
                     <td>{{d.depNum}}</td>
                     <td>{{d.name}}</td>
-                    <td><a routerLink="/meteo/:iddepartement">
+                    <td><a routerLink="/meteo/{{d.depNum}}">
                         <button class="btn alazea-btn mt-15" >Voir la Météo associée</button></a></td>
                     
                     <td>
