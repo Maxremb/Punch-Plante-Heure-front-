@@ -21,8 +21,9 @@ export class MeteoDepComponent implements OnInit {
   parMois: boolean = false;
   month: number;
   tableau: boolean;
+  graph: boolean;
   data: any;
-  title = 'meteo';
+  title = '';
   type = 'ComboChart';
   columnNames = ['date', 'ensoleillement', 'precipitation', 'Temperature min', 'Temperature max'];
   options = {
@@ -51,7 +52,8 @@ export class MeteoDepComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.tableau = true;
+    this.tableau = false;
+    this.graph=false;
     this.getDep();
     this.getMeteo();
     this.choixDonnee = new FormGroup({
@@ -65,6 +67,10 @@ export class MeteoDepComponent implements OnInit {
   switchGraphTable(): void {
     if (this.tableau) {
       this.tableau = false;
+      this.graph=true;
+    }else{
+      this.tableau=true;
+      this.graph=false;
     }
   }
 
@@ -86,7 +92,7 @@ export class MeteoDepComponent implements OnInit {
         responseDto => {
           if (!responseDto.error) {
             this.allmeteo = responseDto.body.content;
-            this.tableau = false;
+            this.graph = true;
             this.data = [];
             this.allmeteo.forEach(e => this.data.push([e.dateMeteo, e.radiation, e.rain, e.tempMin, e.tempMax]));
         

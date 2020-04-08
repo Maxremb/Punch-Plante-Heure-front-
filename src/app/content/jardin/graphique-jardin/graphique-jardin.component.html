@@ -85,12 +85,16 @@
         <div>
             <h2>Ajouter une plante à mon jardin</h2>
             <form>
-                <select>
-                    <option *ngFor="let p of this.listePlantesModels"> <!-- parcours la liste des plantes models -->
-                        {{p.commun}} <!-- Affiche le nom des plantes -->
-                    </option>
-                </select>
+                <input [(ngModel)]="planteRechercher" type="text" placeholder="Nom de la plante">
+                <br><button class="btn btn-success" (click)="rechercherPlante(planteRechercher)"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</button>
             </form>
+
+            <div *ngIf="resultatRecherche">
+                <h3>Resultat de la recherche</h3>
+                <ul>
+                    <li *ngFor="let r of this.resultatRecherche"><span (click)="selectionnerPlante(r)">{{r}}</span></li>
+                </ul>
+            </div>
 
             <p *ngIf="planteSelectionner">Plante selectionné : {{this.planteSelectionner}}</p>
         </div>
