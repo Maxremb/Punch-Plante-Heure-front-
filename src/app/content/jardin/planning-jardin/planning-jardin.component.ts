@@ -30,11 +30,10 @@ export class PlanningJardinComponent implements OnInit {
 
   getPlantes(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.planteUtilisateurService.getAllByJardin(id).subscribe(
+    this.planteUtilisateurService.getAllByJardin(id, 0).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.allPlantes = responseDto.body;
-          this.planteActive.modelPlant.
           // if (this.plantesParJardin.length==0) {
           //   this.emptyliste = true;
           // }  else {

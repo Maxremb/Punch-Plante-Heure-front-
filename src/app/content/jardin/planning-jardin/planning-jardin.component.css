@@ -10,14 +10,15 @@
 }
 
 .taille {
-    /* max-width: 90%; */
     margin-left: 5%;
     margin-right: 5%;
 }
 
 table {
     width: 100%;
-  }
+    background-color: white;
+    border-right: 3px solid white;
+}
 
 .plante {
     background-color: #C9C1B7;
@@ -26,6 +27,7 @@ table {
     color: white;
     font-size: 18px;
     font: bold;
+    border-right: 2px solid white;
 }
 
 .neutre {
