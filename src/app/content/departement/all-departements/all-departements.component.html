@@ -38,9 +38,9 @@
         <h2><label>Recherche par Nom</label></h2>
         <input type="text" class="form-group" [(ngModel)]="this.name" />
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a routerLink="/departement/update/{{this.name}}">
-            <button class="btn alazea-btn mt-15">Rechercher</button>
-        </a>
+        
+            <button class="btn alazea-btn mt-15" (click)="this.afficherDepartement()">Rechercher</button>
+        
     </div>
 
 
@@ -50,9 +50,42 @@
         <h2><label for="search-box">Recherche par Numéro</label></h2>
         <input type="number" [(ngModel)]="this.depNum" />
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a routerLink="/departement/update/{{this.depNum}}">
-            <button class="btn alazea-btn mt-15">Rechercher</button>
-        </a>
+      
+            <button class="btn alazea-btn mt-15" (click)="this.afficherDepartement()">Rechercher</button>
+    </div>
+
+
+    <div *ngIf="afficherDep">
+        <h2>departements recherché</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Numéro departement</th>
+                    <th>Nom departement</th>
+                    <th>Météo Associée</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td>{{this.departement.depNum}}</td>
+                    <td>{{this.departement.name}}</td>
+                    <td><a routerLink="/meteo/{{this.departement.depNum}}">
+                        <button class="btn alazea-btn mt-15" >Voir la Météo associée</button></a></td>
+                    
+                    <td>
+                        <button class="btn alazea-btn mt-15" (click)="this.delete(this.departement.depNum)">Supprimer ce
+                            departement</button>
+                        &nbsp;&nbsp;
+                        <a routerLink="/departement/update/{{this.departement.depNum}}">
+                            <button class="btn alazea-btn mt-15">Modifier ce departement</button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
     </div>
 
 
@@ -72,7 +105,7 @@
                 <tr *ngFor="let d of this.allDepartements">
                     <td>{{d.depNum}}</td>
                     <td>{{d.name}}</td>
-                    <td><a routerLink="/meteo/:id">
+                    <td><a routerLink="/meteo/:iddepartement">
                         <button class="btn alazea-btn mt-15" >Voir la Météo associée</button></a></td>
                     
                     <td>
