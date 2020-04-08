@@ -9,6 +9,7 @@ import { ResponseDto } from '../models/response-dto';
   providedIn: 'root'
 })
 export class DepartementService {
+ 
 
   departement: DepartementDto;
 
@@ -43,6 +44,10 @@ export class DepartementService {
   // readMeteoByNumDep
   getMeteoByDepartement(numDepartement: number, numelem: number, page: number, sortname: string): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/meteo?elemsPerPage=' + numelem +'&id=' + numDepartement + '&page=' + page + '&sortName=' + sortname);
+  }
+
+  getMeteoByMonthAndDepartement(month: number) {
+    return this.http.get<ResponseDto>(this.URL + '/meteo/' + month);
   }
 
   // readById

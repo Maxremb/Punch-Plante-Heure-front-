@@ -38,9 +38,14 @@ import { CreateDepartementComponent } from './content/departement/create-departe
 import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
 import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
 import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
+<<<<<<< HEAD
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component'; 
+import { GoogleChartsModule } from 'angular-google-charts';
+=======
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 
+>>>>>>> 453311caeddb3041b110ece2789cd37f50068d5a
 
 @NgModule({
   declarations: [
@@ -86,7 +91,8 @@ import { NotificationsComponent } from './content/notifications/notifications.co
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleChartsModule
   ],
   providers: [
     HttpClientModule

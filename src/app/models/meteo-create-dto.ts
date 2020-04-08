@@ -1,11 +1,13 @@
 import { DepartementDto } from './departement-dto';
 
 export class MeteoCreateDto {
-    tempMax: number;
     tempMin: number;
+    tempMax: number;
+    temp:number;
     rain: number;
     radiation: number;
-    etp: number;
+    
+   
     departement: DepartementDto;
-    dateMeteo: Date;
+    dateMeteo: string;
 }
