@@ -6,6 +6,6 @@ export class PeriodeCreateDto {
     dateDebut: Date;
     dateFin: Date;
     type: PeriodeEnum;
-    dept: DepartementDto;
+    dept: number;
     planteModel : PlanteModeleUpdateDto;
 }

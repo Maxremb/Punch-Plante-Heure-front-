@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { PeriodeService } from 'src/app/services/periode.service';
+import { PeriodeUpdateDto } from 'src/app/models/periode-update-dto';
 
 declare function maFonction():any;
 
@@ -15,11 +17,16 @@ export class DetailedPlantComponent implements OnInit {
   
   plantUpdateForm: FormGroup;
   plant: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
+  allPeriodes = new Array<PeriodeUpdateDto>();
+  period = new PeriodeUpdateDto;
   messageValidation = '';
   error: boolean;
+  idPlante:number;
+  maxpagePeriode:number;
 
   constructor(
     private service: PlanteModeleService,
+    private servicePeriode: PeriodeService,
     private route: ActivatedRoute
     ) { }
 
@@ -49,14 +56,14 @@ export class DetailedPlantComponent implements OnInit {
       profondeurRacine: new FormControl(this.plant.profondeurRacine,Validators.required),
       strate: new FormControl(this.plant.strate,Validators.required),
       vivacite: new FormControl(this.plant.vivacite,Validators.required),
-      picture: new FormControl(this.plant.picture,Validators.required),
+      picture: new FormControl(this.plant.picture),
     });
   }
 
   // Appel à la methode getPlant des le chargement de la page, en prenant compte la valeur de l'id dans l'url
   getPlant(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.service.getId(id).subscribe(
+    this.idPlante = +this.route.snapshot.paramMap.get('id');
+    this.service.getId(this.idPlante).subscribe(
       (responsedto) => {
         if (!responsedto.error) {
           console.log('get data')
@@ -65,8 +72,25 @@ export class DetailedPlantComponent implements OnInit {
       }
     );
   }
+  getPeriodes() {
+    this.allPeriodes = []
+    var page=0; 
+    for(;page<this.maxpagePeriode;){
+    this.servicePeriode.getAllByPlante(this.plant.identifiant,page).subscribe(
+      responseDto => {
+        if (!responseDto.error) {
+          this.allPeriodes.push(responseDto.body.content);
+          this.maxpagePeriode= responseDto.body.totalPages;
+          page = responseDto.body.number;
+        }
+        else { this.allPeriodes = [] }
+      }
+    );
+    }
+  }
 
-  update() {
+  updatePlante() {
+    this.updatePeriode();
     this.service.update(this.plant).subscribe(
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
@@ -82,6 +106,12 @@ export class DetailedPlantComponent implements OnInit {
         }
 
     );
+  }
+
+  updatePeriode(){
+    for (let i = 0;i<this.allPeriodes.length;i++){
+    this.servicePeriode.update(this.allPeriodes[i]).subscribe();
+    }
   }
 
 }

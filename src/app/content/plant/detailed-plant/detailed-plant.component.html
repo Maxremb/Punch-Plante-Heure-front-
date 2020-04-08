@@ -7,7 +7,7 @@
     <h2>Modifier le modèle de plante numéro <b>{{this.plant.identifiant}}</b></h2>
     <p></p>
         
-    <form  [formGroup]="this.plantUpdateForm" (ngSubmit)="this.update()">
+    <form  [formGroup]="this.plantUpdateForm" (ngSubmit)="this.updatePlante()">
     <table class="table table-hover">
         <thead>
           <tr>
@@ -108,7 +108,7 @@
           <tr>
             <td>Image</td>
             <td>{{this.plant.picture}}</td>
-            <td><input type="file" class="form-group form-control" formControlName="picture"  name="picture" value="{{this.plant.picture}}"></td>
+            <td><input type="string" class="form-group form-control" formControlName="picture"  name="picture" value="{{this.plant.picture}}"></td>
           </tr>
           <tr>
             <td>Surface au sol (rayon en cm)</td>
@@ -163,6 +163,36 @@
                 </select></td>
           </tr>
         </tbody>
+      </table>
+      <label>
+          <h2><b>LISTE DES PERIODES </b></h2>
+      </label>
+      <hr>
+      <table datatable class="table table-hover">
+          <thead>
+              <tr>
+                  <th>Type</th>
+                  <th>Departement</th>
+                  <th>Date de début</th>
+                  <th>Date de fin</th>
+                  <th>Actions</th>
+
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let e of this.allPeriodes">
+                  <td>{{e.type}}</td>
+                  <td>{{e.dept}}</td>
+                  <td>{{e.dateDebut}}</td>
+                  <td>{{e.dateFin}}</td>
+                  <td>
+                      &nbsp;&nbsp;
+                      <button class="btn btn-info">Modifier</button>
+                      &nbsp;&nbsp;
+                      <button class="btn btn-danger" >Supprimer</button>
+                  </td>
+              </tr>
+          </tbody>
       </table>
     </form>
 
