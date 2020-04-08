@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
+import { DepartementDto } from 'src/app/models/departement-dto';
+
 
 
 @Component({
@@ -18,37 +20,49 @@ export class DetailJardinComponent implements OnInit {
   nombre: number;
   messageValidation: string;
   messageEchec: string;
-  
+
+  pageActive: number = 0;
+  pageMax: number = 0;
+  pageTotal: number[];
+
   constructor(
     private jardinservice: JardinService,
     private planteutilisateurservice: PlanteUtilisateurService,
   ) { }
 
+
   // Valeurs a initialiser
   ngOnInit(): void {
     // recuperation de la variable jardin "stockée"
-    this.jardin = this.jardinservice.jardin;
+    // this.jardin = this.jardinservice.jardin;
+    this.jardin = new JardinUpdateDto();
+    this.jardin.identifier = 1;
+    this.jardin.length = 1;
+    this.jardin.width = 1;
+    this.jardin.name = 'JardinTest';
+    this.jardin.dept = new DepartementDto();
+
     // recuperation des plantes utilisateurs dans ce jardin
-    this.getPlantesParJardin(this.jardin.identifier, 0);
-      
+    this.getPlantesParJardin(0);
+    console.log('DEBUG DETAIL JARDIN LISTE PLANTE' + this.plantesParJardin)
+
   }
 
   // recuperation des plantes utilisateurs dans ce jardin
-  getPlantesParJardin(id: number, nPage : number): void {
-    this.planteutilisateurservice.getAllByJardin(id,nPage).subscribe(
+  getPlantesParJardin(nPage: number): void {
+    this.planteutilisateurservice.getAllByJardin(this.jardin.identifier, nPage).subscribe(
       (responseDto) => {
-        if (!responseDto.error) {
-          this.plantesParJardin = responseDto.body;
-          if (this.plantesParJardin.length==0) {
-            this.emptyliste = true;
-          }
-          else {
-            this.emptyliste = false;
-            this.nombre = this.plantesParJardin.length;
-          }
-        }
+
+        this.plantesParJardin = responseDto.body;
+        this.pageActive = responseDto.body.number;
+        this.pageTotal = this.range(responseDto.body.totalPages);
+        this.pageMax = responseDto.body.totalPages;
+
+
       }
     );
+    console.log('DEBUG plantesParJardin' + this.plantesParJardin[0]);
+    console.log('DEBUG LENGTH LISTE ' + this.plantesParJardin.length);
   }
 
   // suppression de la plante utilisateur numero ... + rechargement de la page
@@ -56,7 +70,7 @@ export class DetailJardinComponent implements OnInit {
     this.planteutilisateurservice.delete(id).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.plantesParJardin = this.plantesParJardin.filter(element =>  element.identifiant !== id);
+          this.plantesParJardin = this.plantesParJardin.filter(element => element.identifiant !== id);
           document.location.reload();
         }
       }
@@ -64,8 +78,12 @@ export class DetailJardinComponent implements OnInit {
   }
 
   // enregistrement de la planteutilisateur a modifier dans la variable planteUtilisateur
-  stockagePlanteUtilisateur(planteUtilisateur : PlanteUtilisateurUpdateDto) {
-    this.planteutilisateurservice.planteUtilisateur = planteUtilisateur ;
+  stockagePlanteUtilisateur(planteUtilisateur: PlanteUtilisateurUpdateDto) {
+    this.planteutilisateurservice.planteUtilisateur = planteUtilisateur;
+  }
+
+  range(end) {
+    return (new Array(end)).fill(undefined).map((_, i) => i);
   }
 
 }

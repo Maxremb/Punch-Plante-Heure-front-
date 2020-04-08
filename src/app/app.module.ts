@@ -41,6 +41,7 @@ import { PlanningJardinComponent } from './content/jardin/planning-jardin/planni
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component'; 
 import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationsComponent } from './content/notifications/notifications.component';
+import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { NotificationsComponent } from './content/notifications/notifications.co
     PlanningJardinComponent,
     MeteoDepComponent,
     NotificationsComponent,
+    GraphiqueJardinAffichageComponent,
   ],
   imports: [
     BrowserModule,

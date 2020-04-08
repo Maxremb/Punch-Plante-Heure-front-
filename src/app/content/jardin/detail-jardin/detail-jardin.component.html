@@ -4,7 +4,7 @@
 
     <!-- Affichage du jardin selectionné et de ses caracteristiques -->
     <div class="row">
-        <div class="col-12 col-lg-7" style="padding-left: 0%;">
+        <div class="col-12 col-lg-6" style="padding-left: 0%;">
             <h2>Détails de mon jardin </h2>
             <h2> <i>{{jardin.name}} </i> </h2>
             <hr>
@@ -21,20 +21,10 @@
             <label class="label">Département : </label>{{jardin.dept.name}} - ({{jardin.dept.depNum}})
             <br>
             <label class="label">Liste des plantes présentes dans mon jardin : </label>
-            <p *ngIf="!emptyliste"><i>Il n'y a pas de plantes dans mon jardin</i></p>
-            <p *ngIf="!emptyliste"><i>Il y a </i>{{this.nombre}}<i> plantes dans mon jardin</i></p>
-
-        </div>
-        <!-- Fin du tableau avec les plantes -->
-        <!-- Affichage d'une image à droite du tableau -->
-        <div class="col-12 col-lg-5">
-            <div class="image_content">
-                <img src="assets/img/detail_jardin.jpg" alt="">
-            </div>
-        </div>
-    </div>
-    <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
-    <table class="table table-hover" *ngIf="!emptyliste">
+            <p *ngIf="!this.plantesParJardin.length"><i>Il n'y a pas de plantes dans mon jardin</i></p>
+            <p *ngIf="this.plantesParJardin.length"><i>Il y a </i>{{this.plantesParJardin.length}}<i> plantes dans mon jardin</i></p>
+            <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
+    <table class="table table-hover" *ngIf="this.plantesParJardin.length">
         <thead>
             <tr>
                 <th>
@@ -82,7 +72,44 @@
             </tr>
         </tbody>
     </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" >
+            <li class="page-item" *ngIf="this.pageActive>0">
+                <a class="page-link" (click)="this.getPlantesParJardin(0)">
+                    <i class="fa fa-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngIf="this.pageActive>0">
+                <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive-1)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngFor="let page of pageTotal">
+                <a class="page-link" id="{{page}}" (click)="this.getPlantesParJardin(page)">{{page+1}}</a>
+            </li>
+            <li class="page-item" *ngIf="this.pageActive<this.pageMax-1">
+                <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive+1)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngIf="this.pageActive<this.pageMax-1">
+                <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive-1)">
+                    <i class="fa fa-angle-double-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+        </div>
+        <!-- Fin du tableau avec les plantes -->
+        <!-- Affichage d'une image à droite du tableau -->
+        <div class="col-12 col-lg-6" style="position: center;">
+            <app-graphique-jardin-affichage [jardin]="this.jardin" style="position: center;"></app-graphique-jardin-affichage>
+        </div>
+    </div>
+    
 </div>
+
+
 
 <!-- Affichage de boutons en fin de page pour ajouter une plante / modifier les infos du jardin -->
 <!-- Affichage de boutons en fin de page pour accéder à page planning du jardin -->
