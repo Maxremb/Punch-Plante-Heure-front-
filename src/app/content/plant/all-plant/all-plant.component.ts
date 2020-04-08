@@ -10,8 +10,10 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 export class AllPlantComponent implements OnInit {
 
   allPlant = new Array<PlanteModeleUpdateDto>();
-  pageActive: number = 1;
-  pageTotal: number [];
+  pageActive:number =0;
+  maxPage:number=0;
+  pageTotal:number[]=[];
+  keyWord: string;
   liste: boolean;
   choix: boolean;
   recherche: boolean;
@@ -37,7 +39,7 @@ export class AllPlantComponent implements OnInit {
   afficherListe() {
     this.liste = true;
     this.choix = false;
-    this.getAll(1);
+    this.getAll(0);
   }
 
   // Methode pour afficher le champ de recherche par ID
@@ -46,18 +48,25 @@ export class AllPlantComponent implements OnInit {
     this.choix = false;
   }
 
-  range(end) {
-    return (new Array(end)).fill(undefined).map((_, i) => i+1);
+  range(pactif,ptotal) {
+    if(ptotal>5){
+      if(pactif<3) return (new Array(5)).fill(undefined).map((_, i) => i);
+      else if(pactif>2 && pactif<ptotal-2) return (new Array(5)).fill(undefined).map((_, i) => i+pactif-2);
+      else return (new Array(5)).fill(undefined).map((_, i) => i+ptotal-5);
+    }else{
+      return (new Array(ptotal)).fill(undefined).map((_, i) => i);
+    }
   }
 
-  getAll(nbpage: number) {
-    this.service.getAll(nbpage).subscribe(
+  getAll(npage: number) {
+    this.service.getAll(npage).subscribe(
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.allPlant = responseDto.body.content;
           this.pageActive = responseDto.body.number;
-          this.pageTotal = this.range(responseDto.body.totalPages);
+          this.maxPage = responseDto.body.totalPages;
+          this.pageTotal = this.range(this.pageActive,this.maxPage);
         }
       }
     );
