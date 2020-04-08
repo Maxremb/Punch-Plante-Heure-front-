@@ -12,8 +12,9 @@ import { MeteoUpdateDto } from 'src/app/models/meteo-update-dto';
 export class AllDepartementsComponent implements OnInit {
 
   allDepartements = new Array<DepartementDto>();
-  pageActive: number = 1;
+  pageActive: number = 0;
   pageTotal: number[];
+  maxPage:number=0;
   liste: boolean;
   choix: boolean;
   recherche: boolean;
@@ -22,6 +23,7 @@ export class AllDepartementsComponent implements OnInit {
   name: string;
   departement: DepartementDto;
   afficherDep: boolean;
+  
 
   constructor(private service: DepartementService) { }
 
@@ -92,9 +94,14 @@ export class AllDepartementsComponent implements OnInit {
     
   }
 
-
-  range(end) {
-    return (new Array(end)).fill(undefined).map((_, i) => i);
+  range(pactif,ptotal) {
+    if(ptotal>5){
+      if(pactif<3) return (new Array(5)).fill(undefined).map((_, i) => i);
+      else if(pactif>2 && pactif<ptotal-2) return (new Array(5)).fill(undefined).map((_, i) => i+pactif-2);
+      else return (new Array(5)).fill(undefined).map((_, i) => i+ptotal-5);
+    }else{
+      return (new Array(ptotal)).fill(undefined).map((_, i) => i);
+    }
   }
 
   getAll(nbpage: number) {
@@ -104,7 +111,8 @@ export class AllDepartementsComponent implements OnInit {
         if (!responseDto.error) {
           this.allDepartements = responseDto.body.content;
           this.pageActive = responseDto.body.number;
-          this.pageTotal = this.range(responseDto.body.totalPages);
+          this.maxPage = responseDto.body.totalPages;
+          this.pageTotal = this.range(this.pageActive,this.maxPage);
         }
       }
     );
