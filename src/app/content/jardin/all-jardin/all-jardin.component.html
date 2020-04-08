@@ -7,13 +7,14 @@
 
     <!--LIEN TEMPORAIRE POUR AFFICHER LES PAGES NON ACCESSIBLES-->
     <div>
-        <a routerLink="/jardin/detail" style="margin-right: 10%;">
-            <input type="button" value="VISUEL detail jardin" />
+        <a routerLink="/jardin/detail" style="margin-right: 40%;">
+            <input type="button" value="VISUEL detail jardin" class="btn alazea-btn mt-15"/>
         </a>
-        <a routerLink="/jardin/update" style="margin-right: 10%;">
-            <input type="button" value="VISUEL update jardin" />
+        <a routerLink="/jardin/update" style="margin-right: 40%;">
+            <input type="button" value="VISUEL update jardin" class="btn alazea-btn mt-15"/>
         </a>
     </div>
+    <br>
 
 
     <!--LISTE DES JARDINS-->
@@ -49,6 +50,11 @@
                                 mon jardin</button>
                         </a>
                         &nbsp;&nbsp;
+                        <a routerLink="/jardin/update">
+                            <button class="btn alazea-btn mt-15" (click)="this.stockageJardin(e)">Modifier
+                                mon jardin</button>
+                        </a>
+                        &nbsp;&nbsp;
                         <button class="btn alazea-btn mt-15" (click)="this.delete(e.identifier)">Supprimer mon
                             jardin</button>
                     </td>
@@ -65,7 +71,7 @@
             <input type="button" value="Ajouter un jardin" class="btn alazea-btn mt-15" />
         </a>
         <a routerLink="">
-            <input type="button" value="Home page" class="btn alazea-btn mt-15" />
+            <input type="button" value="Accueil" class="btn alazea-btn mt-15" />
         </a>
     </div>
 </div>
