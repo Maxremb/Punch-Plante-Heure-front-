@@ -74,6 +74,15 @@ export class MeteoDepComponent implements OnInit {
     }
   }
 
+  // switchToMonth(): void {
+  //   if(this.parMois) {
+
+  //   }else {
+  //     this.parMois=true;
+  //     this.getMeteo(moisenCours);
+  //   }
+  // }
+
   getDep(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.service.getById(id).subscribe(
@@ -100,17 +109,17 @@ export class MeteoDepComponent implements OnInit {
           }
           else { this.allmeteo = [] }
         }
-      );
-    } else {
-      this.service.getMeteoByMonthAndDepartement(this.month).subscribe(
-        responseDto => {
-          if (!responseDto.error) {
-            this.allmeteo = responseDto.body;
-          }
-          else { this.allmeteo = [] }
-        }
-      );
-    }
+      );}
+    //  else {
+    //   this.service.getMeteoByMonthAndDepartement(this.month).subscribe(
+    //     responseDto => {
+    //       if (!responseDto.error) {
+    //         this.allmeteo = responseDto.body;
+    //       }
+    //       else { this.allmeteo = [] }
+    //     }
+    //   );
+    // }
   }
 
 }
