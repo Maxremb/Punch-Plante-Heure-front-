@@ -18,60 +18,60 @@
         <tr>
           <td><label for="commun">Nom Commun : </label></td>
           <td>
-              <input type="text" class="form-group form-control"  formControlName="commun"  name="commun" > 
+              <input type="text" class="form-group form-control"  [(ngModel)]="this.plant.commun" formControlName="commun"  name="commun" > 
           </td>
         </tr>
         <tr>
           <td>Nom Scientifique</td>
-          <td><input type="text" class="form-group form-control"  formControlName="scientifique"  name="scientifique" ></td>
+          <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.scientifique" formControlName="scientifique"  name="scientifique" ></td>
         </tr>
         <tr>
           <td>Famille</td>
-          <td><input type="text" class="form-group form-control"  formControlName="famille"  name="famille" ></td>
+          <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.famille" formControlName="famille"  name="famille" ></td>
         </tr>
         <tr>
           <td>Humidité optimale</td>
-          <td><input type="number" class="form-group form-control" formControlName="humidite"  name="humidite" ></td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.humidite" formControlName="humidite"  name="humidite" ></td>
         </tr>
         <tr>
           <td>Cycle d'arrossage en jour</td>
-          <td><input type="number" class="form-group form-control" formControlName="arrosage"  name="arrosage"></td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.arrosage" formControlName="arrosage"  name="arrosage"></td>
         </tr>
         <tr>
           <td>Ensoleillement optimal</td>
-          <td><input type="text" class="form-group form-control" formControlName="ensoleillement"  name="ensoleillement"></td>
+          <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.ensoleillement" formControlName="ensoleillement"  name="ensoleillement"></td>
         </tr>
         <tr>
           <td>Type de sol préféré</td>
           <td>
-              <select class="form-group form-control"  formControlName="sol"  name="sol" >
-                  <option value="sableux">Sableux</option>    
-                  <option value="limonoArgileux">Limono Argileux</option>
-                  <option value="argiloSableux">Argilo Sableux</option>
-                  <option value="argiloLimoneux">Argilo Limoneux</option>
-                  <option value="argileux">Argileux</option>
+              <select class="form-group form-control" [(ngModel)]="this.plant.sol" formControlName="sol"  name="sol" >
+                  <option value="Sableux">Sableux</option>    
+                  <option value="LimonoArgileux">Limono Argileux</option>
+                  <option value="ArgiloSableux">Argilo Sableux</option>
+                  <option value="ArgiloLimoneux">Argilo Limoneux</option>
+                  <option value="Argileux">Argileux</option>
               </select></td>
         </tr>
         <tr>
           <td>Repiquage</td>
-          <td><input type="number" class="form-group form-control" formControlName="repiquage"  name="repiquage" ></td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.repiquage" formControlName="repiquage"  name="repiquage" ></td>
         </tr>
         <tr>
           <td>Température minimale</td>
-          <td><input type="number" class="form-group form-control" formControlName="min"  name="min" ></td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.min" formControlName="min"  name="min" ></td>
         </tr>
         <tr>
           <td>Température maximale</td>
-          <td><input type="number" class="form-group form-control" formControlName="max"  name="max" ></td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.max" formControlName="max"  name="max" ></td>
         </tr>
         <tr>
           <td>Description</td>
-          <td><input type="text" class="form-group form-control" formControlName="desc"  name="desc" ></td>
+          <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.desc" formControlName="desc"  name="desc" ></td>
         </tr>
         <tr>
           <td>Toxicité</td>
           <td>
-              <select class="form-group form-control"  formControlName="toxi"  name="toxi" >
+              <select class="form-group form-control" [(ngModel)]="this.plant.toxi" formControlName="toxi"  name="toxi" >
                   <option value="true">Oui</option>    
                   <option value="false">Non</option>
               </select>
@@ -80,31 +80,31 @@
         <tr>
           <td>Association positive</td>
           <td>
-              <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="assoPlus"  name="assoPlus" ></select>
+              <select multiple data-role="tagsinput" class="form-group form-control" [(ngModel)]="this.plant.assoPlus" formControlName="assoPlus"  name="assoPlus" ></select>
           </td>
         </tr>
         <tr>
           <td>Association négative</td>
           <td>
-              <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="assoMoins"  name="assoMoins" ></select>
+              <select multiple data-role="tagsinput" class="form-group form-control" [(ngModel)]="this.plant.assoMoins" formControlName="assoMoins"  name="assoMoins" ></select>
           </td>
         </tr>
         <tr>
           <td>Image</td>
-          <td><input type="file" class="form-group form-control" formControlName="picture"  name="picture" ></td>
+          <td><input type="file" class="form-group form-control" [(ngModel)]="this.plant.picture" formControlName="picture"  name="picture" ></td>
         </tr>
         <tr>
           <td>Surface au sol (rayon en cm)</td>
-          <td><input type="number" class="form-group form-control" formControlName="surfaceAuSol"  name="surfaceAuSol" ></td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.surfaceAuSol" formControlName="surfaceAuSol"  name="surfaceAuSol" ></td>
         </tr>
         <tr>
           <td>Taille à âge adulte (cm)</td>
-          <td><input type="number" class="form-group form-control" formControlName="hight"  name="hight"></td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.hight" formControlName="hight"  name="hight"></td>
         </tr>
         <tr>
           <td>Tubercule comestible</td>
           <td>
-              <select class="form-group form-control"  formControlName="pousseSousTerre"  name="pousseSousTerre" >
+              <select class="form-group form-control" [(ngModel)]="this.plant.pousseSousTerre" formControlName="pousseSousTerre"  name="pousseSousTerre" >
                   <option value="true">Oui</option>    
                   <option value="false">Non</option>
               </select></td>
@@ -112,19 +112,19 @@
         <tr>
           <td>Grimpante</td>
           <td>
-              <select class="form-group form-control"  formControlName="grimpant"  name="grimpant" >
+              <select class="form-group form-control" [(ngModel)]="this.plant.grimpant" formControlName="grimpant"  name="grimpant" >
                   <option value="true">Oui</option>    
                   <option value="false">Non</option>
               </select></td>
         </tr>
         <tr>
           <td>Profondeur des racines</td>
-          <td><input type="number" class="form-group form-control" formControlName="profondeurRacine"  name="profondeurRacine" ></td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.profondeurRacine" formControlName="profondeurRacine"  name="profondeurRacine" ></td>
         </tr>
         <tr>
           <td>Type de hauteur</td>
           <td>
-              <select class="form-group form-control"  formControlName="strate"  name="strate" >
+              <select class="form-group form-control" [(ngModel)]="this.plant.strate"  formControlName="strate"  name="strate" >
                   <option value="haute">Haute</option>    
                   <option value="moyenne">Moyenne</option> 
                   <option value="basse">Basse</option>
@@ -133,17 +133,14 @@
         <tr>
           <td>Cycle de vie</td>
           <td>
-              <select class="form-group form-control"  formControlName="vivacite"  name="vivacite">
+              <select class="form-group form-control" [(ngModel)]="this.plant.vivacite" formControlName="vivacite"  name="vivacite">
                   <option value="vivace">Vivace</option>    
                   <option value="annuel">Annuel</option>
               </select></td>
         </tr>
       </tbody>
     </table>
-  </form>
-
-  
-  <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantCreateForm.valid">Enregistrer</button>
+    <button type="submit" class="btn alazea-btn mt-15" >Enregistrer</button>
   <div *ngIf="this.messageValidation.length">
       <div class="alert alert-fail" *ngIf="this.error">
           {{this.messageValidation}}
@@ -152,6 +149,10 @@
           {{this.messageValidation}}
       </div>
       </div>
+  </form>
+
+  
+  
   <!-- Retour lien page administrateur -->
 <div>
   <a routerLink="/plant/vadmin">

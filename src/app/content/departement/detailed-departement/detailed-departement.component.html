@@ -24,13 +24,12 @@
             <br><br> 
         </div>
 
-
         <div class="col-lg-6 col-sm-6">
             <form  [formGroup]="depUpdateForm" (ngSubmit)="this.update()">
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label for="depNum">Nouveau numéro du departement : </label> 
                 <input type="number" class="form-control" [(ngModel)]="this.departement.depNum" formControlName="depNum"  name="depNum">
-            </div>
+            </div>-->
     
             <div class="form-group">
                 <label for="name">Nouveau nom : </label> 
@@ -47,8 +46,13 @@
             </div>
         </div>
 
-        </form>
+</form>
         </div>
+
+
+        
+
+        
 
     </div>
 

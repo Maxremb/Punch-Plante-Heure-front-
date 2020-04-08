@@ -13,8 +13,10 @@
                 <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
 
                     <label class="label" for="commun">Nom de la plante</label>
-                    <select id="commun" class="form-control" formControlName="commun" required [(ngModel)]="this.plante.modelPlant">
-                        <option *ngFor="let planteModel of this.allPlantes" [ngValue]="planteModel">{{planteModel.commun}}</option>
+                    <select id="commun" class="form-control" formControlName="commun" required
+                        [(ngModel)]="this.plante.modelPlant">
+                        <option *ngFor="let planteModel of this.allPlantes" [ngValue]="planteModel">
+                            {{planteModel.commun}}</option>
                     </select>
                     <br>
                     <label class="label" for="plantingDate">Date de plantation : </label>
@@ -55,7 +57,37 @@
             <hr>
             <div *ngFor="let p of this.listePlanteUtil">
                 {{p.modelPlant.commun}}
+                <i class="fa fa-times" aria-hidden="true" style="color: red;" (click)="suppprimer(p.identifiant)"></i>
             </div>
+
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination" >
+                    <li class="page-item" *ngIf="this.pageActiveUtil>0">
+                        <a class="page-link" (click)="this.getListePlanteUtilisateur(0)">
+                            <i class="fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngIf="this.pageActiveUtil>0">
+                        <a class="page-link" (click)="this.getListePlanteUtilisateur(this.pageActiveUtil-1)">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngFor="let page of pageTotalUtil">
+                        <a class="page-link" id="{{page}}" (click)="this.getListePlanteUtilisateur(page)">{{page+1}}</a>
+                    </li>
+                    <li class="page-item" *ngIf="this.pageActiveUtil<this.pageMaxUtil-1">
+                        <a class="page-link" (click)="this.getListePlanteUtilisateur(this.pageActiveUtil+1)">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngIf="this.pageActiveUtil<this.pageMaxUtil-1">
+                        <a class="page-link" (click)="this.getListePlanteUtilisateur(this.pageMaxUtil-1)">
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
         </div>
     </div>

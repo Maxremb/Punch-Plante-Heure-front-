@@ -29,13 +29,13 @@ export class DetailJardinComponent implements OnInit {
     // recuperation de la variable jardin "stockée"
     this.jardin = this.jardinservice.jardin;
     // recuperation des plantes utilisateurs dans ce jardin
-    this.getPlantesParJardin(this.jardin.identifier);
+    this.getPlantesParJardin(this.jardin.identifier, 0);
       
   }
 
   // recuperation des plantes utilisateurs dans ce jardin
-  getPlantesParJardin(id: number): void {
-    this.planteutilisateurservice.getAllByJardin(id).subscribe(
+  getPlantesParJardin(id: number, nPage : number): void {
+    this.planteutilisateurservice.getAllByJardin(id,nPage).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesParJardin = responseDto.body;

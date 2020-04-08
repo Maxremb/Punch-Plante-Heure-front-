@@ -22,10 +22,13 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   messageValidation: string;
   messageErreur: string;
   allPlantes = new Array<PlanteModeleUpdateDto>();
-  pageActive: number = 1;
-  pageTotal: number[];
 
+  pageActive: number = 0;
+  pageTotal: number[] = [];
 
+  pageTotalUtil: number[] = [];
+  pageActiveUtil: number = 0;
+  pageMaxUtil: number = 0;
 
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
@@ -46,11 +49,12 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
 
     // recuperation de la liste de toutes les plantes modeles
-    this.getAllPlantes(1);
+    this.getAllPlantes(0);
     console.log('DEBUG GET ALL' + this.allPlantes);
 
     //Récupération de la liste des plantes utilisateurs associées à ce jardin
-    this.getListePlanteUtilisateur(1);
+    this.getListePlanteUtilisateur(0);
+
 
 
     // definition du formulaire
@@ -85,11 +89,11 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     this.planteutilisateurservice.getAllByJardin(this.jardin.identifier, npage).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          console.log('DEBUG LISTE PLANTE UTIL' );
-          console.log(responseDto.body.content);
           this.listePlanteUtil = responseDto.body.content;
-          // this.pageActive = responseDto.body.number;
-          // this.pageTotal = this.range(responseDto.body.totalPages);
+          this.pageActiveUtil = responseDto.body.number;
+          this.pageTotalUtil = this.range(responseDto.body.totalPages);
+          this.pageMaxUtil = responseDto.body.totalPages;
+          console.log('DEBUG PAGE MAX' + this.pageMaxUtil);
         }
       }
     )
@@ -115,28 +119,19 @@ export class DetailJardinAddPlanteComponent implements OnInit {
         }
       }
     );
-    
-    // this.planteutilisateurservice.listePlante.push(this.plante);
-    console.log("DEBUG PLANTES UTIL LISTE" + this.planteutilisateurservice.listePlante);
-
+    this.getListePlanteUtilisateur(this.pageActiveUtil);
   }
 
-  sauvegarder() {
-    this.planteutilisateurservice.listePlante.forEach(planteUtil => {
-      this.planteutilisateurservice.create(planteUtil).subscribe(
-        (responseDto) => {
-          if (!responseDto.error) {
-            this.messageValidation = "Plante ajoutée à votre jardin";
-          }
-        },
-        (responseDtoErreur) => {
-          if (responseDtoErreur.error) {
-            this.messageErreur = "Erreur d'ajout";
-          }
-        }
-      );
-    });
+  suppprimer(id : number){
+    console.log('DEBUG ID PLANTE A SUPPR =' + id)
+    this.planteutilisateurservice.delete(id).subscribe(
+      (responseDto) => {
+        console.log("Plante supprimée de votre jardin");
+        
+      },
 
-    this.planteutilisateurservice.listePlante = new Array<PlanteUtilisateurCreateDto>(); //On reset la liste des plantes à enregistrer
+    );
   }
+
+
 }

@@ -7,6 +7,7 @@ import { PlanteUtilisateurCreateDto } from 'src/app/models/plante-utilisateur-cr
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { ResponseDto } from 'src/app/models/response-dto';
 
 
 @Component({
@@ -21,10 +22,12 @@ export class GraphiqueJardinComponent implements OnInit {
   selection: string = "";
   plantes: Array<PlanteUtilisateurCreateDto>;
   plantesPresentes: Array<PlanteUtilisateurUpdateDto>;
-  listePlantesModels: Array<PlanteModeleUpdateDto>; // Il va falloir importer la liste des plantes
-  planteSelectionner: string;
+  planteRechercher: string;
+  resultatRecherche: Array<PlanteModeleUpdateDto>;
+  planteSelectionner: any;
+  message: string;
 
-  constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService) {
+  constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService, private servicePlante: PlanteModeleService) {
 
     // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
     this.jardin = new JardinUpdateDto();
@@ -42,7 +45,7 @@ export class GraphiqueJardinComponent implements OnInit {
     this.genererMatrice();
     this.plantes = this.planteUtilisateurService.listePlante;
     this.genererCarte();
-    this.planteSelectionner = null;
+    setInterval( () => {this.planteSelectionner++, this.resultatRecherche}, 250);
   }
 
   // Faire un espace aux bonnes proportions
@@ -60,7 +63,6 @@ export class GraphiqueJardinComponent implements OnInit {
     // TO DO : A NE FAIRE QUE POUR LES PLANTES QUI ONT DES COORDONNEES
     this.plantesPresentes.forEach(plante => 
       this.matrice[plante.coordonnees[3]][plante.coordonnees[2]] = plante.modelPlant.commun);
-
   }
 
   modifOnClick(y: number, x: number) {
@@ -84,15 +86,16 @@ export class GraphiqueJardinComponent implements OnInit {
     //  var ctx = canvas.getContext('2d');
   }
 
-  //Récupère les plantes déjà associées à ce jardin 
+  // Récupère les plantes déjà associées à ce jardin 
+  // Faire qqc pour les nombres de pages
   getPlantesPresentes() {
-    this.planteUtilisateurService.getAllByJardin(this.jardin.identifier).subscribe(
+    this.planteUtilisateurService.getAllByJardin(this.jardin.identifier, 0).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesPresentes = responseDto.body.content;
         }
       }
-    )
+    );
   }
 
   sauvgardeJardin() {
@@ -159,8 +162,23 @@ export class GraphiqueJardinComponent implements OnInit {
     return result;
   }
 
-  ajoutPlanteSelectionner(){
+  rechercherPlante(recherche: string) {
+    this.message = '';
+    console.log('Recherche lancé')
+    this.servicePlante.getKeyWord(recherche, 0).subscribe(
+      ResponseDto => {
+        if (!ResponseDto.error) {
+          this.resultatRecherche = ResponseDto.body.content;
+        }
+        if (ResponseDto.body.totalPages>0) {
+          this.message = 'Aucunes plantes trouvées pour ce mot clé...';
+        }
+      }
+    );
+  }
 
+  selectionnerPlante(planteChoisis: string){
+    this.planteSelectionner = planteChoisis;
   }
 
 }
