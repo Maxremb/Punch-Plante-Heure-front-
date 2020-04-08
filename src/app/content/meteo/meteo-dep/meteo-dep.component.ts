@@ -22,11 +22,11 @@ export class MeteoDepComponent implements OnInit {
   month: number;
   tableau: boolean;
   graph: boolean;
-  data: any;
-  title = '';
-  type = 'ComboChart';
-  columnNames = ['date', 'ensoleillement', 'precipitation', 'Temperature min', 'Temperature max'];
-  options = {
+  data1: any;
+  title1 = 'Températures';
+  type1 = 'ComboChart';
+  columnNames1 = ['date', 'Temperature min', 'Temperature max'];
+  options1 = {
     hAxis: {
       title: 'Date'
     },
@@ -34,10 +34,44 @@ export class MeteoDepComponent implements OnInit {
       title: 'Temperature'
     },
     seriesType: 'lines',
-    series: { 1: { type: 'bars' }, 0: { type: 'bars' } }
+    
   };
-  width = 550;
-  height = 400;
+  width1 = 550;
+  height1 = 400;
+
+  data2: any;
+  title2 = 'Ensoleillement';
+  type2 = 'ComboChart';
+  columnNames2 = ['date', 'ensoleillement'];
+  options2 = {
+    hAxis: {
+      title: 'Date'
+    },
+    vAxis: {
+      title: 'Temperature'
+    },
+    seriesType: 'bars',
+   
+  };
+  width2 = 550;
+  height2 = 400;
+
+  data3: any;
+  title3 = 'Précipitations';
+  type3 = 'ComboChart';
+  columnNames3 = ['date', 'precipitation'];
+  options3 = {
+    hAxis: {
+      title: 'Date'
+    },
+    vAxis: {
+      title: 'Temperature'
+    },
+    seriesType: 'bars',
+    
+  };
+  width3 = 550;
+  height3 = 400;
 
 
 
@@ -101,9 +135,17 @@ export class MeteoDepComponent implements OnInit {
         responseDto => {
           if (!responseDto.error) {
             this.allmeteo = responseDto.body.content;
+          if(this.allmeteo!= []){
             this.graph = true;
-            this.data = [];
-            this.allmeteo.forEach(e => this.data.push([e.dateMeteo, e.radiation, e.rain, e.tempMin, e.tempMax]));
+            this.data1 = [];
+            this.data2 = [];
+            this.data3 = [];
+            this.allmeteo.forEach(e => this.data1.push([e.dateMeteo, e.tempMin, e.tempMax]));
+            this.allmeteo.forEach( e => this.data2.push([e.dateMeteo, e.radiation]));
+            this.allmeteo.forEach( e => this.data3.push([e.dateMeteo, e.rain]) );
+            
+          }
+            
         
 
           }
