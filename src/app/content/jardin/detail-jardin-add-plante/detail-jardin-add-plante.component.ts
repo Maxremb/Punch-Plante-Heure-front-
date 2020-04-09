@@ -84,7 +84,10 @@ export class DetailJardinAddPlanteComponent implements OnInit {
           this.pageTotal = this.range(responseDto.body.totalPages);
           for (let index = 1; index < responseDto.body.totalPages; index++) {
             this.plantemodeleservice.getAll(index).subscribe((resp) => {
-              this.allPlantes.push(resp.body.content);
+              resp.body.content.forEach(element => {
+                this.allPlantes.push(element);
+                
+              });
             })
           }
         }
