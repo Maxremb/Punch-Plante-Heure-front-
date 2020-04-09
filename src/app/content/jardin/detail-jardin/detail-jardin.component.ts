@@ -4,6 +4,7 @@ import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-up
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { DepartementDto } from 'src/app/models/departement-dto';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -14,7 +15,7 @@ import { DepartementDto } from 'src/app/models/departement-dto';
 })
 export class DetailJardinComponent implements OnInit {
 
-  jardin: JardinUpdateDto;
+  jardin = new JardinUpdateDto();
   plantesParJardin = new Array<PlanteUtilisateurUpdateDto>();
   emptyliste: boolean = false;
   nombre: number;
@@ -24,23 +25,28 @@ export class DetailJardinComponent implements OnInit {
   pageActive: number = 0;
   pageMax: number = 0;
   pageTotal: number[];
+  idJardin :number;
 
   constructor(
     private jardinservice: JardinService,
     private planteutilisateurservice: PlanteUtilisateurService,
+    private route: ActivatedRoute,
   ) { }
 
 
   // Valeurs a initialiser
   ngOnInit(): void {
+    this.idJardin = +this.route.snapshot.paramMap.get('id');
     // recuperation de la variable jardin "stockée"
-    // this.jardin = this.jardinservice.jardin;
-    this.jardin = new JardinUpdateDto();
-    this.jardin.identifier = 1;
-    this.jardin.length = 1;
-    this.jardin.width = 1;
-    this.jardin.name = 'JardinTest';
-    this.jardin.dept = new DepartementDto();
+    // this.jardin = this.jardinservice.getId().subscribe.();
+    this.getJardin();
+    // this.jardin = new JardinUpdateDto();
+    // this.jardin.identifier = 1;
+    // this.jardin.length = 1;
+    // this.jardin.width = 1;
+    // this.jardin.name = 'JardinTest';
+    // this.jardin.dept = new DepartementDto();
+ 
 
     // recuperation des plantes utilisateurs dans ce jardin
     this.getPlantesParJardin(0);
@@ -48,11 +54,20 @@ export class DetailJardinComponent implements OnInit {
 
   }
 
+  getJardin() {
+    // const idJardin = +this.route.snapshot.paramMap.get('id');
+    this.jardinservice.getId(this.idJardin).subscribe((resp) => {
+      this.jardin = resp.body;
+    });
+    console.log('DEBUG JARDIN DETAIL', this.jardin)
+  }
+
   // recuperation des plantes utilisateurs dans ce jardin
   getPlantesParJardin(nPage: number): void {
-    this.planteutilisateurservice.getAllByJardin(this.jardin.identifier, nPage).subscribe(
+    // const idJardin = +this.route.snapshot.paramMap.get('id');
+    console.log("route id from url", this.idJardin)
+    this.planteutilisateurservice.getAllByJardin(this.idJardin, nPage).subscribe(
       (responseDto) => {
-
         console.log('debug responseDto from server : ', responseDto)
         this.plantesParJardin = responseDto.body.content;
         this.pageActive = responseDto.body.number;
@@ -72,7 +87,7 @@ export class DetailJardinComponent implements OnInit {
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesParJardin = this.plantesParJardin.filter(element => element.identifiant !== id);
-          
+
         }
       }
     );

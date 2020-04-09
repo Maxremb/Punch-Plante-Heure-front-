@@ -11,31 +11,46 @@ import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
 export class AllJardinComponent implements OnInit {
 
   //liste de tout lesjardins de l'user
-  allJardins = new Array<JardinUpdateDto>();
-  //jardin selectionné
-  jardin = new JardinUpdateDto;
-  //user connecté
-  utilisateurActif = new UtilisateurUpdateDto;
+  allJardins :Array<JardinUpdateDto>;
 
-  constructor(private service : JardinService) { }
+  jardin :JardinUpdateDto;
+
+  utilisateurActif: UtilisateurUpdateDto;
+
+  constructor(private service : JardinService, 
+ //   private serviceUtilisateur : serviceUtilisateur
+    ) { }
 
   ngOnInit(): void {
-    // Affecter l'user actif
-    //this.utilisateurActif = this.service.utilisateurActif
-    //appel methode
+    this.getUtilisateur();
     this.readAllByIdUtilisateur();
+  }
+
+
+  getUtilisateur() : void {
+    this.utilisateurActif= new UtilisateurUpdateDto();
+    this.utilisateurActif.firstName= "nom";
+    this.utilisateurActif.identifier= 1;
   }
 
   // retourne la liste de tout les jardins de l'user conencté
   readAllByIdUtilisateur() {
-    this.service.getAllByUtilisateur(this.utilisateurActif.id).subscribe(
+    this.service.getAllByUtilisateur(this.utilisateurActif.identifier, 0).subscribe(
      responseDto => {
         if (!responseDto.error) {
-          this.allJardins = responseDto.body;
+          this.allJardins = responseDto.body.content;
         }
         else { this.allJardins = [] }
       }
     );
+    // this.service.getAll(0).subscribe(
+    //    responseDto => {
+    //       if (!responseDto.error) {
+    //         this.allJardins = responseDto.body.content;
+    //       }
+    //       else { this.allJardins = [] }
+    //     }
+    //   );
   }
 
   //supprime un jardin de l'user et refresh liste
@@ -50,10 +65,6 @@ export class AllJardinComponent implements OnInit {
     )
   }
 
-  //transfert l'entite jardin vers service pour detail
-  stockageJardin(jardinTransfert : JardinUpdateDto) {
-    this.service.jardin = jardinTransfert ;
-  }
-
+  
 
 }

@@ -43,6 +43,11 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
 import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component';
+import { EntetePlantAdminComponent } from './content/plant/entete-plant-admin/entete-plant-admin.component';
+import { ConnexionComponent } from './content/connexion/connexion.component';
+import { EnteteConnexionComponent } from './content/connexion/entete-connexion/entete-connexion.component';
+import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
+import { EnteteInscriptionComponent } from './content/inscription/entete-inscription/entete-inscription.component';
 
 
 @NgModule({
@@ -85,6 +90,12 @@ import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component'
     NotificationsComponent,
     GraphiqueJardinAffichageComponent,
     ArrosageComponent,
+    ConnexionComponent,
+    EnteteConnexionComponent,
+    InscriptionComponent,
+    EntetePlantAdminComponent,
+    EnteteInscriptionComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -11,53 +11,46 @@
 <div class="container">
     <app-entete-departement></app-entete-departement>
 
-    <h2>Modifier un Departement</h2>
+    <h2>Modification du département numéro {{this.departement.depNum}}</h2>
     <hr>
 
     <div class="row">
 
         <div class="col-lg-6 col-sm-6">
-            <br><br>
-            <h5>Numéro Actuel du Département: </h5> {{this.departement.depNum}}
-            <br><br>
-            <h5>Nom  Actuel du Departement :  </h5> {{this.departement.name}}
+            <h5>Nom actuel :  </h5> {{this.departement.name}}
             <br><br> 
         </div>
 
         <div class="col-lg-6 col-sm-6">
             <form  [formGroup]="depUpdateForm" (ngSubmit)="this.update()">
-            <!--<div class="form-group">
-                <label for="depNum">Nouveau numéro du departement : </label> 
-                <input type="number" class="form-control" [(ngModel)]="this.departement.depNum" formControlName="depNum"  name="depNum">
-            </div>-->
-    
+               
             <div class="form-group">
-                <label for="name">Nouveau nom : </label> 
+                <label for="name"><h5>Nouveau nom : </h5></label> 
                 <input type="text" class="form-control" [(ngModel)]="this.departement.name" formControlName="name" name="name">
             </div>
 
-            <button type="submit" class="btn alazea-btn mt-15" [disabled]="!depUpdateForm.valid">Enregistrer</button>
-        <div *ngIf="this.messageValidation.length">
-            <div class="alert alert-fail" *ngIf="this.error">
-                {{this.messageValidation}}
+            <button type="submit" class="btn alazea-btn mt-15" [disabled]="!depUpdateForm.valid">Enregistrer</button><br><br>
+            <div *ngIf="this.messageValidation.length">
+                <div class="alert alert-fail" *ngIf="this.error">
+                    {{this.messageValidation}}
+                </div>
+                <div class="alert alert-success" *ngIf="!this.error">
+                    {{this.messageValidation}}
+                </div>
             </div>
-            <div class="alert alert-success" *ngIf="!this.error">
-                {{this.messageValidation}}
-            </div>
+        </form>
         </div>
-
-</form>
-        </div>
-
-
-        
-
-        
-
     </div>
 
-    <a routerLink="/departement/vadmin">
-        <button class="btn alazea-btn mt-15" >Retour</button>
-    </a>
+    <h2>Suppression du département numéro {{this.departement.depNum}}</h2>
+    <hr>
 
-    </div>
+    <button class="btn alazea-btn mt-15" (click)="this.delete(this.departement.depNum)">Supprimer ce département</button>
+        <br><br>
+    
+</div>
+<div>
+<a routerLink="/departement/vadmin">
+    <button class="btn alazea-btn mt-15" >Retour</button>
+</a>
+</div>

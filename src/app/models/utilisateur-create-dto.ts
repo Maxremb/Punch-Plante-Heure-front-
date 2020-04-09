@@ -1,13 +1,16 @@
-export class UtilisateurCreateDto {
-    nom: string;
-    prenom: string;
-    pseudonyme: string;
-    email: string;
-    mdp: string;
+import { AdminUpdateDto } from './admin-update-dto';
+import { AdminCreateDto } from './admin-create-dto';
+
+export class UtilisateurCreateDto{
+    lastName: string;
+    firstName: string;
+    pseudo: string;
+    mail: string;
+    pwd: string;
     desc: string;
-    telephone: number;
-    reputation: string;
-    newsletter: boolean;
+    phone: number;
+    reput: string;
+    news: boolean;
     active: boolean;
     picture: string;
 }
