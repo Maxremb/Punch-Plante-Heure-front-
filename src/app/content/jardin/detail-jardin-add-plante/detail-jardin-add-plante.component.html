@@ -42,7 +42,7 @@
                     </select>
                     <br>
                     <button type="submit" class="btn alazea-btn mt-15"
-                        [disabled]="!this.planteForm.valid">Valider</button>
+                        [disabled]="!this.planteForm.valid" style="margin-bottom: 5%;">Valider</button>
                     <br>
                 </form>
                 <span class="alert alert-success" *ngIf="messageValidation">{{this.messageValidation}}</span>
@@ -51,7 +51,7 @@
         </div>
         <!-- Fin du formualaire -->
 
-        <!-- Ajout d'images à droite -->
+        <!-- Ajout de la liste à droite -->
         <div class="col 12 col-lg-7">
             <h2>Liste des plantes de mon jardin</h2>
             <hr>
@@ -61,7 +61,7 @@
             </div>
 
 
-            <nav aria-label="Page navigation">
+            <nav aria-label="Page navigation" *ngIf="this.listePlanteUtil.length" style="position: bottom;">
                 <ul class="pagination" >
                     <li class="page-item" *ngIf="this.pageActiveUtil>0">
                         <a class="page-link" (click)="this.getListePlanteUtilisateur(0)">

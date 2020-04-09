@@ -7,6 +7,7 @@ import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail-jardin-add-plante',
@@ -33,20 +34,20 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
     private plantemodeleservice: PlanteModeleService,
-    private jardinservice: JardinService) { }
+    private jardinservice: JardinService,
+    private route: ActivatedRoute) { }
 
   // Valeurs initiales a recuperer
   ngOnInit(): void {
     // variable jardin stockee dans le service
     // this.jardin = this.jardinservice.jardin
-    this.jardin = new JardinUpdateDto();
-    this.jardin.identifier = 1;
-    this.jardin.length = 1;
-    this.jardin.width = 1;
-    this.jardin.name = 'JardinTest';
-
+    // this.jardin = new JardinUpdateDto();
+    // this.jardin.identifier = 1;
+    // this.jardin.length = 1;
+    // this.jardin.width = 1;
+    // this.jardin.name = 'JardinTest';
+    this.getJardin();
     console.log('debug init Detail : ', this.jardin);
-
 
     // recuperation de la liste de toutes les plantes modeles
     this.getAllPlantes(0);
@@ -54,8 +55,6 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
     //Récupération de la liste des plantes utilisateurs associées à ce jardin
     this.getListePlanteUtilisateur(0);
-
-
 
     // definition du formulaire
     this.planteForm = new FormGroup({
@@ -97,6 +96,14 @@ export class DetailJardinAddPlanteComponent implements OnInit {
         }
       }
     )
+  }
+
+  getJardin() {
+    const idJardin = +this.route.snapshot.paramMap.get('id');
+    this.jardinservice.getId(idJardin).subscribe((resp) => {
+      this.jardin = resp.body;
+    });
+    console.log('DEBUG JARDIN DETAIL', this.jardin)
   }
 
   range(end) {
