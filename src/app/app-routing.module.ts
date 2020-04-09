@@ -40,10 +40,10 @@ const routes: Routes = [
   { path : 'admin' , component :  DashboardAdminComponent },
   { path : 'jardin' , component :  AllJardinComponent},
   { path : 'jardin/create' , component : CreateJardinComponent },
-  { path : 'jardin/detail', component : DetailJardinComponent },
-  { path : 'jardin/update', component : UpdateJardinComponent },
-  { path : 'jardin/detail/addplante', component : DetailJardinAddPlanteComponent },
-  { path : 'jardin/detail/updateplante', component : DetailJardinUpdatePlanteComponent },
+  { path : 'jardin/detail', component : DetailJardinComponent }, // à supprimer à terme
+  { path : 'jardin/update', component : UpdateJardinComponent }, // à supprimer à terme
+  { path : 'jardin/detail/addplante', component : DetailJardinAddPlanteComponent },// à supprimer à terme
+  { path : 'jardin/detail/updateplante', component : DetailJardinUpdatePlanteComponent },// à supprimer à terme
   { path : 'plant/vadmin', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
@@ -65,8 +65,13 @@ const routes: Routes = [
   { path : 'meteo/:id' , component : MeteoDepComponent },
   { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent},
 
-  { path : 'inscription', component : InscriptionComponent}
+  { path : 'inscription', component : InscriptionComponent},
  
+  { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
+  { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id
+  { path : 'jardin/detail/:id/addplante', component : DetailJardinAddPlanteComponent },//add plante d'un jardin par  jardin id
+  { path : 'jardin/detail/:id/updateplante/:idplante', component : DetailJardinUpdatePlanteComponent },//update d'une plante par idplante et dans jardin par id
+
 ];
 
 @NgModule({

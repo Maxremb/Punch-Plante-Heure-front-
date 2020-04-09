@@ -4,6 +4,7 @@ import { JardinService } from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { DepartementDto } from 'src/app/models/departement-dto';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-update-jardin',
@@ -23,11 +24,11 @@ export class UpdateJardinComponent implements OnInit {
   //liste all depts
   allDepartements = new DepartementDto;
 
-  constructor(private service: JardinService) { }
+  constructor(private service: JardinService, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
     //recupere le jardin selectionner
-    this.jardin = this.service.jardin;
+    this.getJardin();
 
     // Affecter l'user actif au jardin
     //this.utilisateurActif = this.service.utilisateurActif
@@ -57,6 +58,14 @@ export class UpdateJardinComponent implements OnInit {
         } else { this.messageErreur = responseDto.message; }
       }
     );
+// rediriger vers la page liste jardin    this.route = "
+  }
+
+  getJardin() {
+    const idJardin = +this.route.snapshot.paramMap.get('id');
+    this.service.getId(idJardin).subscribe((resp) => {
+      this.jardin = resp.body;
+    });
   }
 
 }

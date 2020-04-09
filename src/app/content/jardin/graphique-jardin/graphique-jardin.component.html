@@ -3,13 +3,15 @@
     <div class="row">
     <div class="col-lg-7">
         <form>
+            <!-- A dé-commenter si on veux faire une selection des jardins à un moment
             <h2>Selectionner un jardin</h2>
             <select>
                 <option>Vos jardin</option>
                 <option>Vos jardin</option>
                 <option>Vos jardin</option>
             </select>
-            <br><br>
+            <br><br> -->
+            <h2>{{this.jardin.name}}</h2>
             <table border="3px solid black">
                 <tbody>
                     <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
@@ -36,12 +38,6 @@
 
             <button class="btn btn-success" (click)=sauvgardeJardin()><i class="fa fa-floppy-o" aria-hidden="true"></i> Sauvgarder</button>
             <button class="btn btn-danger" (click)=remiseAZero()><i class="fa fa-times" aria-hidden="true"></i> Remettre à zéro</button>
-
-
-            <!-- On modélise le jardin à 1pixel = 1cm -->
-            <!-- <canvas id="carteJardin" height=({{this.jardin.width}}*100) width=({{this.jardin.length}})*100>Représentation
-                graphique de votre jardin</canvas> -->
-
 
             <!-- Légende du code couleur de la carte  -->
             <br>
@@ -138,12 +134,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of this.plantesDuJardin">
-                        <td>{{p.commun}}</td>
+                        <td>{{p.modelPlant.commun}}</td>
                         <td>{{p.coordonnees}}</td>
                         <td>
                             <button *ngIf="!p.coordonnees" class="btn btn-success" title="Mettre la plante dans le jardin"><i class="fa fa-leaf" aria-hidden="true"></i></button>
                             <button *ngIf="p.coordonnees" class="btn btn-success" title="Changer la plante de place"><i class="fa fa-arrows" aria-hidden="true"></i></button>
-                            <button class="btn btn-danger" (click)="enleverPlanteDuJardin(p.index, p.coordonnees, p.commun)" title="Supprimer la plante du jardin"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            <button class="btn btn-danger" (click)="enleverPlanteDuJardin(p, p.coordonnees, p.modelPlant.commun)" title="Supprimer la plante du jardin"><i class="fa fa-times" aria-hidden="true"></i></button>
                         </td>
                     </tr>
                 </tbody>
