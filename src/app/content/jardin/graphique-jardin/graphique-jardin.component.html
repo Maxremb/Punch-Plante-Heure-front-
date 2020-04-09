@@ -120,14 +120,14 @@
                 <div *ngIf="message">{{message}}</div>
             </div>
 
-            <br><p *ngIf="nomPlanteSelectionner != ''">Plante selectionné : {{this.planteSelectionner.commun}}</p>
+            <br><p *ngIf="(this.selection != '') && (this.selection != 'vide') && (this.selection != 'plante') && (this.selection != 'obstacle') && (this.selection !='chemin')"><u><strong>Plante selectionné :</strong></u> &nbsp; {{this.selection}}</p>
         </div>
         <hr style="width: 200px;">
 
         <div *ngIf="plantesDuJardin.length">
             <!-- Liste des plantes dans le Jardin -->
             
-            <h2>Liste des plantes de mon jardin</h2>
+            <h3>Plantes de mon jardin</h3>
             <table>
                 <thead>
                     <tr>
