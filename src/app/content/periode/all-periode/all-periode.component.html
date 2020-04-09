@@ -9,9 +9,22 @@
         </a>
     </div>
     <br>
+    <!--LIEN DE NAVIGATION-->
+    <div class="container">
+        <div>
+            <a routerLink="/periode/create">
+                <input type="button" value="Ajouter une période" class="btn alazea-btn mt-15" />
+            </a>
+        </div>
+        <div>
+            <a routerLink="/admin">
+                <button class="btn alazea-btn mt-15">Retour</button></a>
+        </div>
+    </div>
+    <hr>
 
     <!--LISTE DES PERIODES-->
-    <div class="row">
+    <div class="row" *ngIf="this.allPeriodes.length">
         <label>
             <h2><b>LISTE DES PERIODES </b></h2>
         </label>
@@ -20,23 +33,23 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Type</th>
+                    <th>Departement</th>
                     <th>Plante</th>
+                    <th>Type</th>
                     <th>Date de début</th>
                     <th>Date de fin</th>
-                    <th>Departement</th>
                     <th>Actions</th>
 
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let e of this.allPeriodes">
-                    <td>{{e.id}}</td>
-                    <td>{{e.type}}</td>
-                    <td>{{e.plante}}</td>
-                    <td>{{e.dateDebut}}</td>
-                    <td>{{e.dateFin}}</td>
-                    <td>{{e.departement}}</td>
+                    <td>{{e.identity}}</td>
+                    <td>{{e.county}}</td>
+                    <td>{{e.plantSpecies}}</td>
+                    <td>{{e.periodType}}</td>
+                    <td>{{e.startDate}}</td>
+                    <td>{{e.endDate}}</td>
                     <td>
                         &nbsp;&nbsp;
                         <a routerLink="/periode/update">
@@ -52,14 +65,4 @@
     </div>
 
 
-    <!--LIEN DE NAVIGATION-->
-    <div class="container">
-        <div class="bottompage">
-            <a routerLink="/periode/create">
-                <input type="button" value="Ajouter une période" class="btn alazea-btn mt-15" />
-            </a>
-            <a routerLink="/admin">
-                <button class="btn alazea-btn mt-15">Retour</button></a>
-        </div>
-    </div>
 </div>

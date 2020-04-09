@@ -31,7 +31,8 @@ import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/grap
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
-import { InscriptionComponent } from './content/inscription/inscription.component';
+import { ConnexionComponent } from './content/connexion/connexion.component';
+import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
 
 
 const routes: Routes = [
@@ -47,7 +48,7 @@ const routes: Routes = [
   { path : 'plant/vadmin', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
-  { path : 'periode', component : AllPeriodeComponent},
+  { path : 'periode/:id', component : AllPeriodeComponent},
   { path : 'periode/create', component : CreatePeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
   { path : 'blog' , component : BlogComponent },
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path : 'departement/vadmin' , component : AllDepartementsComponent },
   { path : 'departement/create' , component : CreateDepartementComponent },
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
+  { path : 'connexion', component : ConnexionComponent },
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
   { path : 'planning/:id' , component : PlanningJardinComponent },
@@ -69,8 +71,8 @@ const routes: Routes = [
  
   { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id
-  { path : 'jardin/detail/:id/addplante', component : DetailJardinAddPlanteComponent },//add plante d'un jardin par  jardin id
-  { path : 'jardin/detail/:id/updateplante/:idplante', component : DetailJardinUpdatePlanteComponent },//update d'une plante par idplante et dans jardin par id
+  { path : 'jardin/detail/addplante/:id', component : DetailJardinAddPlanteComponent },//add plante d'un jardin par  jardin id
+  { path : 'jardin/detail/updateplante/:id', component : DetailJardinUpdatePlanteComponent },//update d'une plante par son id
 
 ];
 

@@ -20,6 +20,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   plante = new PlanteUtilisateurCreateDto();
   listePlanteUtil = new Array<PlanteUtilisateurUpdateDto>();
   jardin: JardinUpdateDto;
+  idJardin: number;
   messageValidation: string;
   messageErreur: string;
   allPlantes = new Array<PlanteModeleUpdateDto>();
@@ -39,7 +40,9 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
   // Valeurs initiales a recuperer
   ngOnInit(): void {
-    // variable jardin stockee dans le service
+    //On récupère l'id de notre jardin dans l'url
+    this.idJardin = +this.route.snapshot.paramMap.get('id');
+
     // this.jardin = this.jardinservice.jardin
     // this.jardin = new JardinUpdateDto();
     // this.jardin.identifier = 1;
@@ -51,7 +54,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
     // recuperation de la liste de toutes les plantes modeles
     this.getAllPlantes(0);
-    console.log('DEBUG GET ALL' + this.allPlantes);
+    console.log('DEBUG GET ALL', this.allPlantes);
 
     //Récupération de la liste des plantes utilisateurs associées à ce jardin
     this.getListePlanteUtilisateur(0);
@@ -79,13 +82,21 @@ export class DetailJardinAddPlanteComponent implements OnInit {
           this.allPlantes = responseDto.body.content;
           this.pageActive = responseDto.body.number;
           this.pageTotal = this.range(responseDto.body.totalPages);
+          for (let index = 1; index < responseDto.body.totalPages; index++) {
+            this.plantemodeleservice.getAll(index).subscribe((resp) => {
+              resp.body.content.forEach(element => {
+                this.allPlantes.push(element);
+                
+              });
+            })
+          }
         }
       }
     )
   }
 
   getListePlanteUtilisateur(npage: number): void {
-    this.planteutilisateurservice.getAllByJardin(this.jardin.identifier, npage).subscribe(
+    this.planteutilisateurservice.getAllByJardin(this.idJardin, npage).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.listePlanteUtil = responseDto.body.content;
@@ -99,8 +110,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   }
 
   getJardin() {
-    const idJardin = +this.route.snapshot.paramMap.get('id');
-    this.jardinservice.getId(idJardin).subscribe((resp) => {
+    this.jardinservice.getId(this.idJardin).subscribe((resp) => {
       this.jardin = resp.body;
     });
     console.log('DEBUG JARDIN DETAIL', this.jardin)
@@ -118,7 +128,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
       (responseDto) => {
         if (!responseDto.error) {
           this.messageValidation = "Plante ajoutée à votre jardin";
-          
+
         }
       },
       (responseDtoErreur) => {
@@ -130,12 +140,12 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     this.getListePlanteUtilisateur(this.pageActiveUtil);
   }
 
-  suppprimer(id : number){
+  suppprimer(id: number) {
     this.planteutilisateurservice.delete(id).subscribe(
       (responseDto) => {
         console.log("Plante supprimée de votre jardin");
         this.listePlanteUtil = this.listePlanteUtil.filter(p => p.identifiant != id);
-        
+
       },
 
     );

@@ -27,11 +27,11 @@ export class UpdatePeriodeComponent implements OnInit {
   ngOnInit(): void {
     this.periode = this.service.periode;
     this.updatePeriodeForm = new FormGroup({
-      "type": new FormControl(this.periode.type),
-      "dateDebut" : new FormControl(this.periode.dateDebut),
-      "dateFin" : new FormControl(this.periode.dateFin),
-      "dept": new FormControl(this.periode.dept),
-      "planteModel" : new FormControl(this.periode.planteModel)
+      "type": new FormControl(this.periode.periodType),
+      "dateDebut" : new FormControl(this.periode.startDate),
+      "dateFin" : new FormControl(this.periode.endDate),
+      "dept": new FormControl(this.periode.county),
+      "planteModel" : new FormControl(this.periode.plantSpecies)
     })
   }
 
