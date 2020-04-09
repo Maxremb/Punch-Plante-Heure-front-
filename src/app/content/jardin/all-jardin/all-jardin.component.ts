@@ -35,22 +35,22 @@ export class AllJardinComponent implements OnInit {
 
   // retourne la liste de tout les jardins de l'user conencté
   readAllByIdUtilisateur() {
-    // this.service.getAllByUtilisateur(this.utilisateurActif.id, 0).subscribe(
-    //  responseDto => {
-    //     if (!responseDto.error) {
-    //       this.allJardins = responseDto.body.content;
-    //     }
-    //     else { this.allJardins = [] }
-    //   }
-    // );
-    this.service.getAll(0).subscribe(
-       responseDto => {
-          if (!responseDto.error) {
-            this.allJardins = responseDto.body.content;
-          }
-          else { this.allJardins = [] }
+    this.service.getAllByUtilisateur(this.utilisateurActif.identifier, 0).subscribe(
+     responseDto => {
+        if (!responseDto.error) {
+          this.allJardins = responseDto.body.content;
         }
-      );
+        else { this.allJardins = [] }
+      }
+    );
+    // this.service.getAll(0).subscribe(
+    //    responseDto => {
+    //       if (!responseDto.error) {
+    //         this.allJardins = responseDto.body.content;
+    //       }
+    //       else { this.allJardins = [] }
+    //     }
+    //   );
   }
 
   //supprime un jardin de l'user et refresh liste

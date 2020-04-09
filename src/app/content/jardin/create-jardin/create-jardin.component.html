@@ -42,16 +42,10 @@
                 <div>
                     <label class="label">Département : </label>
                                             <p> Entrer 0 pour un jardin d'intérieur</p>
-                    <input type="number" class="form-control" [(ngModel)]="this.jardin.dept" min="0" id="dept" formControlName="dept" name="dept"
+                    <input type="number" class="form-control" [(ngModel)]="this.depNum" min="0" id="dept" formControlName="dept" name="dept"
                         required>    
 
-<!--   
-                    <select class="form-control" id="dept" formControlName="dept" name="dept" required>
-                        <div *ngFor="let depart of this.allDepartements">
-                            <option>{{depart.name}}</option>
-                        </div>
-                    </select>
--->
+
 
                   <!--  message validator pour departement-->
                     <div *ngIf="dept.errors?.required && (dept.touched || dept.dirty)" class="alert alert-danger">

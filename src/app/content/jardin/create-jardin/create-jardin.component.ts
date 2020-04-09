@@ -5,7 +5,7 @@ import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
 
 import { DepartementService } from 'src/app/services/departement.service';
 import { DepartementDto } from 'src/app/models/departement-dto';
-import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
+
 import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 
 
@@ -18,16 +18,17 @@ import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 export class CreateJardinComponent implements OnInit {
 
   addJardinForm: FormGroup;
-
-  jardin = new JardinCreateDto;
-  newJardin = new JardinUpdateDto;
+  jardin = new JardinCreateDto();
+  departement : DepartementDto;
+  depNum:  number;
   //message fct
   messageValidation = null;
   messageErreur = null;
   //user actif
-  utilisateurActif = new UtilisateurUpdateDto;
+  utilisateurActif = new UtilisateurUpdateDto();
   //liste de tout les depts
   allDepartements = new Array<DepartementDto>();
+  
  
   
   constructor(
@@ -36,8 +37,9 @@ export class CreateJardinComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getAllDept();
-    this.getDept(); 
+    this.getUtilistaeurActif();
+   
+    
     // Affecter l'user actif au jardin
     //this.utilisateurActif = this.service.utilisateurActif
     this.addJardinForm = new FormGroup({
@@ -45,8 +47,8 @@ export class CreateJardinComponent implements OnInit {
       "ground": new FormControl(this.jardin.ground, Validators.required),
       "length": new FormControl(this.jardin.length),
       "width": new FormControl(this.jardin.width),
-      "dept": new FormControl(this.jardin.dept.depNum, Validators.required),
-      "user" : new FormControl(this.jardin.user = this.utilisateurActif),
+      "dept": new FormControl(this.depNum, Validators.required),
+     
     })
   }
 
@@ -56,32 +58,41 @@ export class CreateJardinComponent implements OnInit {
   get width() { return this.addJardinForm.get('width') }
   get dept() {return this.addJardinForm.get('dept')}
 
+  getUtilistaeurActif(): void {
+    this.utilisateurActif.firstName= "nom";
+    this.utilisateurActif.identifier= 1;
+  }
+
   //creation jardin + erecuperation objet créé
   create() {
+    
+    //this.getDept();
+   this.jardin.dept= new DepartementDto();
+   this.jardin.dept.depNum =this.depNum;
+    this.jardin.user = this.utilisateurActif;
+    console.log('user' + this.jardin.user.identifier);
+    console.log('debut create subcribe');
     this.service.create(this.jardin).subscribe(
+      
      responseDto => {
         if (!responseDto.error) {
           this.messageValidation = responseDto.message;
-          this.service.jardin = this.newJardin;
+          
+         
         } else { this.messageErreur = responseDto.message; }
        }
     )
   }
 
-  getDept() {
-    this.deptService.getById(this.jardin.dept.depNum).subscribe(
-      respDto => {
-        this.jardin.dept = respDto.body;
-      }
-    );
-  }
+  // getDept() {
+    
+  //   this.deptService.getById(this.depNum).subscribe(
+  //     respDto => {
+  //       this.jardin.dept = respDto.body;
+  //       console.log('dep' + this.jardin.dept.name);
+  //     }
+  //   );
+  // }
 
-  //retourne la lsite de tout les depts
-  getAllDept() {
-    this.deptService.getAll().subscribe(
-      responseDto => {
-       this.allDepartements = responseDto.body;
-      }
-    )
-  }
+ 
 }
