@@ -45,7 +45,7 @@ import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-ja
 import { EntetePlantAdminComponent } from './content/plant/entete-plant-admin/entete-plant-admin.component';
 import { ConnexionComponent } from './content/connexion/connexion.component';
 import { EnteteConnexionComponent } from './content/connexion/entete-connexion/entete-connexion.component';
-import { InscriptionComponent } from './content/inscription/inscription.component';
+import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
 
 
 @NgModule({
