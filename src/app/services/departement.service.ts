@@ -37,10 +37,6 @@ export class DepartementService {
     return this.http.get<ResponseDto>(this.URL + '/all/'+ nbpage);
   }
 
-  getAll(): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/all');
-  }
-
   // readMeteoByNumDep
   getMeteoByDepartement(numDepartement: number, numelem: number, page: number, sortname: string): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/meteo?elemsPerPage=' + numelem +'&id=' + numDepartement + '&page=' + page + '&sortName=' + sortname);

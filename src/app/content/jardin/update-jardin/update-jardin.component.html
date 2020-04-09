@@ -4,7 +4,7 @@
     <app-entete-jardin></app-entete-jardin>
 
     <!-- FORM UPDATE JARDIN-->
-    <div class="row">
+    <div class="row" *ngIf="this.jardin">
         <div class="col-12 col-lg-6" style="padding-left: 0%;">
             <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()">
                 <h2>Modifier mon jardin </h2>
@@ -27,7 +27,7 @@
                             </td>
                             <td>
                                 <input id="name" type="text" formControlName="name" name="name"
-                                    placeholder="Nouveau nom ici ..">
+                                    placeholder="Nouveau nom ici .." [(ngModel)]="this.jardin.name">
                             </td>
                         </tr>
                         <tr>
@@ -35,7 +35,7 @@
                                 <label class="label"> Sol actuel : </label> {{this.jardin.ground}}
                             </td>
                             <td>
-                                <select formControlName="ground" id="ground" name="ground">
+                                <select formControlName="ground" id="ground" name="ground" [(ngModel)]="this.jardin.ground">
                                     <option value='Sableux'>Sableux</option>
                                     <option value='LimonoArgileux'>Limono-argileux</option>
                                     <option value='ArgiloSableux'>Argilo-sableux</option>
@@ -50,7 +50,7 @@
                             </td>
                             <td>
                                 <input id="length" type="number" min="0" formControlName="length" name="length"
-                                    placeholder="Nouvelle longueur ici ..">
+                                    placeholder="Nouvelle longueur ici .." [(ngModel)]="this.jardin.length">
                             </td>
                         </tr>
                         <tr>
@@ -59,21 +59,22 @@
                             </td>
                             <td>
                                 <input id="width" type="number" min="0" formControlName="width" name="width"
-                                    placeholder="Nouvelle largeur ici ..">
+                                    placeholder="Nouvelle largeur ici .." [(ngModel)]="this.jardin.width">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label class="label"> Département actuel : </label> {{this.jardin.dept}}
+                                <label class="label"> Département actuel : </label> {{this.jardin.dept.depNum}} - {{this.jardin.dept.name}}
                             </td>
                             <td>
-                                <select class="form-control" id="dept" formControlName="dept" name="dept">
-                                    <option *ngFor="let depart of this.allDepartements">{{depart.name}}</option>
+                                <select class="form-control" id="dept" formControlName="dept" name="dept" [(ngModel)]="this.jardin.dept" *ngIf="this.allDepartements && this.nbDepTotal && this.allDepartements.length==this.nbDepTotal">
+                                    <option *ngFor="let depart of this.allDepartements" [ngValue]="this.depart">{{depart.name}}</option>
                                 </select>
                             </td>
                         </tr>
                     </tbody>
                     <button type="submit" class="btn alazea-btn mt-15">Modifier</button>
+                    <br>
                     <br>
                     
                     <!--MESSAGE VALIDATION /ECHEC FORM-->
