@@ -12,9 +12,9 @@ export class AllJardinComponent implements OnInit {
 
   //liste de tout lesjardins de l'user
   allJardins :Array<JardinUpdateDto>;
-  //jardin selectionné
+
   jardin :JardinUpdateDto;
-  //user connecté
+
   utilisateurActif: UtilisateurUpdateDto;
 
   constructor(private service : JardinService, 

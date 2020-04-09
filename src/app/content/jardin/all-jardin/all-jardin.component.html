@@ -4,12 +4,12 @@
     <!--ENTETE DE LA PAGE : GESTION DE MON JARDIN-->
     <app-entete-jardin></app-entete-jardin>
 
-
-
-
+    <div *ngIf="!this.utilisateurActif">
+        <p>Vous devez être connecté pour accéder aux jardins</p>
+    </div>
 
     <!--LISTE DES JARDINS-->
-    <div class="row">
+    <div class="row" *ngIf="this.utilisateurActif">
         <label>
             <h2>Mes jardins</h2>
         </label>
