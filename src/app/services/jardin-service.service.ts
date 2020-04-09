@@ -34,8 +34,8 @@ export class JardinService {
     return this.http.delete<ResponseDto>(this.URL + '/' + id);
   }
 
-  getAll(): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/all');
+  getAll(page: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/all/' + page);
   }
 
   // readByDep
@@ -49,8 +49,8 @@ export class JardinService {
   }
 
   // readByUser
-  getAllByUtilisateur(idUtilisateur: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/user/' + idUtilisateur);
+  getAllByUtilisateur(idUtilisateur: number, page: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/user/?identifier='+ idUtilisateur + '&page=' + page);
   }
 
  

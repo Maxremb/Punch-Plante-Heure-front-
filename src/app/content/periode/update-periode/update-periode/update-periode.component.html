@@ -6,7 +6,7 @@
     <!--detail periode + FORM-->
     <div class="row">
         <div class="col-12 col-lg-6" style="padding-left: 0%;">
-            <h2> MODIFIER LA PERIODE </h2> {{this.periode.type}}
+            <h2> MODIFIER LA PERIODE </h2> {{this.periode.periodType}}
             <form [formGroup]="updatePeriodeForm" (ngSubmit)="this.update()">
                 <table class="table table-hover">
                     <thead>
@@ -22,7 +22,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <label>Type actuel : </label> {{this.periode.type}}
+                                <label>Type actuel : </label> {{this.periode.periodType}}
                             </td>
                             <td>
                                 <select formControlName="type" id="type" name="type">
@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label> Plante actuelle : </label> {{this.periode.planteModel}}
+                                <label> Plante actuelle : </label> {{this.periode.plantSpecies}}
                             </td>
                             <td>
                                 <select class="form-control" id="planteModel" formControlName="planteModel"
@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label> Date de début actuelle : </label> {{this.periode.dateDebut}}
+                                <label> Date de début actuelle : </label> {{this.periode.startDate}}
                             </td>
                             <td>
                                 <input id="dateDebut" type="date" formControlName="dateDebut" name="dateDebut">
@@ -55,7 +55,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label> Date de fin actuelle : </label> {{this.periode.dateFin}}
+                                <label> Date de fin actuelle : </label> {{this.periode.endDate}}
                             </td>
                             <td>
                                 <input id="dateFin" type="date" formControlName="dateFin" name="dateFin">
@@ -63,7 +63,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label> Département actuel : </label> {{this.periode.dept}}
+                                <label> Département actuel : </label> {{this.periode.county}}
                             </td>
                             <td>
                                 <select class="form-control" id="dept" formControlName="dept" name="dept">

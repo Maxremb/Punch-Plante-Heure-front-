@@ -44,6 +44,7 @@ import { NotificationsComponent } from './content/notifications/notifications.co
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
 import { ConnexionComponent } from './content/connexion/connexion.component';
 import { EnteteConnexionComponent } from './content/connexion/entete-connexion/entete-connexion.component';
+import { InscriptionComponent } from './content/inscription/inscription.component';
 
 
 @NgModule({
@@ -85,8 +86,12 @@ import { EnteteConnexionComponent } from './content/connexion/entete-connexion/e
     MeteoDepComponent,
     NotificationsComponent,
     GraphiqueJardinAffichageComponent,
+<<<<<<< HEAD
     ConnexionComponent,
     EnteteConnexionComponent,
+=======
+    InscriptionComponent,
+>>>>>>> 40ab5dc80012089d76a294b60c16e13a17bc92e0
   ],
   imports: [
     BrowserModule,
