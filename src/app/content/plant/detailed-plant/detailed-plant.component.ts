@@ -3,8 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
-import { PeriodeService } from 'src/app/services/periode.service';
-import { PeriodeUpdateDto } from 'src/app/models/periode-update-dto';
 
 declare function maFonction():any;
 
@@ -17,16 +15,13 @@ export class DetailedPlantComponent implements OnInit {
   
   plantUpdateForm: FormGroup;
   plant: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
-  allPeriodes = new Array<PeriodeUpdateDto>();
-  period = new PeriodeUpdateDto;
   messageValidation = '';
   error: boolean;
   idPlante:number;
-  maxpagePeriode:number;
+  
 
   constructor(
     private service: PlanteModeleService,
-    private servicePeriode: PeriodeService,
     private route: ActivatedRoute
     ) { }
 
@@ -46,17 +41,13 @@ export class DetailedPlantComponent implements OnInit {
       max: new FormControl(this.plant.max,Validators.required),
       desc: new FormControl(this.plant.desc,Validators.required),
       toxi: new FormControl(this.plant.toxi,Validators.required),
-      assoPlus: new FormControl(this.plant.assoPlus,Validators.required),
-      assoMoins: new FormControl(this.plant.assoMoins,Validators.required),
-      surfaceAuSol: new FormControl(this.plant.surfaceAuSol,Validators.required),
-      famille: new FormControl(this.plant.famille,Validators.required),
-      hight: new FormControl(this.plant.hight,Validators.required),
-      pousseSousTerre: new FormControl(this.plant.pousseSousTerre,Validators.required),
-      grimpant: new FormControl(this.plant.grimpant,Validators.required),
-      profondeurRacine: new FormControl(this.plant.profondeurRacine,Validators.required),
-      strate: new FormControl(this.plant.strate,Validators.required),
-      vivacite: new FormControl(this.plant.vivacite,Validators.required),
-      picture: new FormControl(this.plant.picture),
+      positive: new FormControl(this.plant.positive,Validators.required),
+      negative: new FormControl(this.plant.negative,Validators.required),
+      mifa: new FormControl(this.plant.mifa,Validators.required),
+      height: new FormControl(this.plant.height,Validators.required),
+      feuille: new FormControl(this.plant.feuille,Validators.required),
+      veget: new FormControl(this.plant.veget,Validators.required),
+      picture: new FormControl(this.plant.picture,Validators.required),
     });
   }
 
@@ -72,25 +63,9 @@ export class DetailedPlantComponent implements OnInit {
       }
     );
   }
-  getPeriodes() {
-    this.allPeriodes = []
-    var page=0; 
-    for(;page<this.maxpagePeriode;){
-    this.servicePeriode.getAllByPlante(this.plant.identifiant,page).subscribe(
-      responseDto => {
-        if (!responseDto.error) {
-          this.allPeriodes.push(responseDto.body.content);
-          this.maxpagePeriode= responseDto.body.totalPages;
-          page = responseDto.body.number;
-        }
-        else { this.allPeriodes = [] }
-      }
-    );
-    }
-  }
+  
 
   updatePlante() {
-    this.updatePeriode();
     this.service.update(this.plant).subscribe(
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
@@ -108,10 +83,6 @@ export class DetailedPlantComponent implements OnInit {
     );
   }
 
-  updatePeriode(){
-    for (let i = 0;i<this.allPeriodes.length;i++){
-    this.servicePeriode.update(this.allPeriodes[i]).subscribe();
-    }
-  }
+  
 
 }
