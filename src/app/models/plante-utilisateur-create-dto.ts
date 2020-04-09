@@ -15,4 +15,8 @@ export class PlanteUtilisateurCreateDto {
     coordonnees: Array<number>;
 
     rempotage = new Array<string>();
+    floraison = new Array<string>();
+    semis = new Array<string>();
+    fructification = new Array<string>();
+    taille = new Array<string>();
 }

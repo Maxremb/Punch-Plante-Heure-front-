@@ -4,6 +4,7 @@ import { DepartementService } from 'src/app/services/departement.service';
 import { MeteoUpdateDto } from 'src/app/models/meteo-update-dto';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MeteoService } from 'src/app/services/meteo.service';
 
 @Component({
   selector: 'app-meteo-dep',
@@ -18,10 +19,16 @@ export class MeteoDepComponent implements OnInit {
   page: number = 0;
   sortname: string = 'date';
   choixDonnee: FormGroup;
+  choixDonneeMois: FormGroup;
   parMois: boolean = false;
-  month: number;
+  month: number = 4;
+  year: number = 2020;
+  date: Date;
   tableau: boolean;
   graph: boolean;
+
+
+
   data1: any;
   title1 = 'Températures';
   type1 = 'ComboChart';
@@ -34,7 +41,7 @@ export class MeteoDepComponent implements OnInit {
       title: 'Temperature'
     },
     seriesType: 'lines',
-    
+
   };
   width1 = 550;
   height1 = 400;
@@ -42,16 +49,16 @@ export class MeteoDepComponent implements OnInit {
   data2: any;
   title2 = 'Ensoleillement';
   type2 = 'ComboChart';
-  columnNames2 = ['date', 'ensoleillement'];
+  columnNames2 = ['date', 'ensoleillement (min)'];
   options2 = {
     hAxis: {
       title: 'Date'
     },
     vAxis: {
-      title: 'Temperature'
+      title: 'Précipitation (mm)'
     },
     seriesType: 'bars',
-   
+
   };
   width2 = 550;
   height2 = 400;
@@ -68,7 +75,7 @@ export class MeteoDepComponent implements OnInit {
       title: 'Temperature'
     },
     seriesType: 'bars',
-    
+
   };
   width3 = 550;
   height3 = 400;
@@ -77,7 +84,7 @@ export class MeteoDepComponent implements OnInit {
 
 
 
-  constructor(private service: DepartementService, private route: ActivatedRoute) {
+  constructor(private service: DepartementService, private route: ActivatedRoute, private serviceMeteo: MeteoService) {
 
 
   }
@@ -87,13 +94,17 @@ export class MeteoDepComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableau = false;
-    this.graph=false;
+    this.graph = false;
+    this.parMois = false;
     this.getDep();
     this.getMeteo();
     this.choixDonnee = new FormGroup({
       numelem: new FormControl(this.numelem, [
         Validators.required, Validators.min(1)]),
-
+    });
+    this.choixDonneeMois = new FormGroup({
+      date: new FormControl(this.date, [
+        Validators.required, Validators.min(1)]),
     });
 
   }
@@ -101,21 +112,24 @@ export class MeteoDepComponent implements OnInit {
   switchGraphTable(): void {
     if (this.tableau) {
       this.tableau = false;
-      this.graph=true;
-    }else{
-      this.tableau=true;
-      this.graph=false;
+      this.graph = true;
+    } else {
+      this.tableau = true;
+      this.graph = false;
     }
   }
 
-  // switchToMonth(): void {
-  //   if(this.parMois) {
-
-  //   }else {
-  //     this.parMois=true;
-  //     this.getMeteo(moisenCours);
-  //   }
-  // }
+  switchToMonth(): void {
+    if (this.parMois) {
+      this.parMois = false;
+      this.getMeteo();
+    } else {
+      this.month = Number.parseInt(this.date.toString().split("-")[1]);
+      this.year = Number.parseInt(this.date.toString().split("-")[0]);
+      this.parMois = true;
+      this.getMeteo();
+    }
+  }
 
   getDep(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -129,39 +143,53 @@ export class MeteoDepComponent implements OnInit {
   }
 
   getMeteo(): void {
+
+    const idDep = +this.route.snapshot.paramMap.get('id');
     if (!this.parMois) {
-      const id = +this.route.snapshot.paramMap.get('id');
-      this.service.getMeteoByDepartement(id, this.numelem, this.page, this.sortname).subscribe(
+
+      this.service.getMeteoByDepartement(idDep, this.numelem, this.page, this.sortname).subscribe(
         responseDto => {
           if (!responseDto.error) {
             this.allmeteo = responseDto.body.content;
-          if(this.allmeteo!= []){
-            this.graph = true;
-            this.data1 = [];
-            this.data2 = [];
-            this.data3 = [];
-            this.allmeteo.forEach(e => this.data1.push([e.dateMeteo, e.tempMin, e.tempMax]));
-            this.allmeteo.forEach( e => this.data2.push([e.dateMeteo, e.radiation]));
-            this.allmeteo.forEach( e => this.data3.push([e.dateMeteo, e.rain]) );
-            
-          }
-            
-        
+            if (this.allmeteo != []) {
+              this.graph = true;
+              this.data1 = [];
+              this.data2 = [];
+              this.data3 = [];
+              this.allmeteo.forEach(e => this.data1.push([e.dateMeteo, e.tempMin, e.tempMax]));
+              this.allmeteo.forEach(e => this.data2.push([e.dateMeteo, e.radiation]));
+              this.allmeteo.forEach(e => this.data3.push([e.dateMeteo, e.rain]));
+
+            }else { this.allmeteo = []; this.graph = false; }
+
+
 
           }
-          else { this.allmeteo = [] }
+          else {
+          this.allmeteo = [];
+            this.graph = false;
+          }
         }
-      );}
-    //  else {
-    //   this.service.getMeteoByMonthAndDepartement(this.month).subscribe(
-    //     responseDto => {
-    //       if (!responseDto.error) {
-    //         this.allmeteo = responseDto.body;
-    //       }
-    //       else { this.allmeteo = [] }
-    //     }
-    //   );
-    // }
+      );
+    }
+    else {
+      this.serviceMeteo.getMeteoByMonthAndDepartement(this.month, this.year, idDep).subscribe(
+        responseDto => {
+          if (!responseDto.error) {
+            this.allmeteo = responseDto.body;
+            if (this.allmeteo != []) {
+              this.data1 = [];
+              this.data2 = [];
+              this.data3 = [];
+              this.allmeteo.forEach(e => this.data1.push([e.dateMeteo, e.tempMin, e.tempMax]));
+              this.allmeteo.forEach(e => this.data2.push([e.dateMeteo, e.radiation]));
+              this.allmeteo.forEach(e => this.data3.push([e.dateMeteo, e.rain]));
+            }else { this.allmeteo = []; this.graph = false; }
+          }
+          else { this.allmeteo = []; this.graph = false; }
+        }
+      );
+    }
   }
 
 }

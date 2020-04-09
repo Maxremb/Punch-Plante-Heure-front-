@@ -4,7 +4,7 @@
     <app-entete-plant></app-entete-plant>
   
     <!-- Titre-->
-    <h2>Modifier le modèle de plante numéro <b>{{this.plant.identifiant}}</b></h2>
+    <h2>Modification de la plante numéro <b>{{this.plant.identifiant}}</b> dans notre dictionnaire</h2>
     <p></p>
         
     <form  [formGroup]="this.plantUpdateForm" (ngSubmit)="this.updatePlante()">
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><label for="commun">Nom Commun : </label></td>
+            <td><label for="commun">Nom Commun </label></td>
             <td>{{this.plant.commun}}</td>
             <td>
                 <input type="text" class="form-group form-control"  formControlName="commun"  name="commun" value="{{this.plant.commun}}" > 
@@ -31,8 +31,8 @@
           </tr>
           <tr>
             <td>Famille</td>
-            <td>{{this.plant.famille}}</td>
-            <td><input type="text" class="form-group form-control"  formControlName="famille"  name="famille" value="{{this.plant.famille}}" ></td>
+            <td>{{this.plant.mifa}}</td>
+            <td><input type="text" class="form-group form-control"  formControlName="mifa"  name="mifa" value="{{this.plant.mifa}}" ></td>
           </tr>
           <tr>
             <td>Humidité optimale</td>
@@ -54,11 +54,11 @@
             <td>{{this.plant.sol}}</td>
             <td>
                 <select class="form-group form-control"  formControlName="sol"  name="sol" value="{{this.plant.sol}}">
-                    <option value="sableux">Sableux</option>    
-                    <option value="limonoArgileux">Limono Argileux</option>
-                    <option value="argiloSableux">Argilo Sableux</option>
-                    <option value="argiloLimoneux">Argilo Limoneux</option>
-                    <option value="argileux">Argileux</option>
+                    <option value="Sableux">Sableux</option>    
+                    <option value="LimonoArgileux">Limono Argileux</option>
+                    <option value="ArgiloSableux">Argilo Sableux</option>
+                    <option value="ArgiloLimoneux">Argilo Limoneux</option>
+                    <option value="Argileux">Argileux</option>
                 </select></td>
           </tr>
           <tr>
@@ -93,16 +93,16 @@
           </tr>
           <tr>
             <td>Association positive</td>
-            <td>{{this.plant.assoPlus}}</td>
+            <td>{{this.plant.positive}}</td>
             <td>
-                <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="assoPlus"  name="assoPlus" value="{{this.plant.assoPlus}}"></select>
+                <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="positive"  name="positive" value="{{this.plant.positive}}"></select>
             </td>
           </tr>
           <tr>
             <td>Association négative</td>
-            <td>{{this.plant.assoMoins}}</td>
+            <td>{{this.plant.negative}}</td>
             <td>
-                <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="assoMoins"  name="assoMoins" value="{{this.plant.assoMoins}}"></select>
+                <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="negative"  name="negative" value="{{this.plant.negative}}"></select>
             </td>
           </tr>
           <tr>
@@ -111,56 +111,20 @@
             <td><input type="string" class="form-group form-control" formControlName="picture"  name="picture" value="{{this.plant.picture}}"></td>
           </tr>
           <tr>
-            <td>Surface au sol (rayon en cm)</td>
-            <td>{{this.plant.surfaceAuSol}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="surfaceAuSol"  name="surfaceAuSol" value="{{this.plant.surfaceAuSol}}"></td>
-          </tr>
-          <tr>
             <td>Taille à âge adulte (cm)</td>
-            <td>{{this.plant.hight}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="hight"  name="hight" value="{{this.plant.hight}}"></td>
+            <td>{{this.plant.height}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="height"  name="height" value="{{this.plant.height}}"></td>
           </tr>
           <tr>
-            <td>Tubercule comestible</td>
-            <td>{{this.plant.pousseSousTerre}}</td>
+            <td>Feuilles</td>
+            <td>{{this.plant.feuille}}</td>
+            <td><input type="number" class="form-group form-control" formControlName="feuille"  name="feuille" value="{{this.plant.feuille}}"></td>
+          </tr>
+          <tr>
+            <td>Vegetation</td>
+            <td>{{this.plant.veget}}</td>
             <td>
-                <select class="form-group form-control"  formControlName="pousseSousTerre"  name="pousseSousTerre" value="{{this.plant.pousseSousTerre}}">
-                    <option value="true">Oui</option>    
-                    <option value="false">Non</option>
-                </select></td>
-          </tr>
-          <tr>
-            <td>Grimpante</td>
-            <td>{{this.plant.grimpant}}</td>
-            <td>
-                <select class="form-group form-control"  formControlName="grimpant"  name="grimpant" value="{{this.plant.grimpant}}">
-                    <option value="true">Oui</option>    
-                    <option value="false">Non</option>
-                </select></td>
-          </tr>
-          <tr>
-            <td>Profondeur des racines</td>
-            <td>{{this.plant.profondeurRacine}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="profondeurRacine"  name="profondeurRacine" value="{{this.plant.profondeurRacine}}"></td>
-          </tr>
-          <tr>
-            <td>Type de hauteur</td>
-            <td>{{this.plant.strate}}</td>
-            <td>
-                <select class="form-group form-control"  formControlName="strate"  name="strate" value="{{this.plant.strate}}">
-                    <option value="haute">Haute</option>    
-                    <option value="moyenne">Moyenne</option> 
-                    <option value="basse">Basse</option>
-                </select></td>
-          </tr>
-          <tr>
-            <td>Cycle de vie</td>
-            <td>{{this.plant.vivacite}}</td>
-            <td>
-                <select class="form-group form-control"  formControlName="vivacite"  name="vivacite" value="{{this.plant.vivacite}}">
-                    <option value="vivace">Vivace</option>    
-                    <option value="annuel">Annuel</option>
-                </select></td>
+              <input type="string" class="form-group form-control" value="{{this.plant.veget}}" formControlName="veget"  name="veget" ></td>
           </tr>
         </tbody>
       </table>
@@ -225,7 +189,7 @@
     <!-- Retour lien page administrateur -->
 <div>
     <a routerLink="/plant/vadmin">
-        <button class="btn alazea-btn mt-15" >Annuler</button>
+        <button class="btn alazea-btn mt-15" >Retour</button>
     </a>
 </div>
     

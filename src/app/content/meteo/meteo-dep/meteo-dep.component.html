@@ -1,25 +1,44 @@
 <div class="container">
-    <form [formGroup]="choixDonnee" (ngSubmit)="getMeteo()">
+    <form [formGroup]="choixDonnee" (ngSubmit)="switchToMonth()">
         <div class="row">
             <p> </p>
             <div class="form-group" style="display:inline">
                 Consulter les
                 <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours
-                <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.choixDonnee.valid">Afficher</button>
+                <button type="submit" class="btn alazea-btn mt-15"
+                    [disabled]="!this.choixDonnee.valid">Afficher</button>
 
             </div>
         </div>
-       
+
+    </form>
+    <form [formGroup]="choixDonneeMois" (ngSubmit)="switchToMonth()">
+        <div class="row">
+            <p> </p>
+            <div class="form-group" style="display:inline">
+                Consulter
+                <input type="month" [(ngModel)]="this.date" formControlName="date">
+
+                <button type="submit" class="btn alazea-btn mt-15"
+                    [disabled]="!this.choixDonnee.valid">Afficher</button>
+
+            </div>
+        </div>
+
     </form>
 
+    
+        <button style="align-self: flex-end;" class="btn alazea-btn mt-15" (click)="this.switchGraphTable()" ><span
+            *ngIf="!this.tableau; else elseBlock">Tableau</span>
+        <ng-template #elseBlock>Graphiques</ng-template></button>
+        <!-- <button class="btn alazea-btn mt-15" (click)="this.switchToMonth()" >Par mois</button> -->
 
-    <button class="btn alazea-btn mt-15" (click)="this.switchGraphTable()" >Tableau</button>
-    <!-- <button class="btn alazea-btn mt-15" (click)="this.switchToMonth()" >Par mois</button> -->
-
-    <label>
-        <h2>Meteo</h2>
-    </label>
+        <label style="align-self: center;">
+            <h2>Meteo à {{this.departement.name}}</h2>
+        </label>
+    
     <hr>
+
     <div *ngIf="tableau">
         <table class="table table-hover">
             <thead>
@@ -43,32 +62,14 @@
         </table>
     </div>
     <div *ngIf='graph'>
-        <google-chart #chart 
-        [title]="title1" 
-        [type]="type1" 
-        [data]="data1" 
-        [columnNames]="columnNames1" 
-        [options]="options1"
-        [width]="width1" 
-        [height]="height1">
+        <google-chart #chart [title]="title1" [type]="type1" [data]="data1" [columnNames]="columnNames1"
+            [options]="options1" [width]="width1" [height]="height1">
         </google-chart>
-        <google-chart #chart 
-        [title]="title2" 
-        [type]="type2" 
-        [data]="data2" 
-        [columnNames]="columnNames2" 
-        [options]="options2"
-        [width]="width2" 
-        [height]="height2">
+        <google-chart #chart [title]="title2" [type]="type2" [data]="data2" [columnNames]="columnNames2"
+            [options]="options2" [width]="width2" [height]="height2">
         </google-chart>
-        <google-chart #chart 
-        [title]="title3" 
-        [type]="type3" 
-        [data]="data3" 
-        [columnNames]="columnNames3" 
-        [options]="options3"
-        [width]="width3" 
-        [height]="height3">
+        <google-chart #chart [title]="title3" [type]="type3" [data]="data3" [columnNames]="columnNames3"
+            [options]="options3" [width]="width3" [height]="height3">
         </google-chart>
     </div>
 </div>

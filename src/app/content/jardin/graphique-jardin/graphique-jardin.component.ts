@@ -8,6 +8,7 @@ import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-up
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { ResponseDto } from 'src/app/models/response-dto';
+import { prependListener } from 'process';
 
 
 @Component({
@@ -16,18 +17,25 @@ import { ResponseDto } from 'src/app/models/response-dto';
   styleUrls: ['./graphique-jardin.component.css']
 })
 export class GraphiqueJardinComponent implements OnInit {
+  message: string = '';
 
-  @Input() jardin: JardinUpdateDto;
+  // Crée au lancement
+  jardin: JardinUpdateDto = new JardinUpdateDto;
   matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
   selection: string = "";
-  plantes: Array<PlanteUtilisateurCreateDto>;
-  plantesPresentes: Array<PlanteUtilisateurUpdateDto>;
+  plantesDuJardin: Array<PlanteUtilisateurUpdateDto> = new Array();
+
+  // Recherche de plantes
   planteRechercher: string;
   resultatRecherche: Array<PlanteModeleUpdateDto>;
-  planteSelectionner: any;
-  message: string;
+  planteSelectionner: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
+  
+  // Ajouter une plante au jardin
+  planteACree: PlanteUtilisateurCreateDto = new PlanteUtilisateurCreateDto();
 
-  constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService, private servicePlante: PlanteModeleService) {
+
+
+  constructor(private serviceJardin: JardinService, private servicePlanteUtilisateur: PlanteUtilisateurService, private servicePlanteModel: PlanteModeleService,) {
 
     // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
     this.jardin = new JardinUpdateDto();
@@ -35,18 +43,29 @@ export class GraphiqueJardinComponent implements OnInit {
     this.jardin.length = 1;
     this.jardin.width = 1;
     this.jardin.name = 'JardinTest';
-    console.log('debug construct Graphique : ', this.jardin);
   }
 
 
 
   ngOnInit(): void {
-    this.getPlantesPresentes();
+    this.getPlantesDejaPresentes();
     this.genererMatrice();
-    this.plantes = this.planteUtilisateurService.listePlante;
-    this.genererCarte();
-    setInterval( () => {this.planteSelectionner++, this.resultatRecherche}, 250);
   }
+
+
+
+  // Récupère les plantes déjà associées à ce jardin 
+  // Faire qqc pour les nombres de pages
+  getPlantesDejaPresentes() {
+    this.servicePlanteUtilisateur.getAllByJardin(this.jardin.identifier, 0).subscribe(
+      (responseDto) => {
+        if (!responseDto.error) {
+          this.plantesDuJardin = responseDto.body.content;
+        }
+      }
+    );
+  }
+
 
   // Faire un espace aux bonnes proportions
   genererMatrice() {
@@ -61,47 +80,47 @@ export class GraphiqueJardinComponent implements OnInit {
     }
     // Pour chaque plante déjà présente dans le jardin on associe le nom commun à la bonne position dans la matrice 
     // TO DO : A NE FAIRE QUE POUR LES PLANTES QUI ONT DES COORDONNEES
-    this.plantesPresentes.forEach(plante => 
+    this.plantesDuJardin.forEach(plante =>
       this.matrice[plante.coordonnees[3]][plante.coordonnees[2]] = plante.modelPlant.commun);
   }
 
+
+  // Change la valeur de la variable selection pas l'objet selectionner
+  modifSelection(objet: string) {    
+    if ((objet != 'vide') && (objet != 'obstacle') && (objet != 'chemin') && (objet != 'plante')) {
+      this.selection = '';
+      this.planteSelectionner = new PlanteModeleUpdateDto;
+    }
+    this.selection = objet;
+  }
+
+  
+  // Change la valeur dans la matrice pour y mettre ce qu'il y a dans la valeur selection
   modifOnClick(y: number, x: number) {
-    console.log('DEBUG MODIF ON CLICK' + this.matrice[y][x]);
     this.matrice[y][x] = this.selection;
 
     console.log('DEBUG MATRICE ' + this.matrice);
   }
 
-  modifSelection(objet: string) {
-    this.selection = objet;
-  }
 
   trackByIndex(index: number, obj: any): any {
     return index;
   }
 
-  //Générer le canvas selon la matrice
-  genererCarte() {
-    var canvas = document.getElementById('carteJardin');
-    //  var ctx = canvas.getContext('2d');
-  }
 
-  // Récupère les plantes déjà associées à ce jardin 
-  // Faire qqc pour les nombres de pages
-  getPlantesPresentes() {
-    this.planteUtilisateurService.getAllByJardin(this.jardin.identifier, 0).subscribe(
-      (responseDto) => {
-        if (!responseDto.error) {
-          this.plantesPresentes = responseDto.body.content;
-        }
-      }
-    );
-  }
-
+  // Fait une update du jardin
   sauvgardeJardin() {
-    this.service.update(this.jardin)
+    // Change uniquement les chemins (parce que le reste n'est pas stockers dans le jardin)
+    this.serviceJardin.update(this.jardin)
+
+    // Met à jours toutes les plantes présentes dans la liste des plantes correspondante à ce jardin
+    for (let p of this.plantesDuJardin) {
+      this.servicePlanteUtilisateur.update(p);
+    }
   }
 
+
+  // Efface juste la grille pour l'instant
   remiseAZero() {
     var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
     var nbCol = this.jardin.length * 100 / 5;
@@ -112,73 +131,108 @@ export class GraphiqueJardinComponent implements OnInit {
         this.matrice[indexLigne][indexCol] = "";
       }
     }
+    this.plantesDuJardin = new Array;
   }
 
-  //La matrice récupérée a déjà les plantes avec les coordonnées déjà placées 
-  autogenerate() {
-    let created = this.plantes;
-    let updated = this.plantesPresentes.filter(p => p.coordonnees == null);
-    let fini = false;
-
-    // Tantque la matrice a de la place, on essaie de placer des plantes
-    for (let index = 0; index < this.matrice.length; index++) {
-      if (!this.arrayRempli(this.matrice[index])) {
-        for (let index2 = 0; index2 < this.matrice[index].length; index2++) {
-          if (this.matrice[index][index2] == "") {
-            if (updated.length > 0) {
-              let p = updated.shift() //on retire le premier élement de la liste et on mappe la plante et la matrice
-              this.matrice[index][index2] = p.modelPlant.commun;
-              p.coordonnees[0] = index2;
-              p.coordonnees[1] = index;
-              this.plantesPresentes.push(p);
-            } else if (created.length > 0) {
-              let p = created.shift() //on retire le premier élement de la liste et on mappe la plante et la matrice
-              this.matrice[index][index2] = p.modelPlant.commun;
-              p.coordonnees[0] = index2;
-              p.coordonnees[1] = index;
-              this.plantes.push(p);
-            } else {
-              fini = true;
-              break;
-            }
-          }
-        }
-        if(fini){
-          break;
-        }
-      }
-    }
-  }
-
-  //Permet de tester si il y a au moins un emplacement vide dans la matrice
-  arrayRempli(matrice): boolean {
-    var result = true;
-    for (let index = 0; index < matrice.length; index++) {
-      if (matrice[index] == "") {
-        result = false;
-        break;
-      }
-    }
-    return result;
-  }
 
   rechercherPlante(recherche: string) {
     this.message = '';
-    console.log('Recherche lancé')
-    this.servicePlante.getKeyWord(recherche, 0).subscribe(
+    this.resultatRecherche = undefined;
+    this.servicePlanteModel.getKeyWord(recherche, 0).subscribe(
       ResponseDto => {
         if (!ResponseDto.error) {
           this.resultatRecherche = ResponseDto.body.content;
         }
-        if (ResponseDto.body.totalPages>0) {
+        if (!(ResponseDto.body.totalPages>0)) {
           this.message = 'Aucunes plantes trouvées pour ce mot clé...';
         }
       }
     );
   }
 
-  selectionnerPlante(planteChoisis: string){
+
+  selectionnerPlante(planteChoisis: PlanteModeleUpdateDto){
     this.planteSelectionner = planteChoisis;
+    this.selection = planteChoisis.commun;
   }
+
+
+  addPlanteToJardin(plante: PlanteModeleUpdateDto, coordo: Array<number>) {
+    if (this.selection != '' && this.selection != 'obstacle' && this.selection != 'chemin' && this.selection != 'plante') {
+      this.planteACree = new PlanteUtilisateurCreateDto;
+      this.planteACree.coordonnees = coordo;
+      this.planteACree.garden = this.jardin;
+      this.planteACree.modelPlant = plante;
+
+      this.servicePlanteUtilisateur.create(this.planteACree).subscribe(
+        ResponseDto => {
+          if (!ResponseDto.error) {
+            this.plantesDuJardin = ResponseDto.body.content;
+          }
+        }
+      );
+    }
+  }
+    
+
+  enleverPlanteDuJardin(laPlante: PlanteUtilisateurUpdateDto, coordoDeLaPlante: Array<number>, nomDeLaPlante: string) {
+    this.plantesDuJardin.splice(
+      this.plantesDuJardin.indexOf(laPlante, 1)
+    )
+
+    //l'enlever de la base de donnée aussi
+
+    this.matrice[coordoDeLaPlante[0]][coordoDeLaPlante[1]] = '';
+  }
+
+
+  //La matrice récupérée a déjà les plantes avec les coordonnées déjà placées 
+  // autogenerate() {
+  //   let created = this.plantesDuJardin;
+  //   let updated = this.plantesDuJardin.filter(p => p.coordonnees == null);
+  //   let fini = false;
+
+  //   // Tantque la matrice a de la place, on essaie de placer des plantes
+  //   for (let index = 0; index < this.matrice.length; index++) {
+  //     if (!this.arrayRempli(this.matrice[index])) {
+  //       for (let index2 = 0; index2 < this.matrice[index].length; index2++) {
+  //         if (this.matrice[index][index2] == "") {
+  //           if (updated.length > 0) {
+  //             let p = updated.shift() //on retire le premier élement de la liste et on mappe la plante et la matrice
+  //             this.matrice[index][index2] = p.modelPlant.commun;
+  //             p.coordonnees[0] = index2;
+  //             p.coordonnees[1] = index;
+  //             this.plantesDuJardin.push(p);
+  //           } else if (created.length > 0) {
+  //             let p = created.shift() //on retire le premier élement de la liste et on mappe la plante et la matrice
+  //             this.matrice[index][index2] = p.modelPlant.commun;
+  //             p.coordonnees[0] = index2;
+  //             p.coordonnees[1] = index;
+  //             this.plantesDuJardin.push(p);
+  //           } else {
+  //             fini = true;
+  //             break;
+  //           }
+  //         }
+  //       }
+  //       if(fini){
+  //         break;
+  //       }
+  //     }
+  //   }
+  // }
+
+
+  //Permet de tester si il y a au moins un emplacement vide dans la matrice
+  // arrayRempli(matrice): boolean {
+  //   var result = true;
+  //   for (let index = 0; index < matrice.length; index++) {
+  //     if (matrice[index] == "") {
+  //       result = false;
+  //       break;
+  //     }
+  //   }
+  //   return result;
+  // }
 
 }

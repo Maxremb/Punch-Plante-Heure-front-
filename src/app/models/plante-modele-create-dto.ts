@@ -16,21 +16,11 @@ export class PlanteModeleCreateDto {
     desc: string;
     toxi: boolean;
     picture: string;
-    assoPlus: string[]; //association positive en tant que string et non plantmodel
-    assoMoins: string[]; //idem pour associations negatives
-
-    periodes: Array<PeriodeUpdateDto> = new Array<PeriodeUpdateDto>();
-
-    // Attributs provisoirs pour la génération automatique
-    // Il faudra mettre ceux de la plante à son developpement maximal
-    surfaceAuSol: number;   //le rayon en cm
-    hight: number; //en cm
-    pousseSousTerre: boolean;
-    grimpant: boolean;
-    profondeurRacine: number; //en cm
-    strate: StrateEnum;
-    vivacite: VivaciteEnum;
-
-    famille: string;
+    positive: string[]; //association positive en tant que string et non plantmodel
+    negative: string[]; //idem pour associations negatives
+    height: number; //en cm
+    feuille: string;
+    veget: string;
+    mifa: string;
     // Mettre les degrées d'affinité avec les plantes peut-être ?
 }
