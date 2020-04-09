@@ -25,7 +25,7 @@ export class CreateJardinComponent implements OnInit {
   messageValidation = null;
   messageErreur = null;
   //user actif
-  utilisateurActif = new UtilisateurUpdateDto;
+  utilisateurActif = new UtilisateurUpdateDto();
   //liste de tout les depts
   allDepartements = new Array<DepartementDto>();
  
