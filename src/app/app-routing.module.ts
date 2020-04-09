@@ -65,7 +65,7 @@ const routes: Routes = [
   { path : 'meteo/:id' , component : MeteoDepComponent },
   { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent},
 
-  { path : 'inscription', component : InscriptionComponent}
+  { path : 'inscription', component : InscriptionComponent},
  
   { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id
