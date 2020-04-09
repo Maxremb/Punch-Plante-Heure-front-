@@ -18,12 +18,12 @@ import { prependListener } from 'process';
 })
 export class GraphiqueJardinComponent implements OnInit {
   message: string = '';
-
+  planteok: boolean = false;
   // Crée au lancement
   jardin: JardinUpdateDto = new JardinUpdateDto;
   matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
   selection: string = "";
-  plantesDuJardin: Array<PlanteUtilisateurUpdateDto> = new Array();
+  plantesDuJardin: Array<PlanteUtilisateurUpdateDto>;
 
   // Recherche de plantes
   planteRechercher: string;
@@ -49,7 +49,7 @@ export class GraphiqueJardinComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlantesDejaPresentes();
-    this.genererMatrice();
+    
   }
 
 
@@ -57,13 +57,19 @@ export class GraphiqueJardinComponent implements OnInit {
   // Récupère les plantes déjà associées à ce jardin 
   // Faire qqc pour les nombres de pages
   getPlantesDejaPresentes() {
-    this.servicePlanteUtilisateur.getAllByJardin(this.jardin.identifier, 0).subscribe(
+    this.servicePlanteUtilisateur.getAllByJardinListe(this.jardin.identifier).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.plantesDuJardin = responseDto.body.content;
+          this.plantesDuJardin = responseDto.body;
+          this.planteok=true;
+          this.genererMatrice();
+         
         }
       }
     );
+    
+   
+    
   }
 
 
@@ -71,17 +77,25 @@ export class GraphiqueJardinComponent implements OnInit {
   genererMatrice() {
     var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
     var nbCol = this.jardin.length * 100 / 5;
-
-    for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
+    console.log('plante du jardin 2', this.plantesDuJardin);
+    for (let indexLigne = 0; indexLigne < nbLigne-1; indexLigne++) {
       this.matrice[indexLigne] = [];
-      for (let indexCol = 0; indexCol < nbCol; indexCol++) {
+      for (let indexCol = 0; indexCol < nbCol-1; indexCol++) {
         this.matrice[indexLigne][indexCol] = "";
       }
     }
+    
     // Pour chaque plante déjà présente dans le jardin on associe le nom commun à la bonne position dans la matrice 
     // TO DO : A NE FAIRE QUE POUR LES PLANTES QUI ONT DES COORDONNEES
-    this.plantesDuJardin.forEach(plante =>
-      this.matrice[plante.coordonnees[3]][plante.coordonnees[2]] = plante.modelPlant.commun);
+    console.log('plante du jardin 3', this.plantesDuJardin);
+    this.plantesDuJardin.forEach(plante => {
+      if(plante.coordonnees){
+        this.matrice[plante.coordonnees[0]][plante.coordonnees[1]] = plante.modelPlant.commun;
+      }
+      
+    }
+    )
+     
   }
 
 
@@ -176,9 +190,9 @@ export class GraphiqueJardinComponent implements OnInit {
       console.log('les coordo : ', coordo);
 
       this.servicePlanteUtilisateur.create(this.planteACree).subscribe(
-        ResponseDto => {
+        (ResponseDto) => {
           if (!ResponseDto.error) {
-            this.plantesDuJardin = ResponseDto.body.content;
+            this.plantesDuJardin.push(ResponseDto.body);
           }
         }
       );
@@ -187,11 +201,17 @@ export class GraphiqueJardinComponent implements OnInit {
     
 
   enleverPlanteDuJardin(laPlante: PlanteUtilisateurUpdateDto, coordoDeLaPlante: Array<number>, nomDeLaPlante: string) {
-    this.plantesDuJardin.splice(
-      this.plantesDuJardin.indexOf(laPlante, 1)
-    )
+    
 
-    this.servicePlanteUtilisateur.delete(laPlante.identifiant);
+    this.servicePlanteUtilisateur.delete(laPlante.identifiant).subscribe(
+      (ResponseDto) => {
+        if (!ResponseDto.error) {
+          this.plantesDuJardin.splice(
+            this.plantesDuJardin.indexOf(laPlante), 1
+          ) ;
+        }
+      }
+    );
 
     this.matrice[coordoDeLaPlante[0]][coordoDeLaPlante[1]] = '';
   }
