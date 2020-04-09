@@ -69,8 +69,8 @@ const routes: Routes = [
  
   { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id
-  { path : 'jardin/detail/:id/addplante', component : DetailJardinAddPlanteComponent },//add plante d'un jardin par  jardin id
-  { path : 'jardin/detail/:id/updateplante/:idplante', component : DetailJardinUpdatePlanteComponent },//update d'une plante par idplante et dans jardin par id
+  { path : 'jardin/detail/addplante/:id', component : DetailJardinAddPlanteComponent },//add plante d'un jardin par  jardin id
+  { path : 'jardin/detail/updateplante/:id', component : DetailJardinUpdatePlanteComponent },//update d'une plante par son id
 
 ];
 

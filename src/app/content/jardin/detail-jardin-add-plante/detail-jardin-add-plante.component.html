@@ -52,7 +52,7 @@
         <!-- Fin du formualaire -->
 
         <!-- Ajout de la liste à droite -->
-        <div class="col 12 col-lg-7">
+        <div class="col 12 col-lg-7" *ngIf="this.listePlanteUtil">
             <h2>Liste des plantes de mon jardin</h2>
             <hr>
             <div *ngFor="let p of this.listePlanteUtil">
