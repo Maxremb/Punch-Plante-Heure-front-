@@ -46,6 +46,7 @@ import { EntetePlantAdminComponent } from './content/plant/entete-plant-admin/en
 import { ConnexionComponent } from './content/connexion/connexion.component';
 import { EnteteConnexionComponent } from './content/connexion/entete-connexion/entete-connexion.component';
 import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
+import { EnteteInscriptionComponent } from './content/inscription/entete-inscription/entete-inscription.component';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { InscriptionComponent } from './content/inscription/inscription/inscript
     EnteteConnexionComponent,
     InscriptionComponent,
     EntetePlantAdminComponent,
+    EnteteInscriptionComponent,
     
   ],
   imports: [
