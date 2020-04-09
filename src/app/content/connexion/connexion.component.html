@@ -3,7 +3,7 @@
 
 
 
-    <form [formGroup]="connexionForm" (ngSubmit)="connect()">
+    <form [formGroup]="connexionForm" (ngSubmit)="connect(mail, pwd)">
 
 
         <div class="form-group">
@@ -11,22 +11,22 @@
                 <input type="email" class="form-control" [(ngModel)]="this.mail" formControlName="mail" name="mail"
                     placeholder="dupont@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required> </label>
         </div>
-        <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="alert alert-danger">
+        <!--<div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="alert alert-danger">
             <div *ngIf="mail.errors?.required">
                 Le champs e-mail ne peut pas être vide !
             </div>
             <div *ngIf="mail.errors?.pattern && mail.touched">
                 L'e-mail entré n'est pas valide !
             </div>
-        </div>
+        </div>-->
 
         <div class="form-group">
             <label for="pwd">Mot de Passe :
-                <input type="password" class="form-control" [(ngModel)]="this.pwd" formControlName="pwd" name="pwd" required
-                    minlength="6"></label>
-        </div>
+                <input type="password" class="form-control" [(ngModel)]="this.pwd" formControlName="pwd" name="pwd"
+                    required minlength="6"></label></div>
+        <!--</div>
         <div *ngIf="(pwd.invalid) && (pwd.touched)" class="alert alert-danger">
-            Le mot de passe doit contenir au minimu 6 caractères</div>
+            Le mot de passe doit contenir au minimu 6 caractères</div>-->
 
 
 
