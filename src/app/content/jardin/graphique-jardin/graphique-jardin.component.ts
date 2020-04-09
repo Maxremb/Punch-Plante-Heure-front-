@@ -87,7 +87,7 @@ export class GraphiqueJardinComponent implements OnInit {
 
   // Change la valeur de la variable selection pas l'objet selectionner
   modifSelection(objet: string) {    
-    if ((objet != 'vide') && (objet != 'obstacle') && (objet != 'chemin') && (objet != 'plante')) {
+    if ((objet == 'vide') || (objet == 'obstacle') || (objet == 'chemin') || (objet == 'plante')) {
       this.selection = '';
       this.planteSelectionner = new PlanteModeleUpdateDto;
     }
@@ -154,6 +154,11 @@ export class GraphiqueJardinComponent implements OnInit {
   selectionnerPlante(planteChoisis: PlanteModeleUpdateDto){
     this.planteSelectionner = planteChoisis;
     this.selection = planteChoisis.commun;
+
+    
+    console.log('plante selectionner : ', this.planteSelectionner)
+    console.log('plante selectionner id : ', this.planteSelectionner.identifiant)
+
   }
 
 
@@ -163,6 +168,12 @@ export class GraphiqueJardinComponent implements OnInit {
       this.planteACree.coordonnees = coordo;
       this.planteACree.garden = this.jardin;
       this.planteACree.modelPlant = plante;
+
+      console.log('plante selectionner id : ', this.planteSelectionner.identifiant)
+      console.log('planteModel id : ', plante.identifiant);
+      console.log('planteModel nom : ', plante.commun);
+      console.log('le jardin : ', this.jardin);
+      console.log('les coordo : ', coordo);
 
       this.servicePlanteUtilisateur.create(this.planteACree).subscribe(
         ResponseDto => {
@@ -180,7 +191,7 @@ export class GraphiqueJardinComponent implements OnInit {
       this.plantesDuJardin.indexOf(laPlante, 1)
     )
 
-    //l'enlever de la base de donnée aussi
+    this.servicePlanteUtilisateur.delete(laPlante.identifiant);
 
     this.matrice[coordoDeLaPlante[0]][coordoDeLaPlante[1]] = '';
   }
