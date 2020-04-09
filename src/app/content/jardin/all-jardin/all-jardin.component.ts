@@ -29,8 +29,8 @@ export class AllJardinComponent implements OnInit {
 
   getUtilisateur() : void {
     this.utilisateurActif= new UtilisateurUpdateDto();
-    this.utilisateurActif.nom= "nom";
-    this.utilisateurActif.id= 1;
+    this.utilisateurActif.firstName= "nom";
+    this.utilisateurActif.identifier= 1;
   }
 
   // retourne la liste de tout les jardins de l'user conencté
