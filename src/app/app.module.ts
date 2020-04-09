@@ -86,12 +86,9 @@ import { InscriptionComponent } from './content/inscription/inscription.componen
     MeteoDepComponent,
     NotificationsComponent,
     GraphiqueJardinAffichageComponent,
-<<<<<<< HEAD
     ConnexionComponent,
     EnteteConnexionComponent,
-=======
     InscriptionComponent,
->>>>>>> 40ab5dc80012089d76a294b60c16e13a17bc92e0
   ],
   imports: [
     BrowserModule,
