@@ -46,8 +46,8 @@
                     <th>ID</th>
                     <th>Nom commun</th>
                     <th>Nom scientifique</th>
-                    <th>URL picture</th>
-                    <th>Actions</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -57,10 +57,14 @@
                     <td>{{plant.scientifique}}</td>
                     <td>{{plant.picture}}</td>
                     <td>
-                    <button class="btn alazea-btn mt-15" (click)="this.delete(plant.identifiant)">Supprimer cette plante</button>
+                    <button class="btn btn-danger" (click)="this.delete(plant.identifiant)"><i class="fa fa-times" aria-hidden="true"></i></button>
                     &nbsp;&nbsp;
                     <a routerLink="/plant/update/{{plant.identifiant}}">
-                        <button class="btn alazea-btn mt-15" >Modifier cette plante</button>
+                        <button class="btn btn-warning" ><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a routerLink="/periode/{{plant.identifiant}}">
+                        <button class="btn btn-info" ><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
                     </a>
                     </td>
                 </tr>

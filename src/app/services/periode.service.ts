@@ -34,8 +34,8 @@ export class PeriodeService {
     return this.http.delete<ResponseDto>(this.URL + '/' + id);
   }
 
-  getAll(): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/all');
+  getAll(page:number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/all/' + page);
   }
 
   // readByDepartementIdAndPlanteModelId
@@ -44,8 +44,8 @@ export class PeriodeService {
   }
   
   // readByDepartementId
-  getAllByDepartement(depId: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/departement/' + depId);
+  getAllByDepartement(depId: number,page:number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/departement/' + depId+'?page='+page);
   }
 
   // readByPlanteModelIdAndDepartementIdAndType

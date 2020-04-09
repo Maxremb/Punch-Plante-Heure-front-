@@ -4,6 +4,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PeriodeCreateDto } from 'src/app/models/periode-create-dto';
 import { PlanteModeleListe } from 'src/app/models/plante-modele-liste';
 import { DepartementDto } from 'src/app/models/departement-dto';
+import { ActivatedRoute } from '@angular/router';
+import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
+import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 
 @Component({
   selector: 'app-create-periode',
@@ -15,21 +18,23 @@ export class CreatePeriodeComponent implements OnInit {
 
 
   addPeriodeForm: FormGroup;
-  periode = new PeriodeCreateDto;
-  allPlantes = new PlanteModeleListe;
-  allDepartements = new DepartementDto;
+  periode = new PeriodeCreateDto();
+  allDepartements = new Array<DepartementDto>();
+  plant = new PlanteModeleUpdateDto();
   messageValidation = null;
   messageErreur = null;
   
-  constructor(private service: PeriodeService) { }
+  constructor(
+    private servicePlante: PlanteModeleService,
+    private servicePeriode: PeriodeService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.addPeriodeForm = new FormGroup({
-      "type": new FormControl(this.periode.type, Validators.required),
-      "planteModel": new FormControl(this.periode.planteModel, Validators.required),
-      "dateDebut": new FormControl(this.periode.dateDebut, Validators.required),
-      "dateFin": new FormControl(this.periode.dateFin, Validators.required),
-      "dept": new FormControl(this.periode.dept, Validators.required),
+      "type": new FormControl(this.periode.periodType, Validators.required),
+      "dateDebut": new FormControl(this.periode.startDate, Validators.required),
+      "dateFin": new FormControl(this.periode.endDate, Validators.required),
+      "dept": new FormControl(this.periode.county, Validators.required),
     });
   }
 
@@ -39,8 +44,19 @@ export class CreatePeriodeComponent implements OnInit {
   get dateFin() { return this.addPeriodeForm.get('dateFin') }
   get dept() { return this.addPeriodeForm.get('dept') }
 
+  // Appel à la methode getPlant des le chargement de la page, en prenant compte la valeur de l'id dans l'url
+  getPlant(): void {
+    this.servicePlante.getId(+this.route.snapshot.paramMap.get('id')).subscribe(
+      (responsedto) => {
+        if (!responsedto.error) {
+          this.plant = responsedto.body;
+          this.periode.plantSpecies = this.plant;
+        }
+      }
+    );
+  }
   create() {
-    this.service.create(this.periode).subscribe(
+    this.servicePeriode.create(this.periode).subscribe(
       responseDto => {
         if (!responseDto.error) {
           this.messageValidation = responseDto.message;
