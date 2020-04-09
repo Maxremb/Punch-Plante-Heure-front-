@@ -64,11 +64,8 @@ const routes: Routes = [
   { path : 'planning/:id' , component : PlanningJardinComponent },
   { path : 'meteo/:id' , component : MeteoDepComponent },
   { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent},
-<<<<<<< HEAD
-=======
 
   { path : 'inscription', component : InscriptionComponent}
->>>>>>> 957409a217ee41afb5fde37c862bb2584ae03562
  
   { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id
