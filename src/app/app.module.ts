@@ -42,6 +42,8 @@ import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component
 import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
+import { ConnexionComponent } from './content/connexion/connexion.component';
+import { EnteteConnexionComponent } from './content/connexion/entete-connexion/entete-connexion.component';
 
 
 @NgModule({
@@ -83,6 +85,8 @@ import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-ja
     MeteoDepComponent,
     NotificationsComponent,
     GraphiqueJardinAffichageComponent,
+    ConnexionComponent,
+    EnteteConnexionComponent,
   ],
   imports: [
     BrowserModule,

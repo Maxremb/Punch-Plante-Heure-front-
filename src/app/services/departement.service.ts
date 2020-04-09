@@ -9,7 +9,7 @@ import { ResponseDto } from '../models/response-dto';
   providedIn: 'root'
 })
 export class DepartementService {
- 
+
 
   departement: DepartementDto;
 
@@ -34,7 +34,7 @@ export class DepartementService {
   }
 
   getAllAdmin(nbpage: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/all/'+ nbpage);
+    return this.http.get<ResponseDto>(this.URL + '/all/' + nbpage);
   }
 
   getAll(): Observable<ResponseDto> {
@@ -43,10 +43,10 @@ export class DepartementService {
 
   // readMeteoByNumDep
   getMeteoByDepartement(numDepartement: number, numelem: number, page: number, sortname: string): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/meteo?elemsPerPage=' + numelem +'&id=' + numDepartement + '&page=' + page + '&sortName=' + sortname);
+    return this.http.get<ResponseDto>(this.URL + '/meteo?elemsPerPage=' + numelem + '&id=' + numDepartement + '&page=' + page + '&sortName=' + sortname);
   }
 
-  
+
 
   // readById
   getById(id: number): Observable<ResponseDto> {
@@ -54,4 +54,4 @@ export class DepartementService {
   }
 
 }
- 
+
