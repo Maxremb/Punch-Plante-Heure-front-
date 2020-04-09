@@ -31,6 +31,7 @@ import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/grap
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
+import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component';
 
 
 const routes: Routes = [
@@ -59,11 +60,11 @@ const routes: Routes = [
   { path : 'departement/create' , component : CreateDepartementComponent },
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
 
-  { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
+  { path : 'jardin/graphique', component : GraphiqueJardinComponent},
   { path : 'planning/:id' , component : PlanningJardinComponent },
   { path : 'meteo/:id' , component : MeteoDepComponent },
-  { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent}
- 
+  { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent},
+  { path : 'jardin/detail/arrosage', component : ArrosageComponent}
 ];
 
 @NgModule({

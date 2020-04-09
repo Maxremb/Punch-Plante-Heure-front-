@@ -1,0 +1,14 @@
+<div class="col-lg-6">
+  <div class="alazea-progress-bar mb-50">
+    <!-- Single Progress Bar -->
+    <div class="single_progress_bar">
+        <p>Niveau d'eau dans le jardin</p>
+        <div *ngIf="this.afficher" id="bar1" class="barfiller">
+            <div class="tipWrap">
+                <span class="tip"></span>
+            </div>
+            <span class="fill" data-percentage="{{this.jardin.usefullReserve}}"></span>
+        </div>
+    </div>
+  </div>
+</div>

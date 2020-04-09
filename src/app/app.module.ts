@@ -38,10 +38,11 @@ import { CreateDepartementComponent } from './content/departement/create-departe
 import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
 import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
 import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
-import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component'; 
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
+import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-ja
     MeteoDepComponent,
     NotificationsComponent,
     GraphiqueJardinAffichageComponent,
+    ArrosageComponent,
   ],
   imports: [
     BrowserModule,
