@@ -34,13 +34,21 @@ export class ConnexionComponent implements OnInit {
     console.log("init component ")
     this.connexionForm = new FormGroup({
       mail: new FormControl(this.mail,
-        Validators.required),
-      pwd: new FormControl(this.pwd, Validators.required),
+        [Validators.required, Validators.email]),
+      pwd: new FormControl(this.pwd, [Validators.required, Validators.minLength(8)]),
     });
   }
 
 
-  connect(mail: string, pwd: string) {
+  connect(mail: string, pwd: string){
+    console.log("email ::::::::::::", mail)
+    console.log("pwd :::::::::::::", pwd)
+    this.service.getByEmailAndPwd(mail, pwd);
+
+  }
+
+
+  /*connect(mail: string, pwd: string) {
     this.service.getByEmailAndPwd(mail, pwd).subscribe(
       (responsedto) => {
         if (!responsedto.error) {
@@ -63,6 +71,6 @@ export class ConnexionComponent implements OnInit {
       }
 
     );
-  }
+  }*/
 
 }
