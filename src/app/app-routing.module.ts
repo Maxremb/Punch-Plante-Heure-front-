@@ -31,6 +31,7 @@ import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/grap
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
+import { ConnexionComponent } from './content/connexion/connexion.component';
 import { InscriptionComponent } from './content/inscription/inscription.component';
 
 
@@ -47,7 +48,7 @@ const routes: Routes = [
   { path : 'plant/vadmin', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
-  { path : 'periode', component : AllPeriodeComponent},
+  { path : 'periode/:id', component : AllPeriodeComponent},
   { path : 'periode/create', component : CreatePeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
   { path : 'blog' , component : BlogComponent },
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path : 'departement/vadmin' , component : AllDepartementsComponent },
   { path : 'departement/create' , component : CreateDepartementComponent },
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
+  { path : 'connexion', component : ConnexionComponent },
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
   { path : 'planning/:id' , component : PlanningJardinComponent },
