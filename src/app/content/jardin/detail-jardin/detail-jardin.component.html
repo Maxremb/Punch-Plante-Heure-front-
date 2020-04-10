@@ -5,16 +5,16 @@
     <!-- Affichage du jardin selectionné et de ses caracteristiques -->
     <div class="row">
         <div class="col-12 col-lg-6" style="padding-left: 0%;" *ngIf="this.jardin">
-            <h2>Détails de mon jardin </h2>
-            <h2> <i>{{this.jardin.name}} </i> </h2>
+            <h2>Mon jardin <i>{{this.jardin.name}} </i></h2>
+            <br><br>
 
-            <label class="label">Nom : </label>{{this.jardin.name}}
+            <label class="label">Nom : </label> {{this.jardin.name}}
             <br>
-            <label class="label">Longueur : </label>{{this.jardin.length}} m
+            <label class="label">Longueur : </label> {{this.jardin.length}} m
             <br>
-            <label class="label">Largeur : </label>{{this.jardin.width}} m
+            <label class="label">Largeur : </label> {{this.jardin.width}} m
             <br>
-            <label class="label">Sol : </label>{{this.jardin.ground}}
+            <label class="label">Sol : </label> {{this.jardin.ground}}
             <br>
             <label class="label">Département : </label>
             <p *ngIf="this.jardin.dept">{{this.jardin.dept.name}} - ({{this.jardin.dept.depNum}})</p>
@@ -22,7 +22,7 @@
 
         </div>
 
-        <!-- Affichage d'une image à droite du tableau -->
+        <!-- Affichage du graphique à droite du tableau -->
         <div class="col-12 col-lg-6" style="position: center;" *ngIf="this.jardin.identifier">
             <app-graphique-jardin-affichage [jardin]="this.jardin" style="position: center;">
             </app-graphique-jardin-affichage>
@@ -32,18 +32,15 @@
 
     </div>
 
+    <!-- Arrosage du jardin ! -->
     <div class="row" *ngIf="this.jardin">
         <app-arrosage style="width: 100%;"></app-arrosage>
     </div>
     <br> <br>
 
     <div class="row">
-        <h2>Liste des plantes présentes dans mon jardin : </h2>
-
-
-        <div *ngIf="!this.plantesParJardin.length">Il n'y a pas de plantes dans mon jardin</div>
-        <div *ngIf="this.plantesParJardin.length">Il y a {{this.plantesParJardin.length}} plantes sur cette page
-            et {{this.pageMax}} page(s)</div>
+        <h2>Liste des plantes présentes dans mon jardin :</h2>
+        
 
         <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
         <table class="table table-hover" *ngIf="this.plantesParJardin.length">
@@ -138,10 +135,13 @@
                 <button class="btn alazea-btn mt-15">Ajouter une plante à mon jardin</button>
             </a>
             <a routerLink="/planning/{{this.jardin.identifier}}">
-                <button class="btn alazea-btn mt-15">Calendrier de mon jardin</button>
+                <button class="btn alazea-btn mt-15">Calendrier</button>
+            </a>
+            <a routerLink="/'jardin/graphique/{{this.jardin.identifier}}'">
+                <button class="btn alazea-btn mt-15">Graphique</button>
             </a>
             <a routerLink="/jardin">
-                <button class="btn alazea-btn mt-15">Retour à mes jardins</button>
+                <button class="btn alazea-btn mt-15">Mes jardins</button>
             </a>
         </div>
     </div>
