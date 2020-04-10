@@ -27,15 +27,15 @@
             <app-graphique-jardin-affichage [jardin]="this.jardin" style="position: center;">
             </app-graphique-jardin-affichage>
         </div>
-        <br>
-        <br>
+
+
 
     </div>
-    <br>
-    <div class="row">
-        <app-arrosage></app-arrosage>
+
+    <div class="row" *ngIf="this.jardin">
+        <app-arrosage style="width: 100%;"></app-arrosage>
     </div>
-    <br>
+    <br> <br>
 
     <div class="row">
         <h2>Liste des plantes présentes dans mon jardin : </h2>
