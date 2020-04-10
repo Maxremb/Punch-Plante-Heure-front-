@@ -36,6 +36,8 @@ import { ConnexionComponent } from './content/connexion/connexion.component';
 import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
 import { MeteoComponent } from './content/meteo/meteo/meteo.component';
 import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail-utilisateur/detail-utilisateur.component';
+import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component'
+
 
 
 const routes: Routes = [
@@ -44,7 +46,7 @@ const routes: Routes = [
   { path : 'admin' , component :  DashboardAdminComponent },
   { path : 'jardin' , component :  AllJardinComponent},
   { path : 'jardin/create' , component : CreateJardinComponent },
-  
+
   { path : 'plant/vadmin', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
@@ -71,6 +73,7 @@ const routes: Routes = [
 
   { path : 'inscription', component : InscriptionComponent},
   { path : 'utilisateur/detail', component : DetailUtilisateurComponent},
+  { path : 'utilisateur/gestion-admin', component : GestionAdminComponent},
 
   { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id

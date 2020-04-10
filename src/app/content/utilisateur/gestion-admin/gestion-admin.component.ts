@@ -86,6 +86,31 @@ export class GestionAdminComponent implements OnInit {
       );
     }
 
+    desactivateUser(identifier: number) {
+      this.service.desactivateUser(identifier).subscribe(
+        responseDto => {
+          console.log('debug responseDto : ', responseDto);
+          if (!responseDto.error) {
+            this.allUtilisateur = this.allUtilisateur.filter(
+              element =>  element.identifier !== identifier
+            );
+          }
+        }
+      );
+    }
+
+    activateUser(identifier: number) {
+      this.service.activateUser(identifier).subscribe(
+        responseDto => {
+          console.log('debug responseDto : ', responseDto);
+          if (!responseDto.error) {
+            this.allUtilisateur = this.allUtilisateur.filter(
+              element =>  element.identifier !== identifier
+            );
+          }
+        }
+      );
+    }
 
 
 
