@@ -66,7 +66,7 @@ const routes: Routes = [
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent},
   { path : 'planning/:id' , component : PlanningJardinComponent },
-  { path : 'meteo', component : MeteoComponent }
+  { path : 'meteo', component : MeteoComponent },
   { path : 'meteo/:id' , component : MeteoDepComponent },
   { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent},
   { path : 'jardin/detail/arrosage', component : ArrosageComponent},

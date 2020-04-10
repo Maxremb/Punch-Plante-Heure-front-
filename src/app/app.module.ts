@@ -49,6 +49,7 @@ import { EnteteConnexionComponent } from './content/connexion/entete-connexion/e
 import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
 import { EnteteInscriptionComponent } from './content/inscription/entete-inscription/entete-inscription.component';
 import { MeteoComponent } from './content/meteo/meteo/meteo.component';
+import { EnteteMeteoComponent } from './content/meteo/entete-meteo/entete-meteo.component';
 
 
 @NgModule({
@@ -97,6 +98,7 @@ import { MeteoComponent } from './content/meteo/meteo/meteo.component';
     EntetePlantAdminComponent,
     EnteteInscriptionComponent,
     MeteoComponent,
+    EnteteMeteoComponent,
 
   ],
   imports: [
