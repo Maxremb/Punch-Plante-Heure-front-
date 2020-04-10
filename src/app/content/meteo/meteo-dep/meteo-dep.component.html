@@ -41,7 +41,10 @@
             *ngIf="!this.tableau; else elseBlock">Cliquez ici pour afficher un tableau</span>
         <ng-template #elseBlock>Cliquez ici pour afficher un graphe</ng-template></button>
         <!-- <button class="btn alazea-btn mt-15" (click)="this.switchToMonth()" >Par mois</button> -->
-
+        &nbsp;&nbsp;
+        <a routerLink="/meteo">
+            <input type="button" value="Retour à mes stations météo" class="btn alazea-btn mt-15" />
+        </a>
         
     
         <hr>

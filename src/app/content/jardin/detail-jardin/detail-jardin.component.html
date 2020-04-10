@@ -7,18 +7,17 @@
         <div class="col-12 col-lg-6" style="padding-left: 0%;" *ngIf="this.jardin">
             <h2>Détails de mon jardin </h2>
             <h2> <i>{{this.jardin.name}} </i> </h2>
-            <hr>
-            <label class="label">ID : </label><span> {{this.jardin.identifier}}</span>
-            <br>
+
             <label class="label">Nom : </label>{{this.jardin.name}}
             <br>
-            <label class="label">Longueur : </label>{{this.jardin.length}}
+            <label class="label">Longueur : </label>{{this.jardin.length}} m
             <br>
-            <label class="label">Largeur : </label>{{this.jardin.width}}
+            <label class="label">Largeur : </label>{{this.jardin.width}} m
             <br>
             <label class="label">Sol : </label>{{this.jardin.ground}}
             <br>
-            <label class="label">Département : </label><p  *ngIf="this.jardin.dept">{{this.jardin.dept.name}} - ({{this.jardin.dept.depNum}})</p>
+            <label class="label">Département : </label>
+            <p *ngIf="this.jardin.dept">{{this.jardin.dept.name}} - ({{this.jardin.dept.depNum}})</p>
             <br>
 
         </div>
@@ -30,6 +29,11 @@
         </div>
         <br>
         <br>
+
+    </div>
+    <br>
+    <div class="row">
+        <app-arrosage></app-arrosage>
     </div>
     <br>
 
@@ -63,7 +67,7 @@
                     <th>
                         <h5>Etat de la plante</h5>
                     </th>
-                    <th>
+                    <th colspan="2">
                         <h5>Actions</h5>
                     </th>
                 </tr>
@@ -76,11 +80,19 @@
                     <td>{{planteUtilisateur.semiDate}}</td>
                     <td>{{planteUtilisateur.healthStage}}</td>
                     <td>{{planteUtilisateur.plantStage}}</td>
+
+                    <td>
+                        <a routerLink='/jardin/detail/updateplante/{{planteUtilisateur.identifiant}}'><button
+                                class="btn btn-danger">Modifier</button>
+                        </a>
+                    </td>
                     <!-- Possibilité de retirer une plante utilisateur du jardin -->
                     <td><button class="btn btn-danger"
                             (click)="this.supprimer(planteUtilisateur.identifiant)">Supprimer</button>
                         <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
                         <!-- &nbsp;&nbsp; -->
+                    </td>
+
                 </tr>
             </tbody>
         </table>
