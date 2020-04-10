@@ -7,22 +7,42 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router){}
+  constructor(private router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
+    const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
 
-      // Si utilisater connecté
-      if (connectedUser) {
+    // Si utilisater connecté
+    if (connectedUser) {
+      // Si component a besoin d'autorisations et que l'utilisateur n'est pas autorisé
+      if (next.data.roles && next.data.roles.indexOf(connectedUser.role) === -1) {
 
-        if (next.data.roles && next.data.roles.indexOf())
+        this.router.navigate(['/']);
+        return false;
 
+      } else {
+
+        return true;
       }
 
-    return true;
+    }
+
+    this.router.navigate(['/connexion']);
+    return false;
   }
-  
+
+  /*
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+
+      return true;
+
+    }
+    */
+
 }
