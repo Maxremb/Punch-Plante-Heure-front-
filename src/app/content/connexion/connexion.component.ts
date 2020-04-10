@@ -40,36 +40,27 @@ export class ConnexionComponent implements OnInit {
   }
 
 
-  connect(mail: string, pwd: string){
-    console.log("email ::::::::::::", mail)
-    this.service.getByEmailAndPwd(mail, pwd);
 
-  }
-
-
-  /*connect(mail: string, pwd: string) {
+  connect(mail: string, pwd: string) {
     this.service.getByEmailAndPwd(mail, pwd).subscribe(
-      (responsedto) => {
-        if (!responsedto.error) {
-          this.connexion = responsedto.body
-          if (this.connexion.isAdmin) {
-            responsedto.body = this.admin;
-            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
-            this.error = false;
-          } else if (!this.connexion.isAdmin) {
-            responsedto.body = this.utilisateur;
-            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
-            this.error = false;
-          }
-        } (error) => {
-          console.log('debug responseDto : ', error);
-          this.messageValidation = 'ERREUR ! La connexion a echoué !';
-          this.error = true;
+      (connexionDto) => {
+        this.error = !this.service.connect(connexionDto);
+        if(!this.error){
+        if (!connexionDto.isUser) {
+          this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
+        } else if (connexionDto.isUser) {
+          this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
         }
-
+      } else {
+        this.messageValidation = "Quelque chose ne marche pas :("
+      }
+      },
+      (error) => {
+        console.log('debug responseDto : ', error);
+        this.messageValidation = 'e-mail et/ou mot de passe invalide !';
       }
 
     );
-  }*/
+  }
 
 }
