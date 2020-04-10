@@ -52,11 +52,9 @@
                   <td>{{utilisateur.firstname}}</td>
                   <td>{{utilisateur.active}}</td>
                   <td>
-                  <button class="btn btn-info" (click)="this.desactivateUser(utilisateur.identifier)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                  <button class="btn btn-danger" title="Désactiver" (click)="this.desactivateUser(utilisateur.identifier)"><i class="fa fa-times" aria-hidden="true"></i></button>
                   &nbsp;&nbsp;
-                  <a routerLink="/utilisateur/update/{{utilisateur.identifier}}">
-                      <button class="btn btn-warning" ><i class="fa fa-wrench" aria-hidden="true"></i></button>
-                  </a>
+                  <button class="btn btn-info" title="Activer" (click)="this.activateUser(utilisateur.identifier)"><i class="fa fa-check-square" aria-hidden="true"></i></button>
                   &nbsp;&nbsp;
                   </td>
               </tr>
