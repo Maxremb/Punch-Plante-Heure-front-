@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
 
   disconnect(){
     this.connexionService.disconnect();
-    document.location.reload();
+    location.href='';
   }
 
 }
