@@ -47,7 +47,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     //On récupère l'id de notre jardin dans l'url
     this.idJardin = +this.route.snapshot.paramMap.get('id');
     this.getJardin();
-    console.log('debug init Detail : ', this.jardin);
+  
     
     //Récupération de la liste des plantes utilisateurs associées à ce jardin
     this.getListePlanteUtilisateur(0);
@@ -97,7 +97,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
           this.pageActiveUtil = responseDto.body.number;
           this.pageTotalUtil = this.range(responseDto.body.totalPages);
           this.pageMaxUtil = responseDto.body.totalPages;
-          console.log('DEBUG PAGE MAX' + this.pageMaxUtil);
+        
         }
       }
     )
@@ -138,7 +138,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   suppprimer(id: number) {
     this.planteutilisateurservice.delete(id).subscribe(
       (responseDto) => {
-        console.log("Plante supprimée de votre jardin");
+    
         this.listePlanteUtil = this.listePlanteUtil.filter(p => p.identifiant != id);
 
       },
@@ -160,9 +160,6 @@ export class DetailJardinAddPlanteComponent implements OnInit {
             });
           });
         }
-        console.log("DEBUG NB PLANTE TOT", this.nbPlantesTotal);
-        console.log("DEBUG liste des plantes modeles trouves", this.allPlantes)
-        console.log('DEBUG TERME RECHERCHE :' , term)
       }
     )
 
