@@ -4,8 +4,8 @@ import { UtilisateurUpdateDto } from './utilisateur-update-dto';
 
 export class ConnexionDto {
 
-    isUser: boolean;
+    user: boolean;
     bodyAdmin: AdminUpdateDto;
-    bodyUser: UtilisateurUpdateDto;
+    bodyUtil: UtilisateurUpdateDto;
 
 }

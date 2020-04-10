@@ -46,10 +46,12 @@ export class ConnexionComponent implements OnInit {
       (connexionDto) => {
         this.error = !this.service.connect(connexionDto);
         if(!this.error){
-        if (!connexionDto.isUser) {
+        if (!connexionDto.user) {
           this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
-        } else if (connexionDto.isUser) {
+          location.href='admin'
+        } else if (connexionDto.user) {
           this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
+          location.href=''
         }
       } else {
         this.messageValidation = "Quelque chose ne marche pas :("

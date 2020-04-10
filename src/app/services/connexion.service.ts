@@ -24,8 +24,8 @@ export class ConnexionService {
 
   getByEmailAndPwd(mail: string, pwd: string): Observable<ConnexionDto> {
     console.log("Utilisateur connecté!!");
-
     return this.http.get<ConnexionDto>(this.URL + "?mail=" + mail + "&pwd=" + pwd);
+    
 
   }
 
@@ -39,26 +39,21 @@ export class ConnexionService {
   }
 
   convert(connexionDto: ConnexionDto): boolean {
-    let adminUpDto = connexionDto.bodyAdmin;
-    console.log(adminUpDto);
-    let userUpDto = connexionDto.bodyUser;
-    console.log(userUpDto);
-    let isUser = connexionDto.isUser;
     this.connectedUser = new ConnectedUser();
+    if (connexionDto.bodyAdmin || connexionDto.bodyUtil) {
 
-    if (adminUpDto || userUpDto) {
 
-      if (isUser) {
-        this.connectedUser.id = userUpDto.identifier;
-        this.connectedUser.pseudo = userUpDto.pseudo;
-        this.connectedUser.mail = userUpDto.mail;
+      if (connexionDto.user) {
+        this.connectedUser.id = connexionDto.bodyUtil.identifier;
+        this.connectedUser.pseudo = connexionDto.bodyUtil.pseudo;
+        this.connectedUser.mail = connexionDto.bodyUtil.mail;
 
       } else {
-        this.connectedUser.id = adminUpDto.identifier;
-        this.connectedUser.pseudo = adminUpDto.pseudo;
-        this.connectedUser.mail = adminUpDto.mail;
+        this.connectedUser.id = connexionDto.bodyAdmin.identifier;
+        this.connectedUser.pseudo = connexionDto.bodyAdmin.pseudo;
+        this.connectedUser.mail = connexionDto.bodyAdmin.mail;
       }
-      this.connectedUser.status = isUser;
+      this.connectedUser.status = connexionDto.user;
       return true;
     } else {
       return false;
