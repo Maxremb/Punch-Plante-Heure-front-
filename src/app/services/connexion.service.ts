@@ -24,7 +24,7 @@ export class ConnexionService {
 
   getByEmailAndPwd(mail: string, pwd: string): Observable<ConnexionDto> {
     console.log("Utilisateur connecté!!");
-    return this.http.get<ConnexionDto>(this.URL + "?mail=" + mail + "&pwd=" + pwd);
+    return this.http.post<ConnexionDto>(this.URL , [mail, pwd]);
     
 
   }
