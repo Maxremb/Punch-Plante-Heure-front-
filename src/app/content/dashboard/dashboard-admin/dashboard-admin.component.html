@@ -2,24 +2,45 @@
 
     <app-entete-dashboard></app-entete-dashboard>
 
-    <h2>Cher administrateur, que voulez-vous faire ?</h2>
+    <h2>Bienvenue cher administrateur !</h2>
+    <hr>
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12" >
+                <h3>Vos informations personnelles :</h3>
+                <h5>Pseudo :</h5>{{admin.pseudo}}
+                <h5>Email :</h5>{{admin.mail}}
+                                
+                <a routerLink="/">
+                    <button class="btn alazea-btn mt-15">Modifier mes informations</button>
+                </a>
+                &nbsp;&nbsp;
+                <a routerLink="/">
+                    <button class="btn alazea-btn mt-15">Désactiver mon compte</button>
+                </a>
+      
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12" >
+            <h3>Vos raccourcis :</h3>
+            <a routerLink="/plant/vadmin">
+                <button class="btn alazea-btn mt-15">Gerer les plantes de notre dictionnaire</button>
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/periode">
+                <button class="btn alazea-btn mt-15">Gerer les périodes</button>
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/departement/vadmin">
+                <button class="btn alazea-btn mt-15">Gerer les départements</button>
+            </a>
+        </div>
+    </div>
     
-    <div class="container">
-        <a routerLink="/plant/vadmin">
-            <button class="btn alazea-btn mt-15">Mettre à jour la liste des plantes de notre dictionnaire</button>
-        </a>
-    </div>
-
-    <div class="container">
-        <a routerLink="/periode">
-            <button class="btn alazea-btn mt-15">Mettre à jour la liste des périodes</button>
-        </a>
-    </div>
-
-    <div class="container">
-        <a routerLink="/departement/vadmin">
-            <button class="btn alazea-btn mt-15">Mettre à jour la liste des departements</button>
-        </a>
-    </div>
-
 </div>
