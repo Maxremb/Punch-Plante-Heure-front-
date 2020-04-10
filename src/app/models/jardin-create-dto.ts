@@ -12,7 +12,7 @@ export class JardinCreateDto {
 
     depthGround: number;
     usefullReserve: number;
-    isArrosed: boolean;
+    arrosed: boolean;
     maxReserve: number;
 
     dept: DepartementDto;

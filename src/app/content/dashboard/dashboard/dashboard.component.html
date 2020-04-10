@@ -1,13 +1,56 @@
 <div class="container">
 
     <app-entete-dashboard></app-entete-dashboard>
-    <h2>Cher utilisateur, que voulez-vous faire ?</h2>
-    
 
+    <h2>Bienvenue {{utilisateur.firstName}} {{utilisateur.lastName}} !</h2>
+    <hr>
+    <br><br>
     <div class="container">
-        <a routerLink="/notif">
-            <button class="btn alazea-btn mt-15">Voir mes notifications </button>
-        </a>
+        <div class="row">
+            <div class="col-12 col-lg-12" >
+                <h3>Vos notifications :</h3>
+                <h5><i>Vous n'avez pas de notifications pour le moment</i></h5>
+            </div>
+        </div>
     </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12" >
+                <h3>Vos informations personnelles :</h3>
+                <h5>Prénom :</h5>{{utilisateur.firstName}}
+                <h5>Nom :</h5>{{utilisateur.lastName}}
+                <h5>Pseudo :</h5>{{utilisateur.pseudo}}
+                <h5>Email :</h5>{{utilisateur.mail}}
+                <h5>Telephone :</h5> {{utilisateur.phone}}
+                <h5>Picture :</h5> {{utilisateur.picture}}
+                
+                <a routerLink="/">
+                    <button class="btn alazea-btn mt-15">Modifier mes informations</button>
+                </a>
+                &nbsp;&nbsp;
+                <a routerLink="/">
+                    <button class="btn alazea-btn mt-15">Désactiver mon compte</button>
+                </a>
+      
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12" >
+            <h3>Vos raccourcis :</h3>
+            <a routerLink="/jardin">
+                <button class="btn alazea-btn mt-15">Voir mes jardins</button>
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/meteo">
+                <button class="btn alazea-btn mt-15">Voir mes stations meteo</button>
+            </a>
+            </div>
+        </div>
+    </div>
+</div>   
 
-</div>
+

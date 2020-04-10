@@ -1,6 +1,6 @@
 <div class="container">
     <!-- Entete de la liste des plantes -->
-    <app-entete-plant></app-entete-plant>
+    <app-entete-plant-admin></app-entete-plant-admin>
 
     <!-- Partie correspondant aux differents choix de l'administrateur, s'affiche uniquement si choix = true -->
     <div *ngIf="choix">
@@ -20,11 +20,6 @@
             </a>
         </div>
 
-        <div class="container">
-            <a routerLink="/admin">
-                <button class="btn alazea-btn mt-15">Retour</button></a>
-        </div>
-    
     </div>
 
     <!-- Partie Recherche Par Id, s'affiche uniquement si recherche = true -->
@@ -32,11 +27,45 @@
         <h2><label for="search-box">Recherche par numéro d'identifiant</label></h2>
         <input type="number" [(ngModel)]="this.numero"/>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a routerLink="/plant/update/{{this.numero}}">
-            <button class="btn alazea-btn mt-15" >Rechercher</button>
-        </a>
+        <button class="btn alazea-btn mt-15" (click)="this.afficherSingle(this.numero)">Rechercher</button>
+        <br><br>
     </div>
-    
+
+    <!-- Partie Single, s'affiche uniquement si single = true -->
+    <div *ngIf="single">
+        <h2>Liste des plantes de notre dictionnaire</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom commun</th>
+                    <th>Nom scientifique</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{this.singlePlant.identifiant}}</td>
+                    <td>{{this.singlePlant.commun}}</td>
+                    <td>{{this.singlePlant.scientifique}}</td>
+                    <td>{{this.singlePlant.picture}}</td>
+                    <td>
+                    <button class="btn btn-danger" (click)="this.delete(this.singlePlant.identifiant)" title="Supprimer cette plante"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    &nbsp;&nbsp;
+                    <a routerLink="/plant/update/{{this.singlePlant.identifiant}}">
+                        <button class="btn btn-warning" title="Modifier cette plante"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a routerLink="/periode/{{this.singlePlant.identifiant}}">
+                        <button class="btn btn-info" title="Afficher les périodes de cette plante"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
+                    </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <!-- Partie Liste des plantes, s'affiche uniquement si liste = true -->
     <div *ngIf="liste">
         <h2>Liste des plantes de notre dictionnaire</h2>
@@ -57,14 +86,14 @@
                     <td>{{plant.scientifique}}</td>
                     <td>{{plant.picture}}</td>
                     <td>
-                    <button class="btn btn-danger" (click)="this.delete(plant.identifiant)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    <button class="btn btn-danger" (click)="this.delete(plant.identifiant)" title="Supprimer cette plante"><i class="fa fa-times" aria-hidden="true"></i></button>
                     &nbsp;&nbsp;
                     <a routerLink="/plant/update/{{plant.identifiant}}">
-                        <button class="btn btn-warning" ><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                        <button class="btn btn-warning" title="Modifier cette plante"><i class="fa fa-wrench" aria-hidden="true"></i></button>
                     </a>
                     &nbsp;&nbsp;
                     <a routerLink="/periode/{{plant.identifiant}}">
-                        <button class="btn btn-info" ><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
+                        <button class="btn btn-info" title="Afficher les périodes de cette plante"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
                     </a>
                     </td>
                 </tr>

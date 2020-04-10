@@ -31,8 +31,8 @@ export class GraphiqueJardinAffichageComponent implements OnInit {
 
   // Faire un espace aux bonnes proportions
   genererMatrice() {
-    var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
-    var nbCol = this.jardin.length * 100 / 5;
+    var nbLigne = this.jardin.width * 100 / 50; // on sépare notre espace par tranche de 50cm
+    var nbCol = this.jardin.length * 100 / 50;
 
     for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
       this.matrice[indexLigne] = [];

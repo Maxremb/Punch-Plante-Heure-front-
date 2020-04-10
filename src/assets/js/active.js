@@ -1,3 +1,4 @@
+function maFonction1(){
 (function ($) {
     'use strict';
 
@@ -190,4 +191,4 @@
         new WOW().init();
     }
 
-})(jQuery);
+})(jQuery);}

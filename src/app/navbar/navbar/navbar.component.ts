@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ConnexionService } from 'src/app/services/connexion.service';
 import { ConnectedUser } from 'src/app/models/connectedUser';
 
+declare function maFonction1():any;
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,6 +16,7 @@ export class NavbarComponent implements OnInit {
   constructor( private connexionService: ConnexionService) { }
 
   ngOnInit(): void {
+    maFonction1();
 
     this.user = JSON.parse(localStorage.getItem('connectedUser'));
     console.log("NAVBAR ==> connectedUSer ", this.connexionService.connectedUser)

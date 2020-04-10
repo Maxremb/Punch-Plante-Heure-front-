@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  utilisateur: UtilisateurUpdateDto;
+
+  constructor( ) { }
 
   ngOnInit(): void {
+    
   }
 
+  
 }

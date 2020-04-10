@@ -3,6 +3,8 @@ import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-up
 import { PeriodeService } from 'src/app/services/periode.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-planning-jardin',
@@ -17,6 +19,7 @@ export class PlanningJardinComponent implements OnInit {
     private periodeService: PeriodeService,
     private planteUtilisateurService: PlanteUtilisateurService,
     private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -145,5 +148,10 @@ export class PlanningJardinComponent implements OnInit {
     )
   }
 
-}
+  }
+  retour(): void {
+    this.location.back();
+  }
+
+
 }

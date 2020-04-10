@@ -9,15 +9,15 @@
     </div>
 
     <!--LISTE DES JARDINS-->
+    <div class="container">
     <div class="row" *ngIf="this.utilisateurActif">
-        <label>
-            <h2>Mes jardins</h2>
-        </label>
-        <hr>
+        <div class="col-12 col-lg-12">
+        <h2>Mes jardins</h2>
+        
+        <br><br>
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nom</th>
                     <th>Sol</th>
                     <th>Longueur</th>
@@ -28,9 +28,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let e of this.allJardins">
-                    <td><a routerLink="/jardin/detail/{{e.identifier}}">
-                        {{e.identifier}}
-                    </a></td>
+                   
                     <td><a routerLink="/jardin/detail/{{e.identifier}}">
                         {{e.name}}
                     </a></td>
@@ -47,7 +45,7 @@
                         {{e.dept.name}}
                     </a></td>
                     <td>
-                        <a routerLink="/jardin/update">
+                        <a routerLink="/jardin/update/{{e.identifier}}">
                             <button class="btn alazea-btn mt-15">Modifier les caractéristiques de 
                                 mon jardin</button>
                         </a>
@@ -58,6 +56,8 @@
             </tbody>
         </table>
     </div>
+    </div>
+</div>
 </div>
 
 <!--LIEN DE NAVIGATION-->
@@ -65,9 +65,6 @@
     <div class="bottompage">
         <a routerLink="/jardin/create">
             <input type="button" value="Ajouter un jardin" class="btn alazea-btn mt-15" />
-        </a>
-        <a routerLink="">
-            <input type="button" value="Accueil" class="btn alazea-btn mt-15" />
         </a>
     </div>
 </div>

@@ -38,15 +38,18 @@ import { CreateDepartementComponent } from './content/departement/create-departe
 import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
 import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
 import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
-import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component'; 
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
+import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component';
 import { EntetePlantAdminComponent } from './content/plant/entete-plant-admin/entete-plant-admin.component';
 import { ConnexionComponent } from './content/connexion/connexion.component';
 import { EnteteConnexionComponent } from './content/connexion/entete-connexion/entete-connexion.component';
 import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
 import { EnteteInscriptionComponent } from './content/inscription/entete-inscription/entete-inscription.component';
+import { MeteoComponent } from './content/meteo/meteo/meteo.component';
+import { EnteteMeteoComponent } from './content/meteo/entete-meteo/entete-meteo.component';
 
 
 @NgModule({
@@ -88,12 +91,15 @@ import { EnteteInscriptionComponent } from './content/inscription/entete-inscrip
     MeteoDepComponent,
     NotificationsComponent,
     GraphiqueJardinAffichageComponent,
+    ArrosageComponent,
     ConnexionComponent,
     EnteteConnexionComponent,
     InscriptionComponent,
     EntetePlantAdminComponent,
     EnteteInscriptionComponent,
-    
+    MeteoComponent,
+    EnteteMeteoComponent,
+
   ],
   imports: [
     BrowserModule,

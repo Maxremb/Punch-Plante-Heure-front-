@@ -4,26 +4,26 @@
     
     <div class="row" >
         <!-- div pour le formulaire de mise à jour -->
-        <div class="col12 col-lg-5" style="padding-left: 0%;">
+        <div class="col12 col-lg-5" style="padding-left: 0%;" *ngIf="this.planteUtilisateur && this.updateplanteForm">
             <h2>Mise à jour de ma plante</h2>
             <hr>
             <!-- Affichage des infos non modifiables -->
-            <label class="label">ID : </label> <span> {{planteUtilisateur.identifiant}} </span><br>
+            
             <label class="label">Nom : </label> <span> {{planteUtilisateur.modelPlant.commun}} </span>
             <!-- Debut du formulaire de modification --> 
             <form [formGroup]="updateplanteForm" (ngSubmit)="this.update()">
                 <div class="form-group">
                     <label class="label" for="plantingDate">Date de plantation : </label>
-                    ({{planteUtilisateur.plantingDate}})
-                    <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate">
+                    {{planteUtilisateur.plantingDate}}
+                    <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate" [(ngModel)]="this.planteUtilisateur.plantingDate">
                 </div>
                 <div class="form-group">
-                    <label class="label" for="semiDate">Date de semis : </label> ({{planteUtilisateur.semiDate}})
-                    <input type="date" id="semiDate" class="form-control" formControlName="semiDate">
+                    <label class="label" for="semiDate">Date de semis : </label> {{planteUtilisateur.semiDate}}
+                    <input type="date" id="semiDate" class="form-control" formControlName="semiDate" [(ngModel)]="this.planteUtilisateur.semiDate">
                 </div>
                 <div class="form-group">
-                    <label class="label" for="healthStage">Etat de santé : </label> ({{planteUtilisateur.healthStage}})
-                    <select id="healthStage" class="form-control" formControlName="healthStage">
+                    <label class="label" for="healthStage">Etat de santé : </label> {{planteUtilisateur.healthStage}}
+                    <select id="healthStage" class="form-control" formControlName="healthStage" [(ngModel)]="this.planteUtilisateur.healthStage">
                         <option value="bonneSante">En bonne santé</option>
                         <option value="moyenne">Moyenne</option>
                         <option value="morte">Morte</option>
@@ -31,8 +31,8 @@
                 </div>
                 <div class="form-group">
                     <label class="label" for="plantStage">Etat de la plante : </label>
-                    ({{planteUtilisateur.plantStage}})
-                    <select id="plantStage" class="form-control" formControlName="plantStage">
+                    {{planteUtilisateur.plantStage}}
+                    <select id="plantStage" class="form-control" formControlName="plantStage" [(ngModel)]="this.planteUtilisateur.plantStage">
                         <option value="semis">Semis</option>
                         <option value="jeunePousse">Jeune pousse</option>
                         <option value="plant">Plante</option>
@@ -62,11 +62,8 @@
 <!-- Ajout de boutons en bas de la page pour retourner à mon jardin / a mes jardins -->
 <div class="container">
     <div class="bottompage">
-        <a routerLink="/jardin/detail">
+        <a routerLink="/jardin/detail/{{this.idJardin}}">
             <button class="btn alazea-btn mt-15">Retour à mon jardin</button>
-        </a>
-        <a routerLink="/jardin">
-            <button class="btn alazea-btn mt-15">Mes jardins</button>
         </a>
     </div>
 </div>

@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
-
-import { DepartementService } from 'src/app/services/departement.service';
 import { DepartementDto } from 'src/app/models/departement-dto';
-
 import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 
