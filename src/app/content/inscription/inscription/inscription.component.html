@@ -30,7 +30,7 @@
             <p>* Champs requis</p>
             <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.inscriptionForm.valid || this.util.pwd !== this.pwd2">Enregistrer</button> 
             <div *ngIf="this.messageValidation.length">
-                <div class="alert alert-fail" *ngIf="this.error">
+                <div class="alert alert-danger" *ngIf="this.error">
                     {{this.messageValidation}}
                 </div>
                 <div class="alert alert-success" *ngIf="!this.error">

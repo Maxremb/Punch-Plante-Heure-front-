@@ -34,32 +34,32 @@ export class ConnexionComponent implements OnInit {
     console.log("init component ")
     this.connexionForm = new FormGroup({
       mail: new FormControl(this.mail,
-        Validators.required),
-      pwd: new FormControl(this.pwd, Validators.required),
+        [Validators.required, Validators.email]),
+      pwd: new FormControl(this.pwd, [Validators.required, Validators.minLength(8)]),
     });
   }
 
 
+
   connect(mail: string, pwd: string) {
     this.service.getByEmailAndPwd(mail, pwd).subscribe(
-      (responsedto) => {
-        if (!responsedto.error) {
-          this.connexion = responsedto.body
-          if (this.connexion.isAdmin) {
-            responsedto.body = this.admin;
-            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
-            this.error = false;
-          } else if (!this.connexion.isAdmin) {
-            responsedto.body = this.utilisateur;
-            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
-            this.error = false;
-          }
-        } (error) => {
-          console.log('debug responseDto : ', error);
-          this.messageValidation = 'ERREUR ! La connexion a echoué !';
-          this.error = true;
+      (connexionDto) => {
+        this.error = !this.service.connect(connexionDto);
+        if(!this.error){
+        if (!connexionDto.user) {
+          this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
+          location.href='admin'
+        } else if (connexionDto.user) {
+          this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
+          location.href=''
         }
-
+      } else {
+        this.messageValidation = "Quelque chose ne marche pas :("
+      }
+      },
+      (error) => {
+        console.log('debug responseDto : ', error);
+        this.messageValidation = 'e-mail et/ou mot de passe invalide !';
       }
 
     );
