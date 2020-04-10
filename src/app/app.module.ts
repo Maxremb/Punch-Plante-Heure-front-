@@ -50,6 +50,7 @@ import { InscriptionComponent } from './content/inscription/inscription/inscript
 import { EnteteInscriptionComponent } from './content/inscription/entete-inscription/entete-inscription.component';
 import { MeteoComponent } from './content/meteo/meteo/meteo.component';
 import { EnteteMeteoComponent } from './content/meteo/entete-meteo/entete-meteo.component';
+import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail-utilisateur/detail-utilisateur.component';
 import { UtilisateurComponent } from './content/utilisateur/utilisateur.component';
 import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component';
 import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
@@ -102,9 +103,13 @@ import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-ut
     EnteteInscriptionComponent,
     MeteoComponent,
     EnteteMeteoComponent,
+<<<<<<< HEAD
+    DetailUtilisateurComponent,
+=======
     UtilisateurComponent,
     GestionAdminComponent,
     EnteteUtilisateurAdminComponent,
+>>>>>>> e3355a6dbaa96240ff055292b374fe608514c9dd
 
   ],
   imports: [
