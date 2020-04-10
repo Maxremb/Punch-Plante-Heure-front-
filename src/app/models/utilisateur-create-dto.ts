@@ -11,6 +11,5 @@ export class UtilisateurCreateDto{
     phone: number;
     reput: string;
     news: boolean;
-    active: boolean;
     picture: string;
 }
