@@ -39,26 +39,15 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-12">
-                <h3>Votre station météo pour vos départements :</h3>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Numéro du département</th>
-                            <th>Nom du département</th>
-                            <th>Météo du jour</th>
-                            <th>Historique de la météo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let jardin of this.allJardins">
-                            <td>{{jardin.dept.depNum}}</td>
-                            <td>{{jardin.dept.name}}</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="col-12 col-lg-12" >
+            <h3>Vos raccourcis</h3>
+            <a routerLink="/jardin">
+                <button class="btn alazea-btn mt-15">Voir mes jardins</button>
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/">
+                <button class="btn alazea-btn mt-15">Voir mes stations meteo</button>
+            </a>
             </div>
         </div>
     </div>

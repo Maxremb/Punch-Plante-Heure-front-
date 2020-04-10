@@ -34,6 +34,7 @@ import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-ja
 import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component';
 import { ConnexionComponent } from './content/connexion/connexion.component';
 import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
+import { MeteoComponent } from './content/meteo/meteo/meteo.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
 
   { path : 'jardin/graphique', component : GraphiqueJardinComponent},
   { path : 'planning/:id' , component : PlanningJardinComponent },
+  { path : 'meteo', component : MeteoComponent }
   { path : 'meteo/:id' , component : MeteoDepComponent },
   { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent},
   { path : 'jardin/detail/arrosage', component : ArrosageComponent},
