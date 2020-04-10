@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
-import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
+import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
+import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 
 @Component({
   selector: 'app-all-jardin',
@@ -11,15 +12,15 @@ import { UtilisateurUpdateDto} from 'src/app/models/utilisateur-update-dto';
 export class AllJardinComponent implements OnInit {
 
   //liste de tout lesjardins de l'user
-  allJardins :Array<JardinUpdateDto>;
+  allJardins: Array<JardinUpdateDto>;
 
-  jardin :JardinUpdateDto;
+  jardin: JardinUpdateDto;
 
   utilisateurActif: UtilisateurUpdateDto;
 
-  constructor(private service : JardinService, 
- //   private serviceUtilisateur : serviceUtilisateur
-    ) { }
+  constructor(private service: JardinService, private servicePlanteUtilisateur: PlanteUtilisateurService
+    //   private serviceUtilisateur : serviceUtilisateur
+  ) { }
 
   ngOnInit(): void {
     this.getUtilisateur();
@@ -27,16 +28,16 @@ export class AllJardinComponent implements OnInit {
   }
 
 
-  getUtilisateur() : void {
-    this.utilisateurActif= new UtilisateurUpdateDto();
-    this.utilisateurActif.firstName= "nom";
-    this.utilisateurActif.identifier= 1;
+  getUtilisateur(): void {
+    this.utilisateurActif = new UtilisateurUpdateDto();
+    this.utilisateurActif.firstName = "nom";
+    this.utilisateurActif.identifier = 1;
   }
 
   // retourne la liste de tout les jardins de l'user conencté
   readAllByIdUtilisateur() {
     this.service.getAllByUtilisateur(this.utilisateurActif.identifier, 0).subscribe(
-     responseDto => {
+      responseDto => {
         if (!responseDto.error) {
           console.log('ici')
           this.allJardins = responseDto.body.content;
@@ -56,16 +57,23 @@ export class AllJardinComponent implements OnInit {
 
   //supprime un jardin de l'user et refresh liste
   delete(identifier: number) {
-    this.service.delete(identifier).subscribe(
-      responseDto => {
-        if (!responseDto.error) {
-          this.allJardins = this.allJardins.filter(
-            element => element.identifier !== identifier);
-        }
+
+    this.servicePlanteUtilisateur.deleteByJardin(identifier).subscribe(
+      (resp) => {
+        this.service.delete(identifier).subscribe(
+          responseDto => {
+            if (!responseDto.error) {
+              this.allJardins = this.allJardins.filter(
+                element => element.identifier !== identifier);
+
+            }
+          }
+        )
       }
     )
+
   }
 
-  
+
 
 }
