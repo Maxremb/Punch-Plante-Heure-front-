@@ -10,6 +10,7 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 export class AllPlantComponent implements OnInit {
 
   allPlant = new Array<PlanteModeleUpdateDto>();
+  singlePlant: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
   pageActive:number =0;
   maxPage:number=0;
   pageTotal:number[]=[];
@@ -18,6 +19,8 @@ export class AllPlantComponent implements OnInit {
   choix: boolean;
   recherche: boolean;
   numero: number;
+  single: boolean;
+
 
   constructor(private service:PlanteModeleService) { }
 
@@ -26,6 +29,7 @@ export class AllPlantComponent implements OnInit {
     this.choix = true;
     this.liste = false;
     this.recherche = false;
+    this.single = false;
   }
 
   // Methode pour afficher les choix de l'administrateur
@@ -46,6 +50,14 @@ export class AllPlantComponent implements OnInit {
   afficherRecherche() {
     this.recherche = true;
     this.choix = false;
+  }
+
+  // Methode pour afficher le tableau avec SINGLE
+  afficherSingle(numero: number) {
+    this.recherche = true;
+    this.choix = false;
+    this.single = true;
+    this.getSingle(numero);
   }
 
   range(pactif,ptotal) {
@@ -70,6 +82,17 @@ export class AllPlantComponent implements OnInit {
         }
       }
     );
+  }
+
+  getSingle(numero: number) {
+    this.service.getId(this.numero).subscribe(
+      (responseDto) => {
+        console.log('debug responseDto :', responseDto);
+        if (!responseDto.error) {
+          this.singlePlant = responseDto.body;
+        }
+      }
+    )
   }
 
   delete(id: number) {
