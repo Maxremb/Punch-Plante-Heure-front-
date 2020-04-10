@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JardinService } from 'src/app/services/jardin-service.service';
-import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
-import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { ConnectedUser } from 'src/app/models/connectedUser';
 
 @Component({
@@ -13,36 +11,30 @@ import { ConnectedUser } from 'src/app/models/connectedUser';
 export class MeteoComponent implements OnInit {
 
   user: ConnectedUser;
-  utilisateur: UtilisateurUpdateDto = new UtilisateurUpdateDto();
   allJardins = new Array<JardinUpdateDto>();
+  allJardinsBis = new Array<JardinUpdateDto>();
 
   constructor(
-    private jardinservice: JardinService,
-    private utilisateurservice: UtilisateurService) { }
+    private jardinservice: JardinService
+    ) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('connectedUser'));
-    this.getUtilisateur();
     this.getAllJardins();
   }
 
-  getUtilisateur() {
-    if (this.user) {
-      this.utilisateurservice.getUtilisateur(this.user.id).subscribe(
-        (responseDto) => {
-             if (!responseDto.error) {
-                this.utilisateur = responseDto.body;
-             }
-           }
-        );
-    }
-  }
-
   getAllJardins() {
-    this.jardinservice.getAllByUtilisateur(this.utilisateur.identifier, 0).subscribe(
+    this.jardinservice.getAllByUtilisateur(this.user.id, 0).subscribe(
       responseDto => {
           if (!responseDto.error) {
             this.allJardins = responseDto.body.content;
+            this.allJardins.forEach(
+              j => { 
+                if (this.allJardinsBis.indexOf(j) === -1) {
+                  this.allJardinsBis.push(j);
+                }
+              }
+            )
           }
       },
       responseDtoerror => {

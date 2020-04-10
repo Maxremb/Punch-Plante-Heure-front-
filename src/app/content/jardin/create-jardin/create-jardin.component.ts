@@ -5,6 +5,7 @@ import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 import { DepartementDto } from 'src/app/models/departement-dto';
 import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConnectedUser } from 'src/app/models/connectedUser';
 
 
 @Component({
@@ -22,11 +23,12 @@ export class CreateJardinComponent implements OnInit {
   //message fct
   messageValidation = null;
   messageErreur = null;
-  //user actif
-  utilisateurActif = new UtilisateurUpdateDto();
+  
   //liste de tout les depts
   allDepartements = new Array<DepartementDto>();
-
+  //user actif
+  user: ConnectedUser;
+  utilisateur: UtilisateurUpdateDto = new UtilisateurUpdateDto();
 
 
   constructor(
@@ -36,7 +38,7 @@ export class CreateJardinComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUtilistaeurActif();
+    this.user = JSON.parse(localStorage.getItem('connectedUser'));
     this.addJardinForm = new FormGroup({
       "name": new FormControl(this.jardin.name, Validators.required),
       "ground": new FormControl(this.jardin.ground, Validators.required),
@@ -53,18 +55,14 @@ export class CreateJardinComponent implements OnInit {
   get width() { return this.addJardinForm.get('width') }
   get dept() { return this.addJardinForm.get('dept') }
 
-  getUtilistaeurActif(): void {
-    this.utilisateurActif.firstName = "nom";
-    this.utilisateurActif.identifier = 1;
-  }
+  
 
   //creation jardin + erecuperation objet créé
   create() {
-
-
     this.jardin.dept = new DepartementDto();
     this.jardin.dept.depNum = this.depNum;
-    this.jardin.user = this.utilisateurActif;
+    this.utilisateur.identifier = this.user.id;
+    this.jardin.user = this.utilisateur;
     console.log('user' + this.jardin.user.identifier);
     console.log('debut create subcribe');
     this.service.create(this.jardin).subscribe(

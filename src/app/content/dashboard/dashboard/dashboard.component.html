@@ -8,8 +8,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">
-                <h3>Vos notifications :</h3>
-                <h5><i>Vous n'avez pas de notifications pour le moment</i></h5>
+                <h3>Mes notifications :</h3>
+                <h5><i>Aucune notification pour le moment</i></h5>
             </div>
         </div>
     </div>
@@ -17,28 +17,29 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">
-                <h3>Vos informations personnelles :</h3>
-                <h5>Prénom :</h5>{{this.utilisateur.firstName}}
-                <h5>Nom :</h5>{{this.utilisateur.lastName}}
-                <h5>Pseudo :</h5>{{this.utilisateur.pseudo}}
-                <h5>Email :</h5>{{this.utilisateur.mail}}
-                <h5>Telephone :</h5> {{this.utilisateur.phone}}
-                <h5>Picture :</h5> {{this.utilisateur.picture}}
+                <h3>Mes informations personnelles :</h3>
+                <h5>Prénom : {{this.utilisateur.firstName}} </h5>
+                <h5>Nom : {{this.utilisateur.lastName}} </h5>
+                <h5>Pseudo : {{this.utilisateur.pseudo}} </h5>
+                <h5>Email : {{this.utilisateur.mail}} </h5>
+                <h5>Telephone : {{this.utilisateur.phone}} </h5>
+                <h5>Picture : {{this.utilisateur.picture}} </h5>
                 
-                <a routerLink="/utilisateur/detail">
+                <a routerLink="/utilisateur/detail/{{this.utilisateur.identifier}}">
                     <button class="btn alazea-btn mt-15">Modifier mes informations</button>
                 </a>
-                &nbsp;&nbsp;
-                <div *ngIf="this.utilisateur.active">
+                
+                <span *ngIf="this.utilisateur.active">
+                <br><br>
+                <h3>Votre compte est activé.</h3>
                 <button class="btn alazea-btn mt-15" (click)="this.desactiver(this.utilisateur.identifier)">Désactiver mon compte</button>
-                </div>
-                &nbsp;&nbsp;
-                <div *ngIf="!this.utilisateur.active">
+                </span>
+                <span *ngIf="!this.utilisateur.active">
+                <br><br>
+                <h3>Votre compte est désactivé.</h3>
                 <button class="btn alazea-btn mt-15" (click)="this.activer(this.utilisateur.identifier)">Activer mon compte</button>
-                </div>
-                &nbsp;&nbsp;
-                <span>{{this.message}}</span>
-            </div>
+                </span>
+              </div>
         </div>
     </div>
     <hr>
@@ -46,7 +47,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">
-                <h3>Vos raccourcis :</h3>
+                <h3>Mes raccourcis :</h3>
                 <a routerLink="/jardin">
                     <button class="btn alazea-btn mt-15">Voir mes jardins</button>
                 </a>
