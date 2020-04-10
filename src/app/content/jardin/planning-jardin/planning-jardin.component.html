@@ -1,3 +1,4 @@
+<div *ngIf="fini">
 <br><br>
 <div class="taille">
 <table>
@@ -18,7 +19,7 @@
         <th class="mois">Dec</th>
     </tr>
 </table>
-<table *ngFor="let plante of allPlantes">
+<table *ngFor="let plante of allPlanteLave">
     <tr>
         <th class="moisPlante" style="background-color: white; height: 0px; padding: 0px"></th>
         <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
@@ -128,6 +129,7 @@
     <div class="bottompage">
         <button (click)="retour()">Retour à mon jardin</button>
     </div>
+</div>
 </div>
 
 
