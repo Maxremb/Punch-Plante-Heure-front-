@@ -73,7 +73,7 @@ const routes: Routes = [
   { path : 'jardin/detail/arrosage', component : ArrosageComponent},
 
   { path : 'inscription', component : InscriptionComponent},
-  { path : 'utilisateur/detail', component : DetailUtilisateurComponent},
+  { path : 'utilisateur/detail/:identifier', component : DetailUtilisateurComponent},
   { path : 'utilisateur/gestion-admin', component : GestionAdminComponent},
   { path : 'admin/detail', component : DetailAdminComponent},
 
