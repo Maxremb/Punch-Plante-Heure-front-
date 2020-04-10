@@ -14,32 +14,42 @@ declare function maFonction(): any;
 export class DetailUtilisateurComponent implements OnInit {
 
   userUpdateForm: FormGroup;
-
+  lastName: string;
+  firstName: string;
+  pseudo: string;
+  mail: string;
+  pwd: string;
+  desc: string;
+  phone: number;
+  reput: string;
+  news: boolean;
+  active: boolean;
+  picture: string;
+  identifier: number;
   utilisateur: UtilisateurUpdateDto = new UtilisateurUpdateDto();
 
   messageValidation = '';
   error: boolean;
-  
+
   constructor(private service: UtilisateurService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getUserById();
     maFonction();
     this.userUpdateForm = new FormGroup({
-      firstName: new FormControl(this.utilisateur.firstName, Validators.required),
-      lastName: new FormControl(this.utilisateur.lastName, Validators.required),
-      pseudo: new FormControl(this.utilisateur.pseudo, Validators.required),
-      mail: new FormControl(this.utilisateur.mail, Validators.required),
-      phone: new FormControl(this.utilisateur.phone, Validators.required),
+      firstName: new FormControl(this.utilisateur.firstName),
+      lastName: new FormControl(this.utilisateur.lastName),
+      pseudo: new FormControl(this.utilisateur.pseudo),
+      mail: new FormControl(this.utilisateur.mail),
+      phone: new FormControl(this.utilisateur.phone),
       picture: new FormControl(this.utilisateur.picture),
     });
   }
 
 
   getUserById(): void {
-
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.service.getUtilisateur(id).subscribe(
+    const identifier = +this.route.snapshot.paramMap.get('identifier');
+    this.service.getUtilisateur(identifier).subscribe(
       (responsedto) => {
         if (!responsedto.error) {
           this.utilisateur = responsedto.body;
