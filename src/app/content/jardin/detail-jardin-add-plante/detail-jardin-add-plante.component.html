@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="this.jardin">
 
     <!-- Utilisation de l'entete-->
     <app-entete-jardin></app-entete-jardin>
@@ -13,11 +13,17 @@
                 <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
 
                     <label class="label" for="commun">Nom de la plante</label>
-                    <select id="commun" class="form-control" formControlName="commun" required
-                        [(ngModel)]="this.plante.modelPlant">
-                        <option *ngFor="let planteModel of this.allPlantes" [ngValue]="this.planteModel">
-                            {{planteModel.commun}}</option>
-                    </select>
+                    <input #searchBox id="search-box" class="form-control" (input)="search(searchBox.value)"
+                        placeholder="Mot clé de trois caractères ou plus..." [(ngModel)]="this.keyWord" minlength=3 [ngModelOptions]="{standalone:true}" />
+
+                    <div *ngIf="this.allPlantes && this.nbPlantesTotal && this.allPlantes.length==this.nbPlantesTotal">
+                        <select id="commun" class="form-control" formControlName="commun" required
+                            [(ngModel)]="this.plante.modelPlant">
+                            <option *ngFor="let planteModel of this.allPlantes" [ngValue]="this.planteModel">
+                                {{planteModel.commun}}</option>
+                        </select>
+                    </div>
+
                     <br>
                     <label class="label" for="plantingDate">Date de plantation : </label>
                     <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate"
@@ -61,8 +67,8 @@
 
             <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
 
-            <h2>Liste des plantes de mon jardin</h2>
-            <hr>
+            <h2 style="padding-bottom: 7px;">Liste des plantes de mon jardin</h2>
+            <!-- <hr> -->
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -105,7 +111,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
             <nav aria-label="Page navigation" *ngIf="this.listePlanteUtil.length" style="position: bottom;">
                 <ul class="pagination">
                     <li class="page-item" *ngIf="this.pageActiveUtil>0">
