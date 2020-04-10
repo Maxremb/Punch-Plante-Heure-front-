@@ -63,13 +63,9 @@ export class GraphiqueJardinComponent implements OnInit {
           this.plantesDuJardin = responseDto.body;
           this.planteok=true;
           this.genererMatrice();
-         
         }
       }
     );
-    
-   
-    
   }
 
 
@@ -92,10 +88,8 @@ export class GraphiqueJardinComponent implements OnInit {
       if(plante.coordonnees){
         this.matrice[plante.coordonnees[0]][plante.coordonnees[1]] = plante.modelPlant.commun;
       }
-      
     }
-    )
-     
+    ); 
   }
 
 
@@ -168,11 +162,6 @@ export class GraphiqueJardinComponent implements OnInit {
   selectionnerPlante(planteChoisis: PlanteModeleUpdateDto){
     this.planteSelectionner = planteChoisis;
     this.selection = planteChoisis.commun;
-
-    
-    console.log('plante selectionner : ', this.planteSelectionner)
-    console.log('plante selectionner id : ', this.planteSelectionner.identifiant)
-
   }
 
 
@@ -201,8 +190,6 @@ export class GraphiqueJardinComponent implements OnInit {
     
 
   enleverPlanteDuJardin(laPlante: PlanteUtilisateurUpdateDto, coordoDeLaPlante: Array<number>, nomDeLaPlante: string) {
-    
-
     this.servicePlanteUtilisateur.delete(laPlante.identifiant).subscribe(
       (ResponseDto) => {
         if (!ResponseDto.error) {
@@ -212,7 +199,6 @@ export class GraphiqueJardinComponent implements OnInit {
         }
       }
     );
-
     this.matrice[coordoDeLaPlante[0]][coordoDeLaPlante[1]] = '';
   }
 
