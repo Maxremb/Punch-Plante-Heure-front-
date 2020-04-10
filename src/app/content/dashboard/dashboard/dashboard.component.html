@@ -18,23 +18,26 @@
         <div class="row">
             <div class="col-12 col-lg-12">
                 <h3>Vos informations personnelles :</h3>
-                <h5>Prénom :</h5>{{utilisateur.firstName}}
-                <h5>Nom :</h5>{{utilisateur.lastName}}
-                <h5>Pseudo :</h5>{{utilisateur.pseudo}}
-                <h5>Email :</h5>{{utilisateur.mail}}
-                <h5>Telephone :</h5> {{utilisateur.phone}}
-                <h5>Picture :</h5> {{utilisateur.picture}}
+                <h5>Prénom :</h5>{{this.utilisateur.firstName}}
+                <h5>Nom :</h5>{{this.utilisateur.lastName}}
+                <h5>Pseudo :</h5>{{this.utilisateur.pseudo}}
+                <h5>Email :</h5>{{this.utilisateur.mail}}
+                <h5>Telephone :</h5> {{this.utilisateur.phone}}
+                <h5>Picture :</h5> {{this.utilisateur.picture}}
                 
                 <a routerLink="/utilisateur/detail">
                     <button class="btn alazea-btn mt-15">Modifier mes informations</button>
                 </a>
                 &nbsp;&nbsp;
-                <div *ngIf="utilisateur.active">
-                <button class="btn alazea-btn mt-15" (click)="this.desactiver(utilisateur.identifier)">Désactiver mon compte</button>
+                <div *ngIf="this.utilisateur.active">
+                <button class="btn alazea-btn mt-15" (click)="this.desactiver(this.utilisateur.identifier)">Désactiver mon compte</button>
                 </div>
-                <div *ngIf="!utilisateur.active">
-                    Votre compte est désactivé.
+                &nbsp;&nbsp;
+                <div *ngIf="!this.utilisateur.active">
+                <button class="btn alazea-btn mt-15" (click)="this.activer(this.utilisateur.identifier)">Activer mon compte</button>
                 </div>
+                &nbsp;&nbsp;
+                <span>{{this.message}}</span>
             </div>
         </div>
     </div>
