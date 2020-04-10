@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { JardinCreateDto } from 'src/app/models/jardin-create-dto';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
 
-declare function maFonction1():any;
+declare function maFonction1(): any;
 @Component({
   selector: 'app-arrosage',
   templateUrl: './arrosage.component.html',
@@ -11,27 +10,26 @@ declare function maFonction1():any;
 })
 export class ArrosageComponent implements OnInit {
 
-  jardin : JardinUpdateDto
-  afficher : boolean = false
-
+  jardin: JardinUpdateDto
+  afficher: boolean = false
+  niveau : string
   constructor(
     private jardinservice: JardinService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getJardin();
     maFonction1();
 
   }
-//  getValeur(){
-//    this.jardin.usefullReserve = 50;
+  getJardin() {
+    this.jardin = new JardinUpdateDto();
+    this.jardin.identifier;
+    this.jardin.usefullReserve;
+    this.niveau =  this.jardin.usefullReserve.toString() +"%";
 
-//  }
- getJardin(){
-  this.jardin= new JardinUpdateDto();
-  this.jardin.identifier=1;
-  this.jardin.usefullReserve=50;
-  this.afficher = true;
-
- }
+  }
+  setArrosed() {
+    this.jardin.isArrosed = true;
+  }
 }
