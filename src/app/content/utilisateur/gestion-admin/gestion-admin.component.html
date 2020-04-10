@@ -40,6 +40,7 @@
               <tr>
                   <th>ID</th>
                   <th>Nom</th>
+                  <th>Prénom</th>
                   <th>Email</th>
                   <th>Activer</th>
                   <th></th>
@@ -50,6 +51,7 @@
                   <td>{{utilisateur.identifier}}</td>
                   <td>{{utilisateur.lastName}}</td>
                   <td>{{utilisateur.firstName}}</td>
+                  <td>{{utilisateur.mail}}</td>
                   <td>{{utilisateur.active}}</td>
                   <td>
                   <button class="btn btn-danger" title="Désactiver" (click)="this.desactivateUser(utilisateur.identifier)"><i class="fa fa-times" aria-hidden="true"></i></button>
