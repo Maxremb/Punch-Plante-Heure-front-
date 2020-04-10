@@ -43,10 +43,7 @@ const routes: Routes = [
   { path : 'admin' , component :  DashboardAdminComponent },
   { path : 'jardin' , component :  AllJardinComponent},
   { path : 'jardin/create' , component : CreateJardinComponent },
-  { path : 'jardin/detail', component : DetailJardinComponent }, // à supprimer à terme
-  { path : 'jardin/update', component : UpdateJardinComponent }, // à supprimer à terme
-  { path : 'jardin/detail/addplante', component : DetailJardinAddPlanteComponent },// à supprimer à terme
-  { path : 'jardin/detail/updateplante', component : DetailJardinUpdatePlanteComponent },// à supprimer à terme
+  
   { path : 'plant/vadmin', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
@@ -64,7 +61,7 @@ const routes: Routes = [
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
   { path : 'connexion', component : ConnexionComponent },
 
-  { path : 'jardin/graphique', component : GraphiqueJardinComponent},
+  { path : 'jardin/graphique/:id', component : GraphiqueJardinComponent},
   { path : 'planning/:id' , component : PlanningJardinComponent },
   { path : 'meteo', component : MeteoComponent },
   { path : 'meteo/:id' , component : MeteoDepComponent },

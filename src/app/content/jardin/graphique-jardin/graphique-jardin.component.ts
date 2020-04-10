@@ -9,6 +9,7 @@ import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-se
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { ResponseDto } from 'src/app/models/response-dto';
 import { prependListener } from 'process';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,10 +18,12 @@ import { prependListener } from 'process';
   styleUrls: ['./graphique-jardin.component.css']
 })
 export class GraphiqueJardinComponent implements OnInit {
+  idJardin: number;
   message: string = '';
   planteok: boolean = false;
+
   // Crée au lancement
-  jardin: JardinUpdateDto = new JardinUpdateDto;
+  jardin: JardinUpdateDto;
   matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
   selection: string = "";
   plantesDuJardin: Array<PlanteUtilisateurUpdateDto>;
@@ -35,29 +38,37 @@ export class GraphiqueJardinComponent implements OnInit {
 
 
 
-  constructor(private serviceJardin: JardinService, private servicePlanteUtilisateur: PlanteUtilisateurService, private servicePlanteModel: PlanteModeleService,) {
-
-    // entrée d'un jardin spécifique pour test au lieu de this.jardinservice.jardin
-    this.jardin = new JardinUpdateDto();
-    this.jardin.identifier = 1;
-    this.jardin.length = 1;
-    this.jardin.width = 1;
-    this.jardin.name = 'JardinTest';
-  }
-
-
-
-  ngOnInit(): void {
-    this.getPlantesDejaPresentes();
+  constructor(private serviceJardin: JardinService,
+     private servicePlanteUtilisateur: PlanteUtilisateurService,
+     private servicePlanteModel: PlanteModeleService,
+     private route: ActivatedRoute,) {
     
   }
 
 
 
+  ngOnInit(): void {
+    this.idJardin = +this.route.snapshot.paramMap.get('id');
+    this.getJardin();
+    
+  }
+
+
+
+  getJardin() {
+    this.serviceJardin.getId(this.idJardin).subscribe(
+      (responseDto) => {
+        this.jardin = responseDto.body;
+        this.getPlantesDejaPresentes()
+      }
+    );
+  }
+
+
   // Récupère les plantes déjà associées à ce jardin 
   // Faire qqc pour les nombres de pages
   getPlantesDejaPresentes() {
-    this.servicePlanteUtilisateur.getAllByJardinListe(this.jardin.identifier).subscribe(
+    this.servicePlanteUtilisateur.getAllByJardinListe(this.idJardin).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesDuJardin = responseDto.body;
@@ -71,19 +82,17 @@ export class GraphiqueJardinComponent implements OnInit {
 
   // Faire un espace aux bonnes proportions
   genererMatrice() {
-    var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
-    var nbCol = this.jardin.length * 100 / 5;
-    console.log('plante du jardin 2', this.plantesDuJardin);
-    for (let indexLigne = 0; indexLigne < nbLigne-1; indexLigne++) {
+    var nbLigne = this.jardin.width * 100 / 50;
+    var nbCol = this.jardin.length * 100 / 50;
+    for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
       this.matrice[indexLigne] = [];
-      for (let indexCol = 0; indexCol < nbCol-1; indexCol++) {
+      for (let indexCol = 0; indexCol < nbCol; indexCol++) {
         this.matrice[indexLigne][indexCol] = "";
       }
     }
     
     // Pour chaque plante déjà présente dans le jardin on associe le nom commun à la bonne position dans la matrice 
     // TO DO : A NE FAIRE QUE POUR LES PLANTES QUI ONT DES COORDONNEES
-    console.log('plante du jardin 3', this.plantesDuJardin);
     this.plantesDuJardin.forEach(plante => {
       if(plante.coordonnees){
         this.matrice[plante.coordonnees[0]][plante.coordonnees[1]] = plante.modelPlant.commun;
@@ -130,8 +139,8 @@ export class GraphiqueJardinComponent implements OnInit {
 
   // Efface juste la grille pour l'instant
   remiseAZero() {
-    var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
-    var nbCol = this.jardin.length * 100 / 5;
+    var nbLigne = this.jardin.width * 100 / 50; // on sépare notre espace par tranche de 5cm
+    var nbCol = this.jardin.length * 100 / 50;
 
     for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
       this.matrice[indexLigne] = [];
@@ -200,6 +209,11 @@ export class GraphiqueJardinComponent implements OnInit {
       }
     );
     this.matrice[coordoDeLaPlante[0]][coordoDeLaPlante[1]] = '';
+  }
+
+
+  deplacerUnePlante(laPlante: PlanteUtilisateurUpdateDto) {
+
   }
 
 

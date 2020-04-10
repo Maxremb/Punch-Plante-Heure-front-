@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="this.jardin" class="container">
     <br>
     <div class="row">
     <div class="col-lg-7">
@@ -34,7 +34,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p>(Un carreau de cette grille représente un carré de votre jardin de 5x5cm)</p>
+            <p>(Un carreau de cette grille représente un carré de votre jardin de 50x50cm)</p>
 
             <button class="btn btn-success" (click)=sauvgardeJardin()><i class="fa fa-floppy-o" aria-hidden="true"></i> Sauvgarder</button>
             <button class="btn btn-danger" (click)=remiseAZero()><i class="fa fa-times" aria-hidden="true"></i> Remettre à zéro</button>
