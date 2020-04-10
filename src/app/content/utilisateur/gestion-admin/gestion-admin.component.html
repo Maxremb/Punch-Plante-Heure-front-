@@ -4,7 +4,7 @@
   <app-entete-utilisateur-admin></app-entete-utilisateur-admin>
 
   <!-- Partie correspondant aux differents choix de l'administrateur, s'affiche uniquement si choix = true -->
-  <div *ngIf="choix">
+    <div *ngIf="choix">
       <h2>Cher administrateur, que voulez-vous faire ?</h2>
 
       <div class="container">
@@ -15,22 +15,50 @@
           <button class="btn alazea-btn mt-15" (click)="this.afficherRecherche()">Rechercher un utilisateur par numéro d'identifiant</button>
       </div>
 
-      <div class="container">
-          <a routerLink="/admin">
-              <button class="btn alazea-btn mt-15">Retour</button></a>
-      </div>
-
-  </div>
+    </div>
 
   <!-- Partie Recherche Par Id, s'affiche uniquement si recherche = true -->
   <div *ngIf="recherche">
-      <h2><label for="search-box">Recherche par numéro d'identifiant</label></h2>
-      <input type="number" [(ngModel)]="this.identifier"/>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-
+        <h2><label for="search-box">Recherche par numéro d'identifiant</label></h2>
+        <input type="number" [(ngModel)]="this.numero"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn alazea-btn mt-15" (click)="this.afficherSingle(this.numero)">Rechercher</button>
+        <br><br>
   </div>
 
-  <!-- Partie Liste des utlisateurs, s'affiche uniquement si liste = true -->
+    <!-- Partie Single Utilisateur, s'affiche uniquement si single= true -->
+    <div *ngIf="single">
+        <h2>Liste des utilisateurs</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Activé ?</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{this.singleUtilisateur.identifier}}</td>
+                    <td>{{this.singleUtilisateur.lastName}}</td>
+                    <td>{{this.singleUtilisateur.firstName}}</td>
+                    <td>{{this.singleUtilisateur.mail}}</td>
+                    <td>{{this.singleUtilisateur.active}}</td>
+                    <td>
+                    <button class="btn btn-danger" title="Désactiver" (click)="this.desactivateUser(this.singleUtilisateur.identifier)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    &nbsp;&nbsp;
+                    <button class="btn btn-info" title="Activer" (click)="this.activateUser(this.singleUtilisateur.identifier)"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+                    &nbsp;&nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+  <!-- Partie Liste des utilisateurs, s'affiche uniquement si liste = true -->
   <div *ngIf="liste">
       <h2>Liste des utilisateurs</h2>
       <table class="table table-hover">
@@ -40,7 +68,7 @@
                   <th>Nom</th>
                   <th>Prénom</th>
                   <th>Email</th>
-                  <th>Activer</th>
+                  <th>Activé</th>
                   <th></th>
               </tr>
           </thead>
