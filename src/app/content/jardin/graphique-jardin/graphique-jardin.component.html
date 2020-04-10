@@ -17,16 +17,16 @@
                     <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
                         <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;" width=20px
                             height=20px (click)="modifOnClick(index, index2); addPlanteToJardin(this.planteSelectionner, [index, index2]); attributionNouvellesCoordo([index, index2])" title="{{matrice[index][index2]}}">
-                            <div *ngIf="matrice[index][index2]=='chemin'" class="chemin">
+                            <div *ngIf="matrice[index][index2]=='Chemin'" class="chemin">
                                 &nbsp;
                             </div>
-                            <div *ngIf="matrice[index][index2]=='obstacle'" class="obstacle">
+                            <div *ngIf="matrice[index][index2]=='Obstacle'" class="obstacle">
                                 &nbsp;
                             </div>
                             <div *ngIf="matrice[index][index2]==''" class="vide">
                                 &nbsp;
                             </div>
-                            <div *ngIf="matrice[index][index2]!='chemin'&&matrice[index][index2]!='obstacle'&& matrice[index][index2].length"
+                            <div *ngIf="matrice[index][index2]!='Chemin'&&matrice[index][index2]!='Obstacle'&& matrice[index][index2].length"
                                 class="plante">
                                 &nbsp;
                             </div>
@@ -36,8 +36,32 @@
             </table>
             <p>(Un carreau de cette grille représente un carré de votre jardin de 50x50cm)</p>
 
-            <button class="btn btn-success" (click)=sauvgardeJardin()><i class="fa fa-floppy-o" aria-hidden="true"></i> Sauvgarder</button>
-            <button class="btn btn-danger" (click)=remiseAZero()><i class="fa fa-times" aria-hidden="true"></i> Remettre à zéro</button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationReset" ><i class="fa fa-times" aria-hidden="true"></i> Remettre à zéro</button>
+
+            <div class="modal" id="confirmationReset">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                  
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Confirmation</h4>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      Vous êtes sûr le point de mettre à zéro votre jardin.
+                      <br>Veuillez confirmer ce choix.
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" (click)="remiseAZero()" data-dismiss="modal"></button>
+                        <button class="btn btn-success" data-dismiss="modal">Annuler</button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
 
             <!-- Légende du code couleur de la carte  -->
             <br>
@@ -54,15 +78,15 @@
                         <td class="vide"></td>
                         <td>Vide</td>
                     </tr>
-                    <tr (click)="modifSelection('obstacle')">
+                    <tr (click)="modifSelection('obstacle'); selectionnerPlante(this.obstacle)">
                         <td class="obstacle"></td>
                         <td>Obstacle</td>
                     </tr>
-                    <tr (click)="modifSelection('chemin')">
+                    <tr (click)="modifSelection('chemin'); selectionnerPlante(this.chemin)">
                         <td class="chemin"></td>
                         <td>Chemin</td>
                     </tr>
-                    <tr (click)="modifSelection('plante')">
+                    <tr>
                         <td class="plante"></td>
                         <td>Plante</td>
                     </tr>
@@ -72,17 +96,6 @@
             <!-- Affichage de la sélection active :  -->
             Selection active = {{this.selection}}
             <span *ngIf="this.selection== ''">vide</span>
-            
-        <!-- Affiche la liste des plantes et autre pour sélectionner et placer dans notre plan -->
-
-        <!-- <select (change)="modifSelection($value)">
-            <option class="selected" value="" >Vide</option>
-            <option value="chemin">Chemin</option>
-            <option value="obstacle">Obstacle</option>
-            <option *ngFor="let plant of this.plantes" value="plante">
-                {{plant.modelPlant.commun}}
-            </option>
-        </select> -->
 
         </form>
     </div>
@@ -134,13 +147,14 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of this.plantesDuJardin">
-                        <td>{{p.modelPlant.commun}}</td>
-                        <td>{{p.coordonnees[1]+1}},{{p.coordonnees[0]+1}}</td>
+                        <td *ngIf="(p.modelPlant != this.chemin) && (p.modelPlant != this.obstacle)">{{p.modelPlant.commun}}</td>
+                        <td *ngIf="(p.coordonnees) && (p.modelPlant != this.chemin) && (p.modelPlant != this.obstacle)">{{p.coordonnees[1]+1}},{{p.coordonnees[0]+1}}</td>
+                        <td *ngIf="(!p.coordonnees) && (p.modelPlant != this.chemin) && (p.modelPlant != this.obstacle)"></td>
                         <td>
-                            <button style="width: 45px;" *ngIf="!p.coordonnees" class="btn btn-success" title="Mettre la plante dans le jardin"><i class="fa fa-leaf" aria-hidden="true"></i></button>
-                            <button style="width: 45px;" *ngIf="(p.coordonnees) && (p != this.planteABouger)" class="btn btn-success" title="Changer la plante de place" (click)="selectionnerPlanteABouger(p)" ><i class="fa fa-arrows" aria-hidden="true"></i></button>
-                            <button style="width: 45px;" *ngIf="p == this.planteABouger" title="laisser la plante" (click)="deselectionnerPlanteABouger()" class="btn btn-warning"><i class="fa fa-ban" aria-hidden="true"></i></button>
-                            <button style="width: 45px;" class="btn btn-danger" (click)="enleverPlanteDuJardin(p, p.coordonnees, p.modelPlant.commun)" title="Supprimer la plante du jardin"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            <button style="width: 45px;" class="btn btn-success" title="Mettre la plante dans le jardin" *ngIf="!p.coordonnees && (p != this.planteABouger)" (click)="selectionnerPlanteABouger(p)"><i class="fa fa-leaf" aria-hidden="true"></i></button>
+                            <button style="width: 45px;" class="btn btn-success" title="Changer la plante de place" *ngIf="(p.coordonnees) && (p != this.planteABouger)" (click)="selectionnerPlanteABouger(p)" ><i class="fa fa-arrows" aria-hidden="true"></i></button>
+                            <button style="width: 45px;" class="btn btn-warning" title="laisser la plante" *ngIf="p == this.planteABouger" (click)="deselectionnerPlanteABouger()" ><i class="fa fa-ban" aria-hidden="true"></i></button>
+                            <button style="width: 45px;" class="btn btn-danger" title="Supprimer la plante du jardin" (click)="enleverPlanteDuJardin(p, p.coordonnees, p.modelPlant.commun)" ><i class="fa fa-times" aria-hidden="true"></i></button>
                         </td>
                     </tr>
                 </tbody>

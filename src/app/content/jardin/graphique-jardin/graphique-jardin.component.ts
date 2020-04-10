@@ -21,6 +21,8 @@ export class GraphiqueJardinComponent implements OnInit {
   idJardin: number;
   message: string = '';
   planteok: boolean = false;
+  obstacle: PlanteModeleUpdateDto;
+  chemin: PlanteModeleUpdateDto;
 
   // Crée au lancement
   jardin: JardinUpdateDto;
@@ -52,6 +54,7 @@ export class GraphiqueJardinComponent implements OnInit {
 
   ngOnInit(): void {
     this.idJardin = +this.route.snapshot.paramMap.get('id');
+    this.initialiserCheminObstacle();
     this.getJardin();
     
   }
@@ -105,9 +108,27 @@ export class GraphiqueJardinComponent implements OnInit {
   }
 
 
+  initialiserCheminObstacle() {
+    this.servicePlanteModel.getKeyWord('Obstacle', 0).subscribe(
+      (responseDto) => {
+        if (!responseDto.error) {
+          this.obstacle = responseDto.body.content[0];
+        }
+      }
+    );
+    this.servicePlanteModel.getKeyWord('Chemin', 0).subscribe(
+      (responseDto) => {
+        if (!responseDto.error) {
+          this.chemin = responseDto.body.content[0];
+        }
+      }
+    );
+  }
+
+
   // Change la valeur de la variable selection pas l'objet selectionner
   modifSelection(objet: string) {    
-    if ((objet == 'vide') || (objet == 'obstacle') || (objet == 'chemin') || (objet == 'plante')) {
+    if (objet == 'vide') {
       this.selection = '';
       this.planteSelectionner = new PlanteModeleUpdateDto;
     }
@@ -182,9 +203,9 @@ export class GraphiqueJardinComponent implements OnInit {
 
 
   addPlanteToJardin(plante: PlanteModeleUpdateDto, coordo: Array<number>) {
-    if (this.selection != '' && this.selection != 'obstacle' && this.selection != 'chemin' && this.selection != 'plante' && !this.planteABouger) {
+    this.planteACree = new PlanteUtilisateurCreateDto;
 
-      this.planteACree = new PlanteUtilisateurCreateDto;
+    if (this.selection != '' && !this.planteABouger) {
       this.planteACree.coordonnees = coordo;
       this.planteACree.garden = this.jardin;
       this.planteACree.modelPlant = plante;
@@ -209,22 +230,27 @@ export class GraphiqueJardinComponent implements OnInit {
         }
       }
     );
-    this.matrice[coordoDeLaPlante[1]][coordoDeLaPlante[0]] = '';
+    this.matrice[coordoDeLaPlante[0]][coordoDeLaPlante[1]] = '';
   }
 
 
   selectionnerPlanteABouger(laPlante: PlanteUtilisateurUpdateDto) {
     this.planteABouger = laPlante;
     console.log('coordo selectionné : ', this.planteABouger.coordonnees)
+    this.selection = 'Mon jardin : ' + laPlante.modelPlant.commun;
   }
 
   deselectionnerPlanteABouger() {
     this.planteABouger = undefined;
+    this.selection = '';
   }
 
   attributionNouvellesCoordo(newCoordo: Array<number>) {
     if (this.planteABouger) {
-      var anciennesCoordo: Array<number> = this.planteABouger.coordonnees;
+
+      if (this.planteABouger.coordonnees != null) {
+        var anciennesCoordo: Array<number> = this.planteABouger.coordonnees;
+      }
 
       this.planteABouger.coordonnees = newCoordo;
 
