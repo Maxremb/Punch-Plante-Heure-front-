@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
-import { ResponseDto } from '../models/response-dto';
-import { HttpClient } from '@angular/common/http';
-import { UtilisateurCreateDto } from '../models/utilisateur-create-dto';
 import { UtilisateurUpdateDto } from '../models/utilisateur-update-dto';
-
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { ResponseDto } from '../models/response-dto';
+import { UtilisateurCreateDto } from '../models/utilisateur-create-dto';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilisateurService {
 
-  utilisateur: UtilisateurCreateDto;
+  utilisateur: UtilisateurUpdateDto;
 
   private URL = environment.baseUrl + 'utilisateur';
 
@@ -26,12 +25,12 @@ export class UtilisateurService {
     return this.http.put<ResponseDto>(this.URL, utilisateur);
   }
 
-  readByNomAndPrenom(lastname : string,firstname : string): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/' + lastname + firstname);
+  readByNomAndPrenom(lastname : string, firstname : string): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/nomEtPrenom?nom=' + lastname + "&prenom=" + firstname);
   }
 
   isActif(pseudo: string): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/' + pseudo);
+    return this.http.get<ResponseDto>(this.URL + '/actif?pseudonyme=' + pseudo);
   }
 
   getAll(nbpage: number): Observable<ResponseDto> {
@@ -39,15 +38,21 @@ export class UtilisateurService {
   }
 
   desactivateUser(identifier: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/' + identifier);
+    return this.http.get<ResponseDto>(this.URL + '/desactivate?id=' + identifier);
   }
 
   activateUser(identifier: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/activate?id=' + identifier);
+  }
+
+  getUtilisateur(identifier: number): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/' + identifier);
   }
 
-  existsByEmailAndMdp(mail: string, pwd : string): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/' + mail + pwd);
+  delete(identifier: number): Observable<ResponseDto> {
+    return this.http.delete<ResponseDto>(this.URL + '/' + identifier);
+  }
+  
 
-}
+
 }
