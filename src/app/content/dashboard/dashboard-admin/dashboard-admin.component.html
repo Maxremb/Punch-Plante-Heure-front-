@@ -10,10 +10,10 @@
         <div class="row">
             <div class="col-12 col-lg-12" >
                 <h3>Vos informations personnelles :</h3>
-                <h5>Pseudo :</h5>{{admin.pseudo}}
-                <h5>Email :</h5>{{admin.mail}}
-                                
-                <a routerLink="/">
+                <h5>Pseudo :</h5>{{this.admin.pseudo}}
+                <h5>Email :</h5>{{this.admin.mail}}
+                <br>
+                <a routerLink="/admin/detail/{{admin.identifier}}">
                     <button class="btn alazea-btn mt-15">Modifier mes informations</button>
                 </a>
                 &nbsp;&nbsp;

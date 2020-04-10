@@ -9,8 +9,6 @@ export class UtilisateurCreateDto{
     pwd: string;
     desc: string;
     phone: number;
-    reput: string;
     news: boolean;
-    active: boolean;
     picture: string;
 }

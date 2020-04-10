@@ -24,7 +24,6 @@ export class UpdateJardinComponent implements OnInit {
   messageErreur = null;
   //liste all depts
   allDepartements : Array<DepartementDto>;
-  nbDepTotal : number
 
   idJardin : number;
 
@@ -80,17 +79,11 @@ export class UpdateJardinComponent implements OnInit {
   }
 
 getDep(){
-  this.serviceDep.getAllAdmin(0).subscribe(
+  this.serviceDep.getAll().subscribe(
     (resp)=> {
-      this.allDepartements = resp.body.content;
-      this.nbDepTotal =resp.body.totalElements;
-      for (let index = 1; index < resp.body.totalPages; index++) {
-        this.serviceDep.getAllAdmin(index).subscribe((resp) => {
-          resp.body.content.forEach(element => {
-            this.allDepartements.push(element);
-          });
-        });
-      }
+      this.allDepartements = resp.body;
+    
+      
     }
   )
 }
