@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
     maFonction1();
 
     this.user = JSON.parse(localStorage.getItem('connectedUser'));
-    console.log("NAVBAR ==> connectedUSer ", this.connexionService.connectedUser)
+    console.log("NAVBAR ==> connectedUser ", this.user);
     console.log("isConnected?" , this.isConnected())
   }
 

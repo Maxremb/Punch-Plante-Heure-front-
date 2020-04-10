@@ -3,6 +3,8 @@ import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
+import { ConnectedUser } from 'src/app/models/connectedUser';
+import { UtilisateurService } from 'src/app/services/utilisateur.service';
 
 @Component({
   selector: 'app-all-jardin',
@@ -13,30 +15,28 @@ export class AllJardinComponent implements OnInit {
 
   //liste de tout lesjardins de l'user
   allJardins: Array<JardinUpdateDto>;
-
   jardin: JardinUpdateDto;
+  
+  // recuperation de l'utilisateur dans le localstorage
+  user: ConnectedUser;
+  
 
-  utilisateurActif: UtilisateurUpdateDto;
-
-  constructor(private service: JardinService, private servicePlanteUtilisateur: PlanteUtilisateurService
-    //   private serviceUtilisateur : serviceUtilisateur
+  constructor(
+    private service: JardinService, 
+    private servicePlanteUtilisateur: PlanteUtilisateurService,
+    
   ) { }
 
   ngOnInit(): void {
-    this.getUtilisateur();
+    // recuperation du connectedUser
+    this.user = JSON.parse(localStorage.getItem('connectedUser'));
+    // recuperation des jardins de l'utilisateur
     this.readAllByIdUtilisateur();
-  }
-
-
-  getUtilisateur(): void {
-    this.utilisateurActif = new UtilisateurUpdateDto();
-    this.utilisateurActif.firstName = "nom";
-    this.utilisateurActif.identifier = 1;
   }
 
   // retourne la liste de tout les jardins de l'user conencté
   readAllByIdUtilisateur() {
-    this.service.getAllByUtilisateur(this.utilisateurActif.identifier, 0).subscribe(
+    this.service.getAllByUtilisateur(this.user.id, 0).subscribe(
       responseDto => {
         if (!responseDto.error) {
           console.log('ici')
@@ -45,14 +45,6 @@ export class AllJardinComponent implements OnInit {
         else { this.allJardins = [] }
       }
     );
-    // this.service.getAll(0).subscribe(
-    //    responseDto => {
-    //       if (!responseDto.error) {
-    //         this.allJardins = responseDto.body.content;
-    //       }
-    //       else { this.allJardins = [] }
-    //     }
-    //   );
   }
 
   //supprime un jardin de l'user et refresh liste
