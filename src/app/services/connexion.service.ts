@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ResponseDto } from '../models/response-dto';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ConnectedUser } from '../models/connectedUser';
+import { Role } from '../enums/role.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -47,13 +48,15 @@ export class ConnexionService {
         this.connectedUser.id = connexionDto.bodyUtil.identifier;
         this.connectedUser.pseudo = connexionDto.bodyUtil.pseudo;
         this.connectedUser.mail = connexionDto.bodyUtil.mail;
+        this.connectedUser.role = Role.Utilisateur;
 
       } else {
         this.connectedUser.id = connexionDto.bodyAdmin.identifier;
         this.connectedUser.pseudo = connexionDto.bodyAdmin.pseudo;
         this.connectedUser.mail = connexionDto.bodyAdmin.mail;
+        this.connectedUser.role = Role.Admin;
       }
-      this.connectedUser.status = connexionDto.user;
+
       return true;
     } else {
       return false;

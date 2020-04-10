@@ -53,6 +53,10 @@ export class JardinService {
     return this.http.get<ResponseDto>(this.URL + '/user/?identifier='+ idUtilisateur + '&page=' + page);
   }
 
+  setArrosed(idJardin : number){
+    return this.http.get<ResponseDto>(this.URL + '/arrosage?id='+ idJardin);
+  }
+
  
 
 
