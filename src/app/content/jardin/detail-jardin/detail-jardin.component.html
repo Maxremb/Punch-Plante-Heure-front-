@@ -82,6 +82,8 @@
                     <td>{{planteUtilisateur.plantStage}}</td>
 
                     <td>
+                        <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
+                        <!-- &nbsp;&nbsp; -->
                         <a routerLink='/jardin/detail/updateplante/{{planteUtilisateur.identifiant}}'><button
                                 class="btn btn-danger">Modifier</button>
                         </a>
@@ -89,8 +91,7 @@
                     <!-- Possibilité de retirer une plante utilisateur du jardin -->
                     <td><button class="btn btn-danger"
                             (click)="this.supprimer(planteUtilisateur.identifiant)">Supprimer</button>
-                        <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
-                        <!-- &nbsp;&nbsp; -->
+                        
                     </td>
 
                 </tr>
