@@ -23,6 +23,7 @@ export class InscriptionComponent implements OnInit {
   constructor(private service: InscriptionService) { }
 
   ngOnInit(): void {
+    //Beaucoupd de lignes qui ne servent à rien, on dirais. Si jamais On arrive à faire marcher formControl sans ngModel, les validateurs seront utiles
     this.inscriptionForm = new FormGroup(
       {
         pseudo: new FormControl(this.util.pseudo, Validators.required),
@@ -56,7 +57,6 @@ export class InscriptionComponent implements OnInit {
 
         responseError => {
           console.log(responseError);
-          this.messageValidation = responseError.error.message;
           this.error = true;
         }
       )

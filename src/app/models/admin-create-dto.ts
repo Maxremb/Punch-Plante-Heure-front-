@@ -1,5 +1,7 @@
 export class AdminCreateDto {
-     pwd : number;
-     pseudo : string;
-     mail: string;
+
+    pwd: number;
+    pseudo: string;
+    mail: string;
+
 }

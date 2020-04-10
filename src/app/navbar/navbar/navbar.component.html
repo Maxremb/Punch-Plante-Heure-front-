@@ -29,11 +29,14 @@
                 </div>
               </div>
               <!-- Connexion -->
-              <div class="login">
+              <div class="login" *ngIf="!isConnected()">
                 <a href="connexion"><i class="fa fa-user" aria-hidden="true"></i> <span>Connexion</span></a>
               </div>
               <div class="register">
-                <a href="inscription"><i class="fa fa-user" aria-hidden="true"></i> <span>Inscription</span></a>
+                <a href="inscription" *ngIf="!isConnected()"><i class="fa fa-user" aria-hidden="true"></i> <span>Inscription</span></a>
+              </div>
+              <div class="disconnect">
+                <a (click)="disconnect()" *ngIf="isConnected()"><i class="fa fa-user" aria-hidden="true"></i> <span>Déconnexion</span></a>
               </div>
             </div>
           </div>
