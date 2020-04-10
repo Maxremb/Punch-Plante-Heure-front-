@@ -103,13 +103,10 @@ import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-ut
     EnteteInscriptionComponent,
     MeteoComponent,
     EnteteMeteoComponent,
-<<<<<<< HEAD
     DetailUtilisateurComponent,
-=======
     UtilisateurComponent,
     GestionAdminComponent,
     EnteteUtilisateurAdminComponent,
->>>>>>> e3355a6dbaa96240ff055292b374fe608514c9dd
 
   ],
   imports: [
