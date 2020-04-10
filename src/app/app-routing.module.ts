@@ -37,6 +37,10 @@ import { InscriptionComponent } from './content/inscription/inscription/inscript
 import { MeteoComponent } from './content/meteo/meteo/meteo.component';
 import{ AuthGuard } from './helpers/auth.guard';
 import { Role } from './enums/role.enum';
+import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail-utilisateur/detail-utilisateur.component';
+import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component'
+
+import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
 
 
 const routes: Routes = [
@@ -52,6 +56,13 @@ const routes: Routes = [
   { path : 'periode/:id', component : AllPeriodeComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]}},
   { path : 'periode/create', component : CreatePeriodeComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]}},
   { path : 'periode/update', component : UpdatePeriodeComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]}},
+
+  { path : 'plant/vadmin', component : AllPlantComponent },
+  { path : 'plant/create', component : CreatePlantComponent },
+  { path : 'plant/update/:id', component : DetailedPlantComponent },
+  { path : 'periode/:id', component : AllPeriodeComponent},
+  { path : 'periode/create', component : CreatePeriodeComponent},
+  { path : 'periode/update', component : UpdatePeriodeComponent},
   { path : 'blog' , component : BlogComponent },
   { path : 'plant/vuser', component: UserviewAllPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
   { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
@@ -71,6 +82,9 @@ const routes: Routes = [
   { path : 'jardin/detail/arrosage', component : ArrosageComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]}},
 
   { path : 'inscription', component : InscriptionComponent},
+  { path : 'utilisateur/detail/:identifier', component : DetailUtilisateurComponent},
+  { path : 'utilisateur/gestion-admin', component : GestionAdminComponent},
+  { path : 'admin/detail', component : DetailAdminComponent},
 
   { path : 'jardin/detail/:id', component : DetailJardinComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} }, //update d'un jardin par id
