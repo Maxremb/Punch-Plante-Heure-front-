@@ -48,8 +48,8 @@
           <tbody>
               <tr *ngFor="let utilisateur of this.allUtilisateur">
                   <td>{{utilisateur.identifier}}</td>
-                  <td>{{utilisateur.lastname}}</td>
-                  <td>{{utilisateur.firstname}}</td>
+                  <td>{{utilisateur.lastName}}</td>
+                  <td>{{utilisateur.firstName}}</td>
                   <td>{{utilisateur.active}}</td>
                   <td>
                   <button class="btn btn-danger" title="Désactiver" (click)="this.desactivateUser(utilisateur.identifier)"><i class="fa fa-times" aria-hidden="true"></i></button>
