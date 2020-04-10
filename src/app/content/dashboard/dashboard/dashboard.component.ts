@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   user: ConnectedUser;
   utilisateur: UtilisateurUpdateDto = new UtilisateurUpdateDto();
   
+  
   constructor( ) { }
 
   ngOnInit(): void {

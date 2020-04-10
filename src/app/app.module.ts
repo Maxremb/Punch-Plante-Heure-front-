@@ -50,6 +50,9 @@ import { InscriptionComponent } from './content/inscription/inscription/inscript
 import { EnteteInscriptionComponent } from './content/inscription/entete-inscription/entete-inscription.component';
 import { MeteoComponent } from './content/meteo/meteo/meteo.component';
 import { EnteteMeteoComponent } from './content/meteo/entete-meteo/entete-meteo.component';
+import { UtilisateurComponent } from './content/utilisateur/utilisateur.component';
+import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component';
+import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
 
 
 @NgModule({
@@ -99,6 +102,9 @@ import { EnteteMeteoComponent } from './content/meteo/entete-meteo/entete-meteo.
     EnteteInscriptionComponent,
     MeteoComponent,
     EnteteMeteoComponent,
+    UtilisateurComponent,
+    GestionAdminComponent,
+    EnteteUtilisateurAdminComponent,
 
   ],
   imports: [
