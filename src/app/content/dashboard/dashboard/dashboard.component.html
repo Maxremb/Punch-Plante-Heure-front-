@@ -25,14 +25,16 @@
                 <h5>Telephone :</h5> {{utilisateur.phone}}
                 <h5>Picture :</h5> {{utilisateur.picture}}
                 
-                <a routerLink="/">
+                <a routerLink="/utilisateur/detail">
                     <button class="btn alazea-btn mt-15">Modifier mes informations</button>
                 </a>
                 &nbsp;&nbsp;
-                <a routerLink="/">
-                    <button class="btn alazea-btn mt-15">Désactiver mon compte</button>
-                </a>
-      
+                <div *ngIf="utilisateur.active">
+                <button class="btn alazea-btn mt-15" (click)="this.desactiver(utilisateur.identifier)">Désactiver mon compte</button>
+                </div>
+                <div *ngIf="!utilisateur.active">
+                    Votre compte est désactivé.
+                </div>
             </div>
         </div>
     </div>
