@@ -20,8 +20,6 @@ export class DashboardComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('connectedUser'));
     //this.getUtilisateur();
   }
-<<<<<<< HEAD
-=======
 
  // getUtilisateur() {
   //  this.service.getId(this.user.id).subscribe(
@@ -38,6 +36,5 @@ export class DashboardComponent implements OnInit {
     this.utilisateur.active = false;
     
   }
->>>>>>> e3355a6dbaa96240ff055292b374fe608514c9dd
   
 }

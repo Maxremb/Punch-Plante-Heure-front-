@@ -54,6 +54,7 @@ import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail
 import { UtilisateurComponent } from './content/utilisateur/utilisateur.component';
 import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component';
 import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
+import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
 
 
 @NgModule({
@@ -103,13 +104,11 @@ import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-ut
     EnteteInscriptionComponent,
     MeteoComponent,
     EnteteMeteoComponent,
-<<<<<<< HEAD
     DetailUtilisateurComponent,
-=======
     UtilisateurComponent,
     GestionAdminComponent,
     EnteteUtilisateurAdminComponent,
->>>>>>> e3355a6dbaa96240ff055292b374fe608514c9dd
+    DetailAdminComponent,
 
   ],
   imports: [
