@@ -10,7 +10,6 @@ import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 export class DashboardComponent implements OnInit {
 
   utilisateur: UtilisateurUpdateDto;
-  
 
   constructor( ) { }
 
