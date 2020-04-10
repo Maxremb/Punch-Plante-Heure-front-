@@ -25,7 +25,7 @@
   <!-- Partie Recherche Par Id, s'affiche uniquement si recherche = true -->
   <div *ngIf="recherche">
       <h2><label for="search-box">Recherche par numéro d'identifiant</label></h2>
-      <input type="number" [(ngModel)]="this.numero"/>
+      <input type="number" [(ngModel)]="this.identifier"/>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <a routerLink="/plant/update/{{this.numero}}">
           <button class="btn alazea-btn mt-15" >Rechercher</button>
