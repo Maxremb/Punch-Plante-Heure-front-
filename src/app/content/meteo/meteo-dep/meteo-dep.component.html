@@ -3,46 +3,46 @@
     <app-entete-meteo></app-entete-meteo>
     
     <div class="container">
-        <h2>Ma station météo | Département </h2><h2> ({{departement.depNum}})</h2>
-
-        <form [formGroup]="choixDonnee" (ngSubmit)="switchToMonth()">
-            <div class="row">
-                <p> </p>
+        <h2>Ma station météo | Département {{departement.name}} ({{departement.depNum}})</h2>
+        <hr>
+              
+        <div class="row">
+            <!-- Affichage des X derniers jours -->
+            <div class="col-12 col-lg-6">
+            <form [formGroup]="choixDonnee" (ngSubmit)="switchToMonth()">
             <div class="form-group" style="display:inline">
-                Consulter les
-                <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours
+                <h5>Consulter les
+                <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours</h5>
                 <button type="submit" class="btn alazea-btn mt-15"
                     [disabled]="!this.choixDonnee.valid">Afficher</button>
 
             </div>
+            </form>
             </div>
 
-        </form>
-
-        <form [formGroup]="choixDonneeMois" (ngSubmit)="switchToMonth()">
-            <div class="row">
-            <p> </p>
+        
+        
+            <!-- Affichage du mois indiqué -->
+            <div class="col-12 col-lg-6">
+            <form [formGroup]="choixDonneeMois" (ngSubmit)="switchToMonth()">
             <div class="form-group" style="display:inline">
-                Consulter
-                <input type="month" [(ngModel)]="this.date" formControlName="date">
+                <h5>Consulter le mois :
+                <input type="month" [(ngModel)]="this.date" formControlName="date"></h5>
 
                 <button type="submit" class="btn alazea-btn mt-15"
                     [disabled]="!this.choixDonnee.valid">Afficher</button>
 
             </div>
+            </form>
             </div>
-
-        </form>
-
-    
+        </div>    
+            
         <button style="align-self: flex-end;" class="btn alazea-btn mt-15" (click)="this.switchGraphTable()" ><span
-            *ngIf="!this.tableau; else elseBlock">Tableau</span>
-        <ng-template #elseBlock>Graphiques</ng-template></button>
+            *ngIf="!this.tableau; else elseBlock">Cliquez ici pour afficher un tableau</span>
+        <ng-template #elseBlock>Cliquez ici pour afficher un graphe</ng-template></button>
         <!-- <button class="btn alazea-btn mt-15" (click)="this.switchToMonth()" >Par mois</button> -->
 
-        <label style="align-self: center;">
-            <h2>Meteo à {{this.departement.name}}</h2>
-        </label>
+        
     
         <hr>
 
