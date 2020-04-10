@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminUpdateDto } from 'src/app/models/admin-update-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
@@ -17,6 +17,8 @@ export class DetailAdminComponent implements OnInit {
   admin: AdminUpdateDto = new AdminUpdateDto();
   messageValidation = '';
   error: boolean;
+  samePwd = true;
+  password2 = '';
 
   constructor(private service: AdminService, private route: ActivatedRoute, private router: Router) { }
 
@@ -26,9 +28,15 @@ export class DetailAdminComponent implements OnInit {
     maFonction();
     this.adminUpdateForm = new FormGroup({
       pwd: new FormControl(this.admin.pwd),
+      password2: new FormControl('',),
       pseudo: new FormControl(this.admin.pseudo),
-      mail: new FormControl(this.admin.mail),
+      mail: new FormControl(this.admin.mail, Validators.email),
     });
+  }
+  get pwd(): any { return this.adminUpdateForm.get('pwd'); }
+
+  comparePwd(){
+    this.samePwd = this.admin.pwd === this.password2;
   }
   
 

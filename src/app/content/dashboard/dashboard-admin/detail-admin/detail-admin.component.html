@@ -50,6 +50,26 @@
                     name="mail" placeholder="{{this.admin.mail}}">
             </div>
 
+
+            <div class="form-group">
+                <label for="password">
+                    <h5>Nouveau Mot de Passe: </h5>
+                </label>
+                <input type="password" class="form-control" [(ngModel)]="this.admin.pwd" formControlName="pwd"
+                    name="pwd" pattern=".{8,}" title="Mot de passe d'au moins 8 caractères" >
+                    <div *ngIf="!samePwd && this.admin.pwd.length > 7 && this.password2.length > 7" class="alert alert-danger">
+                        Les mots de passe entrés ne sont pas les mêmes
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password2">
+                    <h5>Confirmer Mot de Passe: </h5>
+                </label>
+                <input type="password" class="form-control" [(ngModel)]="this.password2" formControlName="password2"
+                    name="password2" pattern=".{8,}" title="Mot de passe d'au moins 8 caractères"  (blur)="this.comparePwd()">
+            </div>
+
             <button type="submit" class="btn alazea-btn mt-15"
                 [disabled]="!adminUpdateForm.valid">Enregistrer</button><br><br>
             <div *ngIf="this.messageValidation.length">
