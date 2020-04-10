@@ -1,7 +1,13 @@
 <div class="container">
-    <form [formGroup]="choixDonnee" (ngSubmit)="switchToMonth()">
-        <div class="row">
-            <p> </p>
+
+    <app-entete-meteo></app-entete-meteo>
+    
+    <div class="container">
+        <h2>Ma station météo | Département </h2><h2> ({{departement.depNum}})</h2>
+
+        <form [formGroup]="choixDonnee" (ngSubmit)="switchToMonth()">
+            <div class="row">
+                <p> </p>
             <div class="form-group" style="display:inline">
                 Consulter les
                 <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours
@@ -9,11 +15,12 @@
                     [disabled]="!this.choixDonnee.valid">Afficher</button>
 
             </div>
-        </div>
+            </div>
 
-    </form>
-    <form [formGroup]="choixDonneeMois" (ngSubmit)="switchToMonth()">
-        <div class="row">
+        </form>
+
+        <form [formGroup]="choixDonneeMois" (ngSubmit)="switchToMonth()">
+            <div class="row">
             <p> </p>
             <div class="form-group" style="display:inline">
                 Consulter
@@ -23,9 +30,9 @@
                     [disabled]="!this.choixDonnee.valid">Afficher</button>
 
             </div>
-        </div>
+            </div>
 
-    </form>
+        </form>
 
     
         <button style="align-self: flex-end;" class="btn alazea-btn mt-15" (click)="this.switchGraphTable()" ><span
@@ -37,9 +44,9 @@
             <h2>Meteo à {{this.departement.name}}</h2>
         </label>
     
-    <hr>
+        <hr>
 
-    <div *ngIf="tableau">
+        <div *ngIf="tableau">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -60,8 +67,8 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div *ngIf='graph'>
+        </div>
+        <div *ngIf='graph'>
         <google-chart #chart [title]="title1" [type]="type1" [data]="data1" [columnNames]="columnNames1"
             [options]="options1" [width]="width1" [height]="height1">
         </google-chart>
@@ -71,5 +78,7 @@
         <google-chart #chart [title]="title3" [type]="type3" [data]="data3" [columnNames]="columnNames3"
             [options]="options3" [width]="width3" [height]="height3">
         </google-chart>
+        </div>
+
     </div>
 </div>
