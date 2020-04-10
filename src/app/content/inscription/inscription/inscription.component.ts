@@ -56,6 +56,7 @@ export class InscriptionComponent implements OnInit {
 
         responseError => {
           console.log(responseError);
+          this.messageValidation = responseError.error.message;
           this.error = true;
         }
       )
