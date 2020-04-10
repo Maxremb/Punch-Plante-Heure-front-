@@ -137,6 +137,7 @@ export class MeteoDepComponent implements OnInit {
       (responsedto) => {
         if (!responsedto.error) {
           this.departement = responsedto.body;
+          this.getMeteo();
         }
       }
     );
