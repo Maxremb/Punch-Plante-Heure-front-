@@ -9,7 +9,6 @@ export class UtilisateurCreateDto{
     pwd: string;
     desc: string;
     phone: number;
-    reput: string;
     news: boolean;
     picture: string;
 }
