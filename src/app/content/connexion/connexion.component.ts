@@ -42,7 +42,6 @@ export class ConnexionComponent implements OnInit {
 
   connect(mail: string, pwd: string){
     console.log("email ::::::::::::", mail)
-    console.log("pwd :::::::::::::", pwd)
     this.service.getByEmailAndPwd(mail, pwd);
 
   }
