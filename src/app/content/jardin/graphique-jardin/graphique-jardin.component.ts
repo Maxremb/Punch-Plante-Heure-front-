@@ -103,8 +103,7 @@ export class GraphiqueJardinComponent implements OnInit {
       if(plante.coordonnees){
         this.matrice[plante.coordonnees[0]][plante.coordonnees[1]] = plante.modelPlant.commun;
       }
-    }
-    ); 
+    }); 
   }
 
 
@@ -162,16 +161,15 @@ export class GraphiqueJardinComponent implements OnInit {
 
 
   remiseAZero() {
-    var nbLigne = this.jardin.width * 100 / 50; // on sépare notre espace par tranche de 5cm
-    var nbCol = this.jardin.length * 100 / 50;
-
-    for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
-      this.matrice[indexLigne] = [];
-      for (let indexCol = 0; indexCol < nbCol; indexCol++) {
-        this.matrice[indexLigne][indexCol] = "";
-      }
-    }
-    this.plantesDuJardin = new Array;
+    this.plantesDuJardin.forEach(plante => {
+      this.servicePlanteUtilisateur.delete(plante.identifiant).subscribe(
+        (responseDto) => {
+          if (!responseDto.error) {
+            this.getPlantesDejaPresentes();
+          }
+        }
+      );
+    });
   }
 
 
