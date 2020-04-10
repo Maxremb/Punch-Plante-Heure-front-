@@ -2,27 +2,29 @@
     
     <app-entete-meteo></app-entete-meteo>
     
+    <div class="container">
     <div class="row">
         <div class="col-12 col-lg-12">
-            <h3>Votre station météo pour vos départements :</h3>
+            <h3>Mes stations météo :</h3>
+            <br><br>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Numéro du département</th>
                         <th>Nom du département</th>
-                        <th>Météo du jour</th>
-                        <th>Historique de la météo</th>
+                        <th>Météo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let jardin of this.allJardins">
                         <td>{{jardin.dept.depNum}}</td>
                         <td>{{jardin.dept.name}}</td>
-                        <td></td>
-                        <td></td>
+                        <td><a routerLink="/meteo/{{this.jardin.dept.depNum}}">
+                            <button class="btn alazea-btn mt-15">Voir la météo</button></a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </div>
