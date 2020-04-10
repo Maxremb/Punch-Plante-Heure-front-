@@ -44,8 +44,9 @@ export class ArrosageComponent implements OnInit {
   setArrosed() {
     this.jardin.arrosed = true;
     
-    this.jardinservice.update(this.jardin).subscribe( (resp)=>{
-      this.getJardin();
+    this.jardinservice.setArrosed(this.idJardin).subscribe( (resp)=>{
+      this.jardin = resp.body;
+      this.niveau = "100%"
       
     });
     
