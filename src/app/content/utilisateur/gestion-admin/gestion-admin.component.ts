@@ -18,7 +18,7 @@ export class GestionAdminComponent implements OnInit {
     liste: boolean;
     choix: boolean;
     recherche: boolean;
-    numero: number;
+    identifier: number;
 
     constructor(private service:UtilisateurService) { }
 
