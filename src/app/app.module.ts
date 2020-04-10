@@ -54,6 +54,7 @@ import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail
 import { UtilisateurComponent } from './content/utilisateur/utilisateur.component';
 import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component';
 import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
+import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
 
 
 @NgModule({
@@ -107,6 +108,7 @@ import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-ut
     UtilisateurComponent,
     GestionAdminComponent,
     EnteteUtilisateurAdminComponent,
+    DetailAdminComponent,
 
   ],
   imports: [
