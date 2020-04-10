@@ -35,6 +35,7 @@ import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component'
 import { ConnexionComponent } from './content/connexion/connexion.component';
 import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
 import { MeteoComponent } from './content/meteo/meteo/meteo.component';
+import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail-utilisateur/detail-utilisateur.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,7 @@ const routes: Routes = [
   { path : 'jardin/detail/arrosage', component : ArrosageComponent},
 
   { path : 'inscription', component : InscriptionComponent},
+  { path : 'utilisateur/detail', component : DetailUtilisateurComponent},
 
   { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id
