@@ -1,1 +1,71 @@
-<p>detail-admin works!</p>
+<script>
+    $(document).ready(function () {
+
+        $('.chips-placeholder').materialChip({
+            placeholder: 'Enter a tag',
+            secondaryPlaceholder: '+Tag',
+        });
+    })
+</script>
+
+<div class="container">
+    <app-entete-dashboard></app-entete-dashboard>
+
+    <h2>Modifier vos informations</h2>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-lg-6 col-sm-6">
+            <h5>Pseudo actuel : </h5> {{this.admin.pseudo}}
+            <br><br>
+        </div>
+
+        <div class="col-lg-6 col-sm-6">
+            <h5>E-Mail actuel : </h5> {{this.admin.mail}}
+            <br><br>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="col-lg-6 col-sm-6">
+        <form [formGroup]="adminUpdateForm" (ngSubmit)="this.update()">
+
+
+            <div class="form-group">
+                <label for="pseudo">
+                    <h5>Nouveau Pseudo : </h5>
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="this.admin.pseudo" formControlName="pseudo"
+                    name="pseudo" placeholder="{{this.admin.pseudo}}">
+            </div>
+
+            <div class="form-group">
+                <label for="mail">
+                    <h5>Nouvel E-mail : </h5>
+                </label>
+                <input type="email" class="form-control" [(ngModel)]="this.admin.mail" formControlName="mail"
+                    name="mail" placeholder="{{this.admin.mail}}">
+            </div>
+
+            <button type="submit" class="btn alazea-btn mt-15"
+                [disabled]="!adminUpdateForm.valid">Enregistrer</button><br><br>
+            <div *ngIf="this.messageValidation.length">
+                <div class="alert alert-fail" *ngIf="this.error">
+                    {{this.messageValidation}}
+                </div>
+                <div class="alert alert-success" *ngIf="!this.error">
+                    {{this.messageValidation}}
+                </div>
+            </div>
+            <a routerLink="/admin">
+                <button class="btn alazea-btn mt-15">Retour</button>
+            </a>
+
+        </form>
+
+    </div>
+
+</div>

@@ -14,18 +14,7 @@ declare function maFonction(): any;
 export class DetailUtilisateurComponent implements OnInit {
 
   userUpdateForm: FormGroup;
-  lastName: string;
-  firstName: string;
-  pseudo: string;
-  mail: string;
-  pwd: string;
-  desc: string;
-  phone: number;
-  reput: string;
-  news: boolean;
-  active: boolean;
-  picture: string;
-  identifier: number;
+  
   utilisateur: UtilisateurUpdateDto = new UtilisateurUpdateDto();
 
   messageValidation = '';
@@ -64,13 +53,13 @@ export class DetailUtilisateurComponent implements OnInit {
       (responseDto) => {
         console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
-          this.messageValidation = 'BRAVO ! Le departement a bien été modifié.';
+          this.messageValidation = 'BRAVO ! Vous avez modifié vos information avec succès !';
           this.error = false;
         }
       },
       (error) => {
         console.log('debug responseDto : ', error);
-        this.messageValidation = 'ERREUR ! Le departement n\'a pas été modifié.';
+        this.messageValidation = 'ERREUR ! Vos informations n\'ont pas pu être modifiées !';
         this.error = true;
       }
 
