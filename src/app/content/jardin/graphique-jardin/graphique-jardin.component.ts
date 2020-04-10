@@ -27,7 +27,7 @@ export class GraphiqueJardinComponent implements OnInit {
   // Crée au lancement
   jardin: JardinUpdateDto;
   matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
-  selection: string = "";
+  selection: string;
   plantesDuJardin: Array<PlanteUtilisateurUpdateDto>;
 
   // Recherche de plantes
@@ -148,18 +148,6 @@ export class GraphiqueJardinComponent implements OnInit {
   }
 
 
-  // Fait une update du jardin
-  sauvgardeJardin() {
-    // Change uniquement les chemins (parce que le reste n'est pas stockers dans le jardin)
-    this.serviceJardin.update(this.jardin)
-
-    // Met à jours toutes les plantes présentes dans la liste des plantes correspondante à ce jardin
-    for (let p of this.plantesDuJardin) {
-      this.servicePlanteUtilisateur.update(p);
-    }
-  }
-
-
   remiseAZero() {
     this.plantesDuJardin.forEach(plante => {
       this.servicePlanteUtilisateur.delete(plante.identifiant).subscribe(
@@ -216,9 +204,26 @@ export class GraphiqueJardinComponent implements OnInit {
       );
     }
   }
+
+
+  enleverPlanteDuJardinFromVide(coordo: Array<number>) {
+    if (this.selection == '') {
+      this.servicePlanteUtilisateur.delete(
+        this.plantesDuJardin.find(p => (
+          JSON.stringify(coordo) === JSON.stringify(p.coordonnees)
+          )).identifiant).subscribe(
+        (ResponseDto) => {
+          if (!ResponseDto.error) {
+            console.log('')
+            this.getPlantesDejaPresentes();
+          }
+        }
+      );
+    }
+  }
     
 
-  enleverPlanteDuJardin(laPlante: PlanteUtilisateurUpdateDto, coordoDeLaPlante: Array<number>, nomDeLaPlante: string) {
+  enleverPlanteDuJardinFromListe(laPlante: PlanteUtilisateurUpdateDto, coordoDeLaPlante: Array<number>, nomDeLaPlante: string) {
     this.servicePlanteUtilisateur.delete(laPlante.identifiant).subscribe(
       (ResponseDto) => {
         if (!ResponseDto.error) {
