@@ -17,15 +17,29 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     maFonction1();
-
+    this.isConnected();
+    this.isAdmin();
     this.user = JSON.parse(localStorage.getItem('connectedUser'));
     console.log("NAVBAR ==> connectedUser ", this.user);
-    console.log("isConnected?" , this.isConnected())
+    console.log("isConnected?" , this.isConnected());
+    console.log("isAdmin?", this.isAdmin());
+
   }
 
 
   isConnected() : boolean {
     return this.user?  true : false;
+  }
+
+  isAdmin() : boolean {
+    
+    if (this.user && this.user.role == 'Admin') {
+      return true;
+    }
+
+    if (this.user && this.user.role == 'Utilisateur') {
+      return false;
+    }
   }
 
   disconnect(){
