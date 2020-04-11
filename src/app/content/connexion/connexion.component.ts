@@ -51,7 +51,7 @@ export class ConnexionComponent implements OnInit {
           location.href='admin'
         } else if (connexionDto.user) {
           this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
-          location.href=''
+          //location.href=''
         }
       } else {
         this.messageValidation = "Quelque chose ne marche pas :("

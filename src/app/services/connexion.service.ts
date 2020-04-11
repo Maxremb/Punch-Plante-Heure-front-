@@ -34,12 +34,15 @@ export class ConnexionService {
     console.log('debug');
     let success = this.convert(connexionDto)
     if (success) {
+      console.log(connexionDto.token);
+      localStorage.setItem('token', connexionDto.token);
       localStorage.setItem('connectedUser', JSON.stringify(this.connectedUser));
     }
     return success;
   }
 
   convert(connexionDto: ConnexionDto): boolean {
+    console.log("convert");
     this.connectedUser = new ConnectedUser();
     if (connexionDto.bodyAdmin || connexionDto.bodyUtil) {
 
