@@ -43,7 +43,7 @@ export class AuthGuard implements CanActivate {
     return false;
   }
 
-  private checkToken(next: ActivatedRouteSnapshot, token: string, user: ConnectedUser){
+  private checkToken(next: ActivatedRouteSnapshot, token: string, user: ConnectedUser) : void{
 
     this.service.getRole(token).subscribe(
       returnedRole => {
@@ -59,6 +59,10 @@ export class AuthGuard implements CanActivate {
 
           this.router.navigate(['']);
         }
+      },
+      error => {
+        localStorage.clear();
+        this.router.navigate(['']);
       }
     );
 
