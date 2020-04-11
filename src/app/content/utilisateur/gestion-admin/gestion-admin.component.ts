@@ -11,6 +11,7 @@ export class GestionAdminComponent implements OnInit {
 
 
     allUtilisateur = new Array<UtilisateurUpdateDto>();
+    singleUtilisateur = new UtilisateurUpdateDto();
     pageActive:number =0;
     maxPage:number=0;
     pageTotal:number[]=[];
@@ -19,14 +20,18 @@ export class GestionAdminComponent implements OnInit {
     choix: boolean;
     recherche: boolean;
     identifier: number;
+    single: boolean;
+    numero: number;
+    message: string;
 
-    constructor(private service:UtilisateurService) { }
+    constructor(private service: UtilisateurService) { }
 
     // Initialisation des constantes choix, liste et recherche
     ngOnInit(): void {
       this.choix = true;
       this.liste = false;
       this.recherche = false;
+      this.single = false;
     }
 
     // Methode pour afficher les choix de l'administrateur
@@ -36,7 +41,7 @@ export class GestionAdminComponent implements OnInit {
       this.recherche = false;
     }
 
-    // Methode pour afficher la liste des plantes, appel a la methode getAll(1)
+    // Methode pour afficher la liste des utilisateurs, appel a la methode getAll(1)
     afficherListe() {
       this.liste = true;
       this.choix = false;
@@ -47,6 +52,14 @@ export class GestionAdminComponent implements OnInit {
     afficherRecherche() {
       this.recherche = true;
       this.choix = false;
+    }
+
+    // Methode pour afficher le tableau avec SINGLE
+    afficherSingle(numero: number) {
+      this.recherche = true;
+      this.choix = false;
+      this.single = true;
+      this.getSingle(numero);
     }
 
     range(pactif,ptotal) {
@@ -73,42 +86,47 @@ export class GestionAdminComponent implements OnInit {
       );
     }
 
-    delete(id: number) {
-      this.service.delete(id).subscribe(
-        responseDto => {
-          console.log('debug responseDto : ', responseDto);
+    getSingle(numero: number) {
+      this.service.getUtilisateur(this.numero).subscribe(
+        (responseDto) => {
+          console.log('debug responseDto :', responseDto);
           if (!responseDto.error) {
-            this.allUtilisateur = this.allUtilisateur.filter(
-              element =>  element.identifier !== id
-            );
+            this.singleUtilisateur = responseDto.body;
           }
         }
-      );
+      )
     }
+
 
     desactivateUser(identifier: number) {
       this.service.desactivateUser(identifier).subscribe(
-        responseDto => {
-          console.log('debug responseDto : ', responseDto);
-          if (!responseDto.error) {
-            this.allUtilisateur = this.allUtilisateur.filter(
-              element =>  element.identifier !== identifier
-            );
-          }
+        (responseDto) => {
+            if (!responseDto.error) {
+                  if (this.liste) {
+                    this.getAll(0);
+                  }
+                  else if (this.single) {
+                    this.getSingle(identifier);
+                  }
+            }
         }
       );
+        
     }
 
     activateUser(identifier: number) {
       this.service.activateUser(identifier).subscribe(
-        responseDto => {
-          console.log('debug responseDto : ', responseDto);
+        (responseDto) => {
           if (!responseDto.error) {
-            this.allUtilisateur = this.allUtilisateur.filter(
-              element =>  element.identifier !== identifier
-            );
+                if (this.liste) {
+                  this.getAll(0);
+                }
+                else if (this.single) {
+                  this.getSingle(identifier);
+                }
           }
-        }
+      }
+
       );
     }
 

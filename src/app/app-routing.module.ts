@@ -84,7 +84,7 @@ const routes: Routes = [
   { path : 'inscription', component : InscriptionComponent},
   { path : 'utilisateur/detail/:identifier', component : DetailUtilisateurComponent},
   { path : 'utilisateur/gestion-admin', component : GestionAdminComponent},
-  { path : 'admin/detail', component : DetailAdminComponent},
+  { path : 'admin/detail/:identifier', component : DetailAdminComponent},
 
   { path : 'jardin/detail/:id', component : DetailJardinComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} }, //update d'un jardin par id
