@@ -20,6 +20,9 @@ export class DetailUtilisateurComponent implements OnInit {
   messageValidation = '';
   error: boolean;
 
+  samePwd = true;
+  password2 = '';
+
   constructor(private service: UtilisateurService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -32,8 +35,18 @@ export class DetailUtilisateurComponent implements OnInit {
       mail: new FormControl(this.utilisateur.mail),
       phone: new FormControl(this.utilisateur.phone),
       picture: new FormControl(this.utilisateur.picture),
+      pwd: new FormControl(this.utilisateur.pwd),
+      password2: new FormControl('',),
+
     });
   }
+
+  get pwd(): any { return this.userUpdateForm.get('pwd'); }
+
+  comparePwd(){
+    this.samePwd = this.utilisateur.pwd === this.password2;
+  }
+  
 
 
   getUserById(): void {
@@ -55,6 +68,7 @@ export class DetailUtilisateurComponent implements OnInit {
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! Vous avez modifié vos information avec succès !';
           this.error = false;
+          document.location.reload();
         }
       },
       (error) => {
