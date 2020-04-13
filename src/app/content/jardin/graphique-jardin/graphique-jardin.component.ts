@@ -185,11 +185,10 @@ export class GraphiqueJardinComponent implements OnInit {
 
 
   addPlanteToJardin(plante: PlanteModeleUpdateDto, coordo: Array<number>) {
-    var planteACree = new PlanteUtilisateurCreateDto;
+    var planteACree: PlanteUtilisateurCreateDto = new PlanteUtilisateurCreateDto;
 
     if(this.matrice[coordo[0]][coordo[1]] == '') {
-
-      if (this.selection != '' && !this.planteABouger) {
+      if ((this.selection != '') && (!this.planteABouger.coordonnees)) {
         planteACree.coordonnees = coordo;
         planteACree.garden = this.jardin;
         planteACree.modelPlant = plante;

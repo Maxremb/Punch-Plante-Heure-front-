@@ -6,16 +6,16 @@
                     <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
                         <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;"
                             width=20px height=20px title="{{matrice[index][index2]}}" >
-                            <div *ngIf="this.matrice[index][index2]=='chemin'" class="chemin">
+                            <div *ngIf="this.matrice[index][index2]=='Ohemin'" class="chemin">
                                 &nbsp;
                             </div>
-                            <div *ngIf="this.matrice[index][index2]=='obstacle'" class="obstacle">
+                            <div *ngIf="this.matrice[index][index2]=='Obstacle'" class="obstacle">
                                 &nbsp;
                             </div>
                             <div *ngIf="this.matrice[index][index2]==''" class="vide">
                                 &nbsp;
                             </div>
-                            <div *ngIf="this.matrice[index][index2]!='chemin'&&this.matrice[index][index2]!='obstacle'&&this.matrice[index][index2].length"
+                            <div *ngIf="(this.matrice[index][index2]!='chemin') && (this.matrice[index][index2]!='obstacle') && (this.matrice[index][index2].length)"
                                 class="plante">
                                 &nbsp;
                             </div>
@@ -31,7 +31,7 @@
                 <thead>
                     <tr>
                         <td>Couleur</td>
-                        <td> Objet</td>
+                        <td>Objet</td>
                     </tr>
                 </thead>
                 <tbody>
