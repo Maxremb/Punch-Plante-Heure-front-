@@ -39,7 +39,6 @@
             <p>(Un carreau de cette grille représente un carré de votre jardin de 50x50cm)</p>
 
             <!-- Légende du code couleur de la carte  -->
-            <br>
             <legend><strong>Modifier mon jardin :</strong></legend>
             <button class="btn btn-dark" style="background-color: black; width: 200px;" 
                 (click)="modifSelection('obstacle'); selectionnerPlante(this.obstacle)"><i class="fa fa-cube" aria-hidden="true"></i> Placer un obstacle</button>
@@ -107,7 +106,8 @@
                 <div *ngIf="message">{{message}}</div>
             </div>
 
-            <br><p *ngIf="(this.selection != '') && (this.selection != 'vide') && (this.selection != 'plante') && (this.selection != 'obstacle') && (this.selection !='chemin')"><u><strong>Plante selectionné :</strong></u> &nbsp; {{this.selection}}</p>
+            <br><p><span *ngIf="(this.selection != '')"><u><strong>Selection actuelle :</strong></u> &nbsp; {{this.selection}}</span>
+                <span *ngIf="(this.selection == '')"><u><strong>Selection actuelle :</strong></u> &nbsp; {{this.selection}}</span></p>
         </div>
         <hr style="width: 200px;">
 
