@@ -127,15 +127,6 @@ export class GraphiqueJardinComponent implements OnInit {
     this.selection = objet;
   }
 
-  
-  // Change la valeur dans la matrice pour y mettre ce qu'il y a dans la valeur selection
-  // modifOnClick(y: number, x: number) {
-  //   if (this.matrice[y][x] == '') {
-  //     this.matrice[y][x] = this.selection;
-  //   }
-  //   console.log('DEBUG MATRICE ' + this.matrice);
-  // }
-
 
   trackByIndex(index: number, obj: any): any {
     return index;
@@ -185,10 +176,10 @@ export class GraphiqueJardinComponent implements OnInit {
 
 
   addPlanteToJardin(plante: PlanteModeleUpdateDto, coordo: Array<number>) {
-    var planteACree: PlanteUtilisateurCreateDto = new PlanteUtilisateurCreateDto;
-
     if(this.matrice[coordo[0]][coordo[1]] == '') {
-      if ((this.selection != '') && (!this.planteABouger.coordonnees)) {
+      var planteACree: PlanteUtilisateurCreateDto = new PlanteUtilisateurCreateDto;
+
+      if ((this.selection != '') && (!this.planteABouger.coordonnees) && (this.planteSelectionner.commun)) {
         planteACree.coordonnees = coordo;
         planteACree.garden = this.jardin;
         planteACree.modelPlant = plante;

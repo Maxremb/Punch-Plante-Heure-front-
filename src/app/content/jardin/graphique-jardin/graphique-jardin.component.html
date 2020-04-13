@@ -106,8 +106,13 @@
                 <div *ngIf="message">{{message}}</div>
             </div>
 
-            <br><p><span *ngIf="(this.selection != '')"><u><strong>Selection actuelle :</strong></u> &nbsp; {{this.selection}}</span>
-                <span *ngIf="(this.selection == '')"><u><strong>Selection actuelle :</strong></u> &nbsp; {{this.selection}}</span></p>
+            <br>
+            <p>
+                <span *ngIf="((this.selection != 'Aucune') && (!this.planteABouger.coordonnees))"><button class="btn btn-danger" style="width: 45px;" (click)="viderLesResultats()" title="Désélectionner"><i class="fa fa-times" aria-hidden="true"></i></button>&nbsp;</span>
+                <u><strong>Selection actuelle :</strong></u> &nbsp; {{this.selection}}
+                <span *ngIf="(this.selection == '')">Vider une case</span>
+            </p>
+            
         </div>
         <hr style="width: 200px;">
 
