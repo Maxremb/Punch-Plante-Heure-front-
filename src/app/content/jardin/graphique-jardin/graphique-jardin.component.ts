@@ -136,12 +136,12 @@ export class GraphiqueJardinComponent implements OnInit {
 
   
   // Change la valeur dans la matrice pour y mettre ce qu'il y a dans la valeur selection
-  modifOnClick(y: number, x: number) {
-    if (this.matrice[y][x] == '') {
-      this.matrice[y][x] = this.selection;
-    }
-    console.log('DEBUG MATRICE ' + this.matrice);
-  }
+  // modifOnClick(y: number, x: number) {
+  //   if (this.matrice[y][x] == '') {
+  //     this.matrice[y][x] = this.selection;
+  //   }
+  //   console.log('DEBUG MATRICE ' + this.matrice);
+  // }
 
 
   trackByIndex(index: number, obj: any): any {
@@ -202,6 +202,7 @@ export class GraphiqueJardinComponent implements OnInit {
           (ResponseDto) => {
             if (!ResponseDto.error) {
               this.plantesDuJardin.push(ResponseDto.body);
+              this.getPlantesDejaPresentes();
             }
           }
         );
@@ -233,11 +234,12 @@ export class GraphiqueJardinComponent implements OnInit {
         if (!ResponseDto.error) {
           this.plantesDuJardin.splice(
             this.plantesDuJardin.indexOf(laPlante), 1
-          ) ;
+          );
         }
       }
     );
     this.matrice[coordoDeLaPlante[0]][coordoDeLaPlante[1]] = '';
+    this.getPlantesDejaPresentes();
   }
 
 
@@ -253,19 +255,13 @@ export class GraphiqueJardinComponent implements OnInit {
   }
 
   attributionNouvellesCoordo(coordo: Array<number>) {
-    console.log('valeur de la case : ', this.matrice[coordo[0]][coordo[1]])
-
     if ((this.planteABouger) && (this.matrice[coordo[0]][coordo[1]] == '')) {
 
       if (this.planteABouger.coordonnees != null) {
         var anciennesCoordo: Array<number> = this.planteABouger.coordonnees;
       }
 
-      console.log('nouvelles coordo : ', coordo)
-
       this.planteABouger.coordonnees = coordo;
-
-      console.log('nouvelles coordo de la plante : ', this.planteABouger.coordonnees)
 
       this.servicePlanteUtilisateur.update(this.planteABouger).subscribe(
         (responseDto) => {
@@ -276,6 +272,7 @@ export class GraphiqueJardinComponent implements OnInit {
         }
       );      
     }
+    this.getPlantesDejaPresentes();
   }
 
 

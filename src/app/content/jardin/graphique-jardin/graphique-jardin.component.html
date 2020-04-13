@@ -18,7 +18,7 @@
                 <tbody>
                     <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
                         <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;" width=20px
-                            height=20px (click)="modifOnClick(index, index2); addPlanteToJardin(this.planteSelectionner, [index, index2]); attributionNouvellesCoordo([index, index2]); enleverPlanteDuJardinFromVide([index, index2])" title="{{matrice[index][index2]}}">
+                            height=20px (click)="addPlanteToJardin(this.planteSelectionner, [index, index2]); attributionNouvellesCoordo([index, index2]); enleverPlanteDuJardinFromVide([index, index2])" title="{{matrice[index][index2]}}">
                             <div *ngIf="matrice[index][index2]=='Chemin'" class="chemin">
                                 &nbsp;
                             </div>
