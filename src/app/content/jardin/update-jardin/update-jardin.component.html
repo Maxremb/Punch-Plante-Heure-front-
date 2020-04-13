@@ -46,20 +46,29 @@
                         </tr>
                         <tr>
                             <td>
-                                <label class="label"> Longueur actuelle : </label> {{this.jardin.length}}
+                                <label class="label"> Longueur actuelle en m : </label> {{this.jardin.length}}
                             </td>
                             <td>
                                 <input id="length" type="number" min="0" formControlName="length" name="length"
-                                    placeholder="Nouvelle longueur ici .." [(ngModel)]="this.jardin.length">
+                                    placeholder="Nouvelle longueur ici .." [(ngModel)]="this.jardin.length" required>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label class="label"> Largeur actuelle : </label> {{this.jardin.width}}
+                                <label class="label"> Largeur actuelle en m: </label> {{this.jardin.width}}
                             </td>
                             <td>
                                 <input id="width" type="number" min="0" formControlName="width" name="width"
-                                    placeholder="Nouvelle largeur ici .." [(ngModel)]="this.jardin.width">
+                                    placeholder="Nouvelle largeur ici .." [(ngModel)]="this.jardin.width" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="label"> Profondeur actuelle en m: </label> {{this.jardin.depthGround}}
+                            </td>
+                            <td>
+                                <input id="depthGround" type="number" min="0" formControlName="depthGround" name="depthGround"
+                                    placeholder="Nouvelle profondeur ici .." [(ngModel)]="this.jardin.depthGround" required>
                             </td>
                         </tr>
                         <tr>
