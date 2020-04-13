@@ -66,13 +66,20 @@
               <!-- Navbar Start -->
               <div class="classynav">
                 <ul>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
                   <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/">Accueil</a></li>
                   <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/plant/vuser">Nos plantes</a></li>
                   <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/about">A propos</a></li>
                   <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/contact">Contact</a></li>
                   <li *ngIf="isConnected() && !isAdmin() "><a class="nav-link" routerLink="/jardin">Mes jardins</a></li>
                   <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/meteo">Mes stations meteo</a></li>
-                  <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/dashboard">Mon compte</a></li>
+                  <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/dashboard">
+                    <i class="fa fa-user-circle" title="Mon Compte" aria-hidden="true">
+                    </i>&nbsp;:&nbsp;{{this.user.pseudo}}</a></li>
                   <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/plant/vadmin">Gestion des plantes</a></li>
                   <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/utilisateur/gestion-admin">Gestion des utilisateurs</a></li>
                   <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/departement/vadmin">Gestion des départements</a></li>
@@ -92,7 +99,7 @@
                       <li><a class="nav-link" routerLink="/admin">Mon compte</a></li>
                     </ul>
                   </li> -->
-             
+
                 </ul>
 
               </div>
@@ -100,7 +107,7 @@
             </div>
           </nav>
 
-          
+
         </div>
       </div>
     </div>

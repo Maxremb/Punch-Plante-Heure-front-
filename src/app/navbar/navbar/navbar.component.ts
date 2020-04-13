@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
   }
 
   isAdmin() : boolean {
-    
+
     if (this.user && this.user.role == 'Admin') {
       return true;
     }
