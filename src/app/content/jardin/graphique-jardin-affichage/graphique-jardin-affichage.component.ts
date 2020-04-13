@@ -24,7 +24,6 @@ export class GraphiqueJardinAffichageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlantesPresentes();
-    this.genererMatrice();
 
 
   }
@@ -51,7 +50,7 @@ export class GraphiqueJardinAffichageComponent implements OnInit {
     this.planteUtilisateurService.getAllByJardin(this.jardin.identifier, 0).subscribe(
       (responseDto) => {
 
-        this.plantesPresentes = responseDto.body.content;
+        this.plantesPresentes = responseDto.body;
         for (let index = 1; index < responseDto.body.totalPages; index++) {
           this.planteUtilisateurService.getAllByJardin(this.jardin.identifier, index).subscribe(
             (resp) => { this.plantesPresentes.push(resp.body.content)});
@@ -62,9 +61,12 @@ export class GraphiqueJardinAffichageComponent implements OnInit {
       }
     );
 
+    this.genererMatrice();
   }
 
   trackByIndex(index: number, obj: any): any {
     return index;
   }
+
+  
 }
