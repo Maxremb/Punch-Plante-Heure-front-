@@ -22,9 +22,9 @@
                   <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">USA</a>
-                    <a class="dropdown-item" href="#">UK</a>
                     <a class="dropdown-item" href="#">Français</a>
+                    <a class="dropdown-item" href="#">Espagnol</a>
+                    <a class="dropdown-item" href="#">English</a>
                   </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@
                   <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/about">A propos</a></li>
                   <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/contact">Contact</a></li>
                   <li *ngIf="isConnected() && !isAdmin() "><a class="nav-link" routerLink="/jardin">Mes jardins</a></li>
-                  <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/meteo">Mes stations meteo</a></li>
+                  <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/meteo">Mes stations météo</a></li>
                   <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/dashboard">
                     <i class="fa fa-user-circle" title="Mon Compte" aria-hidden="true">
                     </i>&nbsp;:&nbsp;{{this.user.pseudo}}</a></li>
