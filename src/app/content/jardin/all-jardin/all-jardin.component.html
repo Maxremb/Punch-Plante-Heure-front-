@@ -16,8 +16,9 @@
                 <tr>
                     <th>Nom</th>
                     <th>Sol</th>
-                    <th>Longueur</th>
-                    <th>Largeur</th>
+                    <th>Longueur (m)</th>
+                    <th>Largeur (m)</th>
+                    <th>Profondeur (m)</th>
                     <th>Département</th>
                     <th>Actions</th>
                 </tr>
@@ -36,6 +37,9 @@
                     </a></td>
                     <td><a routerLink="/jardin/detail/{{e.identifier}}">
                         {{e.width}}
+                    </a></td>
+                    <td><a routerLink="/jardin/detail/{{e.identifier}}">
+                        {{e.depthGround}}
                     </a></td>
                     <td><a routerLink="/jardin/detail/{{e.identifier}}">
                         {{e.dept.name}}
