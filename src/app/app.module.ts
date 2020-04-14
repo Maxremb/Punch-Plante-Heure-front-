@@ -60,6 +60,9 @@ import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 registerLocaleData(localeFr, 'fr-FR');
 
 
@@ -126,10 +129,14 @@ registerLocaleData(localeFr, 'fr-FR');
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    NoopAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
   ],
   bootstrap: [AppComponent]
 })
