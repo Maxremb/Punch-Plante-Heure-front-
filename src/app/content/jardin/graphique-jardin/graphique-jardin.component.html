@@ -1,10 +1,10 @@
-<div *ngIf="this.jardin" class="container">
+<div *ngIf="this.jardin && this.matrice" class="container">
     <br>
     <div class="row">
-    <div class="col-lg-7">
-        <form>
+        <div class="col-lg-7">
+            <form>
 
-            <!-- A dé-commenter si on veux faire une selection des jardins à un moment
+                <!-- A dé-commenter si on veux faire une selection des jardins à un moment
             <h2>Selectionner un jardin</h2>
             <select>
                 <option>Vos jardin</option>
@@ -13,146 +13,177 @@
             </select>
             <br><br> -->
 
-            <h2>{{this.jardin.name}}</h2>
-            <table border="3px solid black">
-                <tbody>
-                    <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
-                        <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;" width=20px
-                            height=20px (click)="addPlanteToJardin(this.planteSelectionner, [index, index2]); attributionNouvellesCoordo([index, index2]); enleverPlanteDuJardinFromVide([index, index2])" title="{{matrice[index][index2]}}">
-                            <div *ngIf="matrice[index][index2]=='Chemin'" class="chemin">
-                                &nbsp;
-                            </div>
-                            <div *ngIf="matrice[index][index2]=='Obstacle'" class="obstacle">
-                                &nbsp;
-                            </div>
-                            <div *ngIf="matrice[index][index2]==''" class="vide">
-                                &nbsp;
-                            </div>
-                            <div *ngIf="(matrice[index][index2] != 'Chemin') && (matrice[index][index2] != 'Obstacle') && matrice[index][index2]"
-                                class="plante">
-                                &nbsp;
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>(Un carreau de cette grille représente un carré de votre jardin de 50x50cm)</p>
+                <h2>{{this.jardin.name}}</h2>
+                <table border="3px solid black">
+                    <tbody>
+                        <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
+                            <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;"
+                                width=20px height=20px
+                                (click)="addPlanteToJardin(this.planteSelectionner, [index, index2]); attributionNouvellesCoordo([index, index2]); enleverPlanteDuJardinFromVide([index, index2])"
+                                title="{{matrice[index][index2]}}" (mousedown)="selectZoneDebut(index, index2)" (mouseup)="selectZoneFin(index, index2)" (mouseover)="selectionContinue(index, index2)">
+                                <!-- (mousedown)="selectZoneDebut(index, index2)" (mouseup)="selectZoneFin(index, index2)" (mouseover)="selectionContinue()" -->
 
-            <!-- Légende du code couleur de la carte  -->
-            <legend><strong>Modifier mon jardin :</strong></legend>
-            <button class="btn btn-dark" style="background-color: black; width: 200px;" 
-                (click)="modifSelection('obstacle'); selectionnerPlante(this.obstacle)"><i class="fa fa-cube" aria-hidden="true"></i> Placer un obstacle</button>
-            <br><button class="btn btn-secondary" style="background-color: saddlebrown; width: 200px; border-color: saddlebrown;" 
-                (click)="modifSelection('chemin'); selectionnerPlante(this.chemin)"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Placer un chemin</button>
-            <br><button class="btn btn-secondary" style="width: 200px;" 
-                (click)="modifSelection('')"><i class="fa fa-ban" aria-hidden="true"></i> Vider un espace</button>
+                                <div *ngIf="matrice[index][index2]=='Chemin'" class="chemin">
+                                    &nbsp;
+                                </div>
+                                <div *ngIf="matrice[index][index2]=='Obstacle'" class="obstacle">
+                                    &nbsp;
+                                </div>
+                                <div *ngIf="matrice[index][index2]==''" class="vide">
+                                    &nbsp;
+                                </div>
+                                <div *ngIf="(matrice[index][index2] != 'Chemin') && (matrice[index][index2] != 'Obstacle') && matrice[index][index2]"
+                                    class="plante">
+                                    &nbsp;
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>(Un carreau de cette grille représente un carré de votre jardin de 50x50cm)</p>
 
-            <!-- Modal de remise à zéro du jardin -->
-            <br><br>
-            <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationReset" ><i class="fa fa-times" aria-hidden="true"></i> Remettre à zéro</button>
+                <!-- Légende du code couleur de la carte  -->
+                <legend><strong>Modifier mon jardin :</strong></legend>
+                <button class="btn btn-dark" style="background-color: black; width: 200px;"
+                    (click)="modifSelection('obstacle'); selectionnerPlante(this.obstacle)"><i class="fa fa-cube"
+                        aria-hidden="true"></i> Placer un obstacle</button>
+                <br><button class="btn btn-secondary"
+                    style="background-color: saddlebrown; width: 200px; border-color: saddlebrown;"
+                    (click)="modifSelection('chemin'); selectionnerPlante(this.chemin)"><i class="fa fa-ellipsis-v"
+                        aria-hidden="true"></i> Placer un chemin</button>
+                <br><button class="btn btn-secondary" style="width: 200px;" (click)="modifSelection('')"><i
+                        class="fa fa-ban" aria-hidden="true"></i> Vider un espace</button>
 
-            <div class="modal" id="confirmationReset">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                  
-                    <div class="modal-header">
-                      <h4 class="modal-title">Confirmation</h4>
+                <!-- Modal de remise à zéro du jardin -->
+                <br><br>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationReset"><i
+                        class="fa fa-times" aria-hidden="true"></i> Remettre à zéro</button>
+
+                <div class="modal" id="confirmationReset">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">Confirmation</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                Vous êtes sûr le point de mettre à zéro votre jardin.
+                                <br>Veuillez confirmer ce choix.
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-danger" (click)="remiseAZero()" data-dismiss="modal"><i
+                                        class="fa fa-times" aria-hidden="true"></i> Confirmer la remise à zéro de mon
+                                    jardin</button>
+                                <button class="btn btn-success" data-dismiss="modal">Annuler</button>
+                            </div>
+
+                        </div>
                     </div>
-                    
-                    <div class="modal-body">
-                      Vous êtes sûr le point de mettre à zéro votre jardin.
-                      <br>Veuillez confirmer ce choix.
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button class="btn btn-danger" (click)="remiseAZero()" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Confirmer la remise à zéro de mon jardin</button>
-                        <button class="btn btn-success" data-dismiss="modal">Annuler</button>
-                    </div>
-                    
-                  </div>
                 </div>
-              </div>
 
-              <hr style="width: 300px">
-        </form>
-    </div>
-
-    <div class="col-lg-4">
-        <div>
-            <h2>Ajouter une plante à mon jardin</h2>
-            <form>
-                <input [(ngModel)]="planteRechercher" type="text" placeholder="Nom de la plante"[ngModelOptions]="{standalone: true}">
-                <br><button class="btn btn-success" (click)="rechercherPlante(planteRechercher)"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</button>
+                <hr style="width: 300px">
             </form>
+        </div>
 
-            <div *ngIf="resultatRecherche">
+        <div class="col-lg-4">
+            <div>
+                <h2>Ajouter une plante à mon jardin</h2>
+                <form>
+                    <input [(ngModel)]="planteRechercher" type="text" placeholder="Nom de la plante"
+                        [ngModelOptions]="{standalone: true}">
+                    <br><button class="btn btn-success" (click)="rechercherPlante(planteRechercher)"><i
+                            class="fa fa-search" aria-hidden="true"></i> Rechercher</button>
+                </form>
+
+                <div *ngIf="resultatRecherche">
+                    <br>
+                    <h3>Resultat de la recherche &nbsp; <button class="btn btn-danger"
+                            title="vider la liste des des résultats" (click)="viderLesResultats()"><i
+                                class="fa fa-times" aria-hidden="true"></i></button></h3>
+                    <p>(Cliquez sur le nom d'une plante pour la selectionner)</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td style="width: 120px;"><strong>Nom commun</strong></td>
+                                <td style="width: 120px;"><strong>Nom scientifique</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let r of this.resultatRecherche">
+                            <tr>
+                                <td><span (click)="selectionnerPlante(r); modifSelection(r.commun)">{{r.commun}}</span>
+                                </td>
+                                <td><span
+                                        (click)="selectionnerPlante(r); modifSelection(r.commun)">{{r.scientifique}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="message">{{message}}</div>
+                </div>
+
                 <br>
-                <h3>Resultat de la recherche &nbsp; <button class="btn btn-danger" title="vider la liste des des résultats" (click)="viderLesResultats()"><i class="fa fa-times" aria-hidden="true"></i></button></h3>
-                <p>(Cliquez sur le nom d'une plante pour la selectionner)</p>
+                <p>
+                    <span *ngIf="((this.selection != 'Aucune') && (!this.planteABouger.coordonnees))"><button
+                            class="btn btn-danger" style="width: 45px;" (click)="viderLesResultats()"
+                            title="Désélectionner"><i class="fa fa-times" aria-hidden="true"></i></button>&nbsp;</span>
+                    <u><strong>Selection actuelle :</strong></u> &nbsp; {{this.selection}}
+                    <span *ngIf="(this.selection == '')">Vider une case</span>
+                </p>
+
+            </div>
+            <hr style="width: 200px;">
+
+            <div *ngIf="this.planteok">
+                <!-- Liste des plantes dans le Jardin -->
+
+                <h3>Plantes de mon jardin</h3>
                 <table>
                     <thead>
                         <tr>
                             <td style="width: 120px;"><strong>Nom commun</strong></td>
-                            <td style="width: 120px;"><strong>Nom scientifique</strong></td>
+                            <td style="width: 100px;"><strong>Emplacement</strong></td>
+                            <td><strong>Action</strong></td>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let r of this.resultatRecherche">
-                        <tr>
-                            <td><span (click)="selectionnerPlante(r); modifSelection(r.commun)">{{r.commun}}</span></td>
-                            <td><span (click)="selectionnerPlante(r); modifSelection(r.commun)">{{r.scientifique}}</span></td>
+                    <tbody>
+                        <tr *ngFor="let p of this.plantesDuJardin">
+                            <td
+                                *ngIf="(p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)">
+                                {{p.modelPlant.commun}}</td>
+                            <td
+                                *ngIf="(p.coordonnees) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)">
+                                {{p.coordonnees[1]+1}},{{p.coordonnees[0]+1}}</td>
+                            <td
+                                *ngIf="(!p.coordonnees) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)">
+                            </td>
+                            <td>
+                                <button style="width: 45px;" class="btn btn-success"
+                                    title="Mettre la plante dans le jardin"
+                                    *ngIf="(!p.coordonnees) && (p != this.planteABouger) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)"
+                                    (click)="selectionnerPlanteABouger(p)"><i class="fa fa-leaf"
+                                        aria-hidden="true"></i></button>
+                                <button style="width: 45px;" class="btn btn-success" title="Changer la plante de place"
+                                    *ngIf="(p.coordonnees) && (p != this.planteABouger) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)"
+                                    (click)="selectionnerPlanteABouger(p)"><i class="fa fa-arrows"
+                                        aria-hidden="true"></i></button>
+                                <button style="width: 45px;" class="btn btn-warning" title="laisser la plante"
+                                    *ngIf="(p == this.planteABouger) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)"
+                                    (click)="deselectionnerPlanteABouger()"><i class="fa fa-ban"
+                                        aria-hidden="true"></i></button>
+                                <button style="width: 45px;" class="btn btn-danger"
+                                    title="Supprimer la plante du jardin"
+                                    *ngIf="(p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)"
+                                    (click)="enleverPlanteDuJardinFromListe(p, p.coordonnees, p.modelPlant.commun)"><i
+                                        class="fa fa-times" aria-hidden="true"></i></button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <div *ngIf="message">{{message}}</div>
             </div>
-
-            <br>
-            <p>
-                <span *ngIf="((this.selection != 'Aucune') && (!this.planteABouger.coordonnees))"><button class="btn btn-danger" style="width: 45px;" (click)="viderLesResultats()" title="Désélectionner"><i class="fa fa-times" aria-hidden="true"></i></button>&nbsp;</span>
-                <u><strong>Selection actuelle :</strong></u> &nbsp; {{this.selection}}
-                <span *ngIf="(this.selection == '')">Vider une case</span>
-            </p>
-            
-        </div>
-        <hr style="width: 200px;">
-
-        <div *ngIf="this.planteok">
-            <!-- Liste des plantes dans le Jardin -->
-            
-            <h3>Plantes de mon jardin</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <td style="width: 120px;"><strong>Nom commun</strong></td>
-                        <td style="width: 100px;"><strong>Emplacement</strong></td>
-                        <td><strong>Action</strong></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let p of this.plantesDuJardin">
-                        <td *ngIf="(p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)">{{p.modelPlant.commun}}</td>
-                        <td *ngIf="(p.coordonnees) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)">{{p.coordonnees[1]+1}},{{p.coordonnees[0]+1}}</td>
-                        <td *ngIf="(!p.coordonnees) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)"></td>
-                        <td>
-                            <button style="width: 45px;" class="btn btn-success" title="Mettre la plante dans le jardin" 
-                                *ngIf="(!p.coordonnees) && (p != this.planteABouger) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)" 
-                                (click)="selectionnerPlanteABouger(p)"><i class="fa fa-leaf" aria-hidden="true"></i></button>
-                            <button style="width: 45px;" class="btn btn-success" title="Changer la plante de place" 
-                                *ngIf="(p.coordonnees) && (p != this.planteABouger) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)" 
-                                (click)="selectionnerPlanteABouger(p)" ><i class="fa fa-arrows" aria-hidden="true"></i></button>
-                            <button style="width: 45px;" class="btn btn-warning" title="laisser la plante" 
-                                *ngIf="(p == this.planteABouger) && (p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)" 
-                                (click)="deselectionnerPlanteABouger()" ><i class="fa fa-ban" aria-hidden="true"></i></button>
-                            <button style="width: 45px;" class="btn btn-danger" title="Supprimer la plante du jardin" 
-                                *ngIf="(p.modelPlant.commun != this.chemin.commun) && (p.modelPlant.commun != this.obstacle.commun)"
-                                (click)="enleverPlanteDuJardinFromListe(p, p.coordonnees, p.modelPlant.commun)" ><i class="fa fa-times" aria-hidden="true"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
-</div>
 </div>
 
 <div class="container">

@@ -26,7 +26,7 @@ export class GraphiqueJardinComponent implements OnInit {
 
   // Crée au lancement
   jardin: JardinUpdateDto;
-  matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
+  matrice: Array<Array<string>> //matrice bidimensionnelle représentant l'emplacement des plantes
   selection: string = 'Aucune';
   plantesDuJardin: Array<PlanteUtilisateurUpdateDto>;
 
@@ -36,15 +36,18 @@ export class GraphiqueJardinComponent implements OnInit {
   planteSelectionner: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
 
   // Déplacer les plantes
-  planteABouger : PlanteUtilisateurUpdateDto = new PlanteUtilisateurUpdateDto;
+  planteABouger: PlanteUtilisateurUpdateDto = new PlanteUtilisateurUpdateDto;
 
-
+  //atttributs pour la sélection/ plaçage multiple
+  isSelectZone = false;
+  debutZone: Array<number>;
+  finZone: Array<number>;
 
   constructor(private serviceJardin: JardinService,
-     private servicePlanteUtilisateur: PlanteUtilisateurService,
-     private servicePlanteModel: PlanteModeleService,
-     private route: ActivatedRoute,) {
-    
+    private servicePlanteUtilisateur: PlanteUtilisateurService,
+    private servicePlanteModel: PlanteModeleService,
+    private route: ActivatedRoute,) {
+
   }
 
 
@@ -53,7 +56,7 @@ export class GraphiqueJardinComponent implements OnInit {
     this.idJardin = +this.route.snapshot.paramMap.get('id');
     this.initialiserCheminObstacle();
     this.getJardin();
-    
+
   }
 
 
@@ -75,7 +78,7 @@ export class GraphiqueJardinComponent implements OnInit {
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesDuJardin = responseDto.body;
-          this.planteok=true;
+          this.planteok = true;
           this.genererMatrice();
         }
       }
@@ -85,6 +88,7 @@ export class GraphiqueJardinComponent implements OnInit {
 
   // Faire un espace aux bonnes proportions
   genererMatrice() {
+    this.matrice = new Array<Array<string>>();
     var nbLigne = this.jardin.width * 100 / 50;
     var nbCol = this.jardin.length * 100 / 50;
     for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
@@ -93,14 +97,14 @@ export class GraphiqueJardinComponent implements OnInit {
         this.matrice[indexLigne][indexCol] = "";
       }
     }
-    
+
     // Pour chaque plante déjà présente dans le jardin on associe le nom commun à la bonne position dans la matrice 
     // TO DO : A NE FAIRE QUE POUR LES PLANTES QUI ONT DES COORDONNEES
     this.plantesDuJardin.forEach(plante => {
-      if(plante.coordonnees){
+      if (plante.coordonnees) {
         this.matrice[plante.coordonnees[0]][plante.coordonnees[1]] = plante.modelPlant.commun;
       }
-    }); 
+    });
   }
 
 
@@ -154,7 +158,7 @@ export class GraphiqueJardinComponent implements OnInit {
         if (!ResponseDto.error) {
           this.resultatRecherche = ResponseDto.body.content;
         }
-        if (!(ResponseDto.body.totalPages>0)) {
+        if (!(ResponseDto.body.totalPages > 0)) {
           this.message = 'Aucunes plantes trouvées pour ce mot clé...';
         }
       }
@@ -169,14 +173,14 @@ export class GraphiqueJardinComponent implements OnInit {
   }
 
 
-  selectionnerPlante(planteChoisis: PlanteModeleUpdateDto){
+  selectionnerPlante(planteChoisis: PlanteModeleUpdateDto) {
     this.planteSelectionner = planteChoisis;
     this.selection = planteChoisis.commun;
   }
 
 
   addPlanteToJardin(plante: PlanteModeleUpdateDto, coordo: Array<number>) {
-    if(this.matrice[coordo[0]][coordo[1]] == '') {
+    if (this.matrice[coordo[0]][coordo[1]] == '') {
       var planteACree: PlanteUtilisateurCreateDto = new PlanteUtilisateurCreateDto;
 
       if ((this.selection != '') && (!this.planteABouger.coordonnees) && (this.planteSelectionner.commun)) {
@@ -201,17 +205,17 @@ export class GraphiqueJardinComponent implements OnInit {
       this.servicePlanteUtilisateur.delete(
         this.plantesDuJardin.find(p => (
           JSON.stringify(coordo) === JSON.stringify(p.coordonnees)
-          )).identifiant).subscribe(
-        (ResponseDto) => {
-          if (!ResponseDto.error) {
-            console.log('')
-            this.getPlantesDejaPresentes();
+        )).identifiant).subscribe(
+          (ResponseDto) => {
+            if (!ResponseDto.error) {
+              console.log('')
+              this.getPlantesDejaPresentes();
+            }
           }
-        }
-      );
+        );
     }
   }
-    
+
 
   enleverPlanteDuJardinFromListe(laPlante: PlanteUtilisateurUpdateDto, coordoDeLaPlante: Array<number>, nomDeLaPlante: string) {
     this.servicePlanteUtilisateur.delete(laPlante.identifiant).subscribe(
@@ -258,9 +262,34 @@ export class GraphiqueJardinComponent implements OnInit {
             this.planteABouger = new PlanteUtilisateurUpdateDto;
           }
         }
-      );      
+      );
     }
   }
+
+  // le plaçage au passage en mouse over + mouse down
+  selectionContinue(index: number, index2: number) {
+    if (this.isSelectZone) {
+
+      console.log("DEBUG SLECT CONTINUE", [index, index2]);
+      this.addPlanteToJardin(this.planteSelectionner, [index, index2]);
+
+
+    }
+  }
+
+  selectZoneDebut(index: number, index2: number) {
+    console.log("DEBUG Select zone debut", [index, index2]);
+    this.addPlanteToJardin(this.planteSelectionner, [index, index2]);
+    this.isSelectZone = true;
+    this.debutZone = [index, index2];
+  }
+
+  selectZoneFin(index: number, index2: number) {
+    this.isSelectZone = false;
+    // this.finZone = [index, index2];
+
+  }
+
 
 
   //La matrice récupérée a déjà les plantes avec les coordonnées déjà placées 
