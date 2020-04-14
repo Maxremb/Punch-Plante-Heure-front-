@@ -45,18 +45,18 @@ export class ConnexionComponent implements OnInit {
         console.log('debug responseDto login : ', connexionDto)
         console.log('debug responseDto login : ', connexionDto)
         this.error = !this.service.connect(connexionDto);
-        if(!this.error){
-          //debugger;
-        if (!connexionDto.user) {
-          this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
-          //location.href='admin'
-        } else if (connexionDto.user) {
-          this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
-          //location.href=''
+        if (!this.error) {
+
+          if (!connexionDto.user) {
+            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
+            location.href = 'admin'
+          } else if (connexionDto.user) {
+            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
+            location.href = ''
+          }
+        } else {
+          this.messageValidation = "Quelque chose ne marche pas :("
         }
-      } else {
-        this.messageValidation = "Quelque chose ne marche pas :("
-      }
       },
       (error) => {
         console.log('debug responseDto : ', error);

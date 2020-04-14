@@ -11,8 +11,7 @@ import { Role } from '../enums/role.enum';
 })
 export class ConnexionService {
 
-  // private URL = environment.baseUrl + 'admin/mailAndPwd';
-  private URL = environment.baseUrl + 'session/mailAndPwd';
+  private URL = environment.baseUrl + 'admin/mailAndPwd';
 
   public connectedUser: ConnectedUser;    //par défault null
 
