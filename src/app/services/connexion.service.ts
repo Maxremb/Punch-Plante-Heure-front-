@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { UtilisateurUpdateDto } from '../models/utilisateur-update-dto';
-import { AdminUpdateDto } from '../models/admin-update-dto';
 import { ConnexionDto } from '../models/connexion-dto';
 import { HttpClient } from '@angular/common/http';
-import { ResponseDto } from '../models/response-dto';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ConnectedUser } from '../models/connectedUser';
 import { Role } from '../enums/role.enum';
@@ -14,7 +11,7 @@ import { Role } from '../enums/role.enum';
 })
 export class ConnexionService {
 
- // private URL = environment.baseUrl + 'admin/mailAndPwd';
+  // private URL = environment.baseUrl + 'admin/mailAndPwd';
   private URL = environment.baseUrl + 'session/mailAndPwd';
 
   public connectedUser: ConnectedUser;    //par défault null
@@ -26,8 +23,8 @@ export class ConnexionService {
 
   getByEmailAndPwd(mail: string, pwd: string): Observable<ConnexionDto> {
     console.log("Utilisateur connecté!!");
-    return this.http.post<ConnexionDto>(this.URL , [mail, pwd]);
-    
+
+    return this.http.post<ConnexionDto>(this.URL, [mail, pwd]);
 
   }
 

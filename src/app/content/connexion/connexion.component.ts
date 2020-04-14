@@ -39,19 +39,20 @@ export class ConnexionComponent implements OnInit {
     });
   }
 
-
-
   connect(mail: string, pwd: string) {
     this.service.getByEmailAndPwd(mail, pwd).subscribe(
       (connexionDto) => {
+        console.log('debug responseDto login : ', connexionDto)
+        console.log('debug responseDto login : ', connexionDto)
         this.error = !this.service.connect(connexionDto);
         if(!this.error){
+          //debugger;
         if (!connexionDto.user) {
           this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
-          location.href='admin'
+          //location.href='admin'
         } else if (connexionDto.user) {
           this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
-          location.href=''
+          //location.href=''
         }
       } else {
         this.messageValidation = "Quelque chose ne marche pas :("

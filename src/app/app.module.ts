@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +55,7 @@ import { UtilisateurComponent } from './content/utilisateur/utilisateur.componen
 import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component';
 import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
 import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
+import { CustomInterceptor } from './helpers/custom.interceptor';
 
 
 @NgModule({
@@ -120,6 +121,11 @@ import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail
     GoogleChartsModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomInterceptor ,
+      multi: true
+    },
     HttpClientModule
   ],
   bootstrap: [AppComponent]
