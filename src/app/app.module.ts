@@ -58,6 +58,9 @@ import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-connexion/accueil-hors-connexion.component';
+import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.component';
+import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
 registerLocaleData(localeFr, 'fr-FR');
 
 
@@ -115,7 +118,9 @@ registerLocaleData(localeFr, 'fr-FR');
     EnteteUtilisateurAdminComponent,
     DetailAdminComponent,
     ImageUploadComponent,
-    
+    AccueilHorsConnexionComponent,
+    AllPeriodeComponent,
+    CreatePeriodeComponent
 
   ],
   imports: [
