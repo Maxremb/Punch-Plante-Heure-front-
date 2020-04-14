@@ -29,8 +29,10 @@ export class PlanningJardinComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlantes();
+    
   }
 
+  
 
 
   getPlantes(): void {
@@ -124,7 +126,7 @@ export class PlanningJardinComponent implements OnInit {
         )
   }
 
-
+  
 
 
   retour(): void {
