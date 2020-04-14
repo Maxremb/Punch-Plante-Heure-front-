@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-i18n:fr": "ng build --output-path=dist/fr --aot --prod --base-href /fr/ --i18n-file=src/i18n/messages.fr.xlf --i18n-format=xlf --i18n-locale=fr",
+    "build-i18n:en": "ng build --output-path=dist/en --aot --prod --base-href /en/ --i18n-file=src/i18n/messages.en.xlf --i18n-format=xlf --i18n-locale=en",
+    "build-i18n": "npm run build-i18n:en && npm run build-i18n:fr"
   },
   "private": true,
   "dependencies": {
