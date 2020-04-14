@@ -18,6 +18,7 @@ export class DetailedDepartementComponent implements OnInit {
   depUpdateForm: FormGroup;
   departement: DepartementDto = new DepartementDto();
   messageValidation = '';
+  messageValidation2 = '';
   error: boolean;
   choix: boolean;
   name: string;
@@ -66,6 +67,17 @@ export class DetailedDepartementComponent implements OnInit {
         this.error = true;
       }
 
+    );
+  }
+
+  delete(id: number) {
+    this.service.delete(id).subscribe(
+      responseDto => {
+        console.log('debug responseDto : ', responseDto);
+        if (!responseDto.error) {
+          this.messageValidation2 = 'BRAVO ! Le departement a bien été supprimé.'
+        }
+      }
     );
   }
 

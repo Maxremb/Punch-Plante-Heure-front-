@@ -38,16 +38,33 @@ import { CreateDepartementComponent } from './content/departement/create-departe
 import { DetailedDepartementComponent } from './content/departement/detailed-departement/detailed-departement.component';
 import { EnteteDepartementComponent } from './content/departement/entete-departement/entete-departement.component';
 import { PlanningJardinComponent } from './content/jardin/planning-jardin/planning-jardin.component';
-import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component'; 
+import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
-import { InscriptionComponent } from './content/inscription/inscription.component';
 import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.component';
 import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
+import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component';
+import { EntetePlantAdminComponent } from './content/plant/entete-plant-admin/entete-plant-admin.component';
+import { ConnexionComponent } from './content/connexion/connexion.component';
+import { EnteteConnexionComponent } from './content/connexion/entete-connexion/entete-connexion.component';
+import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
+import { EnteteInscriptionComponent } from './content/inscription/entete-inscription/entete-inscription.component';
+import { MeteoComponent } from './content/meteo/meteo/meteo.component';
+import { EnteteMeteoComponent } from './content/meteo/entete-meteo/entete-meteo.component';
+import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail-utilisateur/detail-utilisateur.component';
+import { UtilisateurComponent } from './content/utilisateur/utilisateur.component';
+import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component';
+import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
+import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr-FR');
 
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     AllPlantComponent,
@@ -86,9 +103,22 @@ import { CreatePeriodeComponent } from './content/periode/create-periode/create-
     MeteoDepComponent,
     NotificationsComponent,
     GraphiqueJardinAffichageComponent,
+    ArrosageComponent,
+    ConnexionComponent,
+    EnteteConnexionComponent,
     InscriptionComponent,
     AllPeriodeComponent,
-    CreatePeriodeComponent
+    CreatePeriodeComponent,
+    EntetePlantAdminComponent,
+    EnteteInscriptionComponent,
+    MeteoComponent,
+    EnteteMeteoComponent,
+    DetailUtilisateurComponent,
+    UtilisateurComponent,
+    GestionAdminComponent,
+    EnteteUtilisateurAdminComponent,
+    DetailAdminComponent,
+    ImageUploadComponent,
   ],
   imports: [
     BrowserModule,

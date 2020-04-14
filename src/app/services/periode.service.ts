@@ -65,4 +65,8 @@ export class PeriodeService {
   getByDepAndPlanteModelIdAndType(depId: number, plantId: number, type: string): Observable<ResponseDto> {
     return this.http.get<ResponseDto>(this.URL + '/onetype?depId=' + depId + '&plantId=' + plantId + '&type=' + type);
   }
+
+  getByJardin(depId: number, jardinId: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/jardin?depId=' + depId + '&jardinId=' + jardinId);
+  }
 }

@@ -43,6 +43,15 @@ export class PlanteUtilisateurService {
     return this.http.get<ResponseDto>(this.URL + '/jardin/' + idJardin + "?page=" + nbpage);
   }
 
+  // findByJardin
+  getAllByJardinListe(idJardin: number): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.URL + '/jardin/liste/' + idJardin);
+  }
+
+  deleteByJardin(idJardin: number): Observable<ResponseDto> {
+    return this.http.delete<ResponseDto>(this.URL + '/jardin/' + idJardin);
+  }
+
   
 
   

@@ -23,48 +23,45 @@ export class GraphiqueJardinAffichageComponent implements OnInit {
   constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService, private servicePlante: PlanteModeleService) { }
 
   ngOnInit(): void {
-    this.getPlantesPresentes();
-    this.genererMatrice();
+    this.getPlantesDejaPresentes();
 
 
   }
 
   // Faire un espace aux bonnes proportions
   genererMatrice() {
-    var nbLigne = this.jardin.width * 100 / 5; // on sépare notre espace par tranche de 5cm
-    var nbCol = this.jardin.length * 100 / 5;
-
+    var nbLigne = this.jardin.width * 100 / 50;
+    var nbCol = this.jardin.length * 100 / 50;
     for (let indexLigne = 0; indexLigne < nbLigne; indexLigne++) {
       this.matrice[indexLigne] = [];
       for (let indexCol = 0; indexCol < nbCol; indexCol++) {
         this.matrice[indexLigne][indexCol] = "";
       }
     }
+    
     // Pour chaque plante déjà présente dans le jardin on associe le nom commun à la bonne position dans la matrice 
     // TO DO : A NE FAIRE QUE POUR LES PLANTES QUI ONT DES COORDONNEES
-    this.plantesPresentes.forEach(plante =>
-      this.matrice[plante.coordonnees[1]][plante.coordonnees[0]] = plante.modelPlant.commun);
-
+    this.plantesPresentes.forEach(plante => {
+      if(plante.coordonnees){
+        this.matrice[plante.coordonnees[0]][plante.coordonnees[1]] = plante.modelPlant.commun;
+      }
+    }); 
   }
 
-  getPlantesPresentes() {
-    this.planteUtilisateurService.getAllByJardin(this.jardin.identifier, 0).subscribe(
+  getPlantesDejaPresentes() {
+    this.planteUtilisateurService.getAllByJardinListe(this.jardin.identifier).subscribe(
       (responseDto) => {
-
-        this.plantesPresentes = responseDto.body.content;
-        for (let index = 1; index < responseDto.body.totalPages; index++) {
-          this.planteUtilisateurService.getAllByJardin(this.jardin.identifier, index).subscribe(
-            (resp) => { this.plantesPresentes.push(resp.body.content)});
-
+        if (!responseDto.error) {
+          this.plantesPresentes = responseDto.body;
+          this.genererMatrice();
         }
-        console.log('DEBUG plante presentes affichage' + this.plantesPresentes);
-
       }
     );
-
   }
 
   trackByIndex(index: number, obj: any): any {
     return index;
   }
+
+  
 }

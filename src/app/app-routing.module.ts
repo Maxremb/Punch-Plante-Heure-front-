@@ -31,7 +31,14 @@ import { GraphiqueJardinComponent } from './content/jardin/graphique-jardin/grap
 import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
-import { InscriptionComponent } from './content/inscription/inscription.component';
+import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component';
+import { ConnexionComponent } from './content/connexion/connexion.component';
+import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
+import { MeteoComponent } from './content/meteo/meteo/meteo.component';
+import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail-utilisateur/detail-utilisateur.component';
+import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component'
+
+import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
 
 
 const routes: Routes = [
@@ -40,10 +47,7 @@ const routes: Routes = [
   { path : 'admin' , component :  DashboardAdminComponent },
   { path : 'jardin' , component :  AllJardinComponent},
   { path : 'jardin/create' , component : CreateJardinComponent },
-  { path : 'jardin/detail', component : DetailJardinComponent }, // à supprimer à terme
-  { path : 'jardin/update', component : UpdateJardinComponent }, // à supprimer à terme
-  { path : 'jardin/detail/addplante', component : DetailJardinAddPlanteComponent },// à supprimer à terme
-  { path : 'jardin/detail/updateplante', component : DetailJardinUpdatePlanteComponent },// à supprimer à terme
+
   { path : 'plant/vadmin', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
@@ -59,14 +63,20 @@ const routes: Routes = [
   { path : 'departement/vadmin' , component : AllDepartementsComponent },
   { path : 'departement/create' , component : CreateDepartementComponent },
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
+  { path : 'connexion', component : ConnexionComponent },
 
-  { path : 'jardin/graphique', component : GraphiqueJardinComponent}, 
+  { path : 'jardin/graphique/:id', component : GraphiqueJardinComponent},
   { path : 'planning/:id' , component : PlanningJardinComponent },
+  { path : 'meteo', component : MeteoComponent },
   { path : 'meteo/:id' , component : MeteoDepComponent },
   { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent},
+  { path : 'jardin/detail/arrosage', component : ArrosageComponent},
 
   { path : 'inscription', component : InscriptionComponent},
- 
+  { path : 'utilisateur/detail/:identifier', component : DetailUtilisateurComponent},
+  { path : 'utilisateur/gestion-admin', component : GestionAdminComponent},
+  { path : 'admin/detail/:identifier', component : DetailAdminComponent},
+
   { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
   { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id
   { path : 'jardin/detail/addplante/:id', component : DetailJardinAddPlanteComponent },//add plante d'un jardin par  jardin id

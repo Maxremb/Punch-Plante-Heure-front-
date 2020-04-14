@@ -1,29 +1,31 @@
 <div class="row">
     
         
-            <table border="3px solid black">
-                <tbody>
-                    <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
-                        <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;"
-                            width=20px height=20px title="{{matrice[index][index2]}}" >
-                            <div *ngIf="this.matrice[index][index2]=='chemin'" class="chemin">
-                                &nbsp;
-                            </div>
-                            <div *ngIf="this.matrice[index][index2]=='obstacle'" class="obstacle">
-                                &nbsp;
-                            </div>
-                            <div *ngIf="this.matrice[index][index2]==''" class="vide">
-                                &nbsp;
-                            </div>
-                            <div *ngIf="this.matrice[index][index2]!='chemin'&&this.matrice[index][index2]!='obstacle'&&this.matrice[index][index2].length"
-                                class="plante">
-                                &nbsp;
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>(Un carreau de cette grille représente un carré de votre jardin de 5x5cm)</p>
+    <table border="3px solid black">
+        <tbody>
+            <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
+                <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;" width=20px
+                    height=20px title="{{matrice[index][index2]}}">
+                    <a routerLink="/jardin/graphique/{{this.jardin.identifier}}">
+                        <div *ngIf="matrice[index][index2]=='Chemin'" class="chemin">
+                            &nbsp;
+                        </div>
+                        <div *ngIf="matrice[index][index2]=='Obstacle'" class="obstacle">
+                            &nbsp;
+                        </div>
+                        <div *ngIf="matrice[index][index2]==''" class="vide">
+                            &nbsp;
+                        </div>
+                        <div *ngIf="(matrice[index][index2] != 'Chemin') && (matrice[index][index2] != 'Obstacle') && matrice[index][index2]"
+                            class="plante">
+                            &nbsp;
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+            <p>(Un carreau de cette grille représente un carré de votre jardin de 50x50cm)</p>
 
             <!-- Légende du code couleur de la carte  -->
             <legend><strong>Légende</strong></legend>
@@ -31,25 +33,25 @@
                 <thead>
                     <tr>
                         <td>Couleur</td>
-                        <td> Objet</td>
+                        <td>&nbsp; Objet</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="vide"></td>
-                        <td>Vide</td>
+                        <td>&nbsp; Vide</td>
                     </tr>
                     <tr>
                         <td class="obstacle"></td>
-                        <td>Obstacle</td>
+                        <td>&nbsp; Obstacle</td>
                     </tr>
                     <tr>
                         <td class="chemin"></td>
-                        <td>Chemin</td>
+                        <td>&nbsp; Chemin</td>
                     </tr>
                     <tr>
                         <td class="plante"></td>
-                        <td>Plante</td>
+                        <td>&nbsp; Plante</td>
                     </tr>
                 </tbody>
             </table>

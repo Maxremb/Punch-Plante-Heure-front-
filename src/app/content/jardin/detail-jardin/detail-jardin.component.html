@@ -5,41 +5,44 @@
     <!-- Affichage du jardin selectionné et de ses caracteristiques -->
     <div class="row">
         <div class="col-12 col-lg-6" style="padding-left: 0%;" *ngIf="this.jardin">
-            <h2>Détails de mon jardin </h2>
-            <h2> <i>{{this.jardin.name}} </i> </h2>
-            <hr>
-            <label class="label">ID : </label><span> {{this.jardin.identifier}}</span>
+            <h2><u>Mon jardin :</u><i> {{this.jardin.name}}</i></h2>
+            <br><br>
+
+            <label class="label">Nom : </label> {{this.jardin.name}}
             <br>
-            <label class="label">Nom : </label>{{this.jardin.name}}
+            <label class="label">Longueur (m) : </label> {{this.jardin.length}}
             <br>
-            <label class="label">Longueur : </label>{{this.jardin.length}}
+            <label class="label">Largeur (m) : </label> {{this.jardin.width}}
             <br>
-            <label class="label">Largeur : </label>{{this.jardin.width}}
+            <label class="label">Profondeur (m): </label> {{this.jardin.depthGround}}
             <br>
-            <label class="label">Sol : </label>{{this.jardin.ground}}
+            <label class="label">Sol : </label> {{this.jardin.ground}}
             <br>
-            <label class="label">Département : </label><p  *ngIf="this.jardin.dept">{{this.jardin.dept.name}} - ({{this.jardin.dept.depNum}})</p>
+            <label class="label">Département : </label>
+            <p *ngIf="this.jardin.dept">{{this.jardin.dept.name}} - ({{this.jardin.dept.depNum}})</p>
             <br>
 
         </div>
 
-        <!-- Affichage d'une image à droite du tableau -->
+        <!-- Affichage du graphique à droite du tableau -->
         <div class="col-12 col-lg-6" style="position: center;" *ngIf="this.jardin.identifier">
             <app-graphique-jardin-affichage [jardin]="this.jardin" style="position: center;">
             </app-graphique-jardin-affichage>
         </div>
-        <br>
-        <br>
+
+
+
     </div>
-    <br>
+
+    <!-- Arrosage du jardin ! -->
+    <div class="row" *ngIf="this.jardin">
+        <app-arrosage style="width: 100%;"></app-arrosage>
+    </div>
+    <br> <br>
 
     <div class="row">
-        <h2>Liste des plantes présentes dans mon jardin : </h2>
-
-
-        <div *ngIf="!this.plantesParJardin.length">Il n'y a pas de plantes dans mon jardin</div>
-        <div *ngIf="this.plantesParJardin.length">Il y a {{this.plantesParJardin.length}} plantes sur cette page
-            et {{this.pageMax}} page(s)</div>
+        <h2>Liste des plantes présentes dans mon jardin :</h2>
+        
 
         <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
         <table class="table table-hover" *ngIf="this.plantesParJardin.length">
@@ -63,24 +66,33 @@
                     <th>
                         <h5>Etat de la plante</h5>
                     </th>
-                    <th>
+                    <th colspan="2">
                         <h5>Actions</h5>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
-                    <td>{{planteUtilisateur.identifiant}}</td>
-                    <td>{{planteUtilisateur.modelPlant.commun}}</td>
-                    <td>{{planteUtilisateur.plantingDate}}</td>
-                    <td>{{planteUtilisateur.semiDate}}</td>
-                    <td>{{planteUtilisateur.healthStage}}</td>
-                    <td>{{planteUtilisateur.plantStage}}</td>
-                    <!-- Possibilité de retirer une plante utilisateur du jardin -->
-                    <td><button class="btn btn-danger"
-                            (click)="this.supprimer(planteUtilisateur.identifiant)">Supprimer</button>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.identifiant}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.modelPlant.commun}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.plantingDate}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.semiDate}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.healthStage}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.plantStage}}</td>
+
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
                         <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
                         <!-- &nbsp;&nbsp; -->
+                        <a routerLink='/jardin/detail/updateplante/{{planteUtilisateur.identifiant}}'><button
+                                class="btn btn-danger">Modifier</button>
+                        </a>
+                    </td>
+                    <!-- Possibilité de retirer une plante utilisateur du jardin -->
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')"><button class="btn btn-danger"
+                            (click)="this.supprimer(planteUtilisateur.identifiant)">Supprimer</button>
+                        
+                    </td>
+
                 </tr>
             </tbody>
         </table>
@@ -125,7 +137,10 @@
                 <button class="btn alazea-btn mt-15">Ajouter une plante à mon jardin</button>
             </a>
             <a routerLink="/planning/{{this.jardin.identifier}}">
-                <button class="btn alazea-btn mt-15">Calendrier de mon jardin</button>
+                <button class="btn alazea-btn mt-15">Calendrier</button>
+            </a>
+            <a routerLink="/jardin/graphique/{{this.jardin.identifier}}">
+                <button class="btn alazea-btn mt-15">Graphique</button>
             </a>
             <a routerLink="/jardin">
                 <button class="btn alazea-btn mt-15">Mes jardins</button>

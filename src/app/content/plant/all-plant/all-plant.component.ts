@@ -13,6 +13,7 @@ import { DepartementDto } from 'src/app/models/departement-dto';
 export class AllPlantComponent implements OnInit {
 
   allPlant = new Array<PlanteModeleUpdateDto>();
+  singlePlant: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
   pageActive:number =0;
   maxPage:number=0;
   pageTotal:number[]=[];
@@ -23,6 +24,8 @@ export class AllPlantComponent implements OnInit {
   numero: number;
   messageRecherche: string;
   departements: Array<DepartementDto>;
+  single: boolean;
+
 
   constructor(private service:PlanteModeleService,
     private servicePeriode:PeriodeService,
@@ -33,6 +36,7 @@ export class AllPlantComponent implements OnInit {
     this.choix = true;
     this.liste = false;
     this.recherche = false;
+    this.single = false;
   }
 
   // Methode pour afficher les choix de l'administrateur
@@ -53,6 +57,14 @@ export class AllPlantComponent implements OnInit {
   afficherRecherche() {
     this.recherche = true;
     this.choix = false;
+  }
+
+  // Methode pour afficher le tableau avec SINGLE
+  afficherSingle(numero: number) {
+    this.recherche = true;
+    this.choix = false;
+    this.single = true;
+    this.getSingle(numero);
   }
 
   range(pactif,ptotal) {
@@ -77,6 +89,17 @@ export class AllPlantComponent implements OnInit {
         }
       }
     );
+  }
+
+  getSingle(numero: number) {
+    this.service.getId(this.numero).subscribe(
+      (responseDto) => {
+        console.log('debug responseDto :', responseDto);
+        if (!responseDto.error) {
+          this.singlePlant = responseDto.body;
+        }
+      }
+    )
   }
 
   delete(id: number) {

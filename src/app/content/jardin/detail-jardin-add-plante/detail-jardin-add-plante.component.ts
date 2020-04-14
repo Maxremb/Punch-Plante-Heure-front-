@@ -32,6 +32,10 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   pageActiveUtil: number = 0;
   pageMaxUtil: number = 0;
 
+  //Attributs de recherche des plantes modèles
+  keyWord: string;
+  nbPlantesTotal: number;
+
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
     private plantemodeleservice: PlanteModeleService,
@@ -42,20 +46,9 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   ngOnInit(): void {
     //On récupère l'id de notre jardin dans l'url
     this.idJardin = +this.route.snapshot.paramMap.get('id');
-
-    // this.jardin = this.jardinservice.jardin
-    // this.jardin = new JardinUpdateDto();
-    // this.jardin.identifier = 1;
-    // this.jardin.length = 1;
-    // this.jardin.width = 1;
-    // this.jardin.name = 'JardinTest';
     this.getJardin();
-    console.log('debug init Detail : ', this.jardin);
-
-    // recuperation de la liste de toutes les plantes modeles
-    this.getAllPlantes(0);
-    console.log('DEBUG GET ALL', this.allPlantes);
-
+  
+    
     //Récupération de la liste des plantes utilisateurs associées à ce jardin
     this.getListePlanteUtilisateur(0);
 
@@ -75,6 +68,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   get plantStage() { return this.planteForm.get('plantStage') }
   get healthStage() { return this.planteForm.get('healthStage') }
 
+  //Récupération de toutes les plantes modèles
   getAllPlantes(npage: number): void {
     this.plantemodeleservice.getAll(npage).subscribe(
       (responseDto) => {
@@ -84,7 +78,10 @@ export class DetailJardinAddPlanteComponent implements OnInit {
           this.pageTotal = this.range(responseDto.body.totalPages);
           for (let index = 1; index < responseDto.body.totalPages; index++) {
             this.plantemodeleservice.getAll(index).subscribe((resp) => {
-              this.allPlantes.push(resp.body.content);
+              resp.body.content.forEach(element => {
+                this.allPlantes.push(element);
+                
+              });
             })
           }
         }
@@ -100,7 +97,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
           this.pageActiveUtil = responseDto.body.number;
           this.pageTotalUtil = this.range(responseDto.body.totalPages);
           this.pageMaxUtil = responseDto.body.totalPages;
-          console.log('DEBUG PAGE MAX' + this.pageMaxUtil);
+        
         }
       }
     )
@@ -109,6 +106,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   getJardin() {
     this.jardinservice.getId(this.idJardin).subscribe((resp) => {
       this.jardin = resp.body;
+      
     });
     console.log('DEBUG JARDIN DETAIL', this.jardin)
   }
@@ -125,6 +123,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
       (responseDto) => {
         if (!responseDto.error) {
           this.messageValidation = "Plante ajoutée à votre jardin";
+          this.getListePlanteUtilisateur(this.pageActiveUtil);
 
         }
       },
@@ -134,13 +133,13 @@ export class DetailJardinAddPlanteComponent implements OnInit {
         }
       }
     );
-    this.getListePlanteUtilisateur(this.pageActiveUtil);
+    
   }
 
   suppprimer(id: number) {
     this.planteutilisateurservice.delete(id).subscribe(
       (responseDto) => {
-        console.log("Plante supprimée de votre jardin");
+    
         this.listePlanteUtil = this.listePlanteUtil.filter(p => p.identifiant != id);
 
       },
@@ -148,5 +147,24 @@ export class DetailJardinAddPlanteComponent implements OnInit {
     );
   }
 
+  search(term: string ): void {
+    if(term.length>=3){
+    this.plantemodeleservice.getKeyWord(term, 0).subscribe(
+      (resp)=> {
+        this.allPlantes = resp.body.content;
+        this.nbPlantesTotal =resp.body.totalElements;
+        for (let index = 1; index < resp.body.totalPages; index++) {
+          this.plantemodeleservice.getKeyWord(term,index).subscribe((response) => {
+            response.body.content.forEach(element => {
+              this.allPlantes.push(element);
+              
+            });
+          });
+        }
+      }
+    )
+
+  }
+  }
 
 }

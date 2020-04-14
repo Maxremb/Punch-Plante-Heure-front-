@@ -17,8 +17,8 @@ export class AllDepartementsComponent implements OnInit {
   maxPage:number=0;
   liste: boolean;
   choix: boolean;
-  recherche: boolean;
-  recherche1: boolean;
+  rechercheName: boolean;
+  rechercheNumero: boolean;
   depNum: number;
   name: string;
   departement: DepartementDto;
@@ -30,8 +30,8 @@ export class AllDepartementsComponent implements OnInit {
   ngOnInit(): void {
     this.choix = true;
     this.liste = false;
-    this.recherche = false;
-    this.recherche1 = false;
+    this.rechercheName = false;
+    this.rechercheNumero = false;
     this.afficherDep = false;
   }
 
@@ -39,26 +39,26 @@ export class AllDepartementsComponent implements OnInit {
   afficherChoix() {
     this.choix = true;
     this.liste = false;
-    this.recherche = false;
-    this.recherche1 = false;
+    this.rechercheName = false;
+    this.rechercheNumero = false;
     this.afficherDep = false;
 
   }
 
-  // Methode pour afficher le champ de recherche par ID
-  afficherRecherche() {
-    this.recherche = true;
+  // Methode pour afficher le champ de recherche par Name
+  afficherRechercheName() {
+    this.rechercheName = true;
     this.choix = false;
   }
 
-  // Methode pour afficher le champ de recherche par ID
-  afficherRecherche1() {
-    this.recherche1 = true;
+  // Methode pour afficher le champ de recherche par Numero
+  afficherRechercheNumero() {
+    this.rechercheNumero = true;
     this.choix = false;
 
   }
 
-  // Methode pour afficher la liste des plantes, appel a la methode getAll(1)
+  // Methode pour afficher la liste des départements, appel a la methode getAll(0)
   afficherListe() {
     this.liste = true;
     this.choix = false;
@@ -68,8 +68,8 @@ export class AllDepartementsComponent implements OnInit {
 
   afficherDepartement() {
     this.choix=false;
-    this.recherche = false;
-    this.recherche1 = false;
+    this.rechercheName = false;
+    this.rechercheNumero = false;
     if (this.name != null) {
       this.service.getByName(this.name).subscribe(
         (responseDto) => {

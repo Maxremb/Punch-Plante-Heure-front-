@@ -1,0 +1,34 @@
+<div class="container">
+  <app-entete-connexion></app-entete-connexion>
+  <div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-6">
+
+      <form [formGroup]="connexionForm" (ngSubmit)='connect(mail, pwd)'>
+
+        <div class="form-group">
+          <label for="mail">E-mail :
+            <input type="email" class="form-control" [(ngModel)]="this.mail" formControlName="mail" name="mail"
+              placeholder="dupont@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required> </label>
+        </div>
+
+        <div class="form-group">
+          <label for="pwd">Mot de Passe :
+            <input type="password" class="form-control" [(ngModel)]="this.pwd" formControlName="pwd" name="pwd" required
+              minlength="8"></label>
+        </div>
+
+        <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.connexionForm.valid">Se
+          Connecter</button><br><br>
+        <div *ngIf="this.messageValidation.length">
+          <div class="alert alert-fail" *ngIf="this.error">
+            {{this.messageValidation}}
+          </div>
+          <div class="alert alert-success" *ngIf="!this.error">
+            {{this.messageValidation}}
+          </div>
+        </div>
+      </form>
+      
+
+    </div>

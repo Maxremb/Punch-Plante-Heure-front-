@@ -1,13 +1,61 @@
 <div class="container">
 
     <app-entete-dashboard></app-entete-dashboard>
-    <h2>Cher utilisateur, que voulez-vous faire ?</h2>
-    
+
+    <h2>Bienvenue {{utilisateur.firstName}} {{utilisateur.lastName}} !</h2>
+    <hr>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <h3>Mes notifications :</h3>
+                <h5><i>Aucune notification pour le moment</i></h5>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <h3>Mes informations personnelles :</h3>
+                <h5>Prénom : {{this.utilisateur.firstName}} </h5>
+                <h5>Nom : {{this.utilisateur.lastName}} </h5>
+                <h5>Pseudo : {{this.utilisateur.pseudo}} </h5>
+                <h5>Email : {{this.utilisateur.mail}} </h5>
+                <h5>Telephone : {{this.utilisateur.phone}} </h5>
+                <h5>Picture : {{this.utilisateur.picture}} </h5>
+                
+                <a routerLink="/utilisateur/detail/{{this.utilisateur.identifier}}">
+                    <button class="btn alazea-btn mt-15">Modifier mes informations</button>
+                </a>
+                
+                <span *ngIf="this.utilisateur.active">
+                <br><br>
+                <h3>Votre compte est activé.</h3>
+                <button class="btn alazea-btn mt-15" (click)="this.desactiver(this.utilisateur.identifier)">Désactiver mon compte</button>
+                </span>
+                <span *ngIf="!this.utilisateur.active">
+                <br><br>
+                <h3>Votre compte est désactivé.</h3>
+                <button class="btn alazea-btn mt-15" (click)="this.activer(this.utilisateur.identifier)">Activer mon compte</button>
+                </span>
+              </div>
+        </div>
+    </div>
+    <hr>
 
     <div class="container">
-        <a routerLink="/notif">
-            <button class="btn alazea-btn mt-15">Voir mes notifications </button>
-        </a>
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <h3>Mes raccourcis :</h3>
+                <a routerLink="/jardin">
+                    <button class="btn alazea-btn mt-15">Voir mes jardins</button>
+                </a>
+                &nbsp;&nbsp;
+                <a routerLink="/meteo">
+                    <button class="btn alazea-btn mt-15">Voir mes stations meteo</button>
+                </a>
+            </div>
+        </div>
     </div>
-
 </div>

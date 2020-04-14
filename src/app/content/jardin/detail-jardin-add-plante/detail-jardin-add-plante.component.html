@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="this.jardin">
 
     <!-- Utilisation de l'entete-->
     <app-entete-jardin></app-entete-jardin>
@@ -13,27 +13,37 @@
                 <form [formGroup]="planteForm" (ngSubmit)="this.ajouter()">
 
                     <label class="label" for="commun">Nom de la plante</label>
-                    <select id="commun" class="form-control" formControlName="commun" required
-                        [(ngModel)]="this.plante.modelPlant">
-                        <option *ngFor="let planteModel of this.allPlantes" [ngValue]="this.planteModel">
-                            {{planteModel.commun}}</option>
-                    </select>
+                    <input #searchBox id="search-box" class="form-control" (input)="search(searchBox.value)"
+                        placeholder="Mot clé de trois caractères ou plus..." [(ngModel)]="this.keyWord" minlength=3 [ngModelOptions]="{standalone:true}" />
+
+                    <div *ngIf="this.allPlantes && this.nbPlantesTotal && this.allPlantes.length==this.nbPlantesTotal">
+                        <select id="commun" class="form-control" formControlName="commun" required
+                            [(ngModel)]="this.plante.modelPlant">
+                            <option *ngFor="let planteModel of this.allPlantes" [ngValue]="this.planteModel">
+                                {{planteModel.commun}}</option>
+                        </select>
+                    </div>
+
                     <br>
                     <label class="label" for="plantingDate">Date de plantation : </label>
-                    <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate" [(ngModel)]="this.plante.plantingDate">
+                    <input type="date" id="plantingDate" class="form-control" formControlName="plantingDate"
+                        [(ngModel)]="this.plante.plantingDate">
                     <br>
                     <label class="label" for="semiDate">Date de semis : </label>
-                    <input type="date" id="semiDate" class="form-control" formControlName="semiDate" [(ngModel)]="this.plante.semiDate">
+                    <input type="date" id="semiDate" class="form-control" formControlName="semiDate"
+                        [(ngModel)]="this.plante.semiDate">
                     <br>
                     <label class="label" for="healthStage">Etat de santé : </label>
-                    <select id="healthStage" class="form-control" formControlName="healthStage" [(ngModel)]="this.plante.healthStage">
+                    <select id="healthStage" class="form-control" formControlName="healthStage"
+                        [(ngModel)]="this.plante.healthStage">
                         <option value="bonneSante">En bonne santé</option>
                         <option value="moyenne">Moyenne</option>
                         <option value="morte">Morte</option>
                     </select>
                     <br>
                     <label class="label" for="plantStage">Etat de la plante : </label>
-                    <select id="plantStage" class="form-control" formControlName="plantStage" [(ngModel)]="this.plante.plantStage">
+                    <select id="plantStage" class="form-control" formControlName="plantStage"
+                        [(ngModel)]="this.plante.plantStage">
                         <option value="semis">Semis</option>
                         <option value="jeunePousse">Jeune pousse</option>
                         <option value="plant">Plante</option>
@@ -41,8 +51,8 @@
                         <option value="recolte">Plante à récolter</option>
                     </select>
                     <br>
-                    <button type="submit" class="btn alazea-btn mt-15"
-                        [disabled]="!this.planteForm.valid" style="margin-bottom: 5%;">Valider</button>
+                    <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.planteForm.valid"
+                        style="margin-bottom: 5%;">Valider</button>
                     <br>
                 </form>
                 <span class="alert alert-success" *ngIf="messageValidation">{{this.messageValidation}}</span>
@@ -53,16 +63,57 @@
 
         <!-- Ajout de la liste à droite -->
         <div class="col 12 col-lg-7" *ngIf="this.listePlanteUtil">
-            <h2>Liste des plantes de mon jardin</h2>
-            <hr>
-            <div *ngFor="let p of this.listePlanteUtil">
-                {{p.modelPlant.commun}}
-                <i class="fa fa-times" aria-hidden="true" style="color: red;" (click)="suppprimer(p.identifiant)"></i>
-            </div>
 
+
+            <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
+
+            <h2 style="padding-bottom: 7px;">Liste des plantes de mon jardin</h2>
+            <!-- <hr> -->
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <h5>ID</h5>
+                        </th>
+                        <th>
+                            <h5>Nom</h5>
+                        </th>
+                        <th>
+                            <h5>Date de plantation</h5>
+                        </th>
+                        <th>
+                            <h5>Date de semis</h5>
+                        </th>
+                        <th>
+                            <h5>Etat de santé</h5>
+                        </th>
+                        <th>
+                            <h5>Etat de la plante</h5>
+                        </th>
+                        <th>
+                            <h5>Supprimer</h5>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of this.listePlanteUtil">
+                        <td>{{p.identifiant}}</td>
+                        <td>{{p.modelPlant.commun}}</td>
+                        <td>{{p.plantingDate}}</td>
+                        <td>{{p.semiDate}}</td>
+                        <td>{{p.healthStage}}</td>
+                        <td>{{p.plantStage}}</td>
+                        <!-- Possibilité de retirer une plante utilisateur du jardin -->
+                        <td><i class="fa fa-times" aria-hidden="true" style="color: red;"
+                                (click)="suppprimer(p.identifiant)"></i>
+                            <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
+                            <!-- &nbsp;&nbsp; -->
+                    </tr>
+                </tbody>
+            </table>
 
             <nav aria-label="Page navigation" *ngIf="this.listePlanteUtil.length" style="position: bottom;">
-                <ul class="pagination" >
+                <ul class="pagination">
                     <li class="page-item" *ngIf="this.pageActiveUtil>0">
                         <a class="page-link" (click)="this.getListePlanteUtilisateur(0)">
                             <i class="fa fa-angle-double-left"></i>
@@ -101,11 +152,8 @@
 <!-- Ajout de boutons en bas de page pour retourner au jardin / a mes jardins -->
 <div class="container">
     <div class="bottompage">
-        <a routerLink="/jardin/detail">
+        <a routerLink="/jardin/detail/{{this.idJardin}}">
             <button class="btn alazea-btn mt-15">Retour à mon jardin</button>
-        </a>
-        <a routerLink="/jardin">
-            <button class="btn alazea-btn mt-15">Mes jardins</button>
         </a>
     </div>
 </div>

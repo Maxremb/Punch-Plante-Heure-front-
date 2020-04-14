@@ -50,7 +50,11 @@ export class JardinService {
 
   // readByUser
   getAllByUtilisateur(idUtilisateur: number, page: number): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.URL + '/user/?identifier='+ idUtilisateur + '&page=' + page);
+    return this.http.get<ResponseDto>(this.URL + '/user?identifier='+ idUtilisateur + '&page=' + page);
+  }
+
+  setArrosed(idJardin : number){
+    return this.http.get<ResponseDto>(this.URL + '/arrosage?id='+ idJardin);
   }
 
  

@@ -10,7 +10,7 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 })
 export class UserviewDetailedPlantComponent implements OnInit {
 
-    plant: PlanteModeleUpdateDto;
+    plant: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
     messageValidation = '';
     error: boolean;
 
