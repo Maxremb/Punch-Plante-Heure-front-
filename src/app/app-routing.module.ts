@@ -42,50 +42,55 @@ import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail
 
 
 const routes: Routes = [
-  { path : '' , component :  AccueilHorsConnexionComponent },
-  { path : 'dashboard' , component :  DashboardComponent },
-  { path : 'admin' , component :  DashboardAdminComponent },
-  { path : 'jardin' , component :  AllJardinComponent},
-  { path : 'jardin/create' , component : CreateJardinComponent },
+  { path: '', component: AccueilHorsConnexionComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'admin', component: DashboardAdminComponent },
+  { path: 'jardin', component: AllJardinComponent },
+  { path: 'jardin/create', component: CreateJardinComponent },
 
-  { path : 'plant/vadmin', component : AllPlantComponent },
-  { path : 'plant/create', component : CreatePlantComponent },
-  { path : 'plant/update/:id', component : DetailedPlantComponent },
-  { path : 'periode/lp/:id', component : AllPeriodeComponent},
-  { path : 'periode/create', component : CreatePeriodeComponent},
-  { path : 'periode/update', component : UpdatePeriodeComponent},
-  { path : 'blog' , component : BlogComponent },
-  { path : 'plant/vuser', component: UserviewAllPlantComponent },
-  { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
-  { path : 'about' , component : AboutComponent },
-  { path : 'contact' , component : ContactComponent },
-  { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent },
-  { path : 'departement/vadmin' , component : AllDepartementsComponent },
-  { path : 'departement/create' , component : CreateDepartementComponent },
-  { path : 'departement/update/:depNum', component : DetailedDepartementComponent },
-  { path : 'connexion', component : ConnexionComponent },
+  { path: 'plant/vadmin', component: AllPlantComponent },
+  { path: 'plant/create', component: CreatePlantComponent },
+  { path: 'plant/update/:id', component: DetailedPlantComponent },
+  { path: 'periode/lp/:id', component: AllPeriodeComponent },
+  { path: 'periode/create', component: CreatePeriodeComponent },
+  { path: 'periode/update', component: UpdatePeriodeComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'plant/vuser', component: UserviewAllPlantComponent },
+  { path: 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'plant/key/:key', component: UserviewKeysearchPlantComponent },
+  { path: 'departement/vadmin', component: AllDepartementsComponent },
+  { path: 'departement/create', component: CreateDepartementComponent },
+  { path: 'departement/update/:depNum', component: DetailedDepartementComponent },
+  { path: 'connexion', component: ConnexionComponent },
 
-  { path : 'jardin/graphique/:id', component : GraphiqueJardinComponent},
-  { path : 'planning/:id' , component : PlanningJardinComponent },
-  { path : 'meteo', component : MeteoComponent },
-  { path : 'meteo/:id' , component : MeteoDepComponent },
-  { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent},
-  { path : 'jardin/detail/arrosage', component : ArrosageComponent},
+  { path: 'jardin/graphique/:id', component: GraphiqueJardinComponent },
+  { path: 'planning/:id', component: PlanningJardinComponent },
+  { path: 'meteo', component: MeteoComponent },
+  { path: 'meteo/:id', component: MeteoDepComponent },
+  { path: 'jardin/graphique/affichage', component: GraphiqueJardinAffichageComponent },
+  { path: 'jardin/detail/arrosage', component: ArrosageComponent },
 
-  { path : 'inscription', component : InscriptionComponent},
-  { path : 'utilisateur/detail/:identifier', component : DetailUtilisateurComponent},
-  { path : 'utilisateur/gestion-admin', component : GestionAdminComponent},
-  { path : 'admin/detail/:identifier', component : DetailAdminComponent},
+  { path: 'inscription', component: InscriptionComponent },
+  { path: 'utilisateur/detail/:identifier', component: DetailUtilisateurComponent },
+  { path: 'utilisateur/gestion-admin', component: GestionAdminComponent },
+  { path: 'admin/detail/:identifier', component: DetailAdminComponent },
 
-  { path : 'jardin/detail/:id', component : DetailJardinComponent }, //detail d'un jardin par id
-  { path : 'jardin/update/:id', component : UpdateJardinComponent }, //update d'un jardin par id
-  { path : 'jardin/detail/addplante/:id', component : DetailJardinAddPlanteComponent },//add plante d'un jardin par  jardin id
-  { path : 'jardin/detail/updateplante/:id', component : DetailJardinUpdatePlanteComponent },//update d'une plante par son id
+  { path: 'jardin/detail/:id', component: DetailJardinComponent }, //detail d'un jardin par id
+  { path: 'jardin/update/:id', component: UpdateJardinComponent }, //update d'un jardin par id
+  { path: 'jardin/detail/addplante/:id', component: DetailJardinAddPlanteComponent },//add plante d'un jardin par  jardin id
+  { path: 'jardin/detail/updateplante/:id', component: DetailJardinUpdatePlanteComponent },//update d'une plante par son id
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,
+    {
+      initialNavigation: 'enabled',
+      scrollPositionRestoration: 'enabled'
+    }
+  )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

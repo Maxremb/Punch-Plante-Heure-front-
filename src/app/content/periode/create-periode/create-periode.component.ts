@@ -8,6 +8,7 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { PeriodeEnum } from 'src/app/enums/periode-enum.enum'
 import { PeriodeUpdateDto } from 'src/app/models/periode-update-dto';
 
+
 @Component({
   selector: 'app-create-periode',
   templateUrl: './create-periode.component.html',
@@ -17,8 +18,12 @@ export class CreatePeriodeComponent implements OnInit {
   allPeriodes= new Array<PeriodeUpdateDto>();
   period = new PeriodeCreateDto();
   plante = this.servicePeriode.plante;
-  messageValidation = null;
-  messageErreur = null;
+  departement = this.servicePeriode.departement;
+  messageValidation = '';
+  messageErreur = '';
+  currentYear = new Date().getFullYear();
+  minDate = new Date(this.currentYear, 2, 5);
+  maxDate = new Date(this.currentYear, 11, 31);
   
   constructor(
     private servicePeriode: PeriodeService) { }
@@ -27,16 +32,39 @@ export class CreatePeriodeComponent implements OnInit {
     this.getPeriodes();
   }
 
+  changeDateMin(){
+    this.minDate = this.period.startDate;
+    console.log('new min date')
+  }
+  changeDateMax(){
+    this.maxDate = this.period.endDate;
+    console.log('new max date')
+  }
+
   create() {
     this.period.county = this.servicePeriode.departement;
     this.period.plantSpecies = this.servicePeriode.plante;
     console.log("Saving new periode : Departement : "+this.period.county.depNum+' ; Plante : '+this.period.plantSpecies.identifiant+' ; Type : '+this.period.periodType+' ; Debut : '+this.period.startDate+' ; Fin : '+this.period.endDate)
     this.servicePeriode.create(this.period).subscribe(
-      responseDto => {
-        console.log(responseDto.message)
+      (responseDto) => {
+        this.messageValidation="La période a bien été enregistrée !";
+      },
+      (error) => {
+        this.messageErreur=error;
       }
     )
-    this.getPeriodes();
+  }
+
+  createPromise() {return  new Promise(function(resolve,reject){
+    this.create();
+    resolve('Resolverisimo ! after create')
+    });
+  }
+
+  refreshPeriodes(){
+    console.log('RefreshPeriod start')
+    this.createPromise().then(function(){this.getPeriodes()})
+    console.log('RefreshPeriod finish')
   }
 
   

@@ -34,7 +34,7 @@
         <p></p>
     </div>
 
-    <h3>Ajouter des périodes :</h3>
+    <h3>Ajouter des périodes (Département : {{departement.depNum}} et Plante : {{plante.commun}}) </h3>
     <p></p>
         <table class="table table-hover">
             <thead>
@@ -49,7 +49,7 @@
             <tbody>
                     <tr>
                         <td>
-                            <select [(ngModel)]="this.period.periodType" id="type" name="type">
+                            <select class="col-4 form-control" [(ngModel)]="this.period.periodType" id="type" name="type">
                                 <option value='REMPOTAGE'>Rempotage</option>
                                 <option value='FLORAISON'>Floraison</option>
                                 <option value='FRUCTIFICATION'>Fructifiation</option>
@@ -57,13 +57,28 @@
                                 <option value='SEMIS'>Semis</option>
                             </select>
                         </td>
-                        <td><input id="dateDebut" [(ngModel)]="this.period.startDate" type="date" name="dateDebut"></td>
-                        <td><input id="dateFin" [(ngModel)]="this.period.endDate" type="date"  name="dateFin"></td>
+                        <td>
+                            <span class="date_month">{{period.startDate | date:"LLLL"}}</span>
+                            <input type="hidden" [matDatepicker]="dateDebut"  [min]="this.minDate" [max]="this.maxDate" [(ngModel)]="this.period.startDate" name="dateDebut" (ngModelChange)="changeDateMin()">
+                            <mat-datepicker-toggle [for]="dateDebut"></mat-datepicker-toggle>
+                            <mat-datepicker startView="year" #dateDebut></mat-datepicker>
+                        </td>
+                        <td>
+                            <span class="date_month">{{period.endDate | date:"LLLL"}}</span>
+                            <input type="hidden" [matDatepicker]="dateFin" [min]="this.minDate" [max]="this.maxDate" [(ngModel)]="this.period.endDate"  name="dateFin" (ngModelChange)="changeDateMax()">
+                            <mat-datepicker-toggle [for]="dateFin"></mat-datepicker-toggle>
+                            <mat-datepicker startView="year" #dateFin></mat-datepicker>
+                        </td>
                         <td>
                             <button class="btn btn-success" (click)="this.create()"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                         </td>
                 </tr>
             </tbody>
         </table>
-
+        <div class="alert alert-success" *ngIf="messageValidation">
+            <strong>SUCCESS !</strong> {{this.messageValidation}}
+          </div>
+          <div class="alert alert-danger" *ngIf="messageErreur">
+              <strong>ERROR !</strong> {{this.messageErreur}}
+            </div>
     </div>

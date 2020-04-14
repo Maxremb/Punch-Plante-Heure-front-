@@ -58,6 +58,9 @@ import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gesti
 import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
 import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-connexion/accueil-hors-connexion.component';
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -128,6 +131,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NoopAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     GoogleChartsModule,
     // ngx-translate and the loader module
         TranslateModule.forRoot({
@@ -137,9 +143,11 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
               deps: [HttpClient]
           }
       })
+    
   ],
   providers: [
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
   ],
   bootstrap: [AppComponent]
 })
