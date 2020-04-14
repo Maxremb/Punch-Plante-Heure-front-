@@ -14,13 +14,13 @@
             <br><br> -->
 
                 <h2>{{this.jardin.name}}</h2>
-                <table border="3px solid black">
+                <table border="3px solid black" class="disable-text-selection">
                     <tbody>
                         <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
                             <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;"
                                 width=20px height=20px
                                 (click)="addPlanteToJardin(this.planteSelectionner, [index, index2]); attributionNouvellesCoordo([index, index2]); enleverPlanteDuJardinFromVide([index, index2])"
-                                title="{{matrice[index][index2]}}" (mousedown)="selectZoneDebut(index, index2)" (mouseover)="selectionContinue(index, index2)">
+                                title="{{matrice[index][index2]}}" (mousedown)="selectZoneDebut(index, index2)" (mouseover)="selectionContinue(index, index2)" >
                                 <!-- (mousedown)="selectZoneDebut(index, index2)" (mouseup)="selectZoneFin(index, index2)" (mouseover)="selectionContinue()" -->
 
                                 <div *ngIf="matrice[index][index2]=='Chemin'" class="chemin">
