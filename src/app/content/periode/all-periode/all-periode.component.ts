@@ -14,57 +14,87 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AllPeriodeComponent implements OnInit {
 
-  allPeriodes = new Array<PeriodeUpdateDto>();
+  allPeriodes : Array<PeriodeUpdateDto>;
   periode = new PeriodeUpdateDto;
-  maxpagePeriode=100000;
+  maxpagePeriode:number;
+  maxpageDept:number;
   messageRecherche='';
-  departement: DepartementDto = new DepartementDto();
+  pageActive = 0;
+  pageTotal:number[]=[];
+  departements= new Array<DepartementDto>();
+  idPlante:number;
+  idDept:number=0;
   plante: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
 
   constructor(private servicePlante: PlanteModeleService,
     private serviceDept: DepartementService,
     private servicePeriode : PeriodeService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute ){ }
 
   ngOnInit(): void {
-    this.getPlant();
-    this.getPeriodesByPlante();
+    // this.getPlant();
+    this.plante = this.servicePeriode.plante;
+    this.getDepartements(0);
+  }
+
+
+  range(pactif,ptotal) {
+    if(ptotal>5){
+      if(pactif<3) return (new Array(5)).fill(undefined).map((_, i) => i);
+      else if(pactif>2 && pactif<ptotal-2) return (new Array(5)).fill(undefined).map((_, i) => i+pactif-2);
+      else return (new Array(5)).fill(undefined).map((_, i) => i+ptotal-5);
+    }else{
+      return (new Array(ptotal)).fill(undefined).map((_, i) => i);
+    }
   }
   // Appel à la methode getPlant des le chargement de la page, en prenant compte la valeur de l'id dans l'url
   getPlant(): void {
-    this.servicePlante.getId(+this.route.snapshot.paramMap.get('id')).subscribe(
+    this.idPlante = +this.route.snapshot.paramMap.get('id');
+    this.servicePlante.getId(this.idPlante).subscribe(
       (responsedto) => {
         if (!responsedto.error) {
           this.plante = responsedto.body;
-          this.periode.plantSpecies = this.plante;
         }
       }
     );
   }
-  getPeriodesByPlante() {
-    if(this.messageRecherche==''){
-    this.allPeriodes = []
-    this.maxpagePeriode = 1000000;
-    var page=0; 
-    for(;page<this.maxpagePeriode;){
-    this.servicePeriode.getAllByPlante(this.plante.identifiant,page).subscribe(
+
+  getDepartements(page:number) {
+    this.serviceDept.getAllAdmin(page).subscribe(
       responseDto => {
         if (!responseDto.error) {
-          this.allPeriodes.push(responseDto.body.content);
-          this.maxpagePeriode= responseDto.body.totalPages;
-          page++;
+          this.departements = responseDto.body.content;
+          this.maxpageDept= responseDto.body.totalPages;
+          this.pageActive = responseDto.body.number;
+          this.pageTotal = this.range(this.pageActive,this.maxpageDept);
           if(this.allPeriodes==[]) this.messageRecherche='Cette plante ne possède pas encore de période.';
         }
         else { 
-          this.messageRecherche = 'ERREUR !'
-          this.maxpagePeriode=0;
-        
+          this.messageRecherche = 'ERREUR !';
+          console.log('ERREUR IN RESPONSEDTO');
         }
       }
     );
     }
+
+  getPeriodes(idDe:number) {
+    this.servicePeriode.getAllTypes(idDe,this.idPlante).subscribe(
+      responseDto => {
+        if (!responseDto.error) {
+          this.allPeriodes = responseDto.body;
+          console.log(idDe+'   '+this.idPlante+'    '+responseDto.body)
+          if(this.allPeriodes==[]) {
+            this.allPeriodes = new Array<PeriodeUpdateDto>();
+            this.messageRecherche='Cette plante ne possède pas encore de période.';
+          }
+        }
+        else { 
+          this.messageRecherche = 'ERREUR !'
+        }
+      }
+    );
   }
-  }
+
   delete(id: number) {
     this.servicePeriode.delete(id).subscribe(
       responseDto => {
@@ -79,6 +109,13 @@ export class AllPeriodeComponent implements OnInit {
 
   // permet d'envoyer la periode vers la page update à travers le service
   stockagePeriode(period : PeriodeUpdateDto) {
+    console.log("Stockage periode : "+period.identity);
   this.servicePeriode.periode = period ;
   }
+  
+  stockageDepartement(dep : DepartementDto) {
+    console.log("Stockage departement dans servicePeriode : "+dep.depNum);
+  this.servicePeriode.departement = dep ;
+  }
+
 }

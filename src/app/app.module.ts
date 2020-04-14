@@ -42,6 +42,8 @@ import { MeteoDepComponent } from './content/meteo/meteo-dep/meteo-dep.component
 import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
+import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.component';
+import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
 import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component';
 import { EntetePlantAdminComponent } from './content/plant/entete-plant-admin/entete-plant-admin.component';
 import { ConnexionComponent } from './content/connexion/connexion.component';
@@ -58,6 +60,7 @@ import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-connexion/accueil-hors-connexion.component';
 registerLocaleData(localeFr, 'fr-FR');
 
 
@@ -105,6 +108,8 @@ registerLocaleData(localeFr, 'fr-FR');
     ConnexionComponent,
     EnteteConnexionComponent,
     InscriptionComponent,
+    AllPeriodeComponent,
+    CreatePeriodeComponent,
     EntetePlantAdminComponent,
     EnteteInscriptionComponent,
     MeteoComponent,
@@ -115,8 +120,7 @@ registerLocaleData(localeFr, 'fr-FR');
     EnteteUtilisateurAdminComponent,
     DetailAdminComponent,
     ImageUploadComponent,
-    
-
+    AccueilHorsConnexionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PeriodeService } from 'src/app/services/periode.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PeriodeCreateDto } from 'src/app/models/periode-create-dto';
-import { PlanteModeleListe } from 'src/app/models/plante-modele-liste';
 import { DepartementDto } from 'src/app/models/departement-dto';
 import { ActivatedRoute } from '@angular/router';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { PeriodeEnum } from 'src/app/enums/periode-enum.enum'
+import { PeriodeUpdateDto } from 'src/app/models/periode-update-dto';
 
 @Component({
   selector: 'app-create-periode',
@@ -14,56 +14,48 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
   styleUrls: ['./create-periode.component.css']
 })
 export class CreatePeriodeComponent implements OnInit {
-
-
-
-  addPeriodeForm: FormGroup;
-  periode = new PeriodeCreateDto();
-  allDepartements = new Array<DepartementDto>();
-  plant = new PlanteModeleUpdateDto();
+  allPeriodes= new Array<PeriodeUpdateDto>();
+  period = new PeriodeCreateDto();
+  plante = this.servicePeriode.plante;
   messageValidation = null;
   messageErreur = null;
   
   constructor(
-    private servicePlante: PlanteModeleService,
-    private servicePeriode: PeriodeService,
-    private route: ActivatedRoute) { }
+    private servicePeriode: PeriodeService) { }
 
   ngOnInit(): void {
-    this.addPeriodeForm = new FormGroup({
-      "type": new FormControl(this.periode.periodType, Validators.required),
-      "dateDebut": new FormControl(this.periode.startDate, Validators.required),
-      "dateFin": new FormControl(this.periode.endDate, Validators.required),
-      "dept": new FormControl(this.periode.county, Validators.required),
-    });
+    this.getPeriodes();
   }
 
-  get type() { return this.addPeriodeForm.get('type') }
-  get planteModel() { return this.addPeriodeForm.get('planteModel') }
-  get dateDebut() { return this.addPeriodeForm.get('dateDebut') }
-  get dateFin() { return this.addPeriodeForm.get('dateFin') }
-  get dept() { return this.addPeriodeForm.get('dept') }
+  create() {
+    this.period.county = this.servicePeriode.departement;
+    this.period.plantSpecies = this.servicePeriode.plante;
+    console.log("Saving new periode : Departement : "+this.period.county.depNum+' ; Plante : '+this.period.plantSpecies.identifiant+' ; Type : '+this.period.periodType+' ; Debut : '+this.period.startDate+' ; Fin : '+this.period.endDate)
+    this.servicePeriode.create(this.period).subscribe(
+      responseDto => {
+        console.log(responseDto.message)
+      }
+    )
+    this.getPeriodes();
+  }
 
-  // Appel à la methode getPlant des le chargement de la page, en prenant compte la valeur de l'id dans l'url
-  getPlant(): void {
-    this.servicePlante.getId(+this.route.snapshot.paramMap.get('id')).subscribe(
-      (responsedto) => {
-        if (!responsedto.error) {
-          this.plant = responsedto.body;
-          this.periode.plantSpecies = this.plant;
+  
+  getPeriodes() {
+    console.log("getPeriod("+this.servicePeriode.departement.depNum+","+this.servicePeriode.plante.identifiant+")")
+    this.servicePeriode.getAllTypes(this.servicePeriode.departement.depNum,this.servicePeriode.plante.identifiant).subscribe(
+      responseDto => {
+        if (!responseDto.error) {
+          this.allPeriodes = responseDto.body.content;
+          if(this.allPeriodes==[]) {
+            this.allPeriodes = new Array<PeriodeUpdateDto>();
+          }
+        }
+        else { 
+          console.log('ERREUR IN RESPONSEDTO')
         }
       }
     );
   }
-  create() {
-    this.servicePeriode.create(this.periode).subscribe(
-      responseDto => {
-        if (!responseDto.error) {
-          this.messageValidation = responseDto.message;
-        } else { this.messageErreur = responseDto.message; }
-      }
-    )
-  }
+
+delete(id: number) {this.servicePeriode.delete(id).subscribe()}
 }
-
-
