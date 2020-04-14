@@ -71,14 +71,14 @@
             </thead>
             <tbody>
                 <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
-                    <td>{{planteUtilisateur.identifiant}}</td>
-                    <td>{{planteUtilisateur.modelPlant.commun}}</td>
-                    <td>{{planteUtilisateur.plantingDate}}</td>
-                    <td>{{planteUtilisateur.semiDate}}</td>
-                    <td>{{planteUtilisateur.healthStage}}</td>
-                    <td>{{planteUtilisateur.plantStage}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.identifiant}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.modelPlant.commun}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.plantingDate}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.semiDate}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.healthStage}}</td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">{{planteUtilisateur.plantStage}}</td>
 
-                    <td>
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
                         <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
                         <!-- &nbsp;&nbsp; -->
                         <a routerLink='/jardin/detail/updateplante/{{planteUtilisateur.identifiant}}'><button
@@ -86,7 +86,7 @@
                         </a>
                     </td>
                     <!-- Possibilité de retirer une plante utilisateur du jardin -->
-                    <td><button class="btn btn-danger"
+                    <td *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')"><button class="btn btn-danger"
                             (click)="this.supprimer(planteUtilisateur.identifiant)">Supprimer</button>
                         
                     </td>

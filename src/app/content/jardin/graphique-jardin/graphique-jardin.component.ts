@@ -205,14 +205,12 @@ export class GraphiqueJardinComponent implements OnInit {
       this.servicePlanteUtilisateur.delete(
         this.plantesDuJardin.find(p => (
           JSON.stringify(coordo) === JSON.stringify(p.coordonnees)
-        )).identifiant).subscribe(
-          (ResponseDto) => {
-            if (!ResponseDto.error) {
-              console.log('')
-              this.getPlantesDejaPresentes();
-            }
+          )).identifiant).subscribe(
+        (ResponseDto) => {
+          if (!ResponseDto.error) {
+            this.getPlantesDejaPresentes();
           }
-        );
+        });
     }
   }
 
@@ -243,7 +241,7 @@ export class GraphiqueJardinComponent implements OnInit {
   }
 
   attributionNouvellesCoordo(coordo: Array<number>) {
-    if ((this.planteABouger.coordonnees) && (this.matrice[coordo[0]][coordo[1]] == '')) {
+    if ((this.planteABouger.modelPlant) && (this.matrice[coordo[0]][coordo[1]] == '')) {
 
       if (this.planteABouger.coordonnees != null) {
         var anciennesCoordo: Array<number> = this.planteABouger.coordonnees;
@@ -255,11 +253,11 @@ export class GraphiqueJardinComponent implements OnInit {
         (responseDto) => {
           if (!responseDto.error) {
             this.matrice[coordo[0]][coordo[1]] = this.planteABouger.modelPlant.commun;
-            this.matrice[anciennesCoordo[0]][anciennesCoordo[1]] = '';
             this.getPlantesDejaPresentes();
             this.planteSelectionner = new PlanteModeleUpdateDto();
             this.selection = 'Aucune';
             this.planteABouger = new PlanteUtilisateurUpdateDto;
+            if (anciennesCoordo){this.matrice[anciennesCoordo[0]][anciennesCoordo[1]] = '';}
           }
         }
       );
