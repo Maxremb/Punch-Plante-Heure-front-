@@ -31,16 +31,6 @@ export class AuthGuard implements CanActivate {
 
       return this.checkToken(next, token, connectedUser);
 
-/*      // Si component a besoin d'autorisations et que l'utilisateur n'est pas autorisé
-      if (next.data.roles && next.data.roles.indexOf(connectedUser.role) === -1) {
-
-        return false;
-
-      } else {
-
-        return true;
-      } */
-
     }
 
     this.router.navigate(['/connexion']);
@@ -54,7 +44,8 @@ export class AuthGuard implements CanActivate {
     let promise = new Promise<boolean>((resolve, reject) => {
       this.service.getConnectedUser(token).toPromise().then(returnedUser => {
         AuthGuard.user = returnedUser;
-        if (localUser != returnedUser) {
+        if (JSON.stringify(localUser) != JSON.stringify(returnedUser)) {
+          console.log("localUser écrasé");
           localStorage.setItem('connectedUser', JSON.stringify(returnedUser))
         }
         let activateRoute = !(next.data.roles && next.data.roles.indexOf(returnedUser.role) === -1);

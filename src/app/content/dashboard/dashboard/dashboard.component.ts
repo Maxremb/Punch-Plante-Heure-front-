@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 import { ConnectedUser } from 'src/app/models/connectedUser';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
-import { AuthGuard } from 'src/app/helpers/auth.guard';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,8 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor( private service: UtilisateurService ) { }
 
   ngOnInit(): void {
-    //this.user = JSON.parse(localStorage.getItem('connectedUser'));
-    this.user = AuthGuard.user;
+    this.user = JSON.parse(localStorage.getItem('connectedUser'));
     this.getUtilisateur();
   }
 
