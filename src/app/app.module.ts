@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -57,6 +57,7 @@ import { UtilisateurComponent } from './content/utilisateur/utilisateur.componen
 import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component';
 import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
 import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
+import { CustomInterceptor } from './helpers/custom.interceptor';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -146,8 +147,13 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomInterceptor ,
+      multi: true
+    },
     HttpClientModule,
-    MatDatepickerModule,
+    MatDatepickerModule
   ],
   bootstrap: [AppComponent]
 })

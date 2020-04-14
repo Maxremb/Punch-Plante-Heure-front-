@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { UtilisateurUpdateDto } from '../models/utilisateur-update-dto';
-import { AdminUpdateDto } from '../models/admin-update-dto';
 import { ConnexionDto } from '../models/connexion-dto';
 import { HttpClient } from '@angular/common/http';
-import { ResponseDto } from '../models/response-dto';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ConnectedUser } from '../models/connectedUser';
 import { Role } from '../enums/role.enum';
@@ -25,8 +22,8 @@ export class ConnexionService {
 
   getByEmailAndPwd(mail: string, pwd: string): Observable<ConnexionDto> {
     console.log("Utilisateur connecté!!");
-    return this.http.post<ConnexionDto>(this.URL , [mail, pwd]);
-    
+
+    return this.http.post<ConnexionDto>(this.URL, [mail, pwd]);
 
   }
 
@@ -34,12 +31,15 @@ export class ConnexionService {
     console.log('debug');
     let success = this.convert(connexionDto)
     if (success) {
+      console.log(connexionDto.token);
+      localStorage.setItem('token', connexionDto.token);
       localStorage.setItem('connectedUser', JSON.stringify(this.connectedUser));
     }
     return success;
   }
 
   convert(connexionDto: ConnexionDto): boolean {
+    console.log("convert");
     this.connectedUser = new ConnectedUser();
     if (connexionDto.bodyAdmin || connexionDto.bodyUtil) {
 
