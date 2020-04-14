@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "punchplanteheure-front": {
+      "i18n": {
+        "sourceLocale": "fr-FR",
+        "locales": {
+          "fr": "src/locale/messages.en.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -128,6 +134,7 @@
           }
         }
       }
+      
     }
   },
   "defaultProject": "punchplanteheure-front",
