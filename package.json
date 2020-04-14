@@ -7,10 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build-i18n:fr": "ng build --output-path=dist/fr --aot --prod --base-href /fr/ --i18n-file=src/i18n/messages.fr.xlf --i18n-format=xlf --i18n-locale=fr",
-    "build-i18n:en": "ng build --output-path=dist/en --aot --prod --base-href /en/ --i18n-file=src/i18n/messages.en.xlf --i18n-format=xlf --i18n-locale=en",
-    "build-i18n": "npm run build-i18n:en && npm run build-i18n:fr"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +21,8 @@
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
+    "@ngx-translate/core": "^12.1.2",
+    "@ngx-translate/http-loader": "^4.0.0",
     "@types/jquery": "^3.3.34",
     "angular-bootstrap-md": "^9.0.1",
     "angular-datatables": "^9.0.1",
@@ -35,7 +34,7 @@
     "highcharts-angular": "^2.4.0",
     "jquery": "^3.4.1",
     "popper": "^1.0.1",
-    "rxjs": "~6.5.4",
+    "rxjs": "^6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

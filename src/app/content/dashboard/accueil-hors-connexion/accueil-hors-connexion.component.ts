@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import { NavbarComponent } from 'src/app/navbar/navbar/navbar.component';
 
 @Component({
   selector: 'app-accueil-hors-connexion',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilHorsConnexionComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
+    
   }
 
 }
