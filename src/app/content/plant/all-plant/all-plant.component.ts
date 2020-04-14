@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { PeriodeService } from 'src/app/services/periode.service';
+import { DepartementService } from 'src/app/services/departement.service';
+import { DepartementDto } from 'src/app/models/departement-dto';
 
 @Component({
   selector: 'app-all-plant',
@@ -18,8 +21,12 @@ export class AllPlantComponent implements OnInit {
   choix: boolean;
   recherche: boolean;
   numero: number;
+  messageRecherche: string;
+  departements: Array<DepartementDto>;
 
-  constructor(private service:PlanteModeleService) { }
+  constructor(private service:PlanteModeleService,
+    private servicePeriode:PeriodeService,
+    private serviceDept: DepartementService) { }
 
   // Initialisation des constantes choix, liste et recherche
   ngOnInit(): void {
@@ -84,6 +91,26 @@ export class AllPlantComponent implements OnInit {
       }
     );
   }
+  getDepartements(page:number) {
+    this.serviceDept.getAllAdmin(page).subscribe(
+      responseDto => {
+        if (!responseDto.error) {
+          this.departements = responseDto.body.content;
+          console.log('DEBUG  departements : '+this.departements)
+          if(this.departements==[]) this.messageRecherche='Cette plante ne possède pas encore de période.';
+        }
+        else { 
+          this.messageRecherche = 'ERREUR !';
+          console.log('ERREUR IN RESPONSEDTO');
+        }
+      }
+    );
+    }
+    // permet d'envoyer la periode vers la page update à travers le service
+    stockagePlante(plante : PlanteModeleUpdateDto) {
+      console.log("Stockage plante dans servicePeriode : "+plante.identifiant);
+    this.servicePeriode.plante = plante ;
+    }
 
   
 

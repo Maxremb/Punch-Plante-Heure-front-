@@ -63,8 +63,8 @@
                         <button class="btn btn-warning" ><i class="fa fa-wrench" aria-hidden="true"></i></button>
                     </a>
                     &nbsp;&nbsp;
-                    <a routerLink="/periode/{{plant.identifiant}}">
-                        <button class="btn btn-info" ><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
+                    <a routerLink="/periode/lp/{{plant.identifiant}}">
+                        <button class="btn btn-info" (click)="this.stockagePlante(plant)"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
                     </a>
                     </td>
                 </tr>

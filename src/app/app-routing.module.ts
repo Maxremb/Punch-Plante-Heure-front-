@@ -47,7 +47,7 @@ const routes: Routes = [
   { path : 'plant/vadmin', component : AllPlantComponent },
   { path : 'plant/create', component : CreatePlantComponent },
   { path : 'plant/update/:id', component : DetailedPlantComponent },
-  { path : 'periode/:id', component : AllPeriodeComponent},
+  { path : 'periode/lp/:id', component : AllPeriodeComponent},
   { path : 'periode/create', component : CreatePeriodeComponent},
   { path : 'periode/update', component : UpdatePeriodeComponent},
   { path : 'blog' , component : BlogComponent },

@@ -28,7 +28,11 @@ export class DetailedPlantComponent implements OnInit {
   // Initialisation du formulaire et de l'appel à getPlant
   ngOnInit(): void {
     maFonction();
+    console.log('DEBUG.......'+this.plant.identifiant);
+
     this.getPlant();
+    console.log('DEBUG.......'+this.plant.identifiant);
+
     this.plantUpdateForm = new FormGroup({
       commun: new FormControl(this.plant.commun,Validators.required),
       scientifique: new FormControl(this.plant.scientifique,Validators.required),

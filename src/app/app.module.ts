@@ -43,6 +43,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationsComponent } from './content/notifications/notifications.component';
 import { GraphiqueJardinAffichageComponent } from './content/jardin/graphique-jardin-affichage/graphique-jardin-affichage.component';
 import { InscriptionComponent } from './content/inscription/inscription.component';
+import { AllPeriodeComponent } from './content/periode/all-periode/all-periode.component';
+import { CreatePeriodeComponent } from './content/periode/create-periode/create-periode.component';
 
 
 @NgModule({
@@ -85,6 +87,8 @@ import { InscriptionComponent } from './content/inscription/inscription.componen
     NotificationsComponent,
     GraphiqueJardinAffichageComponent,
     InscriptionComponent,
+    AllPeriodeComponent,
+    CreatePeriodeComponent
   ],
   imports: [
     BrowserModule,
