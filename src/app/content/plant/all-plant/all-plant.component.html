@@ -86,8 +86,31 @@
                     <td>{{plant.scientifique}}</td>
                     <td>{{plant.picture}}</td>
                     <td>
-                    <button class="btn btn-danger" (click)="this.delete(plant.identifiant)" title="Supprimer cette plante"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationDelete" title="Supprimer cette plante"><i class="fa fa-times" aria-hidden="true"></i></button>
                     &nbsp;&nbsp;
+
+                    <div class="modal" id="confirmationDelete">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+
+                              <div class="modal-header">
+                                  <h4 class="modal-title">Confirmation</h4>
+                              </div>
+
+                              <div class="modal-body">
+                                  Vous êtes sûr le point de supprimer la plante : {{this.plant.commun}}.
+                                  <br>Veuillez confirmer ce choix.
+                              </div>
+
+                              <div class="modal-footer">
+                                  <button class="btn btn-danger" (click)="this.delete(plant.identifiant)" data-dismiss="modal"><i
+                                          class="fa fa-times" aria-hidden="true"></i> Confirmer la suppression de la plante</button>
+                                  <button class="btn btn-success" data-dismiss="modal">Annuler</button>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
                     <a routerLink="/plant/update/{{plant.identifiant}}">
                         <button class="btn btn-warning" title="Modifier cette plante"><i class="fa fa-wrench" aria-hidden="true"></i></button>
                     </a>
