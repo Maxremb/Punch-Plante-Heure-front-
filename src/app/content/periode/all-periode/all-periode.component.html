@@ -6,11 +6,10 @@
           <button class="btn alazea-btn mt-15" >Retour</button>
       </a>
   </div>
-<div class="col-sm-3 cent" >
-  <div *ngFor="let d of this.departements">
-  <a routerLink="/periode/create">
-    <button class="btn btn-dark btndepartement" (click)="this.stockageDepartement(d)">{{d.name}} - {{d.depNum}}</button>
-  </a>
+<div class="list-group" >
+    <a routerLink="/periode/create" class="list-group-item list-group-item-action list-group-item-light" *ngFor="let d of this.departements" (click)="this.stockageDepartement(d)">
+      <span >{{d.name}} - {{d.depNum}}</span>
+    </a>
 </div>
 <nav aria-label="Page navigation">
     <ul class="pagination" >
@@ -68,5 +67,3 @@
     </div>
 
   </div> -->
-
-</div>
