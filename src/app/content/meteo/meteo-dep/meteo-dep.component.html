@@ -1,11 +1,11 @@
 <div class="container">
 
     <app-entete-meteo></app-entete-meteo>
-    
+
     <div class="container">
         <h2>Ma station météo | Département {{departement.name}} ({{departement.depNum}})</h2>
         <hr>
-              
+
         <div class="row">
             <!-- Affichage des X derniers jours -->
             <div class="col-12 col-lg-6">
@@ -20,8 +20,8 @@
             </form>
             </div>
 
-        
-        
+
+
             <!-- Affichage du mois indiqué -->
             <div class="col-12 col-lg-6">
             <form [formGroup]="choixDonneeMois" (ngSubmit)="switchToMonth()">
@@ -35,8 +35,8 @@
             </div>
             </form>
             </div>
-        </div>    
-            
+        </div>
+
         <button style="align-self: flex-end;" class="btn alazea-btn mt-15" (click)="this.switchGraphTable()" ><span
             *ngIf="!this.tableau; else elseBlock">Cliquez ici pour afficher un tableau</span>
         <ng-template #elseBlock>Cliquez ici pour afficher un graphe</ng-template></button>
@@ -45,8 +45,8 @@
         <a routerLink="/meteo">
             <input type="button" value="Retour à mes stations météo" class="btn alazea-btn mt-15" />
         </a>
-        
-    
+
+
         <hr>
 
         <div *ngIf="tableau">
@@ -82,6 +82,6 @@
             [options]="options3" [width]="width3" [height]="height3">
         </google-chart>
         </div>
+      </div>
 
-    </div>
 </div>

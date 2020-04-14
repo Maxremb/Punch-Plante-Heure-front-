@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { ResponseDto } from '../models/response-dto';
 import { PeriodeUpdateDto } from '../models/periode-update-dto';
 import { PeriodeEnum } from '../enums/periode-enum.enum';
+import { PlanteModeleUpdateDto } from '../models/plante-modele-update-dto';
+import { DepartementDto } from '../models/departement-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,8 @@ import { PeriodeEnum } from '../enums/periode-enum.enum';
 export class PeriodeService {
 
   periode = new PeriodeUpdateDto;
+  plante = new PlanteModeleUpdateDto;
+  departement = new DepartementDto;
 
   private URL = environment.baseUrl + 'periode';
 

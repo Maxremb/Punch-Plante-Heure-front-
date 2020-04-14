@@ -1,68 +1,72 @@
 <div class="container">
 
-
-
-    <!--LIEN TEMPORAIRE POUR AFFICHER LES PAGES NON ACCESSIBLES-->
+    <!-- Retour lien page administrateur -->
     <div>
-        <a routerLink="/periode/update">
-            <input type="button" value="VISUEL update période" />
-        </a>
-    </div>
-    <br>
-    <!--LIEN DE NAVIGATION-->
-    <div class="container">
-        <div>
-            <a routerLink="/periode/create">
-                <input type="button" value="Ajouter une période" class="btn alazea-btn mt-15" />
+      <a routerLink="/plant/vadmin">
+          <button class="btn alazea-btn mt-15" >Retour</button>
+      </a>
+  </div>
+<div class="col-sm-3 cent" >
+  <div *ngFor="let d of this.departements">
+  <a routerLink="/periode/create">
+    <button class="btn btn-dark btndepartement" (click)="this.stockageDepartement(d)">{{d.name}} - {{d.depNum}}</button>
+  </a>
+</div>
+<nav aria-label="Page navigation">
+    <ul class="pagination" >
+        <li class="page-item" *ngIf="this.pageActive>0">
+            <a class="page-link" (click)="this.getDepartements(0)">
+                <i class="fa fa-angle-double-left"></i>
             </a>
+        </li>
+        <li class="page-item" *ngIf="this.pageActive>0">
+            <a class="page-link" (click)="this.getDepartements(this.pageActive-1)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        </li>
+        <li class="page-item" *ngFor="let page of pageTotal">
+            <a class="page-link" id="{{page}}" (click)="this.getDepartements(page)">{{page+1}}</a>
+        </li>
+        <li class="page-item" *ngIf="this.pageActive<this.maxpageDept-1">
+            <a class="page-link" (click)="getDepartements(this.pageActive+1)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+        <li class="page-item" *ngIf="this.pageActive<this.maxpageDept-1">
+            <a class="page-link" (click)="getDepartements(this.maxpageDept-1)">
+                <i class="fa fa-angle-double-right"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+</div>
+
+  <!--LIEN DE NAVIGATION-->
+  <!-- <div class="container">
+    <a routerLink="/admin">
+      <button class="btn alazea-btn mt-15">Retour</button></a>
+  </div>
+  <hr>
+
+  <div class="container">
+  </div>
+  <div id="accordion" *ngIf="this.departements">
+
+    <div class="card" *ngFor="let d of this.departements">
+      <div class="card-header" (click)="this.getPeriodes(d.depNum)">
+        <a class="card-link" data-toggle="collapse" href="#depPer{{this.d.depNum}}">
+          {{d.name}} - {{d.depNum}}
+        </a>
+      </div>
+      <div id="depPer{{this.d.depNum}}" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          <div *ngIf="this.allPeriodes">
+            <app-create-periode [plant]="this.plante" [departement]="d" [allPeriodes]="this.allPeriodes"></app-create-periode>
+          </div>
         </div>
-        <div>
-            <a routerLink="/admin">
-                <button class="btn alazea-btn mt-15">Retour</button></a>
-        </div>
-    </div>
-    <hr>
-
-    <!--LISTE DES PERIODES-->
-    <div class="row" *ngIf="this.allPeriodes.length">
-        <label>
-            <h2><b>LISTE DES PERIODES </b></h2>
-        </label>
-        <hr>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Departement</th>
-                    <th>Plante</th>
-                    <th>Type</th>
-                    <th>Date de début</th>
-                    <th>Date de fin</th>
-                    <th>Actions</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let e of this.allPeriodes">
-                    <td>{{e.identity}}</td>
-                    <td>{{e.county}}</td>
-                    <td>{{e.plantSpecies}}</td>
-                    <td>{{e.periodType}}</td>
-                    <td>{{e.startDate}}</td>
-                    <td>{{e.endDate}}</td>
-                    <td>
-                        &nbsp;&nbsp;
-                        <a routerLink="/periode/update">
-                            <button class="btn btn-info" (click)="this.stockagePeriode(e)">Modifier</button>
-                        </a>
-                        &nbsp;&nbsp;
-                        <button class="btn btn-danger" (click)="this.delete(e.id)">Supprimer</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
+      </div>
     </div>
 
+  </div> -->
 
 </div>

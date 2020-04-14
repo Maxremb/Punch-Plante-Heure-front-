@@ -43,7 +43,7 @@ export class MeteoDepComponent implements OnInit {
     seriesType: 'lines',
 
   };
-  width1 = 550;
+  width1 = 1000;
   height1 = 400;
 
   data2: any;
@@ -55,12 +55,12 @@ export class MeteoDepComponent implements OnInit {
       title: 'Date'
     },
     vAxis: {
-      title: 'Précipitation (mm)'
+      title: 'Ensoleillement (min)'
     },
     seriesType: 'bars',
 
   };
-  width2 = 550;
+  width2 = 1000;
   height2 = 400;
 
   data3: any;
@@ -72,12 +72,12 @@ export class MeteoDepComponent implements OnInit {
       title: 'Date'
     },
     vAxis: {
-      title: 'Temperature'
+      title: 'Précipitation (mm)'
     },
     seriesType: 'bars',
 
   };
-  width3 = 550;
+  width3 = 1000;
   height3 = 400;
 
 

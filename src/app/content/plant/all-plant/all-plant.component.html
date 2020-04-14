@@ -32,7 +32,7 @@
     </div>
 
     <!-- Partie Single, s'affiche uniquement si single = true -->
-    <div *ngIf="single">
+    <div *ngIf="this.single">
         <h2>Liste des plantes de notre dictionnaire</h2>
         <table class="table table-hover">
             <thead>
@@ -92,8 +92,9 @@
                         <button class="btn btn-warning" title="Modifier cette plante"><i class="fa fa-wrench" aria-hidden="true"></i></button>
                     </a>
                     &nbsp;&nbsp;
-                    <a routerLink="/periode/{{plant.identifiant}}">
-                        <button class="btn btn-info" title="Afficher les périodes de cette plante"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
+                    <a routerLink="/periode/lp/{{plant.identifiant}}">
+                        <button class="btn btn-info" (click)="this.stockagePlante(plant)"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
+02eb96473d11b7
                     </a>
                     </td>
                 </tr>
