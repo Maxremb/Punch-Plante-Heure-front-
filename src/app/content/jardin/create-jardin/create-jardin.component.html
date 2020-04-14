@@ -29,13 +29,17 @@
                     </select>
                 </div>
                 <div>
-                    <label class="label">Longeur : </label>
+                    <label class="label">Longueur : </label>
                     <input class="form-control" [(ngModel)]="this.jardin.length" id="length" type="number" min="0" formControlName="length"
                         name="length">
                 </div>
                 <div>
                     <label class="label">Largeur : </label>
                     <input class="form-control" [(ngModel)]="this.jardin.width" id="width" type="number" min="0" formControlName="width" name="width">
+                </div>
+                <div>
+                    <label class="label">Profondeur : </label>
+                    <input class="form-control" [(ngModel)]="this.jardin.depthGround" id="depthGround" type="number" min="0" formControlName="depthGround" name="depthGround">
                 </div>
 
 

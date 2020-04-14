@@ -43,6 +43,7 @@ export class UpdateJardinComponent implements OnInit {
   get length() { return this.updateJardinForm.get('length') }
   get width() { return this.updateJardinForm.get('width') }
   get dept() { return this.updateJardinForm.get('dept') }
+  get depthGround() { return this.updateJardinForm.get('depthGround') }
 
 
   update() {
@@ -69,6 +70,7 @@ export class UpdateJardinComponent implements OnInit {
         'length': new FormControl(this.jardin.length),
         'width': new FormControl(this.jardin.width),
         'dept': new FormControl(this.jardin.dept),
+        'depthGround': new FormControl(this.jardin.dept),
         
       })
     });

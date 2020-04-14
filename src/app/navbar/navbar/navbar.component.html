@@ -22,9 +22,9 @@
                   <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">USA</a>
-                    <a class="dropdown-item" href="#">UK</a>
                     <a class="dropdown-item" href="#">Français</a>
+                    <a class="dropdown-item" href="#">Espagnol</a>
+                    <a class="dropdown-item" href="#">English</a>
                   </div>
                 </div>
               </div>
@@ -36,7 +36,7 @@
                 <a href="inscription" *ngIf="!isConnected()"><i class="fa fa-user" aria-hidden="true"></i> <span>Inscription</span></a>
               </div>
               <div class="disconnect">
-                <a (click)="disconnect()" *ngIf="isConnected()"><i class="fa fa-user" aria-hidden="true"></i> <span>Déconnexion</span></a>
+                <a href="" (click)="disconnect()" *ngIf="isConnected()"><i class="fa fa-user" aria-hidden="true"></i> <span>Déconnexion</span></a>
               </div>
             </div>
           </div>
@@ -46,10 +46,10 @@
   </div>
 
   <!-- ***** Navbar Area ***** -->
-  <div id="sticky-wrapper" class="sticky-wrapper" style="height:90px">
+  <!-- <div id="sticky-wrapper" class="sticky-wrapper" style="height:90px"> -->
     <div class="alazea-main-menu">
-      <div class="classy-nav-container breakpoint-off light left">
-        <div class="container">
+      <div class="classy-nav-container breakpoint-off">
+        <div class="container" >
           <!-- Menu -->
           <nav class="classy-navbar justify-content-between" id="alazeaNav">
 
@@ -63,84 +63,55 @@
             <!-- Menu -->
             <div class="classy-menu">
 
-              <!-- Close Button -->
-              <div class="classycloseIcon">
-                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-              </div>
-
               <!-- Navbar Start -->
               <div class="classynav">
                 <ul>
-                  <li><a class="nav-link" routerLink="/">Accueil</a></li>
-                  <li><a class="nav-link" routerLink="/plant/vuser">Plantes</a></li>
-                  <li><a class="nav-link" routerLink="/jardin">Jardin</a></li>
-                  <li><a class="nav-link" routerLink="/dashboard">Compte utilisateur</a></li>
-                  <li><a class="nav-link" routerLink="/admin">Compte Admin</a></li>
-                  <li><a class="nav-link" routerLink="/about">A propos</a></li>
-                  <!-- <li><a href="#">Pages</a>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/">Accueil</a></li>
+                  <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/plant/vuser">Nos plantes</a></li>
+                  <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/about">A propos</a></li>
+                  <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/contact">Contact</a></li>
+                  <li *ngIf="isConnected() && !isAdmin() "><a class="nav-link" routerLink="/jardin">Mes jardins</a></li>
+                  <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/meteo">Mes stations météo</a></li>
+                  <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/dashboard">
+                    <i class="fa fa-user-circle" title="Mon Compte" aria-hidden="true">
+                    </i>&nbsp;:&nbsp;{{this.user.pseudo}}</a></li>
+                  <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/plant/vadmin">Gestion des plantes</a></li>
+                  <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/utilisateur/gestion-admin">Gestion des utilisateurs</a></li>
+                  <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/departement/vadmin">Gestion des départements</a></li>
+                  <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/admin">Mon compte</a></li>
+                  <!-- <li *ngIf="isConnected() && !isAdmin()"><a href="#">Mon compte</a>
                     <ul class="dropdown">
-                      <li><a class="nav-link" routerLink="/about">Home</a></li>
-                      <li><a class="nav-link" routerLink="/about">About</a></li>
-                      <li><a class="nav-link" routerLink="/about">Shop</a>
-                      </li>
-                    </ul> -->
-                  <li><a class="nav-link" routerLink="/contact">Contact</a></li>
+                      <li><a class="nav-link" routerLink="/jardin">Mes jardins</a></li>
+                      <li><a class="nav-link" routerLink="/meteo">Mes stations meteo</a></li>
+                      <li><a class="nav-link" routerLink="/dashboard">Mon compte</a></li>
+                    </ul>
+                  </li>
+                  <li *ngIf="isAdmin()"><a href="#">Administrateur</a>
+                    <ul class="dropdown">
+                      <li><a class="nav-link" routerLink="/plant/vadmin">Gestion Plantes</a></li>
+                      <li><a class="nav-link" routerLink="/utilisateur/gestion-admin">Gestion Utilisateurs</a></li>
+                      <li><a class="nav-link" routerLink="/departement/vadmin">Gestion Départements</a></li>
+                      <li><a class="nav-link" routerLink="/admin">Mon compte</a></li>
+                    </ul>
+                  </li> -->
 
-                  <!-- <li><a href="#">Pages</a>
-                                  <ul class="dropdown">
-                                      <li><a href="index.html">Home</a></li>
-                                      <li><a href="about.html">About</a></li>
-                                      <li><a href="shop.html">Shop</a>
-                                          <ul class="dropdown">
-                                              <li><a href="shop.html">Shop</a></li>
-                                              <li><a href="shop-details.html">Shop Details</a></li>
-                                              <li><a href="cart.html">Shopping Cart</a></li>
-                                              <li><a href="checkout.html">Checkout</a></li>
-                                          </ul>
-                                      </li>
-                                      <li><a href="portfolio.html">Portfolio</a>
-                                          <ul class="dropdown">
-                                              <li><a href="portfolio.html">Portfolio</a></li>
-                                              <li><a href="single-portfolio.html">Portfolio Details</a></li>
-                                          </ul>
-                                      </li>
-                                      <li><a href="blog.html">Blog</a>
-                                          <ul class="dropdown">
-                                              <li><a href="blog.html">Blog</a></li>
-                                              <li><a href="single-post.html">Blog Details</a></li>
-                                          </ul>
-                                      </li>
-                                      <li><a href="contact.html">Contact</a></li>
-                                  </ul>
-                              </li>
-                              <li><a href="shop.html">Shop</a></li>
-                              <li><a href="portfolio.html">Portfolio</a></li> -->
-                  <!-- <li><a href="contact.html">Contact</a></li> -->
                 </ul>
-
-                <!-- Search Icon -->
-                <div id="searchIcon">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </div>
 
               </div>
               <!-- Navbar End -->
             </div>
           </nav>
 
-          <!-- Search Form -->
-          <div class="search-form">
-            <form action="#" method="get">
-              <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
-              <button type="submit" class="d-none"></button>
-            </form>
-            <!-- Close Icon -->
-            <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
-          </div>
+
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </header>
 <!-- ##### Header Area End ##### -->
 

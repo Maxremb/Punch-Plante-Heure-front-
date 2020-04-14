@@ -5,7 +5,7 @@
     <!-- Affichage du jardin selectionné et de ses caracteristiques -->
     <div class="row">
         <div class="col-12 col-lg-6" style="padding-left: 0%;" *ngIf="this.jardin">
-            <h2>Mon jardin <i>{{this.jardin.name}} </i></h2>
+            <h2><u>Mon jardin :</u><i> {{this.jardin.name}}</i></h2>
             <br><br>
 
             <label class="label">Nom : </label> {{this.jardin.name}}
@@ -137,7 +137,7 @@
             <a routerLink="/planning/{{this.jardin.identifier}}">
                 <button class="btn alazea-btn mt-15">Calendrier</button>
             </a>
-            <a routerLink="/'jardin/graphique/{{this.jardin.identifier}}'">
+            <a routerLink="/jardin/graphique/{{this.jardin.identifier}}">
                 <button class="btn alazea-btn mt-15">Graphique</button>
             </a>
             <a routerLink="/jardin">

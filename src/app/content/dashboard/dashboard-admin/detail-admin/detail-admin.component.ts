@@ -59,6 +59,7 @@ export class DetailAdminComponent implements OnInit {
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! Vous avez modifié vos information avec succès !';
           this.error = false;
+          document.location.reload();
         }
       },
       (error) => {

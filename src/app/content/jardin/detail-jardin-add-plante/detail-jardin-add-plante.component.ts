@@ -123,6 +123,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
       (responseDto) => {
         if (!responseDto.error) {
           this.messageValidation = "Plante ajoutée à votre jardin";
+          this.getListePlanteUtilisateur(this.pageActiveUtil);
 
         }
       },
@@ -132,7 +133,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
         }
       }
     );
-    this.getListePlanteUtilisateur(this.pageActiveUtil);
+    
   }
 
   suppprimer(id: number) {

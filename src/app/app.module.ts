@@ -56,6 +56,7 @@ import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gesti
 import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
 import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
 import { CustomInterceptor } from './helpers/custom.interceptor';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 
 @NgModule({
@@ -110,6 +111,7 @@ import { CustomInterceptor } from './helpers/custom.interceptor';
     GestionAdminComponent,
     EnteteUtilisateurAdminComponent,
     DetailAdminComponent,
+    ImageUploadComponent,
 
   ],
   imports: [

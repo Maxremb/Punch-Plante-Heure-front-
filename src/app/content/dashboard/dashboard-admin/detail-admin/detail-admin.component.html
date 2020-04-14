@@ -11,9 +11,10 @@
 <div class="container">
     <app-entete-dashboard></app-entete-dashboard>
 
-    <h2>Modifier vos informations</h2>
+    <h2>Mes informations</h2>
     <hr>
-
+    <div id='fond'>
+        <br>
     <div class="row">
 
         <div class="col-lg-6 col-sm-6">
@@ -27,9 +28,14 @@
         </div>
 
     </div>
+    </div>
 
     <hr>
 
+    <h2>Modifier vos informations</h2>
+    <hr>
+    <div id='back'>
+        <br>
     <div class="col-lg-6 col-sm-6">
         <form [formGroup]="adminUpdateForm" (ngSubmit)="this.update()">
 
@@ -87,5 +93,6 @@
         </form>
 
     </div>
-
+    <br>
+</div>
 </div>

@@ -27,19 +27,16 @@ export class GraphiqueJardinComponent implements OnInit {
   // Crée au lancement
   jardin: JardinUpdateDto;
   matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
-  selection: string;
+  selection: string = 'Aucune';
   plantesDuJardin: Array<PlanteUtilisateurUpdateDto>;
 
   // Recherche de plantes
   planteRechercher: string;
   resultatRecherche: Array<PlanteModeleUpdateDto>;
   planteSelectionner: PlanteModeleUpdateDto = new PlanteModeleUpdateDto();
-  
-  // Ajouter une plante au jardin
-  planteACree: PlanteUtilisateurCreateDto = new PlanteUtilisateurCreateDto();
 
   // Déplacer les plantes
-  planteABouger : PlanteUtilisateurUpdateDto;
+  planteABouger : PlanteUtilisateurUpdateDto = new PlanteUtilisateurUpdateDto;
 
 
 
@@ -126,20 +123,8 @@ export class GraphiqueJardinComponent implements OnInit {
 
 
   // Change la valeur de la variable selection pas l'objet selectionner
-  modifSelection(objet: string) {    
-    if (objet == 'vide') {
-      this.selection = '';
-      this.planteSelectionner = new PlanteModeleUpdateDto;
-    }
+  modifSelection(objet: string) {
     this.selection = objet;
-  }
-
-  
-  // Change la valeur dans la matrice pour y mettre ce qu'il y a dans la valeur selection
-  modifOnClick(y: number, x: number) {
-    this.matrice[y][x] = this.selection;
-
-    console.log('DEBUG MATRICE ' + this.matrice);
   }
 
 
@@ -179,6 +164,8 @@ export class GraphiqueJardinComponent implements OnInit {
 
   viderLesResultats() {
     this.resultatRecherche = undefined;
+    this.selection = 'Aucune';
+    this.planteSelectionner = new PlanteModeleUpdateDto;
   }
 
 
@@ -189,25 +176,28 @@ export class GraphiqueJardinComponent implements OnInit {
 
 
   addPlanteToJardin(plante: PlanteModeleUpdateDto, coordo: Array<number>) {
-    this.planteACree = new PlanteUtilisateurCreateDto;
+    if(this.matrice[coordo[0]][coordo[1]] == '') {
+      var planteACree: PlanteUtilisateurCreateDto = new PlanteUtilisateurCreateDto;
 
-    if (this.selection != '' && !this.planteABouger) {
-      this.planteACree.coordonnees = coordo;
-      this.planteACree.garden = this.jardin;
-      this.planteACree.modelPlant = plante;
-      this.servicePlanteUtilisateur.create(this.planteACree).subscribe(
-        (ResponseDto) => {
-          if (!ResponseDto.error) {
-            this.plantesDuJardin.push(ResponseDto.body);
+      if ((this.selection != '') && (!this.planteABouger.coordonnees) && (this.planteSelectionner.commun)) {
+        planteACree.coordonnees = coordo;
+        planteACree.garden = this.jardin;
+        planteACree.modelPlant = plante;
+        this.servicePlanteUtilisateur.create(planteACree).subscribe(
+          (ResponseDto) => {
+            if (!ResponseDto.error) {
+              this.plantesDuJardin.push(ResponseDto.body);
+              this.getPlantesDejaPresentes();
+            }
           }
-        }
-      );
+        );
+      }
     }
   }
 
 
   enleverPlanteDuJardinFromVide(coordo: Array<number>) {
-    if (this.selection == '') {
+    if ((this.selection == '') && (this.matrice[coordo[0]][coordo[1]] != '')) {
       this.servicePlanteUtilisateur.delete(
         this.plantesDuJardin.find(p => (
           JSON.stringify(coordo) === JSON.stringify(p.coordonnees)
@@ -229,39 +219,43 @@ export class GraphiqueJardinComponent implements OnInit {
         if (!ResponseDto.error) {
           this.plantesDuJardin.splice(
             this.plantesDuJardin.indexOf(laPlante), 1
-          ) ;
+          );
         }
       }
     );
     this.matrice[coordoDeLaPlante[0]][coordoDeLaPlante[1]] = '';
+    this.getPlantesDejaPresentes();
   }
 
 
   selectionnerPlanteABouger(laPlante: PlanteUtilisateurUpdateDto) {
     this.planteABouger = laPlante;
-    console.log('coordo selectionné : ', this.planteABouger.coordonnees)
     this.selection = 'Mon jardin : ' + laPlante.modelPlant.commun;
   }
 
   deselectionnerPlanteABouger() {
-    this.planteABouger = undefined;
-    this.selection = '';
+    this.planteABouger = new PlanteUtilisateurUpdateDto;
+    this.selection = 'Aucune';
   }
 
-  attributionNouvellesCoordo(newCoordo: Array<number>) {
-    if (this.planteABouger) {
+  attributionNouvellesCoordo(coordo: Array<number>) {
+    if ((this.planteABouger.coordonnees) && (this.matrice[coordo[0]][coordo[1]] == '')) {
 
       if (this.planteABouger.coordonnees != null) {
         var anciennesCoordo: Array<number> = this.planteABouger.coordonnees;
       }
 
-      this.planteABouger.coordonnees = newCoordo;
+      this.planteABouger.coordonnees = coordo;
 
       this.servicePlanteUtilisateur.update(this.planteABouger).subscribe(
         (responseDto) => {
           if (!responseDto.error) {
-            this.matrice[newCoordo[0]][newCoordo[1]] = this.planteABouger.modelPlant.commun;
+            this.matrice[coordo[0]][coordo[1]] = this.planteABouger.modelPlant.commun;
             this.matrice[anciennesCoordo[0]][anciennesCoordo[1]] = '';
+            this.getPlantesDejaPresentes();
+            this.planteSelectionner = new PlanteModeleUpdateDto();
+            this.selection = 'Aucune';
+            this.planteABouger = new PlanteUtilisateurUpdateDto;
           }
         }
       );      

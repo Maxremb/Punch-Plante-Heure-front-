@@ -45,6 +45,7 @@ export class CreateJardinComponent implements OnInit {
       "length": new FormControl(this.jardin.length),
       "width": new FormControl(this.jardin.width),
       "dept": new FormControl(this.depNum, Validators.required),
+      'depthGround': new FormControl(this.jardin.dept),
 
     })
   }
@@ -54,6 +55,7 @@ export class CreateJardinComponent implements OnInit {
   get length() { return this.addJardinForm.get('length') }
   get width() { return this.addJardinForm.get('width') }
   get dept() { return this.addJardinForm.get('dept') }
+  get depthGround() { return this.addJardinForm.get('depthGround') }
 
   
 

@@ -11,44 +11,49 @@
 <div class="container">
     <app-entete-dashboard></app-entete-dashboard>
 
-    <h2>Modifier vos informations</h2>
+    <h2>Mes informations</h2>
     <hr>
+    <div id='fond'>
+        <br>
+        <div class="row">
 
-    <div class="row">
+            <div class="col-lg-6 col-sm-8">
+                <h5>Nom actuel : </h5> {{this.utilisateur.lastName}}
+                <br><br>
+            </div>
 
-        <div class="col-lg-6 col-sm-6">
-            <h5>Nom actuel : </h5> {{this.utilisateur.firstName}}
-            <br><br>
-        </div>
+            <div class="col-lg-6 col-sm-6">
+                <h5>Prénom actuel : </h5> {{this.utilisateur.firstName}}
+                <br><br>
+            </div>
 
-        <div class="col-lg-6 col-sm-6">
-            <h5>Prénom actuel : </h5> {{this.utilisateur.lastName}}
-            <br><br>
-        </div>
+            <div class="col-lg-6 col-sm-6">
+                <h5>Pseudo actuel : </h5> {{this.utilisateur.pseudo}}
+                <br><br>
+            </div>
 
-        <div class="col-lg-6 col-sm-6">
-            <h5>Pseudo actuel : </h5> {{this.utilisateur.pseudo}}
-            <br><br>
-        </div>
+            <div class="col-lg-6 col-sm-6">
+                <h5>E-Mail actuel : </h5> {{this.utilisateur.mail}}
+                <br><br>
+            </div>
 
-        <div class="col-lg-6 col-sm-6">
-            <h5>E-Mail actuel : </h5> {{this.utilisateur.mail}}
-            <br><br>
-        </div>
+            <div class="col-lg-6 col-sm-6">
+                <h5>Téléphone actuel : </h5> {{this.utilisateur.phone}}
+                <br><br>
+            </div>
 
-        <div class="col-lg-6 col-sm-6">
-            <h5>Téléphone actuel : </h5> {{this.utilisateur.phone}}
-            <br><br>
-        </div>
-
-        <div class="col-lg-6 col-sm-6">
-            <h5>Image actuelle : </h5> {{this.utilisateur.picture}}
-            <br><br>
+            <div class="col-lg-6 col-sm-6">
+                <h5>Image actuelle : </h5> {{this.utilisateur.picture}}
+                <br><br>
+            </div>
         </div>
     </div>
 
-        <hr>
-
+    <hr>
+    <h2>Modifier mes informations</h2>
+    <hr>
+    <div id='back'>
+        <br>
         <div class="col-lg-6 col-sm-6">
             <form [formGroup]="userUpdateForm" (ngSubmit)="this.update()">
 
@@ -85,11 +90,33 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="password">
+                        <h5>Nouveau Mot de Passe: </h5>
+                    </label>
+                    <input type="password" class="form-control" [(ngModel)]="this.utilisateur.pwd" formControlName="pwd"
+                        name="pwd" pattern=".{8,}" title="Mot de passe d'au moins 8 caractères">
+                    <div *ngIf="!samePwd && this.utilisateur.pwd.length > 7 && this.password2.length > 7"
+                        class="alert alert-danger">
+                        Les mots de passe entrés ne sont pas les mêmes
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password2">
+                        <h5>Confirmer Mot de Passe: </h5>
+                    </label>
+                    <input type="password" class="form-control" [(ngModel)]="this.password2" formControlName="password2"
+                        name="password2" pattern=".{8,}" title="Mot de passe d'au moins 8 caractères"
+                        (blur)="this.comparePwd()">
+                </div>
+
+
+                <div class="form-group">
                     <label for="phone">
                         <h5>Nouveau Téléphone : </h5>
                     </label>
-                    <input type="number" class="form-control" [(ngModel)]="this.utilisateur.phone" formControlName="phone"
-                        name="phone" placeholder="{{this.utilisateur.phone}}">
+                    <input type="number" class="form-control" [(ngModel)]="this.utilisateur.phone"
+                        formControlName="phone" name="phone" placeholder="{{this.utilisateur.phone}}">
                 </div>
 
                 <div class="form-group">
@@ -99,7 +126,6 @@
                     <input type="text" class="form-control" [(ngModel)]="this.utilisateur.picture"
                         formControlName="picture" name="picture" placeholder="{{this.utilisateur.picture}}">
                 </div>
-
 
                 <button type="submit" class="btn alazea-btn mt-15"
                     [disabled]="!userUpdateForm.valid">Enregistrer</button><br><br>
@@ -114,9 +140,11 @@
                 <a routerLink="/dashboard">
                     <button class="btn alazea-btn mt-15">Retour</button>
                 </a>
-                
+
             </form>
 
         </div>
+        <br>
+    </div>
 
 </div>
