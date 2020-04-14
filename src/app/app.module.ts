@@ -56,9 +56,13 @@ import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gesti
 import { EnteteUtilisateurAdminComponent } from './content/utilisateur/entete-utilisateur-admin/entete-utilisateur-admin.component';
 import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr-FR');
 
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     AllPlantComponent,
@@ -111,6 +115,7 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
     EnteteUtilisateurAdminComponent,
     DetailAdminComponent,
     ImageUploadComponent,
+    
 
   ],
   imports: [
