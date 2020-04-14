@@ -204,12 +204,12 @@ export class GraphiqueJardinComponent implements OnInit {
       this.servicePlanteUtilisateur.delete(
         this.plantesDuJardin.find(p => (
           JSON.stringify(coordo) === JSON.stringify(p.coordonnees)
-          )).identifiant).subscribe(
-        (ResponseDto) => {
-          if (!ResponseDto.error) {
-            this.getPlantesDejaPresentes();
-          }
-        });
+        )).identifiant).subscribe(
+          (ResponseDto) => {
+            if (!ResponseDto.error) {
+              this.getPlantesDejaPresentes();
+            }
+          });
     }
   }
 
@@ -256,7 +256,7 @@ export class GraphiqueJardinComponent implements OnInit {
             this.planteSelectionner = new PlanteModeleUpdateDto();
             this.selection = 'Aucune';
             this.planteABouger = new PlanteUtilisateurUpdateDto;
-            if (anciennesCoordo){this.matrice[anciennesCoordo[0]][anciennesCoordo[1]] = '';}
+            if (anciennesCoordo) { this.matrice[anciennesCoordo[0]][anciennesCoordo[1]] = ''; }
           }
         }
       );
@@ -268,15 +268,25 @@ export class GraphiqueJardinComponent implements OnInit {
     if (this.isSelectZone) {
 
       console.log("DEBUG SLECT CONTINUE", [index, index2]);
-      this.addPlanteToJardin(this.planteSelectionner, [index, index2]);
 
+      if (this.selection != "") {
+        this.addPlanteToJardin(this.planteSelectionner, [index, index2]);
+      } else {
+        this.enleverPlanteDuJardinFromVide([index,index2]);
+      }
 
     }
   }
 
   selectZoneDebut(index: number, index2: number) {
     console.log("DEBUG Select zone debut", [index, index2]);
-    this.addPlanteToJardin(this.planteSelectionner, [index, index2]);
+    if (this.selection != "") {
+      this.addPlanteToJardin(this.planteSelectionner, [index, index2]);
+    } else {
+      this.enleverPlanteDuJardinFromVide([index, index2]);
+    }
+
+
     this.isSelectZone = true;
     this.debutZone = [index, index2];
   }
