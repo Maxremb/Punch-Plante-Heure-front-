@@ -41,7 +41,6 @@ export class GraphiqueJardinComponent implements OnInit {
   //atttributs pour la sélection/ plaçage multiple
   isSelectZone = false;
   debutZone: Array<number>;
-  finZone: Array<number>;
 
   constructor(private serviceJardin: JardinService,
     private servicePlanteUtilisateur: PlanteUtilisateurService,
@@ -282,10 +281,8 @@ export class GraphiqueJardinComponent implements OnInit {
     this.debutZone = [index, index2];
   }
 
-  selectZoneFin(index: number, index2: number) {
+  selectZoneFin() {
     this.isSelectZone = false;
-    // this.finZone = [index, index2];
-
   }
 
 
