@@ -40,6 +40,7 @@ import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail
 import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component'
 
 import { DetailAdminComponent } from './content/dashboard/dashboard-admin/detail-admin/detail-admin.component';
+import { IdGuard } from './helpers/id.guard';
 
 
 const routes: Routes = [
@@ -64,7 +65,7 @@ const routes: Routes = [
   { path : 'periode/update', component : UpdatePeriodeComponent},
   { path : 'blog' , component : BlogComponent },
   { path : 'plant/vuser', component: UserviewAllPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
-  { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
+  { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent, canActivate: [AuthGuard, IdGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent },
   { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
@@ -81,7 +82,7 @@ const routes: Routes = [
   { path : 'jardin/detail/arrosage', component : ArrosageComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]}},
 
   { path: 'inscription', component: InscriptionComponent },
-  { path: 'utilisateur/detail/:identifier', component: DetailUtilisateurComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
+  { path: 'utilisateur/detail/:identifier', component: DetailUtilisateurComponent, canActivate: [AuthGuard, IdGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
   { path: 'utilisateur/gestion-admin', component: GestionAdminComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
   { path: 'admin/detail/:identifier', component: DetailAdminComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
 

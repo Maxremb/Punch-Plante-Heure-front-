@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
+import { AuthGuard } from 'src/app/helpers/auth.guard';
 
 declare function maFonction(): any;
 
@@ -14,7 +15,7 @@ declare function maFonction(): any;
 export class DetailUtilisateurComponent implements OnInit {
 
   userUpdateForm: FormGroup;
-  
+
   utilisateur: UtilisateurUpdateDto = new UtilisateurUpdateDto();
 
   messageValidation = '';
@@ -43,14 +44,15 @@ export class DetailUtilisateurComponent implements OnInit {
 
   get pwd(): any { return this.userUpdateForm.get('pwd'); }
 
-  comparePwd(){
+  comparePwd() {
     this.samePwd = this.utilisateur.pwd === this.password2;
   }
-  
+
 
 
   getUserById(): void {
-    const identifier = +this.route.snapshot.paramMap.get('identifier');
+    // const identifier = +this.route.snapshot.paramMap.get('identifier');
+    const identifier = AuthGuard.user.id;
     this.service.getUtilisateur(identifier).subscribe(
       (responsedto) => {
         if (!responsedto.error) {

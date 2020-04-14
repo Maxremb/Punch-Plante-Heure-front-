@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Role } from '../enums/role.enum';
 import { ConnectedUser } from '../models/connectedUser';
+import { resolve } from 'dns';
 
 // Empêche l'accés aux pages sans autorisation basé sur le role
 
@@ -12,9 +13,9 @@ import { ConnectedUser } from '../models/connectedUser';
 })
 export class AuthGuard implements CanActivate {
 
-  role : Role;
+  static user: ConnectedUser;
 
-  constructor(private router: Router, private service: AuthService) { }
+  constructor(protected router: Router, protected service: AuthService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -23,20 +24,22 @@ export class AuthGuard implements CanActivate {
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
     const token = localStorage.getItem('token');
 
+    console.log("AuthGuard next: ", next);
+
     // Si utilisater connecté
     if (connectedUser && token) {
 
-      this.checkToken(next, token, connectedUser);
+      return this.checkToken(next, token, connectedUser);
 
-      // Si component a besoin d'autorisations et que l'utilisateur n'est pas autorisé
+/*      // Si component a besoin d'autorisations et que l'utilisateur n'est pas autorisé
       if (next.data.roles && next.data.roles.indexOf(connectedUser.role) === -1) {
 
         return false;
 
-      } else {        
+      } else {
 
         return true;
-      }
+      } */
 
     }
 
@@ -44,32 +47,32 @@ export class AuthGuard implements CanActivate {
     return false;
   }
 
-  private checkToken(next: ActivatedRouteSnapshot, token: string, user: ConnectedUser) : void{
+  protected checkToken(next: ActivatedRouteSnapshot, token: string, localUser: ConnectedUser): Promise<boolean> {
 
     console.log("AuthGuard checkToken: appelé", token);
 
-    this.service.getRole(token).subscribe(
-      returnedRole => {
-        console.log("Authguard checkToken: returnedRole=" , returnedRole);
-        const role = <Role> returnedRole;
-
-        if(user.role != role){
-          user.role = role;
-          localStorage.setItem('connectedUser', JSON.stringify(user));
+    let promise = new Promise<boolean>((resolve, reject) => {
+      this.service.getConnectedUser(token).toPromise().then(returnedUser => {
+        AuthGuard.user = returnedUser;
+        if (localUser != returnedUser) {
+          localStorage.setItem('connectedUser', JSON.stringify(returnedUser))
         }
-
-        if(next.data.roles && next.data.roles.indexOf(role) === -1){
-
+        let activateRoute = !(next.data.roles && next.data.roles.indexOf(returnedUser.role) === -1);
+        if(!activateRoute){
           this.router.navigate(['']);
-
         }
+
+        resolve(activateRoute);
       },
-      error => {
-        console.log("AuthGuard checkToken: error: " , error);
+      err => {
         localStorage.clear();
-        this.router.navigate(['']);
-      }
-    );
+        location.href = '';
+        reject(err);        
+      });
+    });
+
+    return promise;
+    
 
   }
 
