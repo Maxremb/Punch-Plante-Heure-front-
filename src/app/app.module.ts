@@ -63,6 +63,7 @@ import localeFr from '@angular/common/locales/fr';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-connexion/accueil-hors-connexion.component';
 registerLocaleData(localeFr, 'fr-FR');
 
 
@@ -122,6 +123,7 @@ registerLocaleData(localeFr, 'fr-FR');
     EnteteUtilisateurAdminComponent,
     DetailAdminComponent,
     ImageUploadComponent,
+    AccueilHorsConnexionComponent
   ],
   imports: [
     BrowserModule,

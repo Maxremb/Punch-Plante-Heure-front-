@@ -41,6 +41,7 @@ export class GraphiqueJardinComponent implements OnInit {
   //atttributs pour la sélection/ plaçage multiple
   isSelectZone = false;
   debutZone: Array<number>;
+  lastCoord : Array<number> = [-1,-1];
 
   constructor(private serviceJardin: JardinService,
     private servicePlanteUtilisateur: PlanteUtilisateurService,
@@ -265,9 +266,11 @@ export class GraphiqueJardinComponent implements OnInit {
 
   // le plaçage au passage en mouse over + mouse down
   selectionContinue(index: number, index2: number) {
-    if (this.isSelectZone) {
+    if (this.isSelectZone && (this.lastCoord[0]!= index || this.lastCoord[1] != index2)) {
 
       console.log("DEBUG SLECT CONTINUE", [index, index2]);
+      this.lastCoord[0] = index;
+      this.lastCoord[1] = index2;
 
       if (this.selection != "") {
         this.addPlanteToJardin(this.planteSelectionner, [index, index2]);

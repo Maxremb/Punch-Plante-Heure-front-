@@ -34,9 +34,9 @@
         <h2><label>Recherche par Nom</label></h2>
         <input type="text" class="form-group" [(ngModel)]="this.name" />
         &nbsp;&nbsp;&nbsp;&nbsp;
-        
+
             <button class="btn alazea-btn mt-15" (click)="this.afficherDepartement()">Rechercher</button>
-        
+
     </div>
 
 
@@ -46,7 +46,7 @@
         <h2><label for="search-box">Recherche par Numéro</label></h2>
         <input type="number" [(ngModel)]="this.depNum" />
         &nbsp;&nbsp;&nbsp;&nbsp;
-      
+
             <button class="btn alazea-btn mt-15" (click)="this.afficherDepartement()">Rechercher</button>
     </div>
 
@@ -66,8 +66,31 @@
                     <td>{{this.departement.depNum}}</td>
                     <td>{{this.departement.name}}</td>
                     <td>
-                        <button class="btn btn-danger" (click)="this.delete(this.departement.depNum)" title="Supprimer ce département"><i class="fa fa-times" aria-hidden="true"></i></button>                           
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationDelete" title="Supprimer ce département"><i class="fa fa-times" aria-hidden="true"></i></button>
                         &nbsp;&nbsp;
+                        <div class="modal" id="confirmationDelete">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+
+                                  <div class="modal-header">
+                                      <h4 class="modal-title">Confirmation</h4>
+                                  </div>
+
+                                  <div class="modal-body">
+                                      Vous êtes sûr le point de supprimer un département.
+                                      <br>Veuillez confirmer ce choix.
+                                  </div>
+
+                                  <div class="modal-footer">
+                                      <button class="btn btn-danger" (click)="this.delete(this.departement.depNum)" data-dismiss="modal"><i
+                                              class="fa fa-times" aria-hidden="true"></i> Confirmer la suppression du département</button>
+                                      <button class="btn btn-success" data-dismiss="modal">Annuler</button>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+
                         <a routerLink="/departement/update/{{this.departement.depNum}}">
                             <button class="btn btn-warning" title="Modifier ce département"><i class="fa fa-wrench" aria-hidden="true"></i></button>
                         </a>
@@ -98,7 +121,7 @@
                 <tr *ngFor="let d of this.allDepartements">
                     <td>{{d.depNum}}</td>
                     <td>{{d.name}}</td>
-                    <td><button class="btn btn-danger" (click)="this.delete(this.d.depNum)" title="Supprimer ce département"><i class="fa fa-times" aria-hidden="true"></i></button>                           
+                    <td><button class="btn btn-danger" (click)="this.delete(this.d.depNum)" title="Supprimer ce département"><i class="fa fa-times" aria-hidden="true"></i></button>
                         &nbsp;&nbsp;
                         <a routerLink="/departement/update/{{this.d.depNum}}">
                             <button class="btn btn-warning" title="Modifier ce département" ><i class="fa fa-wrench" aria-hidden="true"></i></button>
@@ -106,7 +129,7 @@
                         &nbsp;&nbsp;
                         <a routerLink="/meteo/{{this.d.depNum}}">
                             <button class="btn btn-info" title="Voir la météo associée"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button></a>
-                    </td>        
+                    </td>
                 </tr>
             </tbody>
         </table>
