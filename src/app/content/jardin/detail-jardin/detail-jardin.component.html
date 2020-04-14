@@ -95,15 +95,16 @@
           <td
             *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
             <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
-            <!-- &nbsp;&nbsp; -->
             <a routerLink='/jardin/detail/updateplante/{{planteUtilisateur.identifiant}}'><button
-                class="btn btn-warning">Modifier</button>
+                class="btn btn-warning" title="Modifier la plante"><i class="fa fa-wrench"
+                  aria-hidden="true"></i></button>
             </a>
           </td>
           <!-- Possibilité de retirer une plante utilisateur du jardin -->
           <td
             *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
-            <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationDelete">Supprimer</button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationDelete"
+              title="Supprimer la plante"><i class="fa fa-times" aria-hidden="true"></i></button>
             <div class="modal" id="confirmationDelete">
               <div class="modal-dialog">
                 <div class="modal-content">
