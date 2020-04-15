@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UtilisateurUpdateDto } from 'src/app/models/utilisateur-update-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
-import { AuthGuard } from 'src/app/helpers/auth.guard';
 import { ConnectedUser } from 'src/app/models/connectedUser';
 
 declare function maFonction(): any;
@@ -69,7 +68,6 @@ export class DetailUtilisateurComponent implements OnInit {
   update() {
     this.service.update(this.utilisateur).subscribe(
       (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! Vous avez modifié vos information avec succès !';
           this.error = false;
@@ -77,7 +75,6 @@ export class DetailUtilisateurComponent implements OnInit {
         }
       },
       (error) => {
-        console.log('debug responseDto : ', error);
         this.messageValidation = 'ERREUR ! Vos informations n\'ont pas pu être modifiées !';
         this.error = true;
       }
