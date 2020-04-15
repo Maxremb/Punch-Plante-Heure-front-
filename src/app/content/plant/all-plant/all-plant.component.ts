@@ -44,12 +44,15 @@ export class AllPlantComponent implements OnInit {
     this.choix = true;
     this.liste = false;
     this.recherche = false;
+    this.single = false;
   }
   
   // Methode pour afficher la liste des plantes, appel a la methode getAll(1)
   afficherListe() {
     this.liste = true;
     this.choix = false;
+    this.recherche = false;
+    this.single = false;
     this.getAll(0);
   }
 
@@ -57,6 +60,8 @@ export class AllPlantComponent implements OnInit {
   afficherRecherche() {
     this.recherche = true;
     this.choix = false;
+    this.single = false;
+    this.liste = false;
   }
 
   // Methode pour afficher le tableau avec SINGLE
@@ -64,6 +69,7 @@ export class AllPlantComponent implements OnInit {
     this.recherche = true;
     this.choix = false;
     this.single = true;
+    this.liste = false;
     this.getSingle(numero);
   }
 

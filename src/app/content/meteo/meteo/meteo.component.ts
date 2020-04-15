@@ -28,13 +28,9 @@ export class MeteoComponent implements OnInit {
       responseDto => {
           if (!responseDto.error) {
             this.allJardins = responseDto.body.content;
-            this.allJardins.forEach(
-              j => { 
-                if (this.allJardinsBis.indexOf(j) === -1) {
-                  this.allJardinsBis.push(j);
-                }
-              }
-            )
+            this.allJardinsBis = this.allJardins.filter(
+              (item, i, arr) => arr.findIndex((t) => t.dept.depNum === item.dept.depNum) === i);
+            
           }
       },
       responseDtoerror => {

@@ -17,7 +17,7 @@ export class CreatePeriodeComponent implements OnInit {
   messageValidation = '';
   messageErreur = '';
   currentYear = new Date().getFullYear();
-  minDate = new Date(this.currentYear, 2, 5);
+  minDate = new Date(this.currentYear, 0, 1);
   maxDate = new Date(this.currentYear, 11, 31);
   
   constructor(
@@ -42,6 +42,8 @@ export class CreatePeriodeComponent implements OnInit {
       (responseDto) => {
         this.messageValidation="La période a bien été enregistrée !";
         this.getPeriodes();
+        this.minDate = new Date(this.currentYear, 0, 1);
+        this.maxDate = new Date(this.currentYear, 11, 31)
       },
       (error) => {
         this.messageErreur=error;

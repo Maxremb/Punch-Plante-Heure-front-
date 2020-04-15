@@ -1,5 +1,9 @@
 # PunchPlanteHeure-Front
 
+Description : Ce projet est la partie front-end de "Punch Plante Heure" et consiste en la réalisation de l'interface graphique du site web, via l'utilisation d'une template, et la liaison de celle-ci avec le back-end:
+Création des différents components, services et models et liaison entre ces différent component (navigation via l'app-routing).
+Ce projet a été réalisé en 10 jours (fin le 15/04/2020) en parallèle de la partie back-end que l'on peut retrouver à [PunchPlanteHeure](https://gitlab.com/Spaghetti-droid/punchplanteheure/-/blob/dev/README.md)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
 ## Development server
@@ -25,3 +29,23 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Fabriqué avec 
+- Angular
+- Bootstrap
+- CSS
+- Visual Code
+
+## Equipe 
+- Léa Coston : Chef de Projet, Developpeuse Back/Front
+- Grégoire Brebner : Référent Technique Back, Developpeur Back/Front
+- Yohann Bachelier : Référent Technique Front, Developpeur Front
+- Isaline Millet : Référent Technique Back sprint final, developpeuse Back/Front
+- Maxime Rembert : Référent Métier, Developpeur Back/Front
+- Flavien Gomila : Référent Métier, Developpeur Front
+- Thierry-Meng  Cloarec : Référent Métier, developpeur Back/Front
+- Clare Cadet : Développeuse Back/Front
+- Jeanne-Marie Mathevet : Developpeuse Back/Front
+- Mehdi Bensalha : encadrant
+- Lucie Martinez : Developpeuse Back/Front
+
