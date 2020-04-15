@@ -1,87 +1,86 @@
 <div class="container">
 
-    <app-entete-meteo></app-entete-meteo>
+  <app-entete-meteo></app-entete-meteo>
 
-    <div class="container">
-        <h2>Ma station météo | Département {{departement.name}} ({{departement.depNum}})</h2>
-        <hr>
+  <div class="container">
+    <h2>Ma station météo | Département {{departement.name}} ({{departement.depNum}})</h2>
+    <hr>
 
-        <div class="row">
-            <!-- Affichage des X derniers jours -->
-            <div class="col-12 col-lg-6">
-            <form [formGroup]="choixDonnee" (ngSubmit)="switchToMonth()">
-            <div class="form-group" style="display:inline">
-                <h5>Consulter les
-                <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours</h5>
-                <button type="submit" class="btn alazea-btn mt-15"
-                    [disabled]="!this.choixDonnee.valid">Afficher</button>
-
-            </div>
-            </form>
-            </div>
-
-
-
-            <!-- Affichage du mois indiqué -->
-            <div class="col-12 col-lg-6">
-            <form [formGroup]="choixDonneeMois" (ngSubmit)="switchToMonth()">
-            <div class="form-group" style="display:inline">
-                <h5>Consulter le mois :
-                <input type="month" [(ngModel)]="this.date" formControlName="date"></h5>
-
-                <button type="submit" class="btn alazea-btn mt-15"
-                    [disabled]="!this.choixDonnee.valid">Afficher</button>
-
-            </div>
-            </form>
-            </div>
-        </div>
-
-        <button style="align-self: flex-end;" class="btn alazea-btn mt-15" (click)="this.switchGraphTable()" ><span
-            *ngIf="!this.tableau; else elseBlock">Cliquez ici pour afficher un tableau</span>
-        <ng-template #elseBlock>Cliquez ici pour afficher un graphe</ng-template></button>
-        <!-- <button class="btn alazea-btn mt-15" (click)="this.switchToMonth()" >Par mois</button> -->
-        &nbsp;&nbsp;
-        <a routerLink="/meteo">
-            <input type="button" value="Retour à mes stations météo" class="btn alazea-btn mt-15" />
-        </a>
-
-
-        <hr>
-
-        <div *ngIf="tableau">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Température min</th>
-                    <th>Température max</th>
-                    <th>Ensoleillement</th>
-                    <th>Précipitation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let m of this.allmeteo">
-                    <td>{{m.dateMeteo}}</td>
-                    <td>{{m.tempMin}}</td>
-                    <td>{{m.tempMax}}</td>
-                    <td>{{m.radiation}}</td>
-                    <td>{{m.rain}}</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-        <div *ngIf='graph'>
-        <google-chart #chart [title]="title1" [type]="type1" [data]="data1" [columnNames]="columnNames1"
-            [options]="options1" [width]="width1" [height]="height1">
-        </google-chart>
-        <google-chart #chart [title]="title2" [type]="type2" [data]="data2" [columnNames]="columnNames2"
-            [options]="options2" [width]="width2" [height]="height2">
-        </google-chart>
-        <google-chart #chart [title]="title3" [type]="type3" [data]="data3" [columnNames]="columnNames3"
-            [options]="options3" [width]="width3" [height]="height3">
-        </google-chart>
-        </div>
+    <div class="row">
+      <!-- Affichage des X derniers jours -->
+      <div class="col-12 col-lg-6">
+        <form [formGroup]="choixDonnee" (ngSubmit)="switchToMonth()">
+          <div class="form-group" style="display:inline">
+            <h5>Consulter les
+              <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours</h5>
+            <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.choixDonnee.valid">Afficher</button>
+          </div>
+        </form>
       </div>
+
+
+
+      <!-- Affichage du mois indiqué -->
+      <div class="col-12 col-lg-6">
+        <form [formGroup]="choixDonneeMois" (ngSubmit)="switchToMonth()">
+          <div class="form-group" style="display:inline">
+            <h5>Consulter le mois :
+              <input type="month" [(ngModel)]="this.date" formControlName="date"></h5>
+
+            <button type="submit" class="btn alazea-btn mt-15" [disabled]="!this.choixDonnee.valid">Afficher</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <button style="align-self: flex-end;" class="btn alazea-btn mt-15" (click)="this.switchGraphTable()"><span
+        *ngIf="!this.tableau; else elseBlock">Cliquez ici pour afficher un tableau</span>
+      <ng-template #elseBlock>Cliquez ici pour afficher un graphe</ng-template>
+    </button>
+    <!-- <button class="btn alazea-btn mt-15" (click)="this.switchToMonth()" >Par mois</button> -->
+    &nbsp;&nbsp;
+    <a routerLink="/meteo">
+      <input type="button" value="Retour à mes stations météo" class="btn alazea-btn mt-15" />
+    </a>
+
+
+    <hr>
+
+    <div *ngIf="tableau">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Température min</th>
+            <th>Température max</th>
+            <th>Ensoleillement</th>
+            <th>Précipitation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of this.allmeteo">
+            <td>{{m.dateMeteo}}</td>
+            <td>{{m.tempMin}}</td>
+            <td>{{m.tempMax}}</td>
+            <td>{{m.radiation}}</td>
+            <td>{{m.rain}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf='graph'>
+      <google-chart #chart [title]="title1" [type]="type1" [data]="data1" [columnNames]="columnNames1"
+        [options]="options1" [width]="width1" [height]="height1">
+      </google-chart>
+      <google-chart #chart [title]="title2" [type]="type2" [data]="data2" [columnNames]="columnNames2"
+        [options]="options2" [width]="width2" [height]="height2">
+      </google-chart>
+      <google-chart #chart [title]="title3" [type]="type3" [data]="data3" [columnNames]="columnNames3"
+        [options]="options3" [width]="width3" [height]="height3">
+      </google-chart>
+    </div>
+    <button class="btn alazea-btn mt-15" routerLink="/departement/vadmin">Retour</button>
+  </div>
 
 </div>
