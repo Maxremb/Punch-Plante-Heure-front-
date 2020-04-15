@@ -259,6 +259,11 @@ export class GraphiqueJardinComponent implements OnInit {
         }
       );
     }
+
+    if ((this.selection == 'Aucune') && (this.matrice[coordo[0]][coordo[1]] != '')) {
+      this.planteABouger = this.plantesDuJardin.find(p => (JSON.stringify(coordo) === JSON.stringify(p.coordonnees)));
+      this.selection = 'Mon jardin : ' + this.planteABouger.modelPlant.commun;
+    }
   }
 
   // le plaçage au passage en mouse over + mouse down
@@ -268,7 +273,7 @@ export class GraphiqueJardinComponent implements OnInit {
       this.lastCoord[0] = index;
       this.lastCoord[1] = index2;
 
-      if (this.selection != "") {
+      if (this.selection != '') {
         this.addPlanteToJardin(this.planteSelectionner, [index, index2]);
       } else {
         this.enleverPlanteDuJardinFromVide([index,index2]);
@@ -278,7 +283,7 @@ export class GraphiqueJardinComponent implements OnInit {
   }
 
   selectZoneDebut(index: number, index2: number) {
-    if (this.selection != "") {
+    if (this.selection != '') {
       this.addPlanteToJardin(this.planteSelectionner, [index, index2]);
     } else {
       this.enleverPlanteDuJardinFromVide([index, index2]);

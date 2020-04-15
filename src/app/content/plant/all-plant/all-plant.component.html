@@ -86,10 +86,10 @@
                     <td>{{plant.scientifique}}</td>
                     <td>{{plant.picture}}</td>
                     <td>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationDelete" title="Supprimer cette plante"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    <button class="btn btn-danger"  title="Supprimer cette plante" (click)="this.delete(plant.identifiant)"><i class="fa fa-times" aria-hidden="true"></i></button>
                     &nbsp;&nbsp;
-
-                    <div class="modal" id="confirmationDelete">
+                    <!-- data-toggle="modal" data-target="#confirmationDelete" -->
+                    <!-- <div class="modal" id="confirmationDelete">
                       <div class="modal-dialog">
                           <div class="modal-content">
 
@@ -110,7 +110,7 @@
 
                           </div>
                       </div>
-                  </div>
+                  </div> -->
                     <a routerLink="/plant/update/{{plant.identifiant}}">
                         <button class="btn btn-warning" title="Modifier cette plante"><i class="fa fa-wrench" aria-hidden="true"></i></button>
                     </a>
