@@ -62,7 +62,7 @@
         <!-- Fin du formualaire -->
 
         <!-- Ajout de la liste à droite -->
-        <div class="col 12 col-lg-7" *ngIf="this.listePlanteUtil">
+        <div class="col 12 col-lg-7" *ngIf="this.listePlanteUtilFiltre">
 
 
             <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
@@ -96,7 +96,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let p of this.listePlanteUtil">
+                    <tr *ngFor="let p of this.listePlanteUtilFiltre">
                         <td>{{p.identifiant}}</td>
                         <td>{{p.modelPlant.commun}}</td>
                         <td>{{p.plantingDate}}</td>
@@ -112,7 +112,7 @@
                 </tbody>
             </table>
 
-            <nav aria-label="Page navigation" *ngIf="this.listePlanteUtil.length" style="position: bottom;">
+            <!-- <nav aria-label="Page navigation" *ngIf="this.listePlanteUtil.length" style="position: bottom;">
                 <ul class="pagination">
                     <li class="page-item" *ngIf="this.pageActiveUtil>0">
                         <a class="page-link" (click)="this.getListePlanteUtilisateur(0)">
@@ -138,7 +138,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
 
         </div>
     </div>

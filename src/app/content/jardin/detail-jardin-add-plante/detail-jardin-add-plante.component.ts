@@ -19,6 +19,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   planteForm: FormGroup;
   plante = new PlanteUtilisateurCreateDto();
   listePlanteUtil = new Array<PlanteUtilisateurUpdateDto>();
+  listePlanteUtilFiltre  = new Array<PlanteUtilisateurUpdateDto>();
   jardin: JardinUpdateDto;
   idJardin: number;
   messageValidation: string;
@@ -90,13 +91,14 @@ export class DetailJardinAddPlanteComponent implements OnInit {
   }
 
   getListePlanteUtilisateur(npage: number): void {
-    this.planteutilisateurservice.getAllByJardin(this.idJardin, npage).subscribe(
+    this.planteutilisateurservice.getAllByJardinListe(this.idJardin).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.listePlanteUtil = responseDto.body.content;
-          this.pageActiveUtil = responseDto.body.number;
-          this.pageTotalUtil = this.range(responseDto.body.totalPages);
-          this.pageMaxUtil = responseDto.body.totalPages;
+          this.listePlanteUtil = responseDto.body;
+          this.listePlanteUtilFiltre = this.listePlanteUtil.filter(plante => (plante.modelPlant.commun!="Obstacle" && plante.modelPlant.commun!="Chemin"));
+          // this.pageActiveUtil = responseDto.body.number;
+          // this.pageTotalUtil = this.range(responseDto.body.totalPages);
+          // this.pageMaxUtil = responseDto.body.totalPages;
         
         }
       }
@@ -139,6 +141,7 @@ export class DetailJardinAddPlanteComponent implements OnInit {
       (responseDto) => {
     
         this.listePlanteUtil = this.listePlanteUtil.filter(p => p.identifiant != id);
+        this.listePlanteUtilFiltre = this.listePlanteUtilFiltre.filter(p => p.identifiant != id);
 
       },
 
