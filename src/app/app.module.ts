@@ -66,6 +66,7 @@ import { AccueilHorsConnexionComponent } from './content/dashboard/accueil-hors-
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { EntetePlannindComponent } from './content/jardin/entete-plannind/entete-plannind.component';
 
 
 @NgModule({
@@ -124,7 +125,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     EnteteUtilisateurAdminComponent,
     DetailAdminComponent,
     ImageUploadComponent,
-    AccueilHorsConnexionComponent
+    AccueilHorsConnexionComponent,
+    EntetePlannindComponent
   ],
   imports: [
     BrowserModule,
