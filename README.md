@@ -2,7 +2,7 @@
 
 Description : Ce projet est la partie front-end de "Punch Plante Heure" et consiste en la réalisation de l'interface graphique du site web, via l'utilisation d'une template, et la liaison de celle-ci avec le back-end:
 Création des différents components, services et models et liaison entre ces différent component (navigation via l'app-routing).
-Ce projet a été réalisé en 10 jours (fin le 15/04/2020) en parallèle de la partie back-end que l'on peut retrouver à PunchPlanteHeure
+Ce projet a été réalisé en 10 jours (fin le 15/04/2020) en parallèle de la partie back-end que l'on peut retrouver à [PunchPlanteHeure](https://gitlab.com/Spaghetti-droid/punchplanteheure/-/blob/dev/README.md)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
