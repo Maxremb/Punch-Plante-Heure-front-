@@ -24,7 +24,7 @@ export class CreateDepartementComponent implements OnInit {
 
   ngOnInit(): void {
     maFonction(); // on lance la fonction js pour pouvoir l'appeler et l'utiliser dans le fichier html
-    console.log("init componenet ")
+    
     this.depCreateForm = new FormGroup({
       depNum: new FormControl(this.dept.depNum, [
         Validators.required, Validators.min(1)]),
@@ -35,10 +35,10 @@ export class CreateDepartementComponent implements OnInit {
 
 
   save() {
-    console.log(this.dept);
+ 
     this.service.create(this.dept).subscribe(
       (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
+        
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! Le Departement a bien été ajoutée à la base de données';
           this.error = false;
@@ -46,7 +46,7 @@ export class CreateDepartementComponent implements OnInit {
         }
       },
       (error) => {
-        console.log('debug responseDto : ', error);
+        
         this.messageValidation = 'ERREUR ! Le Departement n\'a pas été ajoutée à la base de données';
         this.error = true;
         }

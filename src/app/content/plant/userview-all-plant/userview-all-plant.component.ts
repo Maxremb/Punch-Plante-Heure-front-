@@ -34,7 +34,6 @@ export class UserviewAllPlantComponent implements OnInit {
   getAll(npage: number) {
     this.service.getAll(npage).subscribe(
       (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.allPlant = responseDto.body.content;
           this.pageActive = responseDto.body.number;

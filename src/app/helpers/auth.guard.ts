@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { Role } from '../enums/role.enum';
 import { ConnectedUser } from '../models/connectedUser';
-import { resolve } from 'dns';
 
 // Empêche l'accés aux pages sans autorisation basé sur le role
 
@@ -13,7 +11,7 @@ import { resolve } from 'dns';
 })
 export class AuthGuard implements CanActivate {
 
-  static user: ConnectedUser;
+  //static user: ConnectedUser;
 
   constructor(protected router: Router, protected service: AuthService) { }
 
@@ -24,7 +22,6 @@ export class AuthGuard implements CanActivate {
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
     const token = localStorage.getItem('token');
 
-    console.log("AuthGuard next: ", next);
 
     // Si utilisater connecté
     if (connectedUser && token) {
@@ -39,13 +36,10 @@ export class AuthGuard implements CanActivate {
 
   protected checkToken(next: ActivatedRouteSnapshot, token: string, localUser: ConnectedUser): Promise<boolean> {
 
-    console.log("AuthGuard checkToken: appelé", token);
-
     let promise = new Promise<boolean>((resolve, reject) => {
       this.service.getConnectedUser(token).toPromise().then(returnedUser => {
-        AuthGuard.user = returnedUser;
+        
         if (JSON.stringify(localUser) != JSON.stringify(returnedUser)) {
-          console.log("localUser écrasé");
           localStorage.setItem('connectedUser', JSON.stringify(returnedUser))
         }
         let activateRoute = !(next.data.roles && next.data.roles.indexOf(returnedUser.role) === -1);

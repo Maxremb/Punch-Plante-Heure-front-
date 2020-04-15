@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartementDto } from 'src/app/models/departement-dto';
 import { DepartementService } from 'src/app/services/departement.service';
-import { MeteoUpdateDto } from 'src/app/models/meteo-update-dto';
+
 
 
 @Component({
@@ -73,7 +73,7 @@ export class AllDepartementsComponent implements OnInit {
     if (this.name != null) {
       this.service.getByName(this.name).subscribe(
         (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
+        
         if (!responseDto.error) {
           this.departement = responseDto.body;
           this.afficherDep = true;
@@ -84,7 +84,7 @@ export class AllDepartementsComponent implements OnInit {
     } else if (this.depNum != null) {
       this.service.getById(this.depNum).subscribe(
         (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
+       
         if (!responseDto.error) {
           this.departement = responseDto.body;
           this.afficherDep = true;
@@ -107,7 +107,7 @@ export class AllDepartementsComponent implements OnInit {
   getAll(nbpage: number) {
     this.service.getAllAdmin(nbpage).subscribe(
       (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
+        
         if (!responseDto.error) {
           this.allDepartements = responseDto.body.content;
           this.pageActive = responseDto.body.number;
@@ -122,7 +122,7 @@ export class AllDepartementsComponent implements OnInit {
   delete(id: number) {
     this.service.delete(id).subscribe(
       responseDto => {
-        console.log('debug responseDto : ', responseDto);
+        
         if (!responseDto.error) {
           this.allDepartements = this.allDepartements.filter(
             element => element.depNum !== id

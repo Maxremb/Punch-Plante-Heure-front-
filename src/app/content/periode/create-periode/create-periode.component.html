@@ -21,7 +21,7 @@
                 <tr *ngFor="let per of this.allPeriodes">
                     <td>{{per.periodType}}</td>
                     <td>
-                        <span *ngIf="this.per.startDate">{{this.per.startDate.getMonth()}}  &#x2794;  {{this.per.endDate.getMonth()}}</span>
+                        <span>{{this.per.startDate}}  &#x2794;  {{this.per.endDate}}</span>
                     </td>
                     <td>
                         <button class="btn btn-danger" (click)="this.delete(per.identity)"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -29,10 +29,6 @@
             </tr>
         </tbody>
     </table>
-    <div *ngIf="!this.allPeriodes">
-        <h3><i>Aucunes périodes actuellement enregistrées. </i></h3>
-        <p></p>
-    </div>
 
     <h3>Ajouter des périodes (Département : {{departement.depNum}} et Plante : {{plante.commun}}) </h3>
     <p></p>

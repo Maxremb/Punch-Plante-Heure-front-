@@ -51,14 +51,14 @@ export class CreatePlantComponent implements OnInit {
   save() {
     this.service.create(this.plant).subscribe(
       (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
+       
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! La plante a bien été ajoutée à la base de données';
           this.error = false;
         }
       },
       (error) => {
-        console.log('debug responseDto : ', error);
+       
         if (error.error) {
         this.messageValidation = 'ERREUR ! La plante n\'a pas été ajoutée à la base de données';
         this.error = true;
@@ -67,15 +67,6 @@ export class CreatePlantComponent implements OnInit {
     );
   }
 
-  // createPeriode(){
-  //   for (let i = 0;i<100;i++){
-  //     this.periodRempotage.county = i;
-  //     this.periodFloraison.county = i; 
-  //     this.periodFructification.county = i; 
-  //     this.periodTaille.county = i; 
-  //     this.periodSemis.county = i; 
-  //   this.servicePeriode.create(this.allPeriodes[i]).subscribe();
-  //   }
-  // }
+ 
 
 }

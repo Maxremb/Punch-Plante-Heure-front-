@@ -3,7 +3,6 @@ import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
-import { DepartementDto } from 'src/app/models/departement-dto';
 import { ActivatedRoute } from '@angular/router';
 
 

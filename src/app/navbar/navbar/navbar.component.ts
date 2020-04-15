@@ -26,10 +26,7 @@ export class NavbarComponent implements OnInit {
     this.isConnected();
     this.isAdmin();
     this.user = JSON.parse(localStorage.getItem('connectedUser'));
-    console.log("NAVBAR ==> connectedUser ", this.user);
-    console.log("isConnected?" , this.isConnected());
-    console.log("isAdmin?", this.isAdmin());
-
+    
   }
 
 
@@ -54,8 +51,6 @@ export class NavbarComponent implements OnInit {
   }
 
   useLanguage(language: string) {
-    console.log("debug local ==>", language)
-    // debugger;
     this.translate.use(language);
   }
 

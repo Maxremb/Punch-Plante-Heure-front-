@@ -71,7 +71,6 @@ export class AllPeriodeComponent implements OnInit {
         }
         else { 
           this.messageRecherche = 'ERREUR !';
-          console.log('ERREUR IN RESPONSEDTO');
         }
       }
     );
@@ -82,7 +81,6 @@ export class AllPeriodeComponent implements OnInit {
       responseDto => {
         if (!responseDto.error) {
           this.allPeriodes = responseDto.body;
-          console.log(idDe+'   '+this.idPlante+'    '+responseDto.body)
           if(this.allPeriodes==[]) {
             this.allPeriodes = new Array<PeriodeUpdateDto>();
             this.messageRecherche='Cette plante ne possède pas encore de période.';
@@ -109,12 +107,10 @@ export class AllPeriodeComponent implements OnInit {
 
   // permet d'envoyer la periode vers la page update à travers le service
   stockagePeriode(period : PeriodeUpdateDto) {
-    console.log("Stockage periode : "+period.identity);
   this.servicePeriode.periode = period ;
   }
   
   stockageDepartement(dep : DepartementDto) {
-    console.log("Stockage departement dans servicePeriode : "+dep.depNum);
   this.servicePeriode.departement = dep ;
   }
 

@@ -55,14 +55,14 @@ export class DetailedDepartementComponent implements OnInit {
   update() {
     this.service.update(this.departement).subscribe(
       (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
+        
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! Le departement a bien été modifié.';
           this.error = false;
         }
       },
       (error) => {
-        console.log('debug responseDto : ', error);
+        
         this.messageValidation = 'ERREUR ! Le departement n\'a pas été modifié.';
         this.error = true;
       }
@@ -73,7 +73,7 @@ export class DetailedDepartementComponent implements OnInit {
   delete(id: number) {
     this.service.delete(id).subscribe(
       responseDto => {
-        console.log('debug responseDto : ', responseDto);
+        
         if (!responseDto.error) {
           this.messageValidation2 = 'BRAVO ! Le departement a bien été supprimé.'
         }

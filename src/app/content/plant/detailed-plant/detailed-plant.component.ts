@@ -28,30 +28,30 @@ export class DetailedPlantComponent implements OnInit {
   // Initialisation du formulaire et de l'appel à getPlant
   ngOnInit(): void {
     maFonction();
-    console.log('DEBUG.......'+this.plant.identifiant);
+   
 
     this.getPlant();
-    console.log('DEBUG.......'+this.plant.identifiant);
+   
 
     this.plantUpdateForm = new FormGroup({
       commun: new FormControl(this.plant.commun,Validators.required),
       scientifique: new FormControl(this.plant.scientifique,Validators.required),
-      arrosage: new FormControl(this.plant.arrosage,Validators.required),
-      ensoleillement: new FormControl(this.plant.ensoleillement,Validators.required),
-      humidite: new FormControl(this.plant.humidite,Validators.required),
-      sol: new FormControl(this.plant.sol,Validators.required),
-      repiquage: new FormControl(this.plant.repiquage,Validators.required),
-      min: new FormControl(this.plant.min,Validators.required),
-      max: new FormControl(this.plant.max,Validators.required),
-      desc: new FormControl(this.plant.desc,Validators.required),
-      toxi: new FormControl(this.plant.toxi,Validators.required),
-      positive: new FormControl(this.plant.positive,Validators.required),
-      negative: new FormControl(this.plant.negative,Validators.required),
-      mifa: new FormControl(this.plant.mifa,Validators.required),
-      height: new FormControl(this.plant.height,Validators.required),
-      feuille: new FormControl(this.plant.feuille,Validators.required),
-      veget: new FormControl(this.plant.veget,Validators.required),
-      picture: new FormControl(this.plant.picture,Validators.required),
+      arrosage: new FormControl(this.plant.arrosage),
+      ensoleillement: new FormControl(this.plant.ensoleillement),
+      humidite: new FormControl(this.plant.humidite),
+      sol: new FormControl(this.plant.sol),
+      repiquage: new FormControl(this.plant.repiquage),
+      min: new FormControl(this.plant.min),
+      max: new FormControl(this.plant.max),
+      desc: new FormControl(this.plant.desc),
+      toxi: new FormControl(this.plant.toxi),
+      positive: new FormControl(this.plant.positive),
+      negative: new FormControl(this.plant.negative),
+      mifa: new FormControl(this.plant.mifa),
+      height: new FormControl(this.plant.height),
+      feuille: new FormControl(this.plant.feuille),
+      veget: new FormControl(this.plant.veget),
+      picture: new FormControl(this.plant.picture),
     });
   }
 
@@ -61,7 +61,7 @@ export class DetailedPlantComponent implements OnInit {
     this.service.getId(this.idPlante).subscribe(
       (responsedto) => {
         if (!responsedto.error) {
-          console.log('get data')
+         
           this.plant = responsedto.body;
         }
       }
@@ -71,15 +71,13 @@ export class DetailedPlantComponent implements OnInit {
 
   updatePlante() {
     this.service.update(this.plant).subscribe(
-      (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
+      (responseDto) => {     
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! L\'examen a bien été modifié.';
           this.error = false;
         }
       },
       (error) => {
-        console.log('debug responseDto : ', error);
         this.messageValidation = 'ERREUR ! L\'examen n\'a pas été modifié.';
         this.error = true;
         }

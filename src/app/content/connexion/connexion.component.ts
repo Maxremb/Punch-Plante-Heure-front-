@@ -33,7 +33,6 @@ export class ConnexionComponent implements OnInit {
   constructor(private service: ConnexionService) { }
 
   ngOnInit(): void {
-    console.log("init component ")
     this.connexionForm = new FormGroup({
       mail: new FormControl(this.mail,
         [Validators.required, Validators.email]),
@@ -44,16 +43,14 @@ export class ConnexionComponent implements OnInit {
   connect(mail: string, pwd: string) {
     this.service.getByEmailAndPwd(mail, pwd).subscribe(
       (connexionDto) => {
-        console.log('debug responseDto login : ', connexionDto)
-        console.log('debug responseDto login : ', connexionDto)
         this.error = !this.service.connect(connexionDto);
         if (!this.error) {
 
           if (!connexionDto.user) {
-            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
+            this.messageValidation = 'Vous êtes maintenant connecté en tant qu\'administrateur !';
             location.href = 'admin'
           } else if (connexionDto.user) {
-            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
+            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté !';
             location.href = ''
           }
         } else {

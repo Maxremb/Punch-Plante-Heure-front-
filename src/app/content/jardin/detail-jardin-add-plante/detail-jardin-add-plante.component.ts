@@ -108,7 +108,6 @@ export class DetailJardinAddPlanteComponent implements OnInit {
       this.jardin = resp.body;
       
     });
-    console.log('DEBUG JARDIN DETAIL', this.jardin)
   }
 
   range(end) {
@@ -117,7 +116,6 @@ export class DetailJardinAddPlanteComponent implements OnInit {
 
   ajouter() {
     this.plante.garden = this.jardin;
-    console.log("DEBUG AJOUT ", this.plante);
 
     this.planteutilisateurservice.create(this.plante).subscribe(
       (responseDto) => {

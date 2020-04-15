@@ -18,11 +18,8 @@ export class IdGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    console.log("IdGuard url: ", next.routeConfig.path);
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
     const token = localStorage.getItem('token');
-    console.log("IdGuard token: ", token);
-    console.log("IdGuard: AuthGuard.user=" , AuthGuard.user);
 
 
     if (connectedUser.role != Role.Admin && connectedUser.id != +next.url[2].path) {
