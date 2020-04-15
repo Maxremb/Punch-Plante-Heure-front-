@@ -13,7 +13,7 @@ import { resolve } from 'dns';
 })
 export class AuthGuard implements CanActivate {
 
-  static user: ConnectedUser;
+  //static user: ConnectedUser;
 
   constructor(protected router: Router, protected service: AuthService) { }
 
@@ -43,7 +43,7 @@ export class AuthGuard implements CanActivate {
 
     let promise = new Promise<boolean>((resolve, reject) => {
       this.service.getConnectedUser(token).toPromise().then(returnedUser => {
-        AuthGuard.user = returnedUser;
+        
         if (JSON.stringify(localUser) != JSON.stringify(returnedUser)) {
           console.log("localUser écrasé");
           localStorage.setItem('connectedUser', JSON.stringify(returnedUser))
