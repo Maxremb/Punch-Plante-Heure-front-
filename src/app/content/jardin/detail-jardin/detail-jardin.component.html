@@ -45,7 +45,7 @@
 
 
     <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
-    <table class="table table-hover" *ngIf="this.plantesParJardin.length">
+    <table class="table table-hover" *ngIf="this.plantesFiltre.length">
       <thead>
         <tr>
           <th>
@@ -72,28 +72,28 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let planteUtilisateur of this.plantesParJardin">
-          <td
-            *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
+        <tr *ngFor="let planteUtilisateur of this.plantesFiltre">
+          <td>
+           
             {{planteUtilisateur.identifiant}}</td>
           <td
-            *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
+            >
             {{planteUtilisateur.modelPlant.commun}}</td>
           <td
-            *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
+            >
             {{planteUtilisateur.plantingDate}}</td>
           <td
-            *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
+            >
             {{planteUtilisateur.semiDate}}</td>
           <td
-            *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
+           >
             {{planteUtilisateur.healthStage}}</td>
           <td
-            *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
+            >
             {{planteUtilisateur.plantStage}}</td>
 
           <td
-            *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
+            >
             <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
             <a routerLink='/jardin/detail/updateplante/{{planteUtilisateur.identifiant}}'><button
                 class="btn btn-warning" title="Modifier la plante"><i class="fa fa-wrench"
@@ -102,10 +102,12 @@
           </td>
           <!-- Possibilité de retirer une plante utilisateur du jardin -->
           <td
-            *ngIf="(planteUtilisateur.modelPlant.commun != 'Chemin') && (planteUtilisateur.modelPlant.commun != 'Obstacle')">
-            <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationDelete"
-              title="Supprimer la plante"><i class="fa fa-times" aria-hidden="true"></i></button>
-            <div class="modal" id="confirmationDelete">
+           >
+            <button class="btn btn-danger" 
+              title="Supprimer la plante" (click)="this.supprimer(planteUtilisateur.identifiant)"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+              <!-- data-toggle="modal" data-target="#confirmationDelete" -->
+            <!-- <div class="modal" id="confirmationDelete">
               <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -126,14 +128,14 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </td>
 
         </tr>
       </tbody>
     </table>
-    <nav aria-label="Page navigation" *ngIf="this.pageMax>1">
+    <!-- <nav aria-label="Page navigation" *ngIf="this.pageMax>1">
       <ul class="pagination">
         <li class="page-item" *ngIf="this.pageActive>0">
           <a class="page-link" (click)="this.getPlantesParJardin(0)">
@@ -159,7 +161,7 @@
           </a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
   </div>
   <!-- Fin du tableau avec les plantes -->
 
