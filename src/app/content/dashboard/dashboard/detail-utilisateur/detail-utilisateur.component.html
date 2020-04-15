@@ -57,7 +57,7 @@
                         <h5>Nouveau Prénom : </h5>
                     </label>
                     <input type="text" class="form-control" [(ngModel)]="this.utilisateur.firstName"
-                        formControlName="firstName" name="firstName" placeholder="{{this.utilisateur.firstName}}">
+                        formControlName="firstName" name="firstName" placeholder="{{this.utilisateur.firstName}}" required>
                 </div>
 
                 <div class="form-group">
@@ -65,7 +65,7 @@
                         <h5>Nouveau nom : </h5>
                     </label>
                     <input type="text" class="form-control" [(ngModel)]="this.utilisateur.lastName"
-                        formControlName="lastName" name="lastName" placeholder="{{this.utilisateur.lastName}}">
+                        formControlName="lastName" name="lastName" placeholder="{{this.utilisateur.lastName}}" required>
                 </div>
 
                 <div class="form-group">
@@ -73,7 +73,7 @@
                         <h5>Nouveau Pseudo : </h5>
                     </label>
                     <input type="text" class="form-control" [(ngModel)]="this.utilisateur.pseudo"
-                        formControlName="pseudo" name="pseudo" placeholder="{{this.utilisateur.pseudo}}">
+                        formControlName="pseudo" name="pseudo" placeholder="{{this.utilisateur.pseudo}}" required>
                 </div>
 
                 <div class="form-group">
@@ -81,7 +81,7 @@
                         <h5>Nouvel E-mail : </h5>
                     </label>
                     <input type="email" class="form-control" [(ngModel)]="this.utilisateur.mail" formControlName="mail"
-                        name="mail" placeholder="{{this.utilisateur.mail}}">
+                        name="mail" placeholder="{{this.utilisateur.mail}}" required>
                 </div>
 
                 <div class="form-group">
@@ -89,7 +89,7 @@
                         <h5>Nouveau Mot de Passe: </h5>
                     </label>
                     <input type="password" class="form-control" [(ngModel)]="this.utilisateur.pwd" formControlName="pwd"
-                        name="pwd" pattern=".{8,}" title="Mot de passe d'au moins 8 caractères">
+                        name="pwd" pattern=".{8,}" title="Mot de passe d'au moins 8 caractères" required>
                     <div *ngIf="!samePwd && this.utilisateur.pwd.length > 7 && this.password2.length > 7"
                         class="alert alert-danger">
                         Les mots de passe entrés ne sont pas les mêmes
@@ -102,7 +102,7 @@
                     </label>
                     <input type="password" class="form-control" [(ngModel)]="this.password2" formControlName="password2"
                         name="password2" pattern=".{8,}" title="Mot de passe d'au moins 8 caractères"
-                        (blur)="this.comparePwd()">
+                        (blur)="this.comparePwd()" required>
                 </div>
 
 

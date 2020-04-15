@@ -32,12 +32,12 @@ export class DetailUtilisateurComponent implements OnInit {
     this.getUserById();
     maFonction();
     this.userUpdateForm = new FormGroup({
-      firstName: new FormControl(this.utilisateur.firstName),
-      lastName: new FormControl(this.utilisateur.lastName),
-      pseudo: new FormControl(this.utilisateur.pseudo),
-      mail: new FormControl(this.utilisateur.mail),
+      firstName: new FormControl(this.utilisateur.firstName, Validators.minLength(1)),
+      lastName: new FormControl(this.utilisateur.lastName, Validators.minLength(1)),
+      pseudo: new FormControl(this.utilisateur.pseudo, Validators.minLength(1)),
+      mail: new FormControl(this.utilisateur.mail, Validators.minLength(1)),
       phone: new FormControl(this.utilisateur.phone),
-      pwd: new FormControl(this.utilisateur.pwd),
+      pwd: new FormControl(this.utilisateur.pwd, Validators.minLength(8)),
       password2: new FormControl('',),
 
     });
