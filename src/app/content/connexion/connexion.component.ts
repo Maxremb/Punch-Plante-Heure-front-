@@ -31,7 +31,7 @@ export class ConnexionComponent implements OnInit {
   constructor(private service: ConnexionService) { }
 
   ngOnInit(): void {
-    console.log("init component ")
+    // console.log("init component ")
     this.connexionForm = new FormGroup({
       mail: new FormControl(this.mail,
         [Validators.required, Validators.email]),
@@ -42,8 +42,8 @@ export class ConnexionComponent implements OnInit {
   connect(mail: string, pwd: string) {
     this.service.getByEmailAndPwd(mail, pwd).subscribe(
       (connexionDto) => {
-        console.log('debug responseDto login : ', connexionDto)
-        console.log('debug responseDto login : ', connexionDto)
+        // console.log('debug responseDto login : ', connexionDto)
+        // console.log('debug responseDto login : ', connexionDto)
         this.error = !this.service.connect(connexionDto);
         if (!this.error) {
 

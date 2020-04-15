@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { Role } from '../enums/role.enum';
 import { ConnectedUser } from '../models/connectedUser';
-import { resolve } from 'dns';
 
 // Empêche l'accés aux pages sans autorisation basé sur le role
 
