@@ -267,6 +267,7 @@ export class GraphiqueJardinComponent implements OnInit {
   // le plaçage au passage en mouse over + mouse down
   selectionContinue(index: number, index2: number) {
     if (this.isSelectZone && (this.lastCoord[0]!= index || this.lastCoord[1] != index2)) {
+
       this.lastCoord[0] = index;
       this.lastCoord[1] = index2;
 
