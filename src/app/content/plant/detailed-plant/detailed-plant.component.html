@@ -7,7 +7,7 @@
     <h2>Modification de la plante numéro <b>{{this.plant.identifiant}}</b> dans notre dictionnaire</h2>
     <p></p>
         
-    <form  [formGroup]="this.plantUpdateForm" (ngSubmit)="this.updatePlante()">
+    <form  [formGroup]="this.plantUpdateForm">
     <table class="table table-hover">
         <thead>
           <tr>
@@ -21,39 +21,39 @@
             <td><label for="commun">Nom Commun </label></td>
             <td>{{this.plant.commun}}</td>
             <td>
-                <input type="text" class="form-group form-control"  formControlName="commun"  name="commun" value="{{this.plant.commun}}" > 
+                <input type="text" class="form-group form-control" [(ngModel)]="this.plant.commun"  formControlName="commun"  name="commun" value="{{this.plant.commun}}" > 
             </td>
           </tr>
           <tr>
             <td>Nom Scientifique</td>
             <td>{{this.plant.scientifique}}</td>
-            <td><input type="text" class="form-group form-control"  formControlName="scientifique"  name="scientifique" value="{{this.plant.scientifique}}" ></td>
+            <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.scientifique"  formControlName="scientifique"  name="scientifique" value="{{this.plant.scientifique}}" ></td>
           </tr>
           <tr>
             <td>Famille</td>
             <td>{{this.plant.mifa}}</td>
-            <td><input type="text" class="form-group form-control"  formControlName="mifa"  name="mifa" value="{{this.plant.mifa}}" ></td>
+            <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.mifa" formControlName="mifa"  name="mifa" value="{{this.plant.mifa}}" ></td>
           </tr>
           <tr>
             <td>Humidité optimale</td>
             <td>{{this.plant.humidite}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="humidite"  name="humidite" value="{{this.plant.humidite}}"></td>
+            <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.humidite" formControlName="humidite"  name="humidite" value="{{this.plant.humidite}}"></td>
           </tr>
           <tr>
             <td>Cycle d'arrossage en jour</td>
             <td>{{this.plant.arrosage}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="arrosage"  name="arrosage" value="{{this.plant.arrosage}}"></td>
+            <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.arrosage" formControlName="arrosage"  name="arrosage" value="{{this.plant.arrosage}}"></td>
           </tr>
           <tr>
             <td>Ensoleillement optimal</td>
             <td>{{this.plant.ensoleillement}}</td>
-            <td><input type="text" class="form-group form-control" formControlName="ensoleillement"  name="ensoleillement" value="{{this.plant.ensoleillement}}"></td>
+            <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.ensoleillement" formControlName="ensoleillement"  name="ensoleillement" value="{{this.plant.ensoleillement}}"></td>
           </tr>
           <tr>
             <td>Type de sol préféré</td>
             <td>{{this.plant.sol}}</td>
             <td>
-                <select class="form-group form-control"  formControlName="sol"  name="sol" value="{{this.plant.sol}}">
+                <select class="form-group form-control" [(ngModel)]="this.plant.sol" formControlName="sol"  name="sol" value="{{this.plant.sol}}">
                     <option value="Sableux">Sableux</option>    
                     <option value="LimonoArgileux">Limono Argileux</option>
                     <option value="ArgiloSableux">Argilo Sableux</option>
@@ -64,28 +64,28 @@
           <tr>
             <td>Repiquage</td>
             <td>{{this.plant.repiquage}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="repiquage"  name="repiquage" value="{{this.plant.repiquage}}"></td>
+            <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.repiquage" formControlName="repiquage"  name="repiquage" value="{{this.plant.repiquage}}"></td>
           </tr>
           <tr>
             <td>Température minimale</td>
             <td>{{this.plant.min}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="min"  name="min" value="{{this.plant.min}}"></td>
+            <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.min" formControlName="min"  name="min" value="{{this.plant.min}}"></td>
           </tr>
           <tr>
             <td>Température maximale</td>
             <td>{{this.plant.max}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="max"  name="max" value="{{this.plant.max}}"></td>
+            <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.max" formControlName="max"  name="max" value="{{this.plant.max}}"></td>
           </tr>
           <tr>
             <td>Description</td>
             <td>{{this.plant.desc}}</td>
-            <td><input type="text" class="form-group form-control" formControlName="desc"  name="desc" value="{{this.plant.desc}}"></td>
+            <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.desc" formControlName="desc"  name="desc" value="{{this.plant.desc}}"></td>
           </tr>
           <tr>
             <td>Toxicité</td>
             <td>{{this.plant.toxi}}</td>
             <td>
-                <select class="form-group form-control"  formControlName="toxi"  name="toxi" value="{{this.plant.toxi}}">
+                <select class="form-group form-control" [(ngModel)]="this.plant.toxi" formControlName="toxi"  name="toxi" value="{{this.plant.toxi}}">
                     <option value="true">Oui</option>    
                     <option value="false">Non</option>
                 </select>
@@ -95,36 +95,36 @@
             <td>Association positive</td>
             <td>{{this.plant.positive}}</td>
             <td>
-                <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="positive"  name="positive" value="{{this.plant.positive}}"></select>
+                <select multiple data-role="tagsinput" class="form-group form-control" [(ngModel)]="this.plant.positive" formControlName="positive"  name="positive" value="{{this.plant.positive}}"></select>
             </td>
           </tr>
           <tr>
             <td>Association négative</td>
             <td>{{this.plant.negative}}</td>
             <td>
-                <select multiple data-role="tagsinput" class="form-group form-control"  formControlName="negative"  name="negative" value="{{this.plant.negative}}"></select>
+                <select multiple data-role="tagsinput" class="form-group form-control" [(ngModel)]="this.plant.negative" formControlName="negative"  name="negative" value="{{this.plant.negative}}"></select>
             </td>
           </tr>
           <tr>
             <td>Image</td>
             <td>{{this.plant.picture}}</td>
-            <td><input type="string" class="form-group form-control" formControlName="picture"  name="picture" value="{{this.plant.picture}}"></td>
+            <td><input type="string" class="form-group form-control" formControlName="picture" [(ngModel)]="this.plant.picture" name="picture" value="{{this.plant.picture}}"></td>
           </tr>
           <tr>
             <td>Taille à âge adulte (cm)</td>
             <td>{{this.plant.height}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="height"  name="height" value="{{this.plant.height}}"></td>
+            <td><input type="number" class="form-group form-control" formControlName="height" [(ngModel)]="this.plant.height" name="height" value="{{this.plant.height}}"></td>
           </tr>
           <tr>
             <td>Feuilles</td>
             <td>{{this.plant.feuille}}</td>
-            <td><input type="number" class="form-group form-control" formControlName="feuille"  name="feuille" value="{{this.plant.feuille}}"></td>
+            <td><input type="number" class="form-group form-control" formControlName="feuille" [(ngModel)]="this.plant.feuille"  name="feuille" value="{{this.plant.feuille}}"></td>
           </tr>
           <tr>
             <td>Vegetation</td>
             <td>{{this.plant.veget}}</td>
             <td>
-              <input type="string" class="form-group form-control" value="{{this.plant.veget}}" formControlName="veget"  name="veget" ></td>
+              <input type="string" class="form-group form-control" value="{{this.plant.veget}}" [(ngModel)]="this.plant.veget" formControlName="veget"  name="veget" ></td>
           </tr>
         </tbody>
       </table>
@@ -177,8 +177,8 @@
     </form>
 
     
-    <button type="submit" class="btn alazea-btn mt-15" [disabled]="!plantUpdateForm.valid">Enregistrer</button>
-    <div *ngIf="this.messageValidation.length">
+    <button type="submit" class="btn alazea-btn mt-15" (click)="this.updatePlante()">Enregistrer</button>
+    <div *ngIf="this.messageValidation">
         <div class="alert alert-fail" *ngIf="this.error">
             {{this.messageValidation}}
         </div>
