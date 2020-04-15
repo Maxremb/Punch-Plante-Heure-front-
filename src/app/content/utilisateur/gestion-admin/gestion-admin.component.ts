@@ -75,7 +75,7 @@ export class GestionAdminComponent implements OnInit {
     getAll(npage: number) {
       this.service.getAll(npage).subscribe(
         (responseDto) => {
-          console.log('debug responseDto : ', responseDto);
+          
           if (!responseDto.error) {
             this.allUtilisateur = responseDto.body.content;
             this.pageActive = responseDto.body.number;
@@ -89,7 +89,7 @@ export class GestionAdminComponent implements OnInit {
     getSingle(numero: number) {
       this.service.getUtilisateur(this.numero).subscribe(
         (responseDto) => {
-          console.log('debug responseDto :', responseDto);
+          
           if (!responseDto.error) {
             this.singleUtilisateur = responseDto.body;
           }
