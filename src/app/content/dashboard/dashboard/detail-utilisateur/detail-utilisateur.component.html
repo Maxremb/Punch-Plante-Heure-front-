@@ -41,11 +41,6 @@
                 <h5>Téléphone actuel : </h5> {{this.utilisateur.phone}}
                 <br><br>
             </div>
-
-            <div class="col-lg-6 col-sm-6">
-                <h5>Image actuelle : </h5> {{this.utilisateur.picture}}
-                <br><br>
-            </div>
         </div>
     </div>
 
@@ -119,13 +114,6 @@
                         formControlName="phone" name="phone" placeholder="{{this.utilisateur.phone}}">
                 </div>
 
-                <div class="form-group">
-                    <label for="picture">
-                        <h5>Nouvelle Image : </h5>
-                    </label>
-                    <input type="text" class="form-control" [(ngModel)]="this.utilisateur.picture"
-                        formControlName="picture" name="picture" placeholder="{{this.utilisateur.picture}}">
-                </div>
 
                 <button type="submit" class="btn alazea-btn mt-15"
                     [disabled]="!userUpdateForm.valid">Enregistrer</button><br><br>
