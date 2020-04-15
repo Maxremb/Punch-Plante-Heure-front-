@@ -1,14 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
 import { JardinService } from 'src/app/services/jardin-service.service';
-import { PlanteModeleCreateDto } from 'src/app/models/plante-modele-create-dto';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { PlanteUtilisateurCreateDto } from 'src/app/models/plante-utilisateur-create-dto';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
-import { ResponseDto } from 'src/app/models/response-dto';
-import { prependListener } from 'process';
 import { ActivatedRoute } from '@angular/router';
 
 
