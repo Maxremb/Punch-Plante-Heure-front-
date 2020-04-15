@@ -62,7 +62,7 @@ const routes: Routes = [
   { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent},
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent },
-  { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
+  { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent},
   { path : 'departement/vadmin' , component : AllDepartementsComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
   { path : 'departement/create' , component : CreateDepartementComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
   { path : 'departement/update/:depNum', component : DetailedDepartementComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },

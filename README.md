@@ -36,6 +36,41 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - CSS
 - Visual Code
 
+## Organisation
+
+Sprint 1 :
+Ce sprint avait pour but de trouver une template et de l'incorporer à notre projet et également de crée tout les components, services et models en lien avec le back.
+
+L'équipe responsable de ce sprint était composé de :
+- Clara Cadet - Developpeuse
+- Jeanne-Marie Mathevet - Developpeuse
+- Thierry-Meng Cloarec - Referent Métier / Developpeur
+- Yohann Bachelier - Referent Techinque Front / Developpeur
+- Flavien Gomila - Referent Métier / Developpeur
+- Maxime Rembert : Referent Métier / Developpeur
+
+Sprint 2 :
+Ce sprint avait pour but la création des components, services et models lié a la météo et aux périodes.
+
+L'équipe responsable de ce sprint était composé de :
+- Léa Coston : Chef de Projet / Developpeuse
+- Isaline Millet : Developpeuse
+- Yohann Bachelier - Referent Techinque Front / Developpeur
+- Flavien Gomila - Referent Métier / Developpeur
+- Clara Cadet - Developpeuse
+- Lucie Martinez : Developpeuse
+
+Sprint 3 :
+Ce sprint avait pour but la création des components, services et models pour Utilisateur et Admin ainsi que determiner quelles pages étaient accessibles aux admin et pas aux utilisateur.
+
+L'équipe responsable de ce sprint était composé de :
+- Léa Coston : Chef de Projet / Developpeuse
+- Yohann Bachelier - Referent Techinque Front / Developpeur
+- Flavien Gomila - Referent Métier / Developpeur
+- Clara Cadet - Developpeuse
+- Lucie Martinez : Developpeuse
+- Grégoire Brebner : Référent Technique Back / Developpeur
+
 ## Equipe 
 - Léa Coston : Chef de Projet, Developpeuse Back/Front
 - Grégoire Brebner : Référent Technique Back, Developpeur Back/Front

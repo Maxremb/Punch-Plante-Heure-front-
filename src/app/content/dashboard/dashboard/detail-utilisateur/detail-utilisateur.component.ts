@@ -37,7 +37,6 @@ export class DetailUtilisateurComponent implements OnInit {
       pseudo: new FormControl(this.utilisateur.pseudo),
       mail: new FormControl(this.utilisateur.mail),
       phone: new FormControl(this.utilisateur.phone),
-      picture: new FormControl(this.utilisateur.picture),
       pwd: new FormControl(this.utilisateur.pwd),
       password2: new FormControl('',),
 
