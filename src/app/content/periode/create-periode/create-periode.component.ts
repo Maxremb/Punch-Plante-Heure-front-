@@ -24,6 +24,7 @@ export class CreatePeriodeComponent implements OnInit {
   currentYear = new Date().getFullYear();
   minDate = new Date(this.currentYear, 2, 5);
   maxDate = new Date(this.currentYear, 11, 31);
+  debugMessage= "all periodes vide pour l'instant";
   
   constructor(
     private servicePeriode: PeriodeService) { }
@@ -48,6 +49,7 @@ export class CreatePeriodeComponent implements OnInit {
     this.servicePeriode.create(this.period).subscribe(
       (responseDto) => {
         this.messageValidation="La période a bien été enregistrée !";
+        this.getPeriodes();
       },
       (error) => {
         this.messageErreur=error;
@@ -55,28 +57,15 @@ export class CreatePeriodeComponent implements OnInit {
     )
   }
 
-  createPromise() {return  new Promise(function(resolve,reject){
-    this.create();
-    resolve('Resolverisimo ! after create')
-    });
-  }
-
-  refreshPeriodes(){
-    console.log('RefreshPeriod start')
-    this.createPromise().then(function(){this.getPeriodes()})
-    console.log('RefreshPeriod finish')
-  }
-
   
   getPeriodes() {
+    this.debugMessage = "En attente d'une reponse";
     console.log("getPeriod("+this.servicePeriode.departement.depNum+","+this.servicePeriode.plante.identifiant+")")
     this.servicePeriode.getAllTypes(this.servicePeriode.departement.depNum,this.servicePeriode.plante.identifiant).subscribe(
       responseDto => {
         if (!responseDto.error) {
           this.allPeriodes = responseDto.body.content;
-          if(this.allPeriodes==[]) {
-            this.allPeriodes = new Array<PeriodeUpdateDto>();
-          }
+          this.debugMessage = 'allPeriodes remplies avec : '+this.allPeriodes;
         }
         else { 
           console.log('ERREUR IN RESPONSEDTO')
