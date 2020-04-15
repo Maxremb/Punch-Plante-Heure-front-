@@ -38,7 +38,7 @@ export class UserviewKeysearchPlantComponent implements OnInit {
   getKey(page: number) {
     this.service.getKeyWord(this.keyWord,page).subscribe(
       responseDto => {
-        console.log('debug responseDto : ', responseDto);
+       
         if (!responseDto.error) {
             this.allPlant = responseDto.body.content;
             this.pageActive = responseDto.body.number;
