@@ -1,0 +1,14 @@
+{
+    "navbar.inscription" : "register",
+    "navbar.connexion" : "login",
+    "accueil.title" : "OUR SERVICES",
+    "accueil.subtitle" : "The best application for your plants' management",
+    "jardin.title" : "Your garden",
+    "jardin.subtitle" : "Possibility to automatically generate your garden",
+    "notification.title" : "Some customized notifications",
+    "notification.subtitle" : "Weather data update of your garden",
+    "dictionnaire.title" : "A dictionary of plants",
+    "dictionnaire.subtitle" : "Over one hundred of plants and their properties",
+    "communaute.title" : "A community",
+    "communaute.subtitle" : "A forum to exchange some tips and to get some advice"
+}

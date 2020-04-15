@@ -1,3 +1,7 @@
+<div class="container">
+<app-entete-plannind></app-entete-plannind>
+</div>
+
 <div *ngIf="fini">
 <br><br>
 <div class="taille">
@@ -16,7 +20,7 @@
         <th class="mois">Sep</th>
         <th class="mois">Oct</th>
         <th class="mois">Nov</th>
-        <th class="mois">Dec</th>
+        <th class="mois" style="border-right: 0px;">Dec</th>
     </tr>
 </table>
 <table *ngFor="let plante of allPlanteLave">
@@ -125,9 +129,11 @@
 </table>
 </div>
 
+<br><br>
+
 <div class="container">
     
-        <button class="btn alazea-btn mt-15" (click)="retour()">Retour à mon jardin</button>
+        <button class="btn alazea-btn mt-15" style="margin-left: 38%;" (click)="retour()">Retour à mon jardin</button>
     
 </div>
 

@@ -4,12 +4,6 @@
   "newProjectRoot": "projects",
   "projects": {
     "punchplanteheure-front": {
-      "i18n": {
-        "sourceLocale": "fr-FR",
-        "locales": {
-          "en": "src/locale/messages.en.xlf"
-        }
-      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -83,12 +77,6 @@
             "production": {
               "browserTarget": "punchplanteheure-front:build:production"
             }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "punchplanteheure-front:build"
           }
         },
         "test": {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnexionService } from 'src/app/services/connexion.service';
 import { ConnectedUser } from 'src/app/models/connectedUser';
+import { TranslateService } from '@ngx-translate/core';
 
 declare function maFonction1():any;
 
@@ -13,7 +14,12 @@ export class NavbarComponent implements OnInit {
 
   user: ConnectedUser;
 
-  constructor( private connexionService: ConnexionService) { }
+  constructor( 
+    private connexionService: ConnexionService,
+    private translate: TranslateService) { 
+      translate.setDefaultLang('fr');
+    }
+
 
   ngOnInit(): void {
     maFonction1();
@@ -45,6 +51,12 @@ export class NavbarComponent implements OnInit {
   disconnect(){
     this.connexionService.disconnect();
     location.href='';
+  }
+
+  useLanguage(language: string) {
+    console.log("debug local ==>", language)
+    // debugger;
+    this.translate.use(language);
   }
 
 }

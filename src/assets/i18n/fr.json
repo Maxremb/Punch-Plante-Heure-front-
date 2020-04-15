@@ -1,0 +1,14 @@
+{
+    "navbar.inscription" : "inscription",
+    "navbar.connexion" : "connexion",
+    "accueil.title" : "NOS SERVICES",
+    "accueil.subtitle" : "La meilleure application pour la gestion de vos plantes",
+    "jardin.title" : "Votre jardin",
+    "jardin.subtitle" : "Possibilité de générer automatiquement votre jardin",
+    "notification.title" : "Des notifications personnalisées",
+    "notification.subtitle" : "Mise à jour des données météorologiques de votre jardin",
+    "dictionnaire.title" : "Un dictionnaire de plantes",
+    "dictionnaire.subtitle" : "Plus d'une centaine de plantes et leurs propriétés répertoriées",
+    "communaute.title" : "Une communauté",
+    "communaute.subtitle" : "Un forum pour échanger des astuces et obtenir des conseils"
+}
