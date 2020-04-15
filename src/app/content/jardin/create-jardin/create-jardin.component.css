@@ -1,0 +1,31 @@
+
+hr {
+    color: #70c745;
+}
+
+.label {
+    font-weight: bold;
+    margin-top: 1%;
+}
+
+.image_content {
+    margin-top: 15%;
+    margin-left: 5%;
+    margin-bottom: 15%;
+}
+
+.image_content2 {
+    margin-left: 46%;
+}
+
+/* div boutton pas de page */
+.bottompage {
+    text-align: right;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right:5%;
+}
+
+.bottompage,a {
+    margin-right: 5%;
+}

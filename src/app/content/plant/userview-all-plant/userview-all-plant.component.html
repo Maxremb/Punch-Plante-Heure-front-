@@ -1,0 +1,67 @@
+<div class="container">
+    <!-- Entete de la page -->
+    <app-entete-plant></app-entete-plant>
+
+    <!-- Partie Recherche Par mot clé -->
+    <div class="col-lg-6">
+        <h2><label for="search-box">Recherche par mot clé</label></h2>
+            <input type="text" class="form-control" placeholder="Mot clé de trois caractères ou plus..." [(ngModel)]="this.keyWord" minlength="3"/>
+            <a routerLink="/plant/key/{{this.keyWord}}">
+                <button class="btn alazea-btn mt-15" >Rechercher</button>
+            </a>
+            <p> </p>
+    </div>
+    
+    <!-- Tableau avec la liste de toutes les plantes modeles -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom commun</th>
+                <th>Nom scientifique</th>
+                <th>URL picture</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plant of this.allPlant">
+                <td>{{plant.identifiant}}</td>
+                <td>{{plant.commun}}</td>
+                <td>{{plant.scientifique}}</td>
+                <td>{{plant.picture}}</td>
+                <td>
+                <a routerLink="/plant/vuser/{{plant.identifiant}}">
+                    <button class="btn alazea-btn mt-15" >Détails</button>
+                </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" >
+            <li class="page-item" *ngIf="this.pageActive>0">
+                <a class="page-link" (click)="this.getAll(0)">
+                    <i class="fa fa-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngIf="this.pageActive>0">
+                <a class="page-link" (click)="this.getAll(this.pageActive-1)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngFor="let page of pageTotal">
+                <a class="page-link" id="{{page}}" (click)="this.getAll(page)">{{page+1}}</a>
+            </li>
+            <li class="page-item" *ngIf="this.pageActive<this.maxPage-1">
+                <a class="page-link" (click)="this.getAll(this.pageActive+1)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngIf="this.pageActive<this.maxPage-1">
+                <a class="page-link" (click)="this.getAll(this.maxPage-1)">
+                    <i class="fa fa-angle-double-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

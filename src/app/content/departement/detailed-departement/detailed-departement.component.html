@@ -1,0 +1,52 @@
+<script>
+    $(document).ready(function () {
+
+        $('.chips-placeholder').materialChip({
+            placeholder: 'Enter a tag',
+            secondaryPlaceholder: '+Tag',
+        });
+    })
+</script>
+
+<div class="container">
+    <app-entete-departement></app-entete-departement>
+
+    <h2>Modification du département numéro {{this.departement.depNum}}</h2>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-lg-6 col-sm-6">
+            <h5>Nom actuel :  </h5> {{this.departement.name}}
+            <br><br> 
+        </div>
+
+        <div class="col-lg-6 col-sm-6">
+            <form  [formGroup]="depUpdateForm" (ngSubmit)="this.update()">
+               
+            <div class="form-group">
+                <label for="name"><h5>Nouveau nom : </h5></label> 
+                <input type="text" class="form-control" [(ngModel)]="this.departement.name" formControlName="name" name="name">
+            </div>
+
+            <button type="submit" class="btn alazea-btn mt-15" [disabled]="!depUpdateForm.valid">Enregistrer</button><br><br>
+            <div *ngIf="this.messageValidation.length">
+                <div class="alert alert-fail" *ngIf="this.error">
+                    {{this.messageValidation}}
+                </div>
+                <div class="alert alert-success" *ngIf="!this.error">
+                    {{this.messageValidation}}
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    
+</div>
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/departement/vadmin">
+            <button class="btn alazea-btn mt-15" >Retour</button>
+        </a>
+    </div>
+</div>

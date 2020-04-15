@@ -1,0 +1,18 @@
+/* div boutton pas de page */
+.bottompage {
+    text-align: right;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right:5%;
+}
+.bottompage,a {
+    margin-right: 5%;
+}
+
+.btndepartement{
+    width: 210px;
+    }
+
+.cent{
+    margin-left: 35%;
+}

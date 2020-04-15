@@ -1,0 +1,42 @@
+<div class="container">
+
+    <app-entete-dashboard></app-entete-dashboard>
+
+    <h2>Bienvenue cher administrateur !</h2>
+    <hr>
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12" >
+                <h3>Vos informations personnelles :</h3>
+                <h5>Pseudo :</h5>{{this.admin.pseudo}}
+                <h5>Email :</h5>{{this.admin.mail}}
+                <br>
+                <a routerLink="/admin/detail/{{admin.identifier}}">
+                    <button class="btn alazea-btn mt-15">Modifier mes informations</button>
+                </a>
+              
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12" >
+            <h3>Vos raccourcis :</h3>
+            <a routerLink="/plant/vadmin">
+                <button class="btn alazea-btn mt-15">Gerer les plantes de notre dictionnaire</button>
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/utilisateur/gestion-admin">
+                <button class="btn alazea-btn mt-15">Gerer les utilisateurs</button>
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/departement/vadmin">
+                <button class="btn alazea-btn mt-15">Gerer les départements</button>
+            </a>
+        </div>
+    </div>
+    
+</div>

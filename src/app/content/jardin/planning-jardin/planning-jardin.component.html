@@ -1,0 +1,141 @@
+<div class="container">
+<app-entete-plannind></app-entete-plannind>
+</div>
+
+<div *ngIf="fini">
+<br><br>
+<div class="taille">
+<table>
+    <tr>
+        <th class="moisPlante">Plante</th>
+        <th class="moisLegende"> &nbsp; </th>
+        <th class="mois">Jan</th>
+        <th class="mois">Fev</th>
+        <th class="mois">Mar</th>
+        <th class="mois">Avr</th>
+        <th class="mois">Mai</th>
+        <th class="mois">Jui</th>
+        <th class="mois">Jui</th>
+        <th class="mois">Aou</th>
+        <th class="mois">Sep</th>
+        <th class="mois">Oct</th>
+        <th class="mois">Nov</th>
+        <th class="mois" style="border-right: 0px;">Dec</th>
+    </tr>
+</table>
+<table *ngFor="let plante of allPlanteLave">
+    <tr> 
+        <th class="moisPlante" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+        <th class="mois" style="background-color: white; height: 0px; padding: 0px"></th>
+    </tr>
+
+    <tr >
+        <td class="plante"> &nbsp; </td>
+        <td class="legende">Rempotage</td>
+        <td class={{plante.rempotage[0]}}></td>
+        <td class={{plante.rempotage[1]}}></td>
+        <td class={{plante.rempotage[2]}}></td>
+        <td class={{plante.rempotage[3]}}></td>
+        <td class={{plante.rempotage[4]}}></td>
+        <td class={{plante.rempotage[5]}}></td>
+        <td class={{plante.rempotage[6]}}></td>
+        <td class={{plante.rempotage[7]}}></td>
+        <td class={{plante.rempotage[8]}}></td>
+        <td class={{plante.rempotage[9]}}></td>
+        <td class={{plante.rempotage[10]}}></td>
+        <td class={{plante.rempotage[11]}}></td>
+    </tr>
+
+    <tr >
+        <td class="plante"> &nbsp; </td>
+        <td class="legende">Floraison</td>
+        <td class={{plante.floraison[0]}}></td>
+        <td class={{plante.floraison[1]}}></td>
+        <td class={{plante.floraison[2]}}></td>
+        <td class={{plante.floraison[3]}}></td>
+        <td class={{plante.floraison[4]}}></td>
+        <td class={{plante.floraison[5]}}></td>
+        <td class={{plante.floraison[6]}}></td>
+        <td class={{plante.floraison[7]}}></td>
+        <td class={{plante.floraison[8]}}></td>
+        <td class={{plante.floraison[9]}}></td>
+        <td class={{plante.floraison[10]}}></td>
+        <td class={{plante.floraison[11]}}></td>
+    </tr>
+
+    <tr >
+        <td class="plante"><b>{{ plante.modelPlant.commun}}</b></td>
+        <td class="legende">Semis</td>
+        <td class={{plante.semis[0]}}></td>
+        <td class={{plante.semis[1]}}></td>
+        <td class={{plante.semis[2]}}></td>
+        <td class={{plante.semis[3]}}></td>
+        <td class={{plante.semis[4]}}></td>
+        <td class={{plante.semis[5]}}></td>
+        <td class={{plante.semis[6]}}></td>
+        <td class={{plante.semis[7]}}></td>
+        <td class={{plante.semis[8]}}></td>
+        <td class={{plante.semis[9]}}></td>
+        <td class={{plante.semis[10]}}></td>
+        <td class={{plante.semis[11]}}></td>
+    </tr>
+
+    <tr>
+        <td class="plante"> &nbsp; </td>
+        <td class="legende">Fructification</td>
+        <td class={{plante.fructification[0]}}></td>
+        <td class={{plante.fructification[1]}}></td>
+        <td class={{plante.fructification[2]}}></td>
+        <td class={{plante.fructification[3]}}></td>
+        <td class={{plante.fructification[4]}}></td>
+        <td class={{plante.fructification[5]}}></td>
+        <td class={{plante.fructification[6]}}></td>
+        <td class={{plante.fructification[7]}}></td>
+        <td class={{plante.fructification[8]}}></td>
+        <td class={{plante.fructification[9]}}></td>
+        <td class={{plante.fructification[10]}}></td>
+        <td class={{plante.fructification[11]}}></td>
+    </tr>
+
+    <tr >
+        <td class="plante" style="border-bottom: 2px solid white;"> &nbsp; </td>
+        <td class="legende" style="border-bottom: 2px solid white;">Taille</td>
+        <td class={{plante.taille[0]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[1]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[2]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[3]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[4]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[5]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[6]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[7]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[8]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[9]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[10]}} style="border-bottom: 2px solid white;"></td>
+        <td class={{plante.taille[11]}} style="border-bottom: 2px solid white;"></td>
+    </tr>
+
+</table>
+</div>
+
+<br><br>
+
+<div class="container">
+    
+        <button class="btn alazea-btn mt-15" style="margin-left: 38%;" (click)="retour()">Retour à mon jardin</button>
+    
+</div>
+
+
+

@@ -1,0 +1,119 @@
+<div class="container" >
+
+    <!--ENTETE PAGE : GESTION DE MON JARDIN-->
+    <app-entete-jardin></app-entete-jardin>
+
+    <!-- FORM UPDATE JARDIN-->
+    <div class="row" *ngIf="this.jardin">
+        <div class="col-12 col-lg-6" style="padding-left: 0%;">
+            <form [formGroup]="updateJardinForm" (ngSubmit)="this.update()">
+                <h2>Modifier mon jardin </h2>
+                <h2> <i> {{this.jardin.name}}</i> </h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h5><b>Valeurs actuelles</b></h5>
+                            </th>
+                            <th>
+                                <h5><b>Nouvelles valeurs</b></h5>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label class="label">Nom actuel : </label> {{this.jardin.name}}
+                            </td>
+                            <td>
+                                <input id="name" type="text" formControlName="name" name="name"
+                                    placeholder="Nouveau nom ici .." [(ngModel)]="this.jardin.name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="label"> Sol actuel : </label> {{this.jardin.ground}}
+                            </td>
+                            <td>
+                                <select formControlName="ground" id="ground" name="ground" [(ngModel)]="this.jardin.ground">
+                                    <option value='Sableux'>Sableux</option>
+                                    <option value='LimonoArgileux'>Limono-argileux</option>
+                                    <option value='ArgiloSableux'>Argilo-sableux</option>
+                                    <option value='ArgiloLimoneux'>Argilo-limoneux</option>
+                                    <option value='Argileux'>Argileux</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="label"> Longueur actuelle en m : </label> {{this.jardin.length}}
+                            </td>
+                            <td>
+                                <input id="length" type="number" min="0" formControlName="length" name="length"
+                                    placeholder="Nouvelle longueur ici .." [(ngModel)]="this.jardin.length" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="label"> Largeur actuelle en m: </label> {{this.jardin.width}}
+                            </td>
+                            <td>
+                                <input id="width" type="number" min="0" formControlName="width" name="width"
+                                    placeholder="Nouvelle largeur ici .." [(ngModel)]="this.jardin.width" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="label"> Profondeur actuelle en m: </label> {{this.jardin.depthGround}}
+                            </td>
+                            <td>
+                                <input id="depthGround" type="number" min="0" formControlName="depthGround" name="depthGround"
+                                    placeholder="Nouvelle profondeur ici .." [(ngModel)]="this.jardin.depthGround" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="label"> Département actuel : </label> {{this.jardin.dept.depNum}} - {{this.jardin.dept.name}}
+                            </td>
+                            <td>
+                                <select class="form-control" id="dept" formControlName="dept" name="dept" [(ngModel)]="this.jardin.dept" *ngIf="this.allDepartements">
+                                    <option *ngFor="let depart of this.allDepartements" [ngValue]="this.depart">{{depart.name}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <button type="submit" class="btn alazea-btn mt-15">Modifier</button>
+                    <br>
+                    <br>
+                    
+                    <!--MESSAGE VALIDATION /ECHEC FORM-->
+                    <div class="alert alert-success" *ngIf="messageValidation">
+                        <strong>Bravo !</strong> {{this.messageValidation}}
+                    </div>
+                    <div class="alert alert-danger" *ngIf="messageErreur">
+                        <strong>Echec !</strong> {{this.messageErreur}}
+                    </div>
+                    
+                </table>
+            </form>
+        </div>
+        <!--END FORM-->
+
+        <!--IMAGE-->
+        <div class="col-12 col-lg-6">
+            <div class="image_content">
+                <img src="assets/img/update_jardin.jpg" alt="">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--LIEN DE NAVIGATION-->
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/jardin">
+            <input type="button" value="Mes jardins" class="btn alazea-btn mt-15" />
+        </a>
+    </div>
+</div>

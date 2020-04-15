@@ -1,0 +1,174 @@
+<div class="container">
+    <!-- Entete de la liste des departements -->
+    <app-entete-departement></app-entete-departement>
+
+    <!-- Partie correspondant aux differents choix de l'administrateur, s'affiche uniquement si choix = true -->
+    <div *ngIf="choix">
+        <h2>Cher administrateur, que voulez-vous faire ?</h2>
+
+        <div class="container">
+            <button class="btn alazea-btn mt-15" (click)="this.afficherListe()">Afficher la liste des
+                departements</button>
+        </div>
+
+        <div class="container">
+            <button class="btn alazea-btn mt-15" (click)="this.afficherRechercheName()">Rechercher un departement par
+                nom</button>
+        </div>
+
+        <div class="container">
+            <button class="btn alazea-btn mt-15" (click)="this.afficherRechercheNumero()">Rechercher un departement par
+                numero</button>
+        </div>
+
+        <div class="container">
+            <a routerLink="/departement/create">
+                <button class="btn alazea-btn mt-15">Ajouter un departement</button>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Partie Recherche Par Name, s'affiche uniquement si rechercheName = true -->
+    <div *ngIf="rechercheName" class="form-group">
+        <h2><label>Recherche par Nom</label></h2>
+        <input type="text" class="form-group" [(ngModel)]="this.name" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <button class="btn alazea-btn mt-15" (click)="this.afficherDepartement()">Rechercher</button>
+
+    </div>
+
+
+
+    <!-- Partie Recherche Par Numero, s'affiche uniquement si rechercheNumero = true -->
+    <div *ngIf="rechercheNumero">
+        <h2><label for="search-box">Recherche par Numéro</label></h2>
+        <input type="number" [(ngModel)]="this.depNum" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <button class="btn alazea-btn mt-15" (click)="this.afficherDepartement()">Rechercher</button>
+    </div>
+
+    <!-- Partie departement single, s'affiche uniquement si afficherDep = true -->
+    <div *ngIf="afficherDep">
+        <h2>Liste des départements</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Numéro departement</th>
+                    <th>Nom departement</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td>{{this.departement.depNum}}</td>
+                    <td>{{this.departement.name}}</td>
+                    <td>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationDelete" title="Supprimer ce département"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        &nbsp;&nbsp;
+                        <div class="modal" id="confirmationDelete">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+
+                                  <div class="modal-header">
+                                      <h4 class="modal-title">Confirmation</h4>
+                                  </div>
+
+                                  <div class="modal-body">
+                                      Vous êtes sûr le point de supprimer un département.
+                                      <br>Veuillez confirmer ce choix.
+                                  </div>
+
+                                  <div class="modal-footer">
+                                      <button class="btn btn-danger" (click)="this.delete(this.departement.depNum)" data-dismiss="modal"><i
+                                              class="fa fa-times" aria-hidden="true"></i> Confirmer la suppression du département</button>
+                                      <button class="btn btn-success" data-dismiss="modal">Annuler</button>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+
+                        <a routerLink="/departement/update/{{this.departement.depNum}}">
+                            <button class="btn btn-warning" title="Modifier ce département"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                        </a>
+                        &nbsp;&nbsp;
+                        <a routerLink="/meteo/{{this.departement.depNum}}">
+                            <button class="btn btn-info" title="Voir la météo associée"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+    <!-- Partie Liste des départements, s'affiche uniquement si liste = true -->
+    <div *ngIf="liste">
+        <h2>Liste des départements</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Numéro departement</th>
+                    <th>Nom departement</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of this.allDepartements">
+                    <td>{{d.depNum}}</td>
+                    <td>{{d.name}}</td>
+                    <td><button class="btn btn-danger" (click)="this.delete(this.d.depNum)" title="Supprimer ce département"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        &nbsp;&nbsp;
+                        <a routerLink="/departement/update/{{this.d.depNum}}">
+                            <button class="btn btn-warning" title="Modifier ce département" ><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                        </a>
+                        &nbsp;&nbsp;
+                        <a routerLink="/meteo/{{this.d.depNum}}">
+                            <button class="btn btn-info" title="Voir la météo associée"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination" >
+                <li class="page-item" *ngIf="this.pageActive>0">
+                    <a class="page-link" (click)="this.getAll(0)">
+                        <i class="fa fa-angle-double-left"></i>
+                    </a>
+                </li>
+                <li class="page-item" *ngIf="this.pageActive>0">
+                    <a class="page-link" (click)="this.getAll(this.pageActive-1)">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                </li>
+                <li class="page-item" *ngFor="let page of pageTotal">
+                    <a class="page-link" id="{{page}}" (click)="this.getAll(page)">{{page+1}}</a>
+                </li>
+                <li class="page-item" *ngIf="this.pageActive<this.maxPage-1">
+                    <a class="page-link" (click)="this.getAll(this.pageActive+1)">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+                <li class="page-item" *ngIf="this.pageActive<this.maxPage-1">
+                    <a class="page-link" (click)="this.getAll(this.maxPage-1)">
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+
+
+    <!-- Partie retour aux differents choix, s'affiche uniquement si choix = false -->
+    <div class="container" *ngIf="!choix">
+        <button class="btn alazea-btn mt-15" (click)="this.afficherChoix()">Retour</button>
+    </div>
+
+</div>

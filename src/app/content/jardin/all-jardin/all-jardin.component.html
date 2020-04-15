@@ -1,0 +1,100 @@
+<div class="container">
+
+
+  <!--ENTETE DE LA PAGE : GESTION DE MON JARDIN-->
+  <app-entete-jardin></app-entete-jardin>
+
+  <!--LISTE DES JARDINS-->
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-12">
+        <h2>Mes jardins</h2>
+
+        <br><br>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Sol</th>
+              <th>Longueur (m)</th>
+              <th>Largeur (m)</th>
+              <th>Profondeur (m)</th>
+              <th>Département</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let e of this.allJardins">
+
+              <td><a routerLink="/jardin/detail/{{e.identifier}}">
+                  {{e.name}}
+                </a></td>
+              <td><a routerLink="/jardin/detail/{{e.identifier}}">
+                  {{e.ground}}
+                </a></td>
+              <td><a routerLink="/jardin/detail/{{e.identifier}}">
+                  {{e.length}}
+                </a></td>
+              <td><a routerLink="/jardin/detail/{{e.identifier}}">
+                  {{e.width}}
+                </a></td>
+              <td><a routerLink="/jardin/detail/{{e.identifier}}">
+                  {{e.depthGround}}
+                </a></td>
+              <td><a routerLink="/jardin/detail/{{e.identifier}}">
+                  {{e.dept.name}}
+                </a></td>
+              <td>
+                <a routerLink="/jardin/update/{{e.identifier}}">
+                  <button class="btn btn-warning" title="Modifier les caratéristiques"><i class="fa fa-wrench"
+                      aria-hidden="true"></i></button>
+                </a>
+                <button class="btn btn-danger" title="Supprimer le jardin" (click)="this.delete(e.identifier)"><i
+                    class="fa fa-times" aria-hidden="true"></i></button>
+
+                <!-- data-toggle="modal" data-target="#confirmationDelete" -->
+                <!-- <div class="modal" id="confirmationDelete">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+
+                      <div class="modal-header">
+                        <h4 class="modal-title">Confirmation</h4>
+                      </div>
+
+                      <div class="modal-body">
+                        Vous êtes sûr le point de supprimer votre jardin : {{e.name}}.
+                        <br>Veuillez confirmer ce choix.
+                      </div>
+
+                      <div class="modal-footer">
+                        <button class="btn btn-danger" (click)="this.delete(e.identifier)" data-dismiss="modal"><i
+                            class="fa fa-times" aria-hidden="true"></i> Confirmer la suppression de mon
+                          jardin</button>
+                        <button class="btn btn-success" data-dismiss="modal">Annuler</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div> -->
+
+                &nbsp;
+                <a routerLink="/jardin/detail/{{e.identifier}}">
+                  <button class="btn btn-info" title="Gérer mon jardin"><i class="fa fa-calendar-plus-o"
+                      aria-hidden="true"></i></button></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--LIEN DE NAVIGATION-->
+<div class="container">
+  <div class="bottompage">
+    <a routerLink="/jardin/create">
+      <input type="button" value="Ajouter un jardin" class="btn alazea-btn mt-15" />
+    </a>
+  </div>
+</div>

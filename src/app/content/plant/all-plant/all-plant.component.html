@@ -1,39 +1,159 @@
 <div class="container">
-    <h2><label for="search-box">Recherche par ID</label></h2>
+    <!-- Entete de la liste des plantes -->
+    <app-entete-plant-admin></app-entete-plant-admin>
 
-    <input type="number" #searchBox id="search-box" />
-    <button type="button" class="btn btn-info" (click)="this.getOne(searchBox.value)">Chercher par ID</button>
-    <hr>
-    <button type="button" class="btn btn-info" (click)="this.getAll()">Voir la liste entière</button>
-    <hr>
-    <a routerLink="/plant/add">
-    <input type="button" value="Ajouter une plante" class="btn btn-info"/>
-    </a>
-    <hr>
-    <h2>Liste des plantes :</h2>
-    
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom commun</th>
-                <th>Nom scientifique</th>
-                <th>URL Photo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let plant of this.allPlant">
-                <td>{{plant.id}}</td>
-                <td>{{plant.type}}</td>
-                <td>{{plant.coefficient}}</td>
-                <td>{{plant.date}}</td>
-                <td>
-                <button class="btn btn-danger" (click)="this.delete(plant.id)">Supprimer</button>
-                <a routerLink="/plant/detail/{{plant.id}}">
-                    <button class="btn btn-info" >Modifier</button>
-                </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Partie correspondant aux differents choix de l'administrateur, s'affiche uniquement si choix = true -->
+    <div *ngIf="choix">
+        <h2>Cher administrateur, que voulez-vous faire ?</h2>
+
+        <div class="container">
+            <button class="btn alazea-btn mt-15" (click)="this.afficherListe()">Afficher la liste des plantes de notre dictionnaire</button>
+        </div>
+
+        <div class="container">
+            <button class="btn alazea-btn mt-15" (click)="this.afficherRecherche()">Rechercher une plante par numéro d'identifiant</button>
+        </div>
+
+        <div class="container">
+            <a routerLink="/plant/create">
+                <button class="btn alazea-btn mt-15">Ajouter une plante dans notre dictionnaire</button>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Partie Recherche Par Id, s'affiche uniquement si recherche = true -->
+    <div *ngIf="recherche">
+        <h2><label for="search-box">Recherche par numéro d'identifiant</label></h2>
+        <input type="number" [(ngModel)]="this.numero"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn alazea-btn mt-15" (click)="this.afficherSingle(this.numero)">Rechercher</button>
+        <br><br>
+    </div>
+
+    <!-- Partie Single, s'affiche uniquement si single = true -->
+    <div *ngIf="this.single">
+        <h2>Liste des plantes de notre dictionnaire</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom commun</th>
+                    <th>Nom scientifique</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{this.singlePlant.identifiant}}</td>
+                    <td>{{this.singlePlant.commun}}</td>
+                    <td>{{this.singlePlant.scientifique}}</td>
+                    <td>{{this.singlePlant.picture}}</td>
+                    <td>
+                    <button class="btn btn-danger" (click)="this.delete(this.singlePlant.identifiant)" title="Supprimer cette plante"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    &nbsp;&nbsp;
+                    <a routerLink="/plant/update/{{this.singlePlant.identifiant}}">
+                        <button class="btn btn-warning" title="Modifier cette plante"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a routerLink="/periode/{{this.singlePlant.identifiant}}">
+                        <button class="btn btn-info" title="Afficher les périodes de cette plante"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
+                    </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Partie Liste des plantes, s'affiche uniquement si liste = true -->
+    <div *ngIf="liste">
+        <h2>Liste des plantes de notre dictionnaire</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom commun</th>
+                    <th>Nom scientifique</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plant of this.allPlant">
+                    <td>{{plant.identifiant}}</td>
+                    <td>{{plant.commun}}</td>
+                    <td>{{plant.scientifique}}</td>
+                    <td>{{plant.picture}}</td>
+                    <td>
+                    <button class="btn btn-danger"  title="Supprimer cette plante" (click)="this.delete(plant.identifiant)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    &nbsp;&nbsp;
+                    <!-- data-toggle="modal" data-target="#confirmationDelete" -->
+                    <!-- <div class="modal" id="confirmationDelete">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+
+                              <div class="modal-header">
+                                  <h4 class="modal-title">Confirmation</h4>
+                              </div>
+
+                              <div class="modal-body">
+                                  Vous êtes sûr le point de supprimer la plante : {{this.plant.commun}}.
+                                  <br>Veuillez confirmer ce choix.
+                              </div>
+
+                              <div class="modal-footer">
+                                  <button class="btn btn-danger" (click)="this.delete(plant.identifiant)" data-dismiss="modal"><i
+                                          class="fa fa-times" aria-hidden="true"></i> Confirmer la suppression de la plante</button>
+                                  <button class="btn btn-success" data-dismiss="modal">Annuler</button>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div> -->
+                    <a routerLink="/plant/update/{{plant.identifiant}}">
+                        <button class="btn btn-warning" title="Modifier cette plante"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a routerLink="/periode/lp/{{plant.identifiant}}">
+                        <button class="btn btn-info" (click)="this.stockagePlante(plant)" title="Ajouter une période"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></button>
+                    </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination" >
+                <li class="page-item" *ngIf="this.pageActive>0">
+                    <a class="page-link" (click)="this.getAll(0)">
+                        <i class="fa fa-angle-double-left"></i>
+                    </a>
+                </li>
+                <li class="page-item" *ngIf="this.pageActive>0">
+                    <a class="page-link" (click)="this.getAll(this.pageActive-1)">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                </li>
+                <li class="page-item" *ngFor="let page of pageTotal">
+                    <a class="page-link" id="{{page}}" (click)="this.getAll(page)">{{page+1}}</a>
+                </li>
+                <li class="page-item" *ngIf="this.pageActive<this.maxPage-1">
+                    <a class="page-link" (click)="this.getAll(this.pageActive+1)">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+                <li class="page-item" *ngIf="this.pageActive<this.maxPage-1">
+                    <a class="page-link" (click)="this.getAll(this.maxPage-1)">
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Partie retour aux differents choix, s'affiche uniquement si choix = false -->
+    <div class="container" *ngIf="!choix">
+        <button class="btn alazea-btn mt-15" (click)="this.afficherChoix()">Retour</button>
+    </div>
+
 </div>

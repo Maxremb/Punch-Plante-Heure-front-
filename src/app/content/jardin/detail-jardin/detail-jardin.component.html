@@ -1,0 +1,188 @@
+<div class="container">
+  <!-- Entete de jardin-->
+  <app-entete-jardin></app-entete-jardin>
+
+  <!-- Affichage du jardin selectionné et de ses caracteristiques -->
+  <div class="row">
+    <div class="col-12 col-lg-6" style="padding-left: 0%;" *ngIf="this.jardin">
+      <h2><u>Mon jardin :</u><i> {{this.jardin.name}}</i></h2>
+      <br><br>
+
+      <label class="label">Nom : </label> {{this.jardin.name}}
+      <br>
+      <label class="label">Longueur (m) : </label> {{this.jardin.length}}
+      <br>
+      <label class="label">Largeur (m) : </label> {{this.jardin.width}}
+      <br>
+      <label class="label">Profondeur (m): </label> {{this.jardin.depthGround}}
+      <br>
+      <label class="label">Sol : </label> {{this.jardin.ground}}
+      <br>
+      <label class="label">Département : </label>
+      <p *ngIf="this.jardin.dept">{{this.jardin.dept.name}} - ({{this.jardin.dept.depNum}})</p>
+      <br>
+
+    </div>
+
+    <!-- Affichage du graphique à droite du tableau -->
+    <div class="col-12 col-lg-6" style="position: center;" *ngIf="this.jardin.identifier">
+      <app-graphique-jardin-affichage [jardin]="this.jardin" style="position: center;">
+      </app-graphique-jardin-affichage>
+    </div>
+
+
+
+  </div>
+
+  <!-- Arrosage du jardin ! -->
+  <div class="row" *ngIf="this.jardin">
+    <app-arrosage style="width: 100%;"></app-arrosage>
+  </div>
+  <br> <br>
+
+  <div class="row">
+    <h2>Liste des plantes présentes dans mon jardin :</h2>
+
+
+    <!-- Affichage du tableau avec la liste des plantes utilisateurs et leurs caracteristiques presentes dans le jardin uniquement si la liste n'est pas vide -->
+    <table class="table table-hover" *ngIf="this.plantesFiltre.length">
+      <thead>
+        <tr>
+          <th>
+            <h5>ID</h5>
+          </th>
+          <th>
+            <h5>Nom</h5>
+          </th>
+          <th>
+            <h5>Date de plantation</h5>
+          </th>
+          <th>
+            <h5>Date de semis</h5>
+          </th>
+          <th>
+            <h5>Etat de santé</h5>
+          </th>
+          <th>
+            <h5>Etat de la plante</h5>
+          </th>
+          <th colspan="2">
+            <h5>Actions</h5>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let planteUtilisateur of this.plantesFiltre">
+          <td>
+           
+            {{planteUtilisateur.identifiant}}</td>
+          <td
+            >
+            {{planteUtilisateur.modelPlant.commun}}</td>
+          <td
+            >
+            {{planteUtilisateur.plantingDate}}</td>
+          <td
+            >
+            {{planteUtilisateur.semiDate}}</td>
+          <td
+           >
+            {{planteUtilisateur.healthStage}}</td>
+          <td
+            >
+            {{planteUtilisateur.plantStage}}</td>
+
+          <td
+            >
+            <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
+            <a routerLink='/jardin/detail/updateplante/{{planteUtilisateur.identifiant}}'><button
+                class="btn btn-warning" title="Modifier la plante"><i class="fa fa-wrench"
+                  aria-hidden="true"></i></button>
+            </a>
+          </td>
+          <!-- Possibilité de retirer une plante utilisateur du jardin -->
+          <td
+           >
+            <button class="btn btn-danger" 
+              title="Supprimer la plante" (click)="this.supprimer(planteUtilisateur.identifiant)"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+              <!-- data-toggle="modal" data-target="#confirmationDelete" -->
+            <!-- <div class="modal" id="confirmationDelete">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                  </div>
+
+                  <div class="modal-body">
+                    Vous êtes sûr le point de supprimer une plante de votre jardin.
+                    <br>Veuillez confirmer ce choix.
+                  </div>
+
+                  <div class="modal-footer">
+                    <button class="btn btn-danger" (click)="this.supprimer(planteUtilisateur.identifiant)"
+                      data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Confirmer la suppression de la
+                      plante</button>
+                    <button class="btn btn-success" data-dismiss="modal">Annuler</button>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+    <!-- <nav aria-label="Page navigation" *ngIf="this.pageMax>1">
+      <ul class="pagination">
+        <li class="page-item" *ngIf="this.pageActive>0">
+          <a class="page-link" (click)="this.getPlantesParJardin(0)">
+            <i class="fa fa-angle-double-left"></i>
+          </a>
+        </li>
+        <li class="page-item" *ngIf="this.pageActive>0">
+          <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive-1)">
+            <i class="fa fa-angle-left"></i>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let page of pageTotal">
+          <a class="page-link" id="{{page}}" (click)="this.getPlantesParJardin(page)">{{page+1}}</a>
+        </li>
+        <li class="page-item" *ngIf="this.pageActive<this.pageMax-1">
+          <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive+1)">
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+        <li class="page-item" *ngIf="this.pageActive<this.pageMax-1">
+          <a class="page-link" (click)="this.getPlantesParJardin(this.pageActive-1)">
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+        </li>
+      </ul>
+    </nav> -->
+  </div>
+  <!-- Fin du tableau avec les plantes -->
+
+
+
+  <!-- Affichage de boutons en fin de page pour ajouter une plante / modifier les infos du jardin -->
+  <!-- Affichage de boutons en fin de page pour accéder à page planning du jardin -->
+  <!-- Affichage de boutons en fin de page pour retourner a la liste des jardins de l'utilisateur -->
+  <div class="container">
+    <div class="bottompage">
+      <a routerLink="/jardin/detail/addplante/{{this.jardin.identifier}}">
+        <button class="btn alazea-btn mt-15">Ajouter une plante à mon jardin</button>
+      </a>
+      <a routerLink="/planning/{{this.jardin.identifier}}">
+        <button class="btn alazea-btn mt-15">Calendrier</button>
+      </a>
+      <a routerLink="/jardin/graphique/{{this.jardin.identifier}}">
+        <button class="btn alazea-btn mt-15">Graphique</button>
+      </a>
+      <a routerLink="/jardin">
+        <button class="btn alazea-btn mt-15">Mes jardins</button>
+      </a>
+    </div>
+  </div>

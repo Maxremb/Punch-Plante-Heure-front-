@@ -1,1 +1,132 @@
-<p>create-plant works!</p>
+<div class="container">
+  <!-- Entete de la liste des plantes -->
+  <app-entete-plant-admin></app-entete-plant-admin>
+
+  <!-- Titre-->
+  <h2>Ajout d'une plante dans notre dictionnaire</h2>
+  <p></p>
+      
+  <form  [formGroup]="this.plantCreateForm" (ngSubmit)="this.save()">
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Attribut</th>
+          <th>Nouvelle valeur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><label for="commun">Nom Commun : </label></td>
+          <td>
+              <input type="text" class="form-group form-control"  [(ngModel)]="this.plant.commun" formControlName="commun"  name="commun" > 
+          </td>
+        </tr>
+        <tr>
+          <td>Nom Scientifique</td>
+          <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.scientifique" formControlName="scientifique"  name="scientifique" ></td>
+        </tr>
+        <tr>
+          <td>Famille</td>
+          <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.mifa" formControlName="mifa"  name="mifa" ></td>
+        </tr>
+        <tr>
+          <td>Humidité optimale</td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.humidite" formControlName="humidite"  name="humidite" ></td>
+        </tr>
+        <tr>
+          <td>Cycle d'arrossage en jour</td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.arrosage" formControlName="arrosage"  name="arrosage"></td>
+        </tr>
+        <tr>
+          <td>Ensoleillement optimal</td>
+          <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.ensoleillement" formControlName="ensoleillement"  name="ensoleillement"></td>
+        </tr>
+        <tr>
+          <td>Type de sol préféré</td>
+          <td>
+              <select class="form-group form-control" [(ngModel)]="this.plant.sol" formControlName="sol"  name="sol" >
+                  <option value="Sableux">Sableux</option>    
+                  <option value="LimonoArgileux">Limono Argileux</option>
+                  <option value="ArgiloSableux">Argilo Sableux</option>
+                  <option value="ArgiloLimoneux">Argilo Limoneux</option>
+                  <option value="Argileux">Argileux</option>
+              </select></td>
+        </tr>
+        <tr>
+          <td>Repiquage</td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.repiquage" formControlName="repiquage"  name="repiquage" ></td>
+        </tr>
+        <tr>
+          <td>Température minimale</td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.min" formControlName="min"  name="min" ></td>
+        </tr>
+        <tr>
+          <td>Température maximale</td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.max" formControlName="max"  name="max" ></td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td><input type="text" class="form-group form-control" [(ngModel)]="this.plant.desc" formControlName="desc"  name="desc" ></td>
+        </tr>
+        <tr>
+          <td>Toxicité</td>
+          <td>
+              <select class="form-group form-control" [(ngModel)]="this.plant.toxi" formControlName="toxi"  name="toxi" >
+                  <option value="true">Oui</option>    
+                  <option value="false">Non</option>
+              </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Association positive</td>
+          <td>
+              <select multiple data-role="tagsinput" class="form-group form-control" [(ngModel)]="this.plant.positive" formControlName="positive"  name="positive" ></select>
+          </td>
+        </tr>
+        <tr>
+          <td>Association négative</td>
+          <td>
+              <select multiple data-role="tagsinput" class="form-group form-control" [(ngModel)]="this.plant.negative" formControlName="negative"  name="negative" ></select>
+          </td>
+        </tr>
+        <tr>
+          <td>Image</td>
+          <td><input type="file" class="form-group form-control" [(ngModel)]="this.plant.picture" formControlName="picture"  name="picture" ></td>
+        </tr>
+        <tr>
+          <td>Taille à âge adulte (cm)</td>
+          <td><input type="number" class="form-group form-control" [(ngModel)]="this.plant.height" formControlName="height"  name="height"></td>
+        </tr>
+        <tr>
+          <td>Feuilles</td>
+          <td><input type="string" class="form-group form-control" [(ngModel)]="this.plant.feuille" formControlName="feuille"  name="feuille" >
+              </td>
+        </tr>
+        <tr>
+          <td>Vegetation</td>
+          <td><input type="string" class="form-group form-control" [(ngModel)]="this.plant.veget" formControlName="veget"  name="veget" ></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="btn alazea-btn mt-15" >Enregistrer</button>
+    <br><br>
+  <span *ngIf="this.messageValidation.length">
+      <span class="alert alert-fail" *ngIf="this.error">
+          {{this.messageValidation}}
+      </span>
+      <span class="alert alert-success" *ngIf="!this.error">
+          {{this.messageValidation}}
+      </span>
+    </span>
+  </form>
+
+  
+  
+  <!-- Retour lien page administrateur -->
+<div>
+  <a routerLink="/plant/vadmin">
+      <button class="btn alazea-btn mt-15" >Retour</button>
+  </a>
+</div>
+  
+

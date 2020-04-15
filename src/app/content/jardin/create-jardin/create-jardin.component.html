@@ -1,0 +1,103 @@
+<div class="container">
+
+    <!--ENTETE DE LA PAGE : GESTION E MON JARDIN-->
+    <app-entete-jardin></app-entete-jardin>
+
+    <div class="row">
+        <div class="col-12 col-lg-5" style="padding-left: 0%;">
+
+            <!--FORM d'ajout de jardin-->
+            <form [formGroup]="addJardinForm" (ngSubmit)="this.create()">
+                <h2> Ajouter un jardin </h2>
+                <hr>
+                <div>
+                    <label class="label">Nom : </label>
+                    <input id="name" type="text" class="form-control" [(ngModel)]="this.jardin.name" formControlName="name" name="name" required>
+                    <!--message validator nom jardin-->
+                    <div *ngIf="name.errors?.required && (name.touched || name.dirty)" class="alert alert-danger">
+                        Le nom est requis !
+                    </div>
+                </div>
+                <div>
+                    <label class="label">Sol : </label>
+                    <select class="form-control" [(ngModel)]="this.jardin.ground" formControlName="ground" id="ground" name="ground">
+                        <option value='Sableux'>Sableux</option>
+                        <option value='LimonoArgileux'>Limono-argileux</option>
+                        <option value='ArgiloSableux'>Argilo-sableux</option>
+                        <option value='ArgiloLimoneux'>Argilo-limoneux</option>
+                        <option value='Argileux'>Argileux</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="label">Longueur (m) : </label>
+                    <input class="form-control" [(ngModel)]="this.jardin.length" id="length" type="number" min="0" formControlName="length"
+                        name="length">
+                </div>
+                <div>
+                    <label class="label">Largeur (m) : </label>
+                    <input class="form-control" [(ngModel)]="this.jardin.width" id="width" type="number" min="0" formControlName="width" name="width">
+                </div>
+                <div>
+                    <label class="label">Profondeur (m) : </label>
+                    <input class="form-control" [(ngModel)]="this.jardin.depthGround" id="depthGround" type="number" min="0" formControlName="depthGround" name="depthGround">
+                </div>
+
+
+                <div>
+                    <label class="label">Département : </label>
+                                            
+                    <input type="number" class="form-control" [(ngModel)]="this.depNum" min="0" id="dept" formControlName="dept" name="dept"
+                        required>    
+
+
+
+                  <!--  message validator pour departement-->
+                    <div *ngIf="dept.errors?.required && (dept.touched || dept.dirty)" class="alert alert-danger">
+                        Le département est requis !
+                    </div>
+
+                </div>
+
+            
+                <!--boutton de validation-->
+                <button type="submit" class="btn alazea-btn mt-15" >
+                    Créer mon jardin
+                </button>
+
+                <!--Message de success ou fail our la création de jardin-->
+                <div class="alert alert-success" *ngIf="this.messageValidation">
+                    <strong>Bravo !</strong> {{this.messageValidation}}
+                </div>
+                <div class="alert alert-danger" *ngIf="this.messageErreur">
+                    <strong>Echec !</strong> {{this.messageErreur}}
+                </div>
+
+            </form>
+        </div>
+        <!--End bloc formulaire-->
+
+
+        <!--Image decoration-->
+        <div class="col-12 col-lg-7">
+            <div class="image_content">
+                <div>
+                    <img src="assets/img/creation_jardin.jpg" alt="">
+                </div>
+                <div class="image_content2">
+                    <img src="assets/img/creation_jardin2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<!--Lien de navigation-->
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/jardin">
+            <input type="button" value="Mes jardins" class="btn alazea-btn mt-15" />
+        </a>
+    </div>
+</div>

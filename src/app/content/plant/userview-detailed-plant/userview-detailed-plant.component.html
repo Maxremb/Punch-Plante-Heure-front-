@@ -1,0 +1,78 @@
+<div class="container">
+    
+    <!-- Entete plante -->
+    <app-entete-plant></app-entete-plant>
+    
+    <!-- Details de la plante selectionnee -->
+    <h2>{{this.plant.commun}}</h2>
+    <br><br>
+
+        <div>
+            <span>Nom Commun : {{this.plant.commun}}</span>
+        </div>
+        <hr>
+        <div>
+            <span>Nom Scientifique : {{this.plant.scientifique}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Cycle d'arrosage en jour : {{this.plant.arrosage}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Ensoleillement optimal : {{this.plant.ensoleillement}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Humidité optimale : {{this.plant.humidite}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Type de sol préféré : {{this.plant.sol}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Repiquage : {{this.plant.repiquage}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Température minimale : {{this.plant.min}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Température maximale : {{this.plant.max}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Description : {{this.plant.desc}}</span>
+        </div>
+        <hr>
+
+        <div>
+            <span>Toxicité :   {{this.plant.toxi}}</span>
+        </div>
+        <hr>
+
+        <div >
+            <span>Photo : {{this.plant.picture}}</span>
+        </div>
+</div>
+<!-- Fin de la description -->
+<!-- Ajout de boutons en bas de page pour retourner au dictionnaire -->
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/plant/vuser">
+            <button class="btn alazea-btn mt-15">Retour au dictionnaire</button>
+        </a>
+    </div>
+</div>
+
+

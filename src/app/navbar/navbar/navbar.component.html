@@ -1,0 +1,125 @@
+<header class="header-area">
+
+  <!-- ***** Top Header Area ***** -->
+  <div class="top-header-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="top-header-content d-flex align-items-center justify-content-between">
+            <!-- Top Header Content -->
+            <div class="top-header-meta">
+              <a data-toggle="tooltip" data-placement="bottom" title="punchplanteheure@gmail.com"><i
+                  class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email : intiformintilyon2020@gmail.com</span></a>
+              <a data-toggle="tooltip" data-placement="bottom" title="01 45 38 30 51"><i class="fa fa-phone"
+                  aria-hidden="true"></i> <span>Tel : 01 45 38 30 51</span></a>
+            </div>
+
+            <!-- Top Header Content -->
+            <div class="top-header-meta d-flex">
+              <!-- Language Dropdown -->
+              <div class="language-dropdown">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Langue</button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" (click)="useLanguage('fr')">Français</a>
+                    <a class="dropdown-item" (click)="useLanguage('en')">English</a>
+                  </div>
+                </div>
+              </div>
+              <!-- Connexion -->
+              <div class="login" *ngIf="!isConnected()">
+                <a href="connexion"><i class="fa fa-user" aria-hidden="true"></i> <span>{{'navbar.connexion' | translate}}</span></a>
+              </div>
+              <div class="register">
+                <a href="inscription" *ngIf="!isConnected()"><i class="fa fa-user" aria-hidden="true"></i> <span>{{'navbar.inscription' | translate}}</span></a>
+              </div>
+              <div class="disconnect">
+                <a href="" (click)="disconnect()" *ngIf="isConnected()"><i class="fa fa-user" aria-hidden="true"></i> <span>Déconnexion</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***** Navbar Area ***** -->
+  <!-- <div id="sticky-wrapper" class="sticky-wrapper" style="height:90px"> -->
+    <div class="alazea-main-menu">
+      <div class="classy-nav-container breakpoint-off">
+        <div class="container" >
+          <!-- Menu -->
+          <nav class="classy-navbar justify-content-between" id="alazeaNav">
+
+
+
+            <!-- Navbar Toggler -->
+            <div class="classy-navbar-toggler">
+              <span class="navbarToggler"><span></span><span></span><span></span></span>
+            </div>
+
+            <!-- Menu -->
+            <div class="classy-menu">
+
+              <!-- Navbar Start -->
+              <div class="classynav">
+                <ul>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin() && !isConnected()"><a></a></li>
+                  <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/">Accueil</a></li>
+                  <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/plant/vuser">Nos plantes</a></li>
+                  <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/about">A propos</a></li>
+                  <li *ngIf="!isAdmin()"><a class="nav-link" routerLink="/contact">Contact</a></li>
+                  <li *ngIf="isConnected() && !isAdmin() "><a class="nav-link" routerLink="/jardin">Mes jardins</a></li>
+                  <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/meteo">Mes stations météo</a></li>
+                  <li *ngIf="isConnected() && !isAdmin()"><a class="nav-link" routerLink="/dashboard">
+                    <i class="fa fa-user-circle" title="Mon Compte" aria-hidden="true">
+                    </i>&nbsp;:&nbsp;{{this.user.pseudo}}</a></li>
+                  <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/plant/vadmin">Gestion des plantes</a></li>
+                  <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/utilisateur/gestion-admin">Gestion des utilisateurs</a></li>
+                  <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/departement/vadmin">Gestion des départements</a></li>
+                  <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/admin">Mon compte</a></li>
+                  <!-- <li *ngIf="isConnected() && !isAdmin()"><a href="#">Mon compte</a>
+                    <ul class="dropdown">
+                      <li><a class="nav-link" routerLink="/jardin">Mes jardins</a></li>
+                      <li><a class="nav-link" routerLink="/meteo">Mes stations meteo</a></li>
+                      <li><a class="nav-link" routerLink="/dashboard">Mon compte</a></li>
+                    </ul>
+                  </li>
+                  <li *ngIf="isAdmin()"><a href="#">Administrateur</a>
+                    <ul class="dropdown">
+                      <li><a class="nav-link" routerLink="/plant/vadmin">Gestion Plantes</a></li>
+                      <li><a class="nav-link" routerLink="/utilisateur/gestion-admin">Gestion Utilisateurs</a></li>
+                      <li><a class="nav-link" routerLink="/departement/vadmin">Gestion Départements</a></li>
+                      <li><a class="nav-link" routerLink="/admin">Mon compte</a></li>
+                    </ul>
+                  </li> -->
+
+                </ul>
+
+              </div>
+              <!-- Navbar End -->
+            </div>
+          </nav>
+
+
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Breadcrumb Area Start ##### -->
+<div class="breadcrumb-area">
+  <!-- Top Breadcrumb Area -->
+  <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
+    style="background-image: url(assets/img/bg-img/24.jpg);height: 15%;">
+    <h2 style="font-size:2cm">Punch Plante Heure</h2>
+  </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->

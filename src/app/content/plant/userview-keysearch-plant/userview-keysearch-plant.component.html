@@ -1,0 +1,70 @@
+<div class="container">
+    <!-- Entete de la page -->
+    <app-entete-plant></app-entete-plant>
+    
+
+    <h2><label for="search-box">Recherche par mot clé : <b>{{this.keyWord}}</b></label></h2>
+
+    <!-- Tableau avec la liste de toutes les plantes modeles -->
+    <table class="table table-hover" *ngIf="!this.message.length">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom commun</th>
+                <th>Nom scientifique</th>
+                <th>URL picture</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plant of this.allPlant">
+                <td>{{plant.identifiant}}</td>
+                <td>{{plant.commun}}</td>
+                <td>{{plant.scientifique}}</td>
+                <td>{{plant.picture}}</td>
+                <td>
+                <a routerLink="/plant/vuser/{{plant.identifiant}}">
+                    <button class="btn alazea-btn mt-15" >Détails</button>
+                </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" >
+            <li class="page-item" *ngIf="this.pageActive>0">
+                <a class="page-link" (click)="this.getKey(this.pageActive-1)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngFor="let page of pageTotal">
+                <a class="page-link" id="{{page}}" (click)="this.getKey(page)">{{page+1}}</a>
+            </li>
+            <li class="page-item" *ngIf="this.pageActive<this.maxPage-1">
+                <a class="page-link" (click)="this.getKey(this.pageActive+1)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngIf="this.pageActive<this.maxPage-1">
+                <a class="page-link" (click)="this.getKey(this.maxPage-1)">
+                    <i class="fa fa-angle-double-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Si Aucune données trouvées dans la base de données -->
+<div *ngIf="this.message.length">
+<h3> {{this.message}} </h3>
+</div>
+
+
+<!-- Ajout de boutons en bas de page pour retourner au dictionnaire -->
+<div class="container">
+    <div class="bottompage">
+        <a routerLink="/plant/vuser">
+            <button class="btn alazea-btn mt-15">Retour au dictionnaire</button>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+    <input class="form-control mb-4" id="tableSearch" type="text"
+      placeholder="Type something to search list items">
+      
+    <h2>Liste des plantes :</h2>
+    
+    <!-- <table class="table table-hover"> -->
+      <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom commun</th>
+                <th>Nom scientifique</th>
+                <th>URL picture</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            <tr *ngFor="let plant of this.allPlant">
+                <td>{{plant.identifiant}}</td>
+                <td>{{plant.commun}}</td>
+                <td>{{plant.scientifique}}</td>
+                <td>{{plant.picture}}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>

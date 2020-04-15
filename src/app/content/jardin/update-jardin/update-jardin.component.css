@@ -1,0 +1,27 @@
+
+.label {
+    font-weight: bold;
+    margin-top: 1%;
+}
+
+h5 {
+    font-variant-caps: all-small-caps;
+}
+
+.image_content {
+    margin-top: 20%;
+    margin-left: 20%;
+    margin-bottom: 15%;
+}
+
+/* div boutton pas de page */
+.bottompage {
+    text-align: right;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right:5%;
+}
+
+.bottompage,a {
+    margin-right: 5%;
+}

@@ -1,0 +1,17 @@
+label {
+    font-weight: bold;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+#fond{
+    background-color:#d6f5f5;
+    text-align: center;
+}
+
+#back {
+    background-color: #eafafa;
+    align-content: center;
+}
