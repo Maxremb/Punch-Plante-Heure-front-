@@ -34,7 +34,7 @@
             Les mots de passe entrés ne sont pas les mêmes
           </div>
           <label for="phone"> Numéro de telephone : </label>
-          <input type="tel" class="form-control" [(ngModel)]="this.util.phone" formControlName="phone" name="phone">
+          
           <p>* Champs requis</p>
           <button type="submit" class="btn alazea-btn mt-15"
             [disabled]="!this.inscriptionForm.valid || this.util.pwd !== this.pwd2">Enregistrer</button>
