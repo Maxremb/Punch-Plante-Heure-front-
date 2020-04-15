@@ -42,7 +42,7 @@ export class PlanningJardinComponent implements OnInit {
         if (!responseDto.error) {
         this.allPlantes = responseDto.body;
          this.allPlantes.forEach(p =>
-          {if(this.allPlanteLave.findIndex(pl => pl.modelPlant.identifiant===p.modelPlant.identifiant)===-1 && p.modelPlant.commun != 'OBSTACLE' && p.modelPlant.commun != 'CHEMIN'){
+          {if(this.allPlanteLave.findIndex(pl => pl.modelPlant.identifiant===p.modelPlant.identifiant)===-1 && p.modelPlant.commun != 'Obstacle' && p.modelPlant.commun != 'Chemin'){
             this.allPlanteLave.push(p);
           }
         })
