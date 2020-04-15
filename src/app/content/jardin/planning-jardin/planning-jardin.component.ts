@@ -47,7 +47,6 @@ export class PlanningJardinComponent implements OnInit {
             }
           }
           )
-          console.log(this.allPlanteLave);
           this.jardin = this.allPlantes[0].garden;
           this.getPeriodes();
         }
@@ -61,10 +60,8 @@ export class PlanningJardinComponent implements OnInit {
       .subscribe(
         (responseDto) => {
           this.allPeriodes = responseDto.body;
-          console.log(this.allPeriodes);
 
           this.allPlanteLave.forEach(plante => {
-            console.log('plante en cours de traitement',plante);
             plante.rempotage = [];
             plante.taille = [];
             plante.floraison = [];

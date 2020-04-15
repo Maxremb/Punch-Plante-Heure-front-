@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-update-dto';
-import { JardinUpdateDto } from 'src/app/models/jardin-update-dto';
-import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
-import { JardinService } from 'src/app/services/jardin-service.service';
-import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

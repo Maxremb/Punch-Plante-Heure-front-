@@ -65,8 +65,6 @@ export class CreateJardinComponent implements OnInit {
     this.jardin.dept.depNum = this.depNum;
     this.utilisateur.identifier = this.user.id;
     this.jardin.user = this.utilisateur;
-    console.log('user' + this.jardin.user.identifier);
-    console.log('debut create subcribe');
     this.service.create(this.jardin).subscribe(
 
       responseDto => {
