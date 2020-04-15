@@ -22,7 +22,6 @@ export class AuthGuard implements CanActivate {
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
     const token = localStorage.getItem('token');
 
-    console.log("AuthGuard next: ", next);
 
     // Si utilisater connecté
     if (connectedUser && token) {
@@ -37,13 +36,10 @@ export class AuthGuard implements CanActivate {
 
   protected checkToken(next: ActivatedRouteSnapshot, token: string, localUser: ConnectedUser): Promise<boolean> {
 
-    console.log("AuthGuard checkToken: appelé", token);
-
     let promise = new Promise<boolean>((resolve, reject) => {
       this.service.getConnectedUser(token).toPromise().then(returnedUser => {
         
         if (JSON.stringify(localUser) != JSON.stringify(returnedUser)) {
-          console.log("localUser écrasé");
           localStorage.setItem('connectedUser', JSON.stringify(returnedUser))
         }
         let activateRoute = !(next.data.roles && next.data.roles.indexOf(returnedUser.role) === -1);

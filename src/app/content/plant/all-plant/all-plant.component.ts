@@ -80,7 +80,6 @@ export class AllPlantComponent implements OnInit {
   getAll(npage: number) {
     this.service.getAll(npage).subscribe(
       (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.allPlant = responseDto.body.content;
           this.pageActive = responseDto.body.number;
@@ -94,7 +93,6 @@ export class AllPlantComponent implements OnInit {
   getSingle(numero: number) {
     this.service.getId(this.numero).subscribe(
       (responseDto) => {
-        console.log('debug responseDto :', responseDto);
         if (!responseDto.error) {
           this.singlePlant = responseDto.body;
         }
@@ -105,7 +103,6 @@ export class AllPlantComponent implements OnInit {
   delete(id: number) {
     this.service.delete(id).subscribe(
       responseDto => {
-        console.log('debug responseDto : ', responseDto);
         if (!responseDto.error) {
           this.allPlant = this.allPlant.filter(
             element =>  element.identifiant !== id
@@ -119,19 +116,17 @@ export class AllPlantComponent implements OnInit {
       responseDto => {
         if (!responseDto.error) {
           this.departements = responseDto.body.content;
-          console.log('DEBUG  departements : '+this.departements)
           if(this.departements==[]) this.messageRecherche='Cette plante ne possède pas encore de période.';
         }
         else { 
           this.messageRecherche = 'ERREUR !';
-          console.log('ERREUR IN RESPONSEDTO');
+         
         }
       }
     );
     }
     // permet d'envoyer la periode vers la page update à travers le service
     stockagePlante(plante : PlanteModeleUpdateDto) {
-      console.log("Stockage plante dans servicePeriode : "+plante.identifiant);
     this.servicePeriode.plante = plante ;
     }
 

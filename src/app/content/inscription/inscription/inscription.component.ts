@@ -41,7 +41,7 @@ export class InscriptionComponent implements OnInit {
   get pwd(): any { return this.inscriptionForm.get('pwd'); }
 
   save(): void {;
-    console.log(this.util);
+    
 
       this.service.save(this.util).subscribe(
         responseDto => {
@@ -55,7 +55,7 @@ export class InscriptionComponent implements OnInit {
         },
 
         responseError => {
-          console.log(responseError);
+          
           this.messageValidation = responseError.error.message;
           this.error = true;
         }

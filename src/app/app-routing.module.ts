@@ -58,8 +58,8 @@ const routes: Routes = [
   { path : 'periode/update', component : UpdatePeriodeComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]}},
 
   { path : 'blog' , component : BlogComponent },
-  { path : 'plant/vuser', component: UserviewAllPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
-  { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent, canActivate: [AuthGuard, IdGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
+  { path : 'plant/vuser', component: UserviewAllPlantComponent},
+  { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent},
   { path : 'about' , component : AboutComponent },
   { path : 'contact' , component : ContactComponent },
   { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },

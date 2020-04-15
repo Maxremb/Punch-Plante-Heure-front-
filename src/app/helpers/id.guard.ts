@@ -18,7 +18,6 @@ export class IdGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    console.log("IdGuard url: ", next.routeConfig.path);
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
     const token = localStorage.getItem('token');
 

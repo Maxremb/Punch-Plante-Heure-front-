@@ -45,10 +45,10 @@ export class ConnexionComponent implements OnInit {
         if (!this.error) {
 
           if (!connexionDto.user) {
-            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'administrateur !';
+            this.messageValidation = 'Vous êtes maintenant connecté en tant qu\'administrateur !';
             location.href = 'admin'
           } else if (connexionDto.user) {
-            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté en tant qu\'utilisateur !';
+            this.messageValidation = 'BRAVO ! Vous êtes maintenant connecté !';
             location.href = ''
           }
         } else {

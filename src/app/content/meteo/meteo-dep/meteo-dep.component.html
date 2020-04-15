@@ -2,7 +2,7 @@
 
   <app-entete-meteo></app-entete-meteo>
 
-  <div class="container">
+  <div *ngIf="this.departement" class="container">
     <h2>Ma station météo | Département {{departement.name}} ({{departement.depNum}})</h2>
     <hr>
 

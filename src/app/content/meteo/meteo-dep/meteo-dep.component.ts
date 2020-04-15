@@ -32,7 +32,7 @@ export class MeteoDepComponent implements OnInit {
   data1: any;
   title1 = 'Températures';
   type1 = 'ComboChart';
-  columnNames1 = ['date', 'Temperature min', 'Temperature max'];
+  columnNames1 = ['date', 'Temperature minimum', 'Temperature maximum'];
   options1 = {
     hAxis: {
       title: 'Date'
@@ -58,6 +58,7 @@ export class MeteoDepComponent implements OnInit {
       title: 'Ensoleillement (min)'
     },
     seriesType: 'bars',
+    colors: ['#ffcc00']
 
   };
   width2 = 1000;
@@ -75,6 +76,7 @@ export class MeteoDepComponent implements OnInit {
       title: 'Précipitation (mm)'
     },
     seriesType: 'bars',
+   
 
   };
   width3 = 1000;

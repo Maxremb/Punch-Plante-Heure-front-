@@ -21,17 +21,13 @@ export class ConnexionService {
 
 
   getByEmailAndPwd(mail: string, pwd: string): Observable<ConnexionDto> {
-    console.log("Utilisateur connecté!!");
-
     return this.http.post<ConnexionDto>(this.URL, [mail, pwd]);
 
   }
 
   connect(connexionDto: ConnexionDto): boolean {
-    console.log('debug');
     let success = this.convert(connexionDto)
     if (success) {
-      console.log(connexionDto.token);
       localStorage.setItem('token', connexionDto.token);
       localStorage.setItem('connectedUser', JSON.stringify(this.connectedUser));
     }
@@ -39,7 +35,6 @@ export class ConnexionService {
   }
 
   convert(connexionDto: ConnexionDto): boolean {
-    console.log("convert");
     this.connectedUser = new ConnectedUser();
     if (connexionDto.bodyAdmin || connexionDto.bodyUtil) {
 
@@ -64,7 +59,6 @@ export class ConnexionService {
   }
 
   disconnect() {
-    console.log('DISCONNNNNNECTT')
     localStorage.clear();
     this.connectedUser = null;
   }

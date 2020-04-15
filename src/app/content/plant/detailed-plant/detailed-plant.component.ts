@@ -28,10 +28,10 @@ export class DetailedPlantComponent implements OnInit {
   // Initialisation du formulaire et de l'appel à getPlant
   ngOnInit(): void {
     maFonction();
-    console.log('DEBUG.......'+this.plant.identifiant);
+   
 
     this.getPlant();
-    console.log('DEBUG.......'+this.plant.identifiant);
+   
 
     this.plantUpdateForm = new FormGroup({
       commun: new FormControl(this.plant.commun,Validators.required),
@@ -61,7 +61,7 @@ export class DetailedPlantComponent implements OnInit {
     this.service.getId(this.idPlante).subscribe(
       (responsedto) => {
         if (!responsedto.error) {
-          console.log('get data')
+         
           this.plant = responsedto.body;
         }
       }
@@ -71,15 +71,13 @@ export class DetailedPlantComponent implements OnInit {
 
   updatePlante() {
     this.service.update(this.plant).subscribe(
-      (responseDto) => {
-        console.log('debug responseDto : ', responseDto);
+      (responseDto) => {     
         if (!responseDto.error) {
           this.messageValidation = 'BRAVO ! L\'examen a bien été modifié.';
           this.error = false;
         }
       },
       (error) => {
-        console.log('debug responseDto : ', error);
         this.messageValidation = 'ERREUR ! L\'examen n\'a pas été modifié.';
         this.error = true;
         }
