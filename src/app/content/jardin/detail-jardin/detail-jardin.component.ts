@@ -16,6 +16,7 @@ export class DetailJardinComponent implements OnInit {
 
   jardin = new JardinUpdateDto();
   plantesParJardin = new Array<PlanteUtilisateurUpdateDto>();
+  plantesFiltre = new Array<PlanteUtilisateurUpdateDto>();
   emptyliste: boolean = false;
   nombre: number;
   messageValidation: string;
@@ -53,12 +54,11 @@ export class DetailJardinComponent implements OnInit {
 
   // recuperation des plantes utilisateurs dans ce jardin
   getPlantesParJardin(nPage: number): void {
-    this.planteutilisateurservice.getAllByJardin(this.idJardin, nPage).subscribe(
+    this.planteutilisateurservice.getAllByJardinListe(this.idJardin).subscribe(
       (responseDto) => {
-        this.plantesParJardin = responseDto.body.content;
-        this.pageActive = responseDto.body.number;
-        this.pageTotal = this.range(responseDto.body.totalPages);
-        this.pageMax = responseDto.body.totalPages;
+        this.plantesParJardin = responseDto.body;
+        this.plantesFiltre = this.plantesParJardin.filter(plante =>( plante.modelPlant.commun !="Obstacle" &&  plante.modelPlant.commun!="Chemin"))
+       
 
 
       }
@@ -71,6 +71,7 @@ export class DetailJardinComponent implements OnInit {
       (responseDto) => {
         if (!responseDto.error) {
           this.plantesParJardin = this.plantesParJardin.filter(element => element.identifiant !== id);
+          this.plantesFiltre = this.plantesFiltre.filter(element => element.identifiant !== id);
 
         }
       }

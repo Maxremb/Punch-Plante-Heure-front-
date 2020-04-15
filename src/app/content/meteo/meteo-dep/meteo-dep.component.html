@@ -9,7 +9,7 @@
     <div class="row">
       <!-- Affichage des X derniers jours -->
       <div class="col-12 col-lg-6">
-        <form [formGroup]="choixDonnee" (ngSubmit)="switchToMonth()">
+        <form [formGroup]="choixDonnee" (ngSubmit)="switchToDays()">
           <div class="form-group" style="display:inline">
             <h5>Consulter les
               <input type="number" [(ngModel)]="this.numelem" formControlName="numelem"> derniers jours</h5>

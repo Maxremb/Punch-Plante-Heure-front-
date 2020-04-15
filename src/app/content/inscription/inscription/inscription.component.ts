@@ -31,7 +31,7 @@ export class InscriptionComponent implements OnInit {
         mail: new FormControl(this.util.mail, [Validators.required, Validators.email]),
         pwd: new FormControl(this.util.pwd, [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'), Validators.minLength(8)]),
         pwd2: new FormControl('', Validators.required),
-        phone: new FormControl(this.util.phone)
+        
         //picture: new FormControl(this.util.picture) // Si on a le temps d'implementer le transfert d'images au back
       }
     )

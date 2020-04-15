@@ -99,7 +99,6 @@ export class MeteoDepComponent implements OnInit {
     this.graph = false;
     this.parMois = false;
     this.getDep();
-    this.getMeteo();
     this.choixDonnee = new FormGroup({
       numelem: new FormControl(this.numelem, [
         Validators.required, Validators.min(1)]),
@@ -122,15 +121,22 @@ export class MeteoDepComponent implements OnInit {
   }
 
   switchToMonth(): void {
-    if (this.parMois) {
-      this.parMois = false;
-      this.getMeteo();
-    } else {
+    if (!this.parMois)  {
       this.month = Number.parseInt(this.date.toString().split("-")[1]);
       this.year = Number.parseInt(this.date.toString().split("-")[0]);
-      this.parMois = true;
-      this.getMeteo();
+      this.parMois = true;  
+    }else{
+      this.allmeteo=[]
     }
+    this.getMeteo();
+  }
+
+  switchToDays(): void {
+    if (this.parMois) {
+      this.parMois = false;
+     
+    }
+    this.getMeteo(); 
   }
 
   getDep(): void {
@@ -162,6 +168,9 @@ export class MeteoDepComponent implements OnInit {
               this.allmeteo.forEach(e => this.data1.push([e.dateMeteo, e.tempMin, e.tempMax]));
               this.allmeteo.forEach(e => this.data2.push([e.dateMeteo, e.radiation]));
               this.allmeteo.forEach(e => this.data3.push([e.dateMeteo, e.rain]));
+              this.data1.reverse();
+              this.data2.reverse();
+              this.data3.reverse();
 
             }else { this.allmeteo = []; this.graph = false; }
 
