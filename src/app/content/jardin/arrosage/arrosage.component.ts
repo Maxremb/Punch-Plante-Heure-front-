@@ -31,7 +31,7 @@ export class ArrosageComponent implements OnInit {
     this.jardinservice.getId(this.idJardin).subscribe(
       (resp)=> {
         this.jardin = resp.body;
-        this.niveau =  (this.jardin.usefullReserve*10).toString() +"%";
+        this.niveau =  (this.jardin.usefullReserve*100/this.jardin.maxReserve).toString() +"%";
       }
     )
 
