@@ -40,19 +40,19 @@ export class PlanningJardinComponent implements OnInit {
     this.planteUtilisateurService.getAllByJardinListe(id).subscribe(
       (responseDto) => {
         if (!responseDto.error) {
-          this.allPlantes = responseDto.body;
-          this.allPlantes.forEach(p => {
-            if (this.allPlanteLave.indexOf(p) == -1) {
-              this.allPlanteLave.push(p);
-            }
+        this.allPlantes = responseDto.body;
+         this.allPlantes.forEach(p =>
+          {if(this.allPlanteLave.findIndex(pl => pl.modelPlant.identifiant===p.modelPlant.identifiant)===-1 && p.modelPlant.commun != 'OBSTACLE' && p.modelPlant.commun != 'CHEMIN'){
+            this.allPlanteLave.push(p);
           }
-          )
+        })
+          
           this.jardin = this.allPlantes[0].garden;
           this.getPeriodes();
         }
       }
-    );
-  }
+    )
+    }
 
   getPeriodes(): void {
 
@@ -62,52 +62,52 @@ export class PlanningJardinComponent implements OnInit {
           this.allPeriodes = responseDto.body;
 
           this.allPlanteLave.forEach(plante => {
-            plante.rempotage = [];
-            plante.taille = [];
-            plante.floraison = [];
-            plante.fructification = [];
-            plante.semis = [];
+            plante.rempotage = ["neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre"];
+            plante.taille = ["neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre"];
+            plante.floraison = ["neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre"];
+            plante.fructification = ["neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre"];
+            plante.semis = ["neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre", "neutre"];
             this.allPeriodes.forEach(periode => {
               if (periode.plantSpecies.identifiant == plante.modelPlant.identifiant){
                if(periode.periodType == PeriodeEnum.REMPOTAGE) {
                   for (let i = 1; i < 13; i++) {
                     if (Number.parseInt(periode.startDate.toString().split("-")[1]) > i || Number.parseInt(periode.endDate.toString().split("-")[1]) < i) {
-                      plante.rempotage.push("neutre");
+                      
                     } else {
-                      plante.rempotage.push("rempotage");
+                      plante.rempotage[i-1]="rempotage";
                     }
                     
                   }
                 }else if(periode.periodType == PeriodeEnum.TAILLE) {
                   for (let i = 1; i < 13; i++) {
                     if (Number.parseInt(periode.startDate.toString().split("-")[1]) > i || Number.parseInt(periode.endDate.toString().split("-")[1]) < i) {
-                      plante.taille.push("neutre");
+                      
                     } else {
-                      plante.taille.push("taille");
+                      plante.taille[i-1]="taille";
                     }
                   }
                 }else if(periode.periodType == PeriodeEnum.FLORAISON) {
                   for (let i = 1; i < 13; i++) {
                     if (Number.parseInt(periode.startDate.toString().split("-")[1]) > i || Number.parseInt(periode.endDate.toString().split("-")[1]) < i) {
-                      plante.floraison.push("neutre");
+                      
                     } else {
-                      plante.floraison.push("floraison");
+                      plante.floraison[i-1] = "floraison";
                     }
                   }
                 }else if(periode.periodType == PeriodeEnum.FRUCTIFICATION) {
                   for (let i = 1; i < 13; i++) {
                     if (Number.parseInt(periode.startDate.toString().split("-")[1]) > i || Number.parseInt(periode.endDate.toString().split("-")[1]) < i) {
-                      plante.fructification.push("neutre");
+                     
                     } else {
-                      plante.fructification.push("fructification");
+                      plante.fructification[i-1] = "fructification";
                     }
                   }
                 }else if(periode.periodType == PeriodeEnum.SEMIS) {
                   for (let i = 1; i < 13; i++) {
                     if (Number.parseInt(periode.startDate.toString().split("-")[1]) > i || Number.parseInt(periode.endDate.toString().split("-")[1]) < i) {
-                      plante.semis.push("neutre");
+                      
                     } else {
-                      plante.semis.push("semis");
+                      plante.semis[i-1] = "semis";
                     }
                   }
                 }
