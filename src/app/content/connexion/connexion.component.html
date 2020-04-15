@@ -9,7 +9,7 @@
         <div class="form-group">
           <label for="mail">E-mail :
             <input type="email" class="form-control" [(ngModel)]="this.mail" formControlName="mail" name="mail"
-              placeholder="dupont@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required> </label>
+              placeholder="dupont@gmail.com" pattern={{this.pattern}} required> </label>
         </div>
 
         <div class="form-group">
