@@ -19,7 +19,6 @@ export class AuthService {
   }
 
   public getId(token: string): Observable<number>{
-    console.log("AuthService getId");
     return this.http.post<number>(this.URL + '/identifier', token);
   }
 
