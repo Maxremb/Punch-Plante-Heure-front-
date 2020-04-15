@@ -50,7 +50,7 @@ L'équipe responsable de ce sprint était composé de :
 - Maxime Rembert : Referent Métier / Developpeur
 
 Sprint 2 :
-Ce sprint avait pour but la création des components, services et models lié a la météo et aux périodes.
+Ce sprint avait pour but la création des components, services et models lié a la météo, aux périodes, et à l'affichage du graphique jardin.
 
 L'équipe responsable de ce sprint était composé de :
 - Léa Coston : Chef de Projet / Developpeuse
