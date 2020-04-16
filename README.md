@@ -79,8 +79,9 @@ L'équipe responsable de ce sprint était composé de :
 - Maxime Rembert : Référent Métier, Developpeur Back/Front
 - Flavien Gomila : Référent Métier, Developpeur Front
 - Thierry-Meng  Cloarec : Référent Métier, developpeur Back/Front
-- Clare Cadet : Développeuse Back/Front
+- Clara Cadet : Développeuse Back/Front
 - Jeanne-Marie Mathevet : Developpeuse Back/Front
-- Mehdi Bensalha : encadrant
 - Lucie Martinez : Developpeuse Back/Front
+- Mehdi Bensalha : encadrant
+
 
