@@ -26,4 +26,8 @@ export class AuthService {
     return this.http.post<ConnectedUser>(this.URL + '/user', token);
   }
 
+  public getUserGardens(token: string): Observable<Array<number>>{
+    return this.http.post<Array<number>>(this.URL + '/gardens', token);
+  }
+
 }

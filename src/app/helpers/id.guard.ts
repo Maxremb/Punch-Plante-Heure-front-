@@ -19,7 +19,6 @@ export class IdGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
-    const token = localStorage.getItem('token');
 
 
     if (connectedUser.role != Role.Admin && connectedUser.id != +next.url[2].path) {
