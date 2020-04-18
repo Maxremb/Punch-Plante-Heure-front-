@@ -6,7 +6,7 @@
             <tr *ngFor="let ligne of this.matrice; let index = index; trackBy:trackByIndex;">
                 <td *ngFor="let plante of this.matrice[index]; let index2 = index; trackBy:trackByIndex;" width=20px
                     height=20px title="{{matrice[index][index2]}}">
-                    <a routerLink="/jardin/graphique/{{this.jardin.identifier}}">
+                    <a routerLink="{{this.hrefDirection}}">
                         <div *ngIf="matrice[index][index2]=='Chemin'" class="chemin">
                             &nbsp;
                         </div>

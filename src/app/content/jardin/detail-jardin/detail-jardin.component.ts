@@ -4,6 +4,7 @@ import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-up
 import { JardinService } from 'src/app/services/jardin-service.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -26,11 +27,14 @@ export class DetailJardinComponent implements OnInit {
   pageMax: number = 0;
   pageTotal: number[];
   idJardin: number;
+  jardinPersonel = false; // est-ce que l'utilisateur possede ce jardin? Pour donner la possibilité de regarder les jardins des autres sans pouvoir les controller. 
+                          // False jusqu'à ce que la vérification soit terminé
 
   constructor(
     private jardinservice: JardinService,
     private planteutilisateurservice: PlanteUtilisateurService,
     private route: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
 
@@ -43,6 +47,9 @@ export class DetailJardinComponent implements OnInit {
 
     // recuperation des plantes utilisateurs dans ce jardin
     this.getPlantesParJardin(0);
+
+    // Pour determiner si l'utilisateur a le droit de mofifier le jardin
+    this.checkUserRights();
 
   }
 
@@ -57,8 +64,8 @@ export class DetailJardinComponent implements OnInit {
     this.planteutilisateurservice.getAllByJardinListe(this.idJardin).subscribe(
       (responseDto) => {
         this.plantesParJardin = responseDto.body;
-        this.plantesFiltre = this.plantesParJardin.filter(plante =>( plante.modelPlant.commun !="Obstacle" &&  plante.modelPlant.commun!="Chemin"))
-       
+        this.plantesFiltre = this.plantesParJardin.filter(plante => (plante.modelPlant.commun != "Obstacle" && plante.modelPlant.commun != "Chemin"))
+
 
 
       }
@@ -85,6 +92,19 @@ export class DetailJardinComponent implements OnInit {
 
   range(end) {
     return (new Array(end)).fill(undefined).map((_, i) => i);
+  }
+
+  checkUserRights(): void {
+
+    const token = localStorage.getItem('token');
+    this.authService.getUserGardens(token).subscribe(
+      gardenIds => { 
+        if(gardenIds.indexOf(this.idJardin) !== -1){
+          this.jardinPersonel = true;
+        }
+
+    });
+
   }
 
 }

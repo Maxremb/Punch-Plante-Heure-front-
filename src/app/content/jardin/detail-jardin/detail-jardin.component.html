@@ -26,7 +26,7 @@
 
     <!-- Affichage du graphique à droite du tableau -->
     <div class="col-12 col-lg-6" style="position: center;" *ngIf="this.jardin.identifier">
-      <app-graphique-jardin-affichage [jardin]="this.jardin" style="position: center;">
+      <app-graphique-jardin-affichage [jardin]="this.jardin" [jardinPersonnel]="this.jardinPersonel" style="position: center;">
       </app-graphique-jardin-affichage>
     </div>
 
@@ -35,7 +35,7 @@
   </div>
 
   <!-- Arrosage du jardin ! -->
-  <div class="row" *ngIf="this.jardin">
+  <div class="row" *ngIf="this.jardin && this.jardinPersonel">
     <app-arrosage style="width: 100%;"></app-arrosage>
   </div>
   <br> <br>
@@ -66,7 +66,7 @@
           <th>
             <h5>Etat de la plante</h5>
           </th>
-          <th colspan="2">
+          <th *ngIf="this.jardinPersonel" colspan="2">
             <h5>Actions</h5>
           </th>
         </tr>
@@ -92,7 +92,7 @@
             >
             {{planteUtilisateur.plantStage}}</td>
 
-          <td
+          <td *ngIf="this.jardinPersonel"
             >
             <!-- Possibilité de mettre à jour les infos d'une plante utilisateur -->
             <a routerLink='/jardin/detail/updateplante/{{planteUtilisateur.identifiant}}'><button
@@ -101,7 +101,7 @@
             </a>
           </td>
           <!-- Possibilité de retirer une plante utilisateur du jardin -->
-          <td
+          <td *ngIf="this.jardinPersonel"
            >
             <button class="btn btn-danger" 
               title="Supprimer la plante" (click)="this.supprimer(planteUtilisateur.identifiant)"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -172,13 +172,13 @@
   <!-- Affichage de boutons en fin de page pour retourner a la liste des jardins de l'utilisateur -->
   <div class="container">
     <div class="bottompage">
-      <a routerLink="/jardin/detail/addplante/{{this.jardin.identifier}}">
+      <a *ngIf="this.jardinPersonel" routerLink="/jardin/detail/addplante/{{this.jardin.identifier}}">
         <button class="btn alazea-btn mt-15">Ajouter une plante à mon jardin</button>
       </a>
       <a routerLink="/planning/{{this.jardin.identifier}}">
         <button class="btn alazea-btn mt-15">Calendrier</button>
       </a>
-      <a routerLink="/jardin/graphique/{{this.jardin.identifier}}">
+      <a *ngIf="this.jardinPersonel" routerLink="/jardin/graphique/{{this.jardin.identifier}}">
         <button class="btn alazea-btn mt-15">Graphique</button>
       </a>
       <a routerLink="/jardin">

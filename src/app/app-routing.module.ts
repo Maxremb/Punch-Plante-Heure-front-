@@ -34,7 +34,7 @@ import { ArrosageComponent } from './content/jardin/arrosage/arrosage.component'
 import { ConnexionComponent } from './content/connexion/connexion.component';
 import { InscriptionComponent } from './content/inscription/inscription/inscription.component';
 import { MeteoComponent } from './content/meteo/meteo/meteo.component';
-import{ AuthGuard } from './helpers/auth.guard';
+import { AuthGuard } from './helpers/auth.guard';
 import { Role } from './enums/role.enum';
 import { DetailUtilisateurComponent } from './content/dashboard/dashboard/detail-utilisateur/detail-utilisateur.component';
 import { GestionAdminComponent } from './content/utilisateur/gestion-admin/gestion-admin.component'
@@ -45,46 +45,46 @@ import { GardenGuard } from './helpers/garden.guard';
 
 
 const routes: Routes = [
-  { path : '' , component :  AccueilHorsConnexionComponent },
-  { path : 'dashboard' , component :  DashboardComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
-  { path : 'admin' , component :  DashboardAdminComponent , canActivate: [AuthGuard], data:{roles: [Role.Admin]}},
-  { path : 'jardin' , component :  AllJardinComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]}},
-  { path : 'jardin/create' , component : CreateJardinComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
-  
-  { path : 'plant/vadmin', component : AllPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
-  { path : 'plant/create', component : CreatePlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
-  { path : 'plant/update/:id', component : DetailedPlantComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
-  { path : 'periode/lp/:id', component : AllPeriodeComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]}},
-  { path : 'periode/create', component : CreatePeriodeComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]}},
-  { path : 'periode/update', component : UpdatePeriodeComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]}},
+  { path: '', component: AccueilHorsConnexionComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
+  { path: 'admin', component: DashboardAdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'jardin', component: AllJardinComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
+  { path: 'jardin/create', component: CreateJardinComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
 
-  { path : 'blog' , component : BlogComponent },
-  { path : 'plant/vuser', component: UserviewAllPlantComponent},
-  { path : 'plant/vuser/:id', component: UserviewDetailedPlantComponent},
-  { path : 'about' , component : AboutComponent },
-  { path : 'contact' , component : ContactComponent },
-  { path : 'plant/key/:key' , component : UserviewKeysearchPlantComponent},
-  { path : 'departement/vadmin' , component : AllDepartementsComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
-  { path : 'departement/create' , component : CreateDepartementComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
-  { path : 'departement/update/:depNum', component : DetailedDepartementComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
-  { path : 'connexion', component : ConnexionComponent },
+  { path: 'plant/vadmin', component: AllPlantComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'plant/create', component: CreatePlantComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'plant/update/:id', component: DetailedPlantComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'periode/lp/:id', component: AllPeriodeComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'periode/create', component: CreatePeriodeComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'periode/update', component: UpdatePeriodeComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
 
-  { path : 'jardin/graphique/:id', component : GraphiqueJardinComponent, canActivate: [AuthGuard, GardenGuard], data:{roles: [Role.Admin, Role.Utilisateur]}},
-  { path : 'planning/:id' , component : PlanningJardinComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
-  { path : 'meteo', component : MeteoComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
-  { path : 'meteo/:id' , component : MeteoDepComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
-  { path : 'jardin/graphique/affichage', component : GraphiqueJardinAffichageComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]}},
-  { path : 'jardin/detail/arrosage', component : ArrosageComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]}},
+  { path: 'blog', component: BlogComponent },
+  { path: 'plant/vuser', component: UserviewAllPlantComponent },
+  { path: 'plant/vuser/:id', component: UserviewDetailedPlantComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'plant/key/:key', component: UserviewKeysearchPlantComponent },
+  { path: 'departement/vadmin', component: AllDepartementsComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'departement/create', component: CreateDepartementComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'departement/update/:depNum', component: DetailedDepartementComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'connexion', component: ConnexionComponent },
+
+  { path: 'jardin/graphique/:id', component: GraphiqueJardinComponent, canActivate: [AuthGuard, GardenGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
+  { path: 'planning/:id', component: PlanningJardinComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
+  { path: 'meteo', component: MeteoComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
+  { path: 'meteo/:id', component: MeteoDepComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
+  { path: 'jardin/graphique/affichage', component: GraphiqueJardinAffichageComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
+  { path: 'jardin/detail/arrosage', component: ArrosageComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
 
   { path: 'inscription', component: InscriptionComponent },
-  { path: 'utilisateur/detail/:identifier', component: DetailUtilisateurComponent, canActivate: [AuthGuard, IdGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },
-  { path: 'utilisateur/gestion-admin', component: GestionAdminComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
-  { path: 'admin/detail/:identifier', component: DetailAdminComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin]} },
+  { path: 'utilisateur/detail/:identifier', component: DetailUtilisateurComponent, canActivate: [AuthGuard, IdGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },
+  { path: 'utilisateur/gestion-admin', component: GestionAdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+  { path: 'admin/detail/:identifier', component: DetailAdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
 
-  { path : 'jardin/detail/:id', component : DetailJardinComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} }, //detail d'un jardin par id
-  { path : 'jardin/update/:id', component : UpdateJardinComponent, canActivate: [AuthGuard, GardenGuard], data:{roles: [Role.Admin, Role.Utilisateur]} }, //update d'un jardin par id
-  { path : 'jardin/detail/addplante/:id', component : DetailJardinAddPlanteComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },//add plante d'un jardin par  jardin id
-  { path : 'jardin/detail/updateplante/:id', component : DetailJardinUpdatePlanteComponent, canActivate: [AuthGuard], data:{roles: [Role.Admin, Role.Utilisateur]} },//update d'une plante par son id
+  { path: 'jardin/detail/:id', component: DetailJardinComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } }, //detail d'un jardin par id
+  { path: 'jardin/update/:id', component: UpdateJardinComponent, canActivate: [AuthGuard, GardenGuard], data: { roles: [Role.Admin, Role.Utilisateur] } }, //update d'un jardin par id
+  { path: 'jardin/detail/addplante/:id', component: DetailJardinAddPlanteComponent, canActivate: [AuthGuard, GardenGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },//add plante d'un jardin par  jardin id
+  { path: 'jardin/detail/updateplante/:id', component: DetailJardinUpdatePlanteComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin, Role.Utilisateur] } },//update d'une plante par son id
 
 ];
 

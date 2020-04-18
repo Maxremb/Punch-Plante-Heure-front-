@@ -5,6 +5,7 @@ import { JardinService } from 'src/app/services/jardin-service.service';
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-graphique-jardin-affichage',
@@ -14,17 +15,20 @@ import { PlanteModeleUpdateDto } from 'src/app/models/plante-modele-update-dto';
 export class GraphiqueJardinAffichageComponent implements OnInit {
 
   @Input() jardin: JardinUpdateDto;
+  @Input() jardinPersonnel: boolean;
   matrice = new Array<Array<string>>(); //matrice bidimensionnelle représentant l'emplacement des plantes
   plantesPresentes = new Array<PlanteUtilisateurUpdateDto>();
 
   plante = new PlanteUtilisateurUpdateDto();
   model = new PlanteModeleUpdateDto();
 
-  constructor(private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService, private servicePlante: PlanteModeleService) { }
+  hrefDirection: string;
+
+  constructor(private route: ActivatedRoute,private service: JardinService, private planteUtilisateurService: PlanteUtilisateurService, private servicePlante: PlanteModeleService) { }
 
   ngOnInit(): void {
     this.getPlantesDejaPresentes();
-
+    this.setHref();
 
   }
 
@@ -61,6 +65,18 @@ export class GraphiqueJardinAffichageComponent implements OnInit {
 
   trackByIndex(index: number, obj: any): any {
     return index;
+  }
+
+  setHref(): void {
+    if (this.jardinPersonnel){
+
+      this.hrefDirection = "/jardin/graphique/" + this.jardin.identifier;
+
+    } else {
+
+      this.hrefDirection = "/jardin/detail/" + this.route.snapshot.paramMap.get("id");
+
+    }
   }
 
   
