@@ -2,7 +2,7 @@
     <!-- Entete de jardin-->
     <app-entete-jardin></app-entete-jardin>
     
-    <div class="row" >
+    <div *ngIf="this.plantePersonnelle" class="row" >
         <!-- div pour le formulaire de mise à jour -->
         <div class="col12 col-lg-5" style="padding-left: 0%;" *ngIf="this.planteUtilisateur && this.updateplanteForm">
             <h2>Mise à jour de ma plante</h2>
@@ -48,6 +48,31 @@
             <br>
             <span class="alert alert-success" *ngIf="messageValidation">{{messageValidation}}</span>
             <span class="alert alert-danger" *ngIf="messageErreur">{{messageErreur}}</span>
+        </div>
+        <!-- Fin de la div gauche -->
+        <!-- Ajout d'images à droite du formulaire -->
+        <div class="col-12 col-lg-7">
+            <div class="image_content">
+                <img src="assets/img/update_plante.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!--Version non-interactive pour quand on observe la plante d'un autre utilisateur-->
+
+    <div *ngIf="!this.plantePersonnelle" class="row" >
+        <!-- div pour le formulaire de mise à jour -->
+        <div class="col12 col-lg-5" style="padding-left: 0%;" *ngIf="this.planteUtilisateur">
+            <h2>Details de la plante</h2>
+            <hr>
+            <!-- Affichage des infos non modifiables -->
+            
+            <p><label class="label">Nom : </label> <br> <span> {{planteUtilisateur.modelPlant.commun}} </span></p>
+            <p><label class="label">Date de plantation : </label> <br> <span> {{planteUtilisateur.plantingDate}} </span></p>
+            <p><label class="label">Date de semis : </label> <br> <span> {{planteUtilisateur.semiDate}} </span></p>
+            <p><label class="label">Etat de santé : </label> <br> <span> {{planteUtilisateur.healthStage}} </span></p>
+            <p><label class="label">Etat de la plante : </label> <br> <span> {{planteUtilisateur.plantStage}} </span></p>
+            
         </div>
         <!-- Fin de la div gauche -->
         <!-- Ajout d'images à droite du formulaire -->

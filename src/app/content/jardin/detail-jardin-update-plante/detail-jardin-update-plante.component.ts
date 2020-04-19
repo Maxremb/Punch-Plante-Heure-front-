@@ -4,6 +4,8 @@ import { PlanteUtilisateurUpdateDto } from 'src/app/models/plante-utilisateur-up
 import { PlanteUtilisateurService } from 'src/app/services/plante-utilisateur-service.service';
 import { PlanteModeleService } from 'src/app/services/plante-modele-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { healthStageEnum } from 'src/app/enums/etat-sante-enum.enum';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-detail-jardin-update-plante',
@@ -20,10 +22,13 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
 
   planteUtilId: number;
 
+  plantePersonnelle = false;
+
   // Injection des dependances service necessaires
   constructor(
     private planteutilisateurservice: PlanteUtilisateurService,
     private plantemodeleervice: PlanteModeleService,
+    private authService: AuthService,
     private route: ActivatedRoute) { }
 
   // Creation des valeurs initiales
@@ -31,6 +36,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     //récupération de l'id plante
     this.planteUtilId = +this.route.snapshot.paramMap.get('id');
     this.getPlanteUtil();
+    this.checkPlant();
 
   }
 
@@ -62,13 +68,23 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
     this.planteutilisateurservice.update(this.planteUtilisateur).subscribe(
       (responseDto) => {
 
-        this.messageValidation = 'Votre plante a été modifiée';
-        
+        this.messageValidation = 'Votre plante a été modifiée';        
 
       },
       (responseDtoErreur) => {
         if (responseDtoErreur.error) {
           this.messageErreur = 'Erreur de modification';
+        }
+      }
+    );
+  }
+
+  checkPlant(): void{
+    const token = localStorage.getItem('token');
+    this.authService.getUserPlants(token).subscribe(
+      plants => {
+        if (plants.indexOf(this.planteUtilId) !== -1){
+          this.plantePersonnelle = true;
         }
       }
     );
