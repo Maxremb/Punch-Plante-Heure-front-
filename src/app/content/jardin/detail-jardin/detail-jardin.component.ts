@@ -27,7 +27,7 @@ export class DetailJardinComponent implements OnInit {
   pageMax: number = 0;
   pageTotal: number[];
   idJardin: number;
-  jardinPersonel = false; // est-ce que l'utilisateur possede ce jardin? Pour donner la possibilité de regarder les jardins des autres sans pouvoir les controller. 
+  jardinPersonnel = false; // est-ce que l'utilisateur possede ce jardin? Pour donner la possibilité de regarder les jardins des autres sans pouvoir les controller. 
                           // False jusqu'à ce que la vérification soit terminé
 
   constructor(
@@ -100,7 +100,7 @@ export class DetailJardinComponent implements OnInit {
     this.authService.getUserGardens(token).subscribe(
       gardenIds => { 
         if(gardenIds.indexOf(this.idJardin) !== -1){
-          this.jardinPersonel = true;
+          this.jardinPersonnel = true;
         }
 
     });
