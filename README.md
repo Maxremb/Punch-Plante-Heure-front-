@@ -70,6 +70,7 @@ L'équipe responsable de ce sprint était composé de :
 - Clara Cadet - Developpeuse
 - Lucie Martinez : Developpeuse
 - Grégoire Brebner : Référent Technique Back / Developpeur
+- Thierry-Meng Cloarec - Referent Métier / Developpeur
 
 ## Equipe 
 - Léa Coston : Chef de Projet, Developpeuse Back/Front
