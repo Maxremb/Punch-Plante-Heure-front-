@@ -20,13 +20,12 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
-    const token = localStorage.getItem('token');
 
 
     // Si utilisater connecté
-    if (connectedUser && token) {
+    if (connectedUser) {
 
-      return this.checkToken(next, token, connectedUser);
+      return this.checkToken(next, connectedUser);
 
     }
 
@@ -34,10 +33,10 @@ export class AuthGuard implements CanActivate {
     return false;
   }
 
-  protected checkToken(next: ActivatedRouteSnapshot, token: string, localUser: ConnectedUser): Promise<boolean> {
+  protected checkToken(next: ActivatedRouteSnapshot, localUser: ConnectedUser): Promise<boolean> {
 
     let promise = new Promise<boolean>((resolve, reject) => {
-      this.service.getConnectedUser(token).toPromise().then(returnedUser => {
+      this.service.getConnectedUser().toPromise().then(returnedUser => {
         
         if (JSON.stringify(localUser) != JSON.stringify(returnedUser)) {
           localStorage.setItem('connectedUser', JSON.stringify(returnedUser))

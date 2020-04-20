@@ -14,24 +14,24 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public getRole(token: string): Observable<Role>{
-    return this.http.post<Role>(this.URL + '/role', token);
+  public getRole(): Observable<Role>{
+    return this.http.get<Role>(this.URL + '/role');
   }
 
-  public getId(token: string): Observable<number>{
-    return this.http.post<number>(this.URL + '/identifier', token);
+  public getId(): Observable<number>{
+    return this.http.get<number>(this.URL + '/identifier');
   }
 
-  public getConnectedUser(token: string): Observable<ConnectedUser>{
-    return this.http.post<ConnectedUser>(this.URL + '/user', token);
+  public getConnectedUser(): Observable<ConnectedUser>{
+    return this.http.get<ConnectedUser>(this.URL + '/user');
   }
 
-  public getUserGardens(token: string): Observable<Array<number>>{
-    return this.http.post<Array<number>>(this.URL + '/gardens', token);
+  public getUserGardens(): Observable<Array<number>>{
+    return this.http.get<Array<number>>(this.URL + '/gardens');
   }
 
-  public getUserPlants(token: string): Observable<Array<number>>{
-    return this.http.post<Array<number>>(this.URL + '/plants', token);
+  public getUserPlants(): Observable<Array<number>>{
+    return this.http.get<Array<number>>(this.URL + '/plants');
   }
 
 }

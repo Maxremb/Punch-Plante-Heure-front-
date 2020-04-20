@@ -81,7 +81,7 @@ export class DetailJardinUpdatePlanteComponent implements OnInit {
 
   checkPlant(): void{
     const token = localStorage.getItem('token');
-    this.authService.getUserPlants(token).subscribe(
+    this.authService.getUserPlants().subscribe(
       plants => {
         if (plants.indexOf(this.planteUtilId) !== -1){
           this.plantePersonnelle = true;

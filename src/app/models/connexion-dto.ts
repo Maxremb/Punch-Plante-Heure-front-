@@ -7,6 +7,5 @@ export class ConnexionDto {
     user: boolean;
     bodyAdmin: AdminUpdateDto;
     bodyUtil: UtilisateurUpdateDto;
-    token: string;
 
 }

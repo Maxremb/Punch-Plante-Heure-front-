@@ -16,15 +16,14 @@ export class GardenGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       
-      const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));      
-      const token = localStorage.getItem('token');
+      const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));  
       const userGardens = JSON.parse(localStorage.getItem('userGardens'));
 
 
     // Si utilisater connecté
-    if (connectedUser && token) {
+    if (connectedUser) {
 
-      return this.checkToken4Garden(next, token, userGardens);
+      return this.checkToken4Garden(next, userGardens);
 
     }
 
@@ -32,10 +31,10 @@ export class GardenGuard implements CanActivate {
     return false;
   }
 
-  private checkToken4Garden(next: ActivatedRouteSnapshot, token: string, clientGardenIds: Array<number>): Promise<boolean> {
+  private checkToken4Garden(next: ActivatedRouteSnapshot, clientGardenIds: Array<number>): Promise<boolean> {
 
     let promise = new Promise<boolean>((resolve, reject) => {
-      this.service.getUserGardens(token).toPromise().then(returnedIds => {
+      this.service.getUserGardens().toPromise().then(returnedIds => {
         
         if (JSON.stringify(clientGardenIds) != JSON.stringify(returnedIds)) {
           localStorage.setItem('userGardens', JSON.stringify(returnedIds));

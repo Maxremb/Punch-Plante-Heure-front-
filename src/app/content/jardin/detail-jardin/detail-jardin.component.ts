@@ -97,7 +97,7 @@ export class DetailJardinComponent implements OnInit {
   checkUserRights(): void {
 
     const token = localStorage.getItem('token');
-    this.authService.getUserGardens(token).subscribe(
+    this.authService.getUserGardens().subscribe(
       gardenIds => { 
         if(gardenIds.indexOf(this.idJardin) !== -1){
           this.jardinPersonnel = true;

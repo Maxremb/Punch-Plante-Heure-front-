@@ -28,7 +28,6 @@ export class ConnexionService {
   connect(connexionDto: ConnexionDto): boolean {
     let success = this.convert(connexionDto)
     if (success) {
-      localStorage.setItem('token', connexionDto.token);
       localStorage.setItem('connectedUser', JSON.stringify(this.connectedUser));
     }
     return success;
